@@ -1,15 +1,15 @@
-Translate AlphaLemon CMS in your language
-=========================================
+Translate RedKite CMS in your language
+======================================
 
-This document will explain in detail how to translate AlphaLemon CMS in your language.
+This document will explain in detail how to translate RedKite CMS in your language.
 
 .. note::
 
-    Before go, you need to knows that you are required to fork **AlphaLemon CMS** bundle 
-    to translate AlphaLemon: learn how at http://alphalemon,com/how-to-get-alphalemon-cms-source-code-and-bundle-structure
+    Before go, you need to knows that you are required to fork **RedKite CMS** bundle 
+    to translate RedKite CMS: learn how at http://alphalemon,com/how-to-get-alphalemon-cms-source-code-and-bundle-structure
 
-AlphaLemon CMS uses Symfony2's Translation component to manage the interface translation.
-Catalogues live under the standard AlphaLemonCmsBundle's **Resources/translations** 
+RedKite CMS uses Symfony2's Translation component to manage the interface translation.
+Catalogues live under the standard RedKiteCmsBundle's **Resources/translations** 
 folder.
 
 Each catalogue is written as **xliff** file and its name follows the Symfony2 notation,
@@ -17,23 +17,23 @@ for a bundle:
 
 .. code:: text
 
-    AlphaLemonCmsBundle.[locale].xliff
+    RedKiteCmsBundle.[locale].xliff
 
-Translate AlphaLemon CMS in your language
+Translate RedKite CMS in your language
 -----------------------------------------
 
-To start translating AlphaLemon CMS, simply copy the **AlphaLemonCmsBundle.en.xliff** and the
+To start translating RedKite CMS, simply copy the **RedKiteCmsBundle.en.xliff** and the
 **messages.en.xliff** catalogues and rename them with the locale you want to translate.
 
-Let's assume you want to translate AlphaLemon CMS in Italian: you need to know the i18n
+Let's assume you want to translate RedKite CMS in Italian: you need to know the i18n
 Italian notation, which is **"it"**. When you know this, you can start. 
 
 .. note::
 
-    AlphaLemon CMS default language is English, and while it is not mandatory, it is 
+    RedKite CMS default language is English, and while it is not mandatory, it is 
     better to start a new translation from this one.
     
-Catalogues are written using xliff format a derivation of xml markup language. They are 
+Catalogues are written using xliff format a derivation of xml mark-up language. They are 
 structured as follows:
 
 .. code:: xml

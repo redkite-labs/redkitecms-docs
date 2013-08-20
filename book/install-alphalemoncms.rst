@@ -1,16 +1,16 @@
-AlphaLemon CMS installation procedure
-=====================================
+RedKite CMS installation procedure
+==================================
 
-AlphaLemon CMS is distributed using `composer`_, so the first thing to do is to grab
+RedKite CMS is distributed using `composer`_, so the first thing to do is to grab
 it from their website.
 
 .. note::
 
-    This tutorial explains how to install AlphaLemon CMS into an existing project,
+    This tutorial explains how to install RedKite CMS into an existing project,
     in which the dependencies are managed by composer.
 
-    To start an AlphaLemon CMS project from scratch, you should use the
-    `AlphaLemon CMS sandbox`_.
+    To start an RedKite CMS project from scratch, you should use the
+    `RedKite CMS sandbox`_.
 
 
 Composer installation
@@ -30,10 +30,10 @@ If you do not have curl installed, then you can use:
 	 php -r "eval('?>'.file_get_contents('https://getcomposer.org/installer'));"
 
 
-Add AlphaLemon to your composer.json file
+Add RedKite CMS to your composer.json file
 -----------------------------------------
 
-AlphaLemon CMS requires a **Symfony 2.3** application, so download the latest Symfony2 
+RedKite CMS requires a **Symfony 2.3** application, so download the latest Symfony2 
 release then open the composer.json file and add the following requirements:
 
 .. code-block:: text
@@ -42,27 +42,27 @@ release then open the composer.json file and add the following requirements:
         "repositories": [
             {
                 "type": "composer",
-                "url": "http://apps.alphalemon.com/"
+                "url": "http://apps.redkite-labs.com/"
             }
         ],
         "require": {
             [...]
-            "alphalemon/alphalemon-cms-bundle": "dev-master",
-            "alphalemon/alphalemon-cms-installer-bundle": "dev-master",
-            "alphalemon/app-tinymce-block-bundle" : "dev-master",          
-            "alphalemon/bootbusiness-theme-bundle": "dev-master"
+            "redkite-cms/redkite-cms-bundle": "dev-master",
+			"redkite-cms/installer-bundle": "dev-master",
+			"redkite-labs/bootbusiness-theme-bundle": "dev-master",
+			"redkite-cms/tinymce-block-bundle": "dev-master"
         },
         "minimum-stability": "dev"
     }
 
 .. note::
 
-    AlphaLemon CMS uses TinyMCE as default editor to manage an hypertext content, but
-    there is a bundle that uses the CKEditor editor. If you are more confortable with
-    this one, replace the **"alphalemon/app-tinymce-block-bundle" : "dev-master"**
-    declaration with **"alphalemon/app-ckeditor-block-bundle" : "dev-master"**
+    RedKite CMS uses TinyMCE as default editor to manage an hypertext content, but
+    there is a bundle that uses the CKEditor editor. If you are more comfortable with
+    this one, replace the **"redkite-cms/tinymce-block-bundle" : "dev-master"**
+    declaration with **"redkite-cms/ckeditor-block-bundle" : "dev-master"**
 
-Install AlphaLemon CMS
+Install RedKite CMS
 ----------------------
 
 To install, run the following command
@@ -72,18 +72,18 @@ To install, run the following command
     php composer.phar update
 
 
-AlphaLemon CMS setup
---------------------
+RedKite CMS set-up
+------------------
 
-AlphaLemonCMS requires several steps in order to properly setup the CMS itself. Luckily
-the **AlphaLemonCmsInstallerBundle** will do the full job for you, providing a web installer interface
-or an interactive Symfony2 command to install AlphaLemonCMS.
+RedKite CMS requires several steps in order to properly set-up the CMS itself. Luckily
+the **RedKiteCmsInstallerBundle** will do the full job for you, providing a web installer interface
+or an interactive Symfony2 command to install RedKite CMS.
 
 
 Install other dependencies
 --------------------------
 
-AlphaLemon CMS requires by default the `yui compressor`_ which is useful to compact 
+RedKite CMS requires by default the `yui compressor`_ which is useful to compact 
 your assets into one to reduces page time loading. Grab and unpack it into the **app/Resources/java**
 folder and rename it **yuicompressor.jar**.
 
@@ -101,12 +101,12 @@ you must add the following configuration to your **config_alcms.yml** file:
 
     app/config/config_alcms.yml
 
-    alpha_lemon_cms:
+    red_kite_cms:
         enable_yui_compressor: false
 
 .. note::
 
-    The **config_alcms.yml** is created into the app/config folder by the AlphaLemon CMS
+    The **config_alcms.yml** is created into the app/config folder by the RedKite CMS
     installer, so you must install the CMS then add the configuration as shown.
 
 The deploy bundle
@@ -117,7 +117,7 @@ From the Symfony2 book:
     Before you begin, you'll need to create a bundle. Learn more about this topic
     from the `Symfony2 book`_
 
-AlphaLemon CMS does not add anything new to Symfony2, so it requires you to create 
+RedKite CMS does not add anything new to Symfony2, so it requires you to create 
 that bundle too.
 
 From the top level folder of your Symfony2 application, run the following command:
@@ -126,14 +126,14 @@ From the top level folder of your Symfony2 application, run the following comman
 
     php app/console generate:bundle
 
-By default AlphaLemon CMS looks for the **Acme/WebSite** bundle. Obviously you can
-choose any name you wish for your bundle: the AlphaLemon CMS installer will ask you
+By default RedKite CMS looks for the **Acme/WebSite** bundle. Obviously you can
+choose any name you wish for your bundle: the RedKite CMS installer will ask you
 for this.
 
-Add the AlphaLemon CMS installer bundle to AppKernel
+Add the RedKite CMS installer bundle to AppKernel
 ----------------------------------------------------
 
-To enable the AlphaLemon CMS installer you must add it to your AppKernel file:
+To enable the RedKite CMS installer you must add it to your AppKernel file:
 
 .. code-block:: php
 
@@ -145,7 +145,7 @@ To enable the AlphaLemon CMS installer you must add it to your AppKernel file:
 
             [...]   
             
-            new AlphaLemon\CmsInstallerBundle\AlphaLemonCmsInstallerBundle(),
+            new RedKiteCms\InstallerBundle\RedKiteCmsInstallerBundle(),
         );
     }
 
@@ -165,7 +165,7 @@ and add this code:
     
     namespace Your\Bundle\Controller
 
-    use AlphaLemon\ThemeEngineBundle\Core\Rendering\Controller\FrontendController;
+    use RedKiteLabs\ThemeEngineBundle\Core\Rendering\Controller\FrontendController;
 
     class WebSiteController extends FrontendController
     {
@@ -176,7 +176,7 @@ and add this code:
     Don't forget to arrange the **namespace** according with your configuration.
 
 If you want to use a controller with a different name, you must obviously rename the
-controller itself, then you must tell AlphaLemon CMS to generate the routes pointing
+controller itself, then you must tell RedKite CMS to generate the routes pointing
 this controller.
 
 This last step is achieved adding the following configuration to your **config_alcms.yml**
@@ -186,7 +186,7 @@ file:
 
     // app/config/config_alcms.yml
 
-    alpha_lemon_cms:
+    red_kite_cms:
         deploy_bundle:
           controller: Site
 
@@ -197,7 +197,7 @@ code as follows:
     
     namespace Your\Bundle\Controller
 
-    use AlphaLemon\ThemeEngineBundle\Core\Rendering\Controller\FrontendController;
+    use RedKiteLabs\ThemeEngineBundle\Core\Rendering\Controller\FrontendController;
 
     class SiteController extends FrontendController
     {
@@ -206,8 +206,8 @@ code as follows:
 Install assets
 --------------
 
-AlphaLemon CMS uses Twitter's **bower** package manager to manage external assets
-required by AlphaLemon CMS.
+RedKite CMS uses Twitter's **bower** package manager to manage external assets
+required by RedKite CMS.
 
 A console command is provided to generate the required **component.json** file under 
 the application web folder, which usually is called **web**. Run the following command 
@@ -215,13 +215,13 @@ to create that file:
 
 .. code-block:: text
 
-    php app/console alphalemon:build:bower
+    php app/console redkitecms:build:bower
 
 If you plan to use a different folder, you can specify that one as follows:
 
 .. code-block:: text
  
-    php app/console alphalemon:build:bower --web-folder=[folder name]
+    php app/console redkitecms:build:bower --web-folder=[folder name]
 
 To finally install the assets, enter into the application's web folder and run the following
 command:
@@ -233,7 +233,7 @@ command:
 
 .. note::
 
-    if you don't have **bower** installed, you can download the AlphaLemon CMS Sandbox and
+    if you don't have **bower** installed, you can download the RedKite CMS Sandbox and
     grab the **components** folder from the package **web** directory, and then copy it into 
     your application's web folder.
 
@@ -283,8 +283,8 @@ install bundle:
 .. code-block:: text
     
     // app/config/routing.yml
-    _AlphaLemonCmsInstallerBundle:
-        resource: "@AlphaLemonCmsInstallerBundle/Resources/config/routing.yml"
+    _RedKiteCmsInstallerBundle:
+        resource: "@RedKiteCmsInstallerBundle/Resources/config/routing.yml"
 
 .. note::
 
@@ -310,13 +310,13 @@ displaying nothing on the screen.
 Installing from the console
 ---------------------------
 
-Installing AlphaLemonCMS from the console is really easy:
+Installing RedKite CMS from the console is really easy:
 
 .. code-block:: text
 
-    app/console alphalemon:install-cms
+    app/console redkitecms:install
 
-This will run the interactive command which leads to to setup AlphaLemon CMS, so just 
+This will run the interactive command which leads to to set-up RedKite CMS, so just 
 provide the required information and you are done!
 
 Point your browser at
@@ -325,12 +325,12 @@ Point your browser at
 
     http://localhost/alcms.php/backend/en/index
 
-to start using AlphaLemonCMS.
+to start using RedKite CMS.
 
 Installing using the web interface
 ----------------------------------
 
-To start AlphaLemon CMS installation, simply point your browser at:
+To start RedKite CMS installation, simply point your browser at:
 
 .. code-block:: text
 
@@ -342,14 +342,14 @@ to start.
 
 Permissions
 -----------
-Don't forget to setup the permissions on the installation folder as explained in the
-`Symfony2 setup and configuration tutorial`_
+Don't forget to set-up the permissions on the installation folder as explained in the
+`Symfony2 set-up and configuration tutorial`_
 
 
 What to do if something goes wrong
 ----------------------------------
-The AlphaLemon CMS installer changes some of the configuration files of your application,
-so if something goes wrong during the setup, you could have problems running the install
+The RedKite CMS installer changes some of the configuration files of your application,
+so if something goes wrong during the set-up, you could have problems running the install
 process again after these changes have been implemented.
 
 Luckily, the installer backs up those files, so to fix the problem, you have simply to
@@ -375,7 +375,7 @@ Found a typo ? Something is wrong in this documentation ? `Just fork and edit it
 
 .. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
 .. _`composer`: http://getcomposer.org
-.. _`AlphaLemon CMS sandbox`: download-alphalemon-cms-for-symfony2-framework
+.. _`RedKite CMS sandbox`: download-alphalemon-cms-for-symfony2-framework
 .. _`Symfony2 setup and configuration tutorial`: http://symfony.com/doc/current/book/installation.html#configuration-and-setup
 .. _`yui compressor`: https://github.com/yui/yuicompressor/downloads
 .. _`Symfony2 book`: http://symfony.com/doc/current/book/page_creation.html#before-you-begin-create-the-bundle

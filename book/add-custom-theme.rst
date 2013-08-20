@@ -1,12 +1,12 @@
-Add a custom Theme-App to AlphaLemon CMS
+Add a custom Theme-App to RedKite CMS
 ========================================
 
-This chapter explains how to add a new theme AlphaLemon CMS.
+This chapter explains how to create a new theme for RedKite CMS.
 
 What is a Theme?
 ---------------
 
-An AlphaLemon CMS Theme Application could be defined as a collection of twig templates which have their own assets like
+An RedKite CMS Theme Application could be defined as a collection of twig templates which have their own assets like
 javascripts, stylesheets and images, packaged into a well-known structure, that defines a website design.
 
 How is a Theme-App structured?
@@ -20,21 +20,21 @@ A Theme-App is a standalone Symfony2 bundle. Using this approach has several adv
 
 Create the FancyThemeBundle
 ---------------------------
-Alphalemon has two built-in commands which help to add a new theme:
+RedKite CMS has two built-in commands which help to add a new theme:
 
-- **alphalemon:generate:app-theme**
-- **alphalemon:generate:themplates**
+- **redkitecms:generate:app-theme**
+- **redkitecms:generate:themplates**
 
 The first command generates a new App-Theme Bundle, the second one generate the templates configuration files.
 
-To start a new theme, you must run the **alphalemon:generate:app-theme** command from your console.
+To start a new theme, you must run the **redkitecms:generate:app-theme** command from your console.
 
 This command extends the Symfony's generate:bundle command, so the process should be familiar. Run the following command to
 start:
 
 .. code-block:: text
 
-    php app/console alphalemon:generate:app-theme
+    php app/console redkitecms:generate:app-theme
 
 You'll get the following response:
 
@@ -102,13 +102,13 @@ the following:
         home.html.twig
         internal.html.twig
 
-so a base template is saved into a theme's subfolder and it contains the common parts 
+so a base template is saved into a theme's sub-folder and it contains the common parts 
 of the website's layout, while the other two templates inherit from the base template.
 
 The theme's configuration generated from a structure like that, produces two templates
 and three slots configuration files, in fact the files saved into the theme's root folder 
 become a template file, while a slot file is generated for all the templates, plus one
-named **base.xml** that contains the common slots found in files saved into subfolders.
+named **base.xml** that contains the common slots found in files saved into sub-folders.
 
 Don't worry about the generation process for now, because it is explained in detail 
 in the next paragraphs.
@@ -139,7 +139,7 @@ into the **base.xml** file.
 The design
 ~~~~~~~~~~
 
-AlphaLemon Cms uses **twig** as template engine, so when you have converted the templates to html,
+RedKite CMS uses **twig** as template engine, so when you have converted the templates to html,
 you must write them to twig.
 
 Clean the template
@@ -195,7 +195,7 @@ example consider the following code:
 
     <div id="header">
         <div id="logo">
-            <a href="#"><img src="images/logo.png" title="Download AlphaLemonCMS" alt="" /></a>
+            <a href="#"><img src="images/logo.png" title="Download RedKite CMS" alt="" /></a>
         </div>
     </div>
     [...]
@@ -229,8 +229,8 @@ Another best practice to follow is to use the **renderSlot** function inside a *
 
     Don't throw away the replaced code, it will be used in a while
 
-Prepare your template to be overriden
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Prepare your template to be overridden
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 That code is enough to render the contents placed on the slot logo, but if you plan to distribute your theme, you must
 wrap the renderSlot function with a block instruction:
@@ -258,7 +258,7 @@ are declared in a comment section as follows:
     @BusinessWebsiteThemeBundle/Resources/public/css/style.css
     END-EXTERNAL-STYLESHEETS #}
 
-There are four recognized sections by AlphaLemon CMS:
+There are four recognized sections by RedKite CMS:
 
 .. code-block:: text
 
@@ -268,7 +268,7 @@ There are four recognized sections by AlphaLemon CMS:
     BEGIN-CMS-JAVASCRIPTS / END-CMS-JAVASCRIPTS
 
 The first sections are used to declare the website's external stylesheets files, and the second is for javascripts.
-The other two sections are used respectively to declare stylesheets or javascripts that AlphaLemon Cms must load
+The other two sections are used respectively to declare stylesheets or javascripts that RedKite CMS must load
 only when the CMS is active.
 
 These sections should be added at the top of the page, although none of them are mandatory.
@@ -327,7 +327,7 @@ In addiction to **name** option, there are some attributes you could define:
 The blockType option
 ~~~~~~~~~~~~~~~~~~~~
 
-Defines the block type that AlphaLemon CMS must add for that slot when a new page is added. By default, the block type
+Defines the block type that RedKite CMS must add for that slot when a new page is added. By default, the block type
 added is Text.
 
 The htmlContent option
@@ -372,7 +372,7 @@ at the beginning of this tutorial:
 
 .. code-block:: text
 
-    alphalemon:generate:templates FancyThemeBundle
+    redkitecms:generate:templates FancyThemeBundle
 
 This command will generate the config files that define the theme's templates and their slots. If something goes wrong, a notice is displayed.
 

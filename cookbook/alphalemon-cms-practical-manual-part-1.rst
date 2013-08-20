@@ -1,8 +1,8 @@
-AlphaLemon CMS Practical Manual - Part 1
-========================================
+RedKite CMS Practical Manual - Part 1
+=====================================
 
-AlphaLemon CMS Practical Manual shows all the functionalities of the CMS, and allows you to work 
-directly on a real website. To to do this, you need to `install AlphaLemon CMS`_ before 
+RedKite CMS Practical Manual shows all the functionalities of the CMS, and allows you to work 
+directly on a real website. To to do this, you need to `install RedKite CMS`_ before 
 starting.
 
 This manual is in two parts and it has been written to be as simple and direct as possible. 
@@ -46,7 +46,7 @@ type of file on your website. For this example you will be able to manage images
 Upload an image. I've already uploaded the images bundled with the bootbusiness original 
 theme. Next double click on the one you want to insert.
 
-A green alert tells you the image has been added and the images's path is written back 
+A green alert tells you the image has been added and the images' path is written back 
 into the src input box. Close the media library.
 
 Change the Title and Alt information to introduce text to describe
@@ -79,7 +79,7 @@ Add a new block
 
 .. image:: //bundles/alphalemonwebsite/media/bootbusiness/img6.jpg
 
-When you remove the last block, AlphaLemon CMS writes some significative text into the 
+When you remove the last block, RedKite CMS writes some significant text into the 
 block's area. This explains that the slot does not contains any content: place the cursor 
 over that block and click on the plus icon.
 
@@ -147,5 +147,5 @@ Now you should repeat the same process for other products and services.
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
 .. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
-.. _`install AlphaLemon CMS`: http://alphalemon.com/download-alphalemon-cms-for-symfony2-framework
+.. _`install RedKite CMS`: http://alphalemon.com/download-alphalemon-cms-for-symfony2-framework
 .. _`Users Manual`: http://alphalemon.com/user-manual-part-1

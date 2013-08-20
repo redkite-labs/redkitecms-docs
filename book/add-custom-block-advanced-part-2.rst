@@ -29,10 +29,10 @@ open it and paste the following code:
 
 .. code-block:: php
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapThumbnailTutorialBlock.php
-    namespace AlphaLemon\Block\BootstrapButtonTutorialBlockBundle\Core\Block;
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapThumbnailTutorialBlock.php
+    namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block;
 
-    use AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockContainer;
+    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockContainer;
 
     class AlBlockManagerBootstrapThumbnailTutorialBlock extends AlBlockManagerJsonBlockContainer
     {
@@ -84,7 +84,7 @@ The template
 ~~~~~~~~~~~~
 
 To include a block inside another block, you must use the twig's **renderIncludedBlock** 
-function, added by AlphaLemon CMS.
+function, added by RedKite CMS.
 
 This method requires, as mandatory attribute, the key name which is the same of **slotName**
 attribute you use in `renderSlot`_ method, when you build a theme.
@@ -112,8 +112,8 @@ and paste the following code:
 
 .. code-block:: jinja
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Thumbnail/thumbnail.html.twig
-    {% extends "AlphaLemonCmsBundle:Editor:base_editor.html.twig" %}
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Thumbnail/thumbnail.html.twig
+    {% extends "RedKiteCmsBundle:Editor:base_editor.html.twig" %}
 
     {% block body %}
     {% if key is not defined %}
@@ -157,7 +157,7 @@ The included block is rendered as follows
     {{ renderIncludedBlock(blockSlotName, block_manager, "Image", true) }}
     
 The first step is to define the **blockSlotName** variable which joins the block's
-position, **0** in this example, to **baseSlotName** variabl,e then the key is passed to
+position, **0** in this example, to **baseSlotName** variable then the key is passed to
 the **renderIncludedBlock** method.
 
 In addiction the **renderIncludedBlock** accepts the following arguments:
@@ -181,10 +181,10 @@ open it and paste the following code:
 
 .. code-block:: php
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Core/Form/AlThumbnailType.php
-    namespace AlphaLemon\Block\BootstrapButtonTutorialBlockBundle\Core\Form;
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Form/AlThumbnailType.php
+    namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form;
 
-    use AlphaLemon\AlphaLemonCmsBundle\Core\Form\JsonBlock\JsonBlockType;
+    use RedKiteLabs\RedKiteCmsBundle\Core\Form\JsonBlock\JsonBlockType;
     use Symfony\Component\Form\FormBuilderInterface;
 
     class AlThumbnailType extends JsonBlockType
@@ -225,7 +225,7 @@ open it and paste the following code:
 
     <form id="al_item_form">
         <table>
-            {% include "AlphaLemonCmsBundle:Item:_form_renderer.html.twig" %}
+            {% include "RedKiteCmsBundle:Item:_form_renderer.html.twig" %}
             <tr>
                 <td colspan="2" style="text-align: right">
                     <a class="al_editor_save btn btn-primary" href="#" >Save</a>
@@ -242,16 +242,16 @@ Open the **app_block.xml** and add the App-Block class as a service:
 
 .. code-block:: xml
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
         [...]
-        <parameter key="bootstrap_thumbnail_tutorial.block.class">AlphaLemon\Block\BootstrapButtonTutorialBlockBundle\Core\Block\AlBlockManagerBootstrapThumbnailTutorialBlock</parameter>        
+        <parameter key="bootstrap_thumbnail_tutorial.block.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block\AlBlockManagerBootstrapThumbnailTutorialBlock</parameter>        
     </parameters>
     
     <services>
         [...]
         <service id="bootstrap_thumbnail_tutorial.block" class="%bootstrap_thumbnail_demo.block.class%">
-            <tag name="alphalemon_cms.blocks_factory.block" description="Thumbnail Tutorial" type="BootstrapThumbnailTutorialBlock" group="bootstrap,Twitter Bootstrap" />
+            <tag name="red_kite_cms.blocks_factory.block" description="Thumbnail Tutorial" type="BootstrapThumbnailTutorialBlock" group="bootstrap,Twitter Bootstrap" />
             <argument type="service" id="service_container" />
         </service>
     </services>
@@ -260,10 +260,10 @@ Then add the form as service:
 
 .. code-block:: xml
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
         [...]
-        <parameter key="bootstrap_thumbnail_demo.form.class">AlphaLemon\Block\BootstrapButtonTutorialBlockBundle\Core\Form\AlThumbnailType</parameter>
+        <parameter key="bootstrap_thumbnail_demo.form.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form\AlThumbnailType</parameter>
     </parameters>
     
     <services>
@@ -280,7 +280,7 @@ method to block manager:
 
 .. code-block:: php
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapThumbnailsTutorialBlock.php
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapThumbnailsTutorialBlock.php
     class AlBlockManagerBootstrapThumbnailsTutorialBlock extends AlBlockManagerJsonBlockContainer
     {
         [...]
@@ -312,11 +312,11 @@ class, so create the **AlBlockManagerBootstrapThumbnailsDemoBlock.php** inside t
 
 .. code-block:: php
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapThumbnailsDemoBlock.php
-    namespace AlphaLemon\Block\BootstrapThumbnailBlockBundle\Core\Block;
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapThumbnailsDemoBlock.php
+    namespace RedKiteCms\Block\BootstrapThumbnailBlockBundle\Core\Block;
 
-    use AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlock;
-    use AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\AlBlockManagerContainer;
+    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlock;
+    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\AlBlockManagerContainer;
 
     class AlBlockManagerBootstrapThumbnailsTutorialBlock extends AlBlockManagerContainer
     {
@@ -357,8 +357,8 @@ open it and paste this code:
 
 .. code-block:: jinja
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Thumbnail/thumbnails.html.twig
-    {% extends "AlphaLemonCmsBundle:Editor:base_editor.html.twig" %}
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Thumbnail/thumbnails.html.twig
+    {% extends "RedKiteCmsBundle:Editor:base_editor.html.twig" %}
 
     {% block body %}
     <ul class="thumbnails al-thumbnail-list" {{ editor|raw }}>
@@ -398,7 +398,7 @@ This attributes string is passed as last argument of the **renderIncludedBlock**
 and it is written in the tag where the editor's attributes are rendered.
 
 You may notice that there is declared another annotation, the **data-hide-blocks-menu**
-which tells AlphaLemon to skip to render the blocks menu for the current block,
+which tells RedKite CMS to skip to render the blocks menu for the current block,
 this because we don't need a tool to add and remove blocks, because a list adds its 
 own buttons to achieve this task.
 
@@ -417,16 +417,16 @@ Open the **app_block.xml** and add the App-Block class as a service:
 
 .. code-block:: xml
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
         [...]
-        <parameter key="bootstrap_thumbnails_tutorial.block.class">AlphaLemon\Block\BootstrapButtonTutorialBlockBundle\Core\Block\AlBlockManagerBootstrapThumbnailsTutorialBlock</parameter>        
+        <parameter key="bootstrap_thumbnails_tutorial.block.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block\AlBlockManagerBootstrapThumbnailsTutorialBlock</parameter>        
     </parameters>
     
     <services>
         [...]
         <service id="bootstrap_thumbnails_tutorial.block" class="%bootstrap_thumbnails_tutorial.block.class%">
-            <tag name="alphalemon_cms.blocks_factory.block" description="Thumbnails Tutorial" type="BootstrapThumbnailsTutorialBlock" group="bootstrap,Twitter Bootstrap" />
+            <tag name="red_kite_cms.blocks_factory.block" description="Thumbnails Tutorial" type="BootstrapThumbnailsTutorialBlock" group="bootstrap,Twitter Bootstrap" />
             <argument type="service" id="service_container" />
         </service>
     </services>
@@ -436,7 +436,7 @@ The javascript
 ~~~~~~~~~~~~~~
 
 To manage a list of elements we need to add a javascript to manage this kind of block.
-AlphaLemon CMS provides a jquery plugin which does all the job for you.
+RedKite CMS provides a jquery plugin which does all the job for you.
 
 Add the **thumbnail_tutorial_editor.js** file inside the **Resources/public/js**
 folder, open it and paste the following code:
@@ -462,21 +462,21 @@ folder, open it and paste the following code:
     });
 
 Here we define two handlers, one that listens to the **blockEditing** event and another
-one that listens to **blockStopEditing** event, which occours respectely when you
+one that listens to **blockStopEditing** event, which occurs respectively when you
 start and stop to edit a block.
 
 In both of events we make sure that the our code is executed only when the block is
 a **BootstrapThumbnailsTutorialBlock**.
 
-To init an inline list, you just need to call the **inlinelist** method on the element
+To init an in-line list, you just need to call the **inlinelist** method on the element
 that represents the list itself.
 
 This method could be extended defining the **addValue** parameter, giving a custom value to use
-then a new item is added. When this parameter is nor defined, AlphaLemon CMS opens the
+then a new item is added. When this parameter is nor defined, RedKite CMS opens the
 **adder menu** to let you choose the block you want to add.
 
 In addiction you can define the **target** parameter. By default this block works with 
-**li** tags, so just define this parameter to change this behavior. For example the 
+**li** tags, so just define this parameter to change this behaviour. For example the 
 **ButtonsGroup** block must work only with buttons so the implemented code is the following:
 
 .. code-block:: js
@@ -487,7 +487,7 @@ In addiction you can define the **target** parameter. By default this block work
     });
 
 At last you may provide two callback functions: the **addItemCallback** and the 
-**deleteItemCallback** which occours when a new item is added or an item is deleted.
+**deleteItemCallback** which occurs when a new item is added or an item is deleted.
 
 To stop a list the code is quite trivial:
 
@@ -500,7 +500,7 @@ parameter in the **app_block.xml**:
 
 .. code-block:: xml
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
         [...]
         <parameter key="bootstrapdropdownbuttontutorialblock.external_javascripts.cms" type="collection">

@@ -14,7 +14,7 @@ Themes could be added to your application in two ways:
 
 To create a custom theme, you should read the `dedicated tutorial`_, while to add an
 existing theme to your application using composer, you must follow the instructions 
-provided by each thirdy-part block.
+provided by each third-parties block.
 
 
 The user interface

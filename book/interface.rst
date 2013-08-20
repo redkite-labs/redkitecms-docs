@@ -1,18 +1,18 @@
-AlphaLemon CMS editor interface
-===============================
+RedKite CMS editor interface
+============================
 
-This chapter contains an overview of the AlphaLemon CMS editor interface.
+This chapter contains an overview of the RedKite CMS editor interface.
 
 The interface
 -------------
 
-After you signed in, AlphaLemon CMS redirects to the main page of your website
+After you signed in, RedKite CMS redirects to the main page of your website
 and loads the editor to manage the whole website.
 
-AlphaLemon CMS is an inline application, this means you can edit your website contents
+RedKite CMS is an inline application, this means you can edit your website contents
 directly on each page of your website.
 
-When the CMS is started, the home page is loaded and you can start immediatly editing it.
+When the CMS is started, the home page is loaded and you can start immediately editing it.
 
 The interface has been minimized to have the less impact on page:
 
@@ -39,7 +39,7 @@ This topic is covered in detail in the `blocks management`_ chapter.
 Navigate through website pages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-AlphaLemon CMS let you navigate through website pages:
+RedKite CMS let you navigate through website pages:
 
 1. Clicking directly on pages internal links
 2. Using the **Nav** menu placed under the **Edit** button
@@ -61,7 +61,7 @@ inside this panel there are rendered the interfaces that let you manage the sect
 
 .. image:: //bundles/alphalemonwebsite/media/manual/img-4.jpg
 
-At last, from the toolbar, you can change the AlphaLemon CMS interface language too.
+At last, from the toolbar, you can change the RedKite CMS interface language too.
 
 
 .. class:: fork-and-edit

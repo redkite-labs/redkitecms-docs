@@ -2,12 +2,12 @@ The internals of themes configuration
 =====================================
 
 This chapter will explain the internals of an App-Theme and refers to **BusinessWebsiteThemeBundle**,
-the default theme that comes with AlphaLemon CMS.
+the default theme that comes with RedKite CMS.
 
 The Theme service
 -----------------
 
-An AlphaLemon CMS theme is defined as a service in the DIC **Dependency Injector Container** and its definition
+An RedKite CMS theme is defined as a service in the DIC **Dependency Injector Container** and its definition
 is saved into the **Resources/config** folder as xml file.
 
 This file is named **[bundle_name_extension_alias].xml**, so the **BusinessWebsiteThemeBundle**
@@ -17,14 +17,14 @@ has an alias named **business_website_theme** which is the one used for the file
 
     // Acme/Theme/BusinessWebsiteThemeBundle/Resources/config/business_website_theme.xml
     <services>
-        <service id="business_website.theme" class="%alpha_lemon_theme_engine.theme.class%">
+        <service id="business_website.theme" class="%red_kite_labs_theme_engine.theme.class%">
             <argument type="string">BusinessWebsiteTheme</argument>
-            <tag name="alpha_lemon_theme_engine.themes.theme" />
+            <tag name="red_kite_labs_theme_engine.themes.theme" />
         </service>
     </services>
 
 This service defines an **AlTheme** object and its class has already been declared in the
-ThemeEngine services configuration and it is identified by the **%alpha_lemon_theme_engine.theme.class%**
+ThemeEngine services configuration and it is identified by the **%red_kite_labs_theme_engine.theme.class%**
 parameter.
 
 The theme's id is defined as **[bundle_name_extension_alias].theme** and requires a
@@ -32,7 +32,7 @@ string argument which contains the theme's name without the Bundle extension, so
 **BusinessWebsiteTheme** in this case.
 
 To define this bundle as a Theme-App, the service has been tagged as
-**alpha_lemon_theme_engine.themes.theme**.
+**red_kite_labs_theme_engine.themes.theme**.
 
 The template service
 --------------------
@@ -49,7 +49,7 @@ named **templates**. Let's see how the BusinessWebsiteThemeBundle's home templat
     </parameters>
 
     <services>
-        <service id="business_website.theme.template_assets.home" class="%alpha_lemon_theme_engine.template_assets.class%">
+        <service id="business_website.theme.template_assets.home" class="%red_kite_labs_theme_engine.template_assets.class%">
             <call method="setExternalStylesheets">
                 <argument type="collection">
                     <argument>@BusinessWebsiteThemeBundle/Resources/public/css/reset.css</argument>
@@ -60,7 +60,7 @@ named **templates**. Let's see how the BusinessWebsiteThemeBundle's home templat
             </call>
             <call method="setExternalJavascripts">
                 <argument type="collection">
-                    <argument>@AlphaLemonThemeEngineBundle/Resources/public/js/vendor/jquery/*</argument>
+                    <argument>@RedKiteLabsThemeEngineBundle/Resources/public/js/vendor/jquery/*</argument>
                     <argument>@BusinessWebsiteThemeBundle/Resources/public/js/cufon-yui.js</argument>
                     <argument>@BusinessWebsiteThemeBundle/Resources/public/js/al-cufon-replace.js</argument>
                     <argument>@BusinessWebsiteThemeBundle/Resources/public/js/Swis721_Cn_BT_400.font.js</argument>
@@ -71,11 +71,11 @@ named **templates**. Let's see how the BusinessWebsiteThemeBundle's home templat
             </call>
         </service>
 
-        <service id="business_website.theme.template.home.slots" class="%alpha_lemon_theme_engine.template_slots.class%">
+        <service id="business_website.theme.template.home.slots" class="%red_kite_labs_theme_engine.template_slots.class%">
             <tag name="business_website.theme.template.home" />
         </service>
 
-        <service id="business_website.theme.template.home" class="%alpha_lemon_theme_engine.template.class%">
+        <service id="business_website.theme.template.home" class="%red_kite_labs_theme_engine.template.class%">
             <argument type="service" id="kernel" />
             <argument type="service" id="business_website.theme.template_assets.home" />
             <argument type="service" id="business_website.theme.template.home.slots" />
@@ -103,12 +103,12 @@ The template service
 
 The template service defines an **AlTemplate** object which class has already been
 declared in the ThemeEngine services configuration and is identified as
-**%alpha_lemon_theme_engine.template.class%**.
+**%red_kite_labs_theme_engine.template.class%**.
 
 .. code-block:: xml
 
     // Acme/Theme/BusinessWebsiteThemeBundle/Resources/config/templates/home.xml
-    <service id="business_website.theme.template.home" class="%alpha_lemon_theme_engine.template.class%">
+    <service id="business_website.theme.template.home" class="%red_kite_labs_theme_engine.template.class%">
         <argument type="service" id="kernel" />
         <argument type="service" id="business_website.theme.template_assets.home" />
         <argument type="service" id="business_website.theme.template.home.slots" />
@@ -124,7 +124,7 @@ declared in the ThemeEngine services configuration and is identified as
 
 The template id has been defined as **[bundle_name_extension_alias].theme.template.[template_name]**.
 
-This service requires three arguments: the symfony's kernel service, a **business_website.theme.template_assets.home**
+This service requires three arguments: the Symfony's kernel service, a **business_website.theme.template_assets.home**
 service and a **business_website.theme.template.home.slots** service which are the
 services mentioned above, that will be defined in a while.
 
@@ -132,19 +132,19 @@ The service is tagged as **[bundle_name_extension_alias].theme.template**, in th
 example **business_website.theme.template**.
 
 As last the **setThemeName** and **setTemplateName** methods are called to define
-respectly the theme's name an the template's name.
+respectively the theme's name an the template's name.
 
 The template assets service
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The template assets service defines an **AlTemplateAssets** object which class has
 already been declared in the ThemeEngine services configuration and identified as
-**%alpha_lemon_theme_engine.template_assets.class%**.
+**%red_kite_labs_theme_engine.template_assets.class%**.
 
 .. code-block:: xml
 
     // Acme/Theme/BusinessWebsiteThemeBundle/Resources/config/templates/home.xml
-    <service id="business_website.theme.template_assets.home" class="%alpha_lemon_theme_engine.template_assets.class%">
+    <service id="business_website.theme.template_assets.home" class="%red_kite_labs_theme_engine.template_assets.class%">
             <call method="setExternalStylesheets">
                 <argument type="collection">
                     <argument>@BusinessWebsiteThemeBundle/Resources/public/css/reset.css</argument>
@@ -155,7 +155,7 @@ already been declared in the ThemeEngine services configuration and identified a
             </call>
             <call method="setExternalJavascripts">
                 <argument type="collection">
-                    <argument>@AlphaLemonThemeEngineBundle/Resources/public/js/vendor/jquery/*</argument>
+                    <argument>@RedKiteLabsThemeEngineBundle/Resources/public/js/vendor/jquery/*</argument>
                     <argument>@BusinessWebsiteThemeBundle/Resources/public/js/cufon-yui.js</argument>
                     <argument>@BusinessWebsiteThemeBundle/Resources/public/js/al-cufon-replace.js</argument>
                     <argument>@BusinessWebsiteThemeBundle/Resources/public/js/Swis721_Cn_BT_400.font.js</argument>
@@ -166,7 +166,7 @@ already been declared in the ThemeEngine services configuration and identified a
             </call>
         </service>
 
-This object is deputated to contain and manage the assets used by the template. The template assets id has
+This object is delegated to contain and manage the assets used by the template. The template assets id has
 been defined as **[bundle_name_extension_alias].theme.template_assets.[template_name]**.
 
 It calls the **setExternalStylesheets** method to add some external stylesheets to the template and
@@ -184,16 +184,16 @@ The template slots service
 
 The template slots service defines an **AlTemplateSlots** object which class has
 already been declared in the ThemeEngine services configuration and it is identified
-by the **%alpha_lemon_theme_engine.template_slots.class%** parameter.
+by the **%red_kite_labs_theme_engine.template_slots.class%** parameter.
 
 .. code-block:: xml
 
     // Acme/Theme/BusinessWebsiteThemeBundle/Resources/config/templates/home.xml
-    <service id="business_website.theme.template.home.slots" class="%alpha_lemon_theme_engine.template_slots.class%">
+    <service id="business_website.theme.template.home.slots" class="%red_kite_labs_theme_engine.template_slots.class%">
         <tag name="business_website.theme.template.home" />
     </service>
 
-This object is deputated to manage the template slots. Each template managed by AlphaLemon is made by slots and each
+This object is delegated to manage the template slots. Each template managed by RedKite CMS is made by slots and each
 slot is the place where one or more blocks live.
 
 The template slots' id has been defined as **[bundle_name_extension_alias].theme.template.[template_name].slots** and
@@ -204,9 +204,9 @@ Declare the template slots
 
 The last thing to do is to define the slots for each template.
 
-Each slot is a service that define an **AlSlot** object. The sevice's class has
+Each slot is a service that define an **AlSlot** object. The service's class has
 already been declared in the ThemeEngine services configuration and it is identified
-by the **%alpha_lemon_theme_engine.slot.class%** parameter.
+by the **%red_kite_labs_theme_engine.slot.class%** parameter.
 
 The services file has been created under the **Resources/config/templates/slots** folder of your Theme-App
 and it has been named as **[template_name].xml**. Follows the implementation:
@@ -215,7 +215,7 @@ and it has been named as **[template_name].xml**. Follows the implementation:
 
     // Acme/Theme/BusinessWebsiteThemeBundle/Resources/config/templates/slots/home.xml
     <services>
-        <service id="business_website.theme.template.base.slots.logo" class="%alpha_lemon_theme_engine.slot.class%">
+        <service id="business_website.theme.template.base.slots.logo" class="%red_kite_labs_theme_engine.slot.class%">
             <argument type="string">logo</argument>
             <argument type="collection" >
                 <argument key="repeated">site</argument>
@@ -284,7 +284,7 @@ At last, the configuration files must be registered in the **Dependency Injector
         }
     }
 
-AlphaLemon CMS adds two placeholders to identify the autogenerated code.
+RedKite CMS adds two place-holders to identify the auto-generated code.
 
 .. class:: fork-and-edit
 

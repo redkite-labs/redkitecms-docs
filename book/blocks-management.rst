@@ -17,7 +17,7 @@ are directly managed on the page, using an inline editor.
 
 .. image:: //bundles/alphalemonwebsite/media/manual/img-5.jpg
 
-Here you can see the editor for a Twitter Boostrap button.
+Here you can see the editor for a Twitter Bootstrap button.
 
 The block you are editing changes to blue but the blocks menu remains active, so
 you can always change the editor just clicking another block.
@@ -52,13 +52,13 @@ To add a new block, you must highlight it and then click on the **plus icon** pl
 into the small toolbar attached to the block highlighter.
 
 A panel, which contains all the available blocks, opens over the plus icon. Blocks are listed 
-in groups. AlphaLemon CMS comes with several base blocks which are grouped under the
-**Default** group, while other listed blocks could have been added by thirdy-part themes
+in groups. RedKite CMS comes with several base blocks which are grouped under the
+**Default** group, while other listed blocks could have been added by third-parties themes
 or could have been required directly from the application
 
 .. image:: //bundles/alphalemonwebsite/media/manual/img-8.jpg
 
-When you add an addictional App-Block to AlphaLemon CMS, this is displayed under the 
+When you add an additional App-Block to RedKite CMS, this is displayed under the 
 group it had been assigned by the block's developer.
 
 To add a block to the page simply click over it.
@@ -75,7 +75,7 @@ into the small toolbar attached to the block highlighter.
 
 .. image:: //bundles/alphalemonwebsite/media/manual/img-10.jpg
 
-You will be promped to confirm the operation.
+You will be prompted to confirm the operation.
 
 Edit a block
 ^^^^^^^^^^^^
@@ -83,7 +83,7 @@ Edit a block
 To start editing the block's content, you must highlight a block and then click into
 its area to open the editor.
 
-In nearly every AlphaLemon CMS blocks have a editor that opens into a popover placed 
+In nearly every RedKite CMS blocks have a editor that opens into a popover placed 
 under the active block, but the default hypertext editor let you edit blocks inline 
 on the page.
 
@@ -99,9 +99,9 @@ itself. This button saves the content to the database. For hypertext inline edit
 the save button is placed inside the editor's toolbar.
 
 Sometimes it could happen that all the blocks placed on a slot are removed. In this 
-case AlphaLemon CMS adds a placeholder that explains this situation.
+case RedKite CMS adds a place-holder that explains this situation.
 
-This placeholder works as a normal block with the only difference that it is not editable.
+This place-holder works as a normal block with the only difference that it is not editable.
 
 .. image:: //bundles/alphalemonwebsite/media/manual/img-12.jpg
 
@@ -109,7 +109,7 @@ Included blocks
 ^^^^^^^^^^^^^^^
 
 An included block is a block that contains two or more basic blocks which are editable 
-one by one and the includer block may be editable too.
+one by one and the including block may be editable too.
 
 A perfect example to explain this kind of block, is the **BootbusinessThumbnail** App-Block.
 It is a gray bordered container that includes an image and a hypertext.
@@ -153,7 +153,7 @@ A perfect example is the **BootbusinessThumbnailsList** which displays one or mo
 This block is designed to add always a BootbusinessThumbnail: this means that, when you
 click the add button a new thumbnail is added.
 
-Despite of that, the Menu Block has another behavior when you click the add button: 
+Despite of that, the Menu Block has another behaviour when you click the add button: 
 it let you choose the block you want to add, from the Blocks adder panel.
 
 
@@ -167,7 +167,7 @@ Blocks could be added to your application in two ways:
 
 To create a custom block, you should read the `dedicated tutorial`_, while to add an
 existing block to your application using composer, you must follow the instructions 
-provided by each thirdy-part block.
+provided by each third-parties block.
 
 
 .. class:: fork-and-edit

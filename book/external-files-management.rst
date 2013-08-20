@@ -7,7 +7,7 @@ pdf files and more.
 
 The media library
 -----------------
-AlphaLemon CMS manages website assets using the awesome Studio42's ElFinder file manager 
+RedKite CMS manages website assets using the awesome Studio42's ElFinder file manager 
 for the web.
 
 The most important things you can do with this tool are:
@@ -17,7 +17,7 @@ The most important things you can do with this tool are:
     - Rename a file
     - Delete one or more files
     - Add, rename, delete folders
-    - Copy/move files between subfolders
+    - Copy/move files between sub-folders
     
 Upload a file
 ^^^^^^^^^^^^^
@@ -60,14 +60,14 @@ entry from the contextual menu.
 .. image:: //bundles/alphalemonwebsite/media/manual/img-27.jpg
 
 
-This will create a new folder, and selects the defaul text to let you give it an appropriate 
+This will create a new folder, and selects the default text to let you give it an appropriate 
 name.
 
 To rename or delete one or more folders, proceed as you do for files.
 
 
-Copy/move files between subfolders
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Copy/move files between sub-folders
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To copy or move one or more files from one folder to another one, select the files, right
 click on one of them and select the **Duplicate** command when you want to copy a file or the

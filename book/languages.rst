@@ -32,7 +32,7 @@ The website's main language is the first language displayed when a user, that br
 your website, does not require any specific language, for example http://alphalemon.com 
 address.
 
-When you add a new language, AlphaLemon CMS copies all the main language contents 
+When you add a new language, RedKite CMS copies all the main language contents 
 to the new language, generates a temporary permalink for each page, prefixing it with 
 the new language name, and updates the linked permalinks for the new language's contents.
 
@@ -54,7 +54,7 @@ choose a new language from the **Language** combobox.
 When you want to change the website main language, you must select the language you 
 want to promote and edit it checking the **Is main** checkbox. 
 
-You cannot degrade the current main language, this means you cannot unckeck  the **Is main**
+You cannot degrade the current main language, this means you cannot unchecked the **Is main**
 checkbox for the main language.
 
 Click the **Save** button to confirm your changes.
@@ -65,7 +65,7 @@ Delete a language
 To delete a language you must first select it, then you must click the **Delete**
 button placed under the languages list.
 
-You will be promped to confirm the operation.
+You will be prompted to confirm the operation.
 
 The main language cannot be removed from the website, so, when you need to remove it
 you must first promote another language as main.

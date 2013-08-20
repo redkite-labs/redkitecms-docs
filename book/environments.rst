@@ -1,7 +1,7 @@
 Environments
 ============
 
-This chapter explains in detail AlphaLemon CMS environments configuration. 
+This chapter explains in detail RedKite CMS environments configuration. 
 
 
 .. note::
@@ -78,21 +78,21 @@ if you want to run it in development environment your addresses will be:
     
 What changes between using one front controller instead another one? Just the configuration. 
 In fact, your application may have as many front controllers you require and each of them 
-has a different configuration that changes the behavior of your application. 
+has a different configuration that changes the behaviour of your application. 
 
 So we can say that "Each front controller defines an environment".
 
 .. note::
 
     **app.php** is the default front controller and it is the one used when any front
-    controller has been explicitely declared. For this reason, you can safety omit it:
+    controller has been explicitly declared. For this reason, you can safety omit it:
     **http://localhost/contacts** will serve the contacts page in production.
     
 
-AlphaLemon CMS Environments
+RedKite CMS Environments
 ---------------------------
 
-AlphaLemon CMS introduces four other environments to the Symfony2 default ones:
+RedKite CMS introduces four other environments to the Symfony2 default ones:
 
 .. code:: text
 
@@ -110,14 +110,14 @@ These environments have been implemented to keep completely separated the
 backend editor from the production environment.
 
 In fact, all the changes you made in the application backed, are not deployed to production 
-environment until you explicitely do that operation.
+environment until you explicitly do that operation.
 
 Let's explain those environments in detail.
 
-AlphaLemon CMS editor environment
+RedKite CMS editor environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-The **alcms front controller** handles the environment where AlphaLemon CMS
+The **alcms front controller** handles the environment where RedKite CMS
 lives, so to edit your website you must use it as follows:
 
 .. code:: text
@@ -131,18 +131,18 @@ access:
 
     http://localhost/alcms.php/backend
     
-this because Symfony2 does not secure an entire environment, so AlphaLemon CMS uses
+this because Symfony2 does not secure an entire environment, so RedKite CMS uses
 the **backend** token to tell Symfony2 that all the routes that contain that specific
 token, requires an authenticated user to have granted access to the requested resource.
 
-When that url is required, AlphaLemon CMS, but I should say Symfony2 to be more precise, 
+When that url is required, RedKite CMS, but I should say Symfony2 to be more precise, 
 redirects the application to the login page for the authentication process, when 
 any user has signed in. 
 
-After you correctly sign up, AlphaLemon CMS opens your website home page and you can
+After you correctly sign up, RedKite CMS opens your website home page and you can
 start managing the whole website.
 
-AlphaLemon CMS stage environment
+RedKite CMS stage environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The stage environment is the place where you can review your website before deploy it

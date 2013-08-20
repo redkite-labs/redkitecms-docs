@@ -1,7 +1,7 @@
-AlphaLemon CMS Practical Manual - Part 2
-========================================
+RedKite CMS Practical Manual - Part 2
+=====================================
 
-Welcome to the second part of AlphaLemon CMS Practical Manual.
+Welcome to the second part of RedKite CMS Practical Manual.
 
 This second part is focused on pages management.
 
@@ -19,19 +19,19 @@ Type "product 1" in the "Page name" textbox, choose "product" from the "Template
 and click the "Published" checkbox to immediately publish the page when you deploy the website
 for production.
 
-Click the "SEO" tab and type "alphalemon content management system" into the "Permalink" 
+Click the "SEO" tab and type "redkite content management system" into the "Permalink" 
 textarea. The permalink is the real name of the page, so it is important to choose a 
-significant name since this information will be indicized by search engines.
+significant name since this information will be indexed by search engines.
 
-Don't worry about the spaces, AlphaLemon CMS "slugifies" the page name and permalink for 
+Don't worry about the spaces, RedKite CMS "slugifies" the page name and permalink for 
 you, so page name is converted to "product-1" and permalink is converted to
-"alphalemon-content-management-system".
+"redkite-content-management-system".
 
 While it is not mandatory, you should fill the "Title" and the "Description" information 
-because of search engines indicization, helping the SEO of the website.
+because of search engines indexation, helping the SEO of the website.
 
 Another important section for SEO (Search Engines Optimization) is the "Sitemap" section,
-where you can assign the priority to page indicization.
+where you can assign the priority to page indexation.
 
 When you are done, click the "Save" button to add the page to your website, then close
 the panel by clicking the bottom of panel.
@@ -70,12 +70,12 @@ button.
 
 .. image:: //bundles/alphalemonwebsite/media/bootbusiness/img23.jpg
 
-Click on the "Item 1" and choose "alphalemon-content-management-system" to assign the page 
+Click on the "Item 1" and choose "redkite-content-management-system" to assign the page 
 to a link.
 
 .. image:: //bundles/alphalemonwebsite/media/bootbusiness/img24.jpg
 
-Now right-click "Item 1", choose "Rename" and type "AlphaLemon CMS". Click the 
+Now right-click "Item 1", choose "Rename" and type "RedKite CMS". Click the 
 Save button to confirm.
 
 Moving through pages
@@ -87,9 +87,9 @@ You have two options to navigate to the new page:
     2. Choose the page from the "Nav" section
     
 Click the "Stop" button to exit from edit mode, open the "Products and Services" dropdown
-menu and click the "AlphaLemon CMS" link, to navigate to the selected page.
+menu and click the "RedKite CMS" link, to navigate to the selected page.
 
-Here we should talk about the AlphaLemon CMS product by adding an image that describes 
+Here we should talk about the RedKite CMS product by adding an image that describes 
 this product, and start editing the contents. However this is not the purpose of this tutorial, so
 feel free to play with contents on this page in your own time. 
 
@@ -101,7 +101,7 @@ From this panel, you may choose the language and the page to move to. This panel
 useful because it gives you access to all the pages of the website, so when a page is
 not linked you can open it using this menu.
 
-Choose index from the pages combobox and automatically AlphaLemon CMS will move to 
+Choose index from the pages combobox and automatically RedKite CMS will move to 
 the website's home page.
 
 Add more pages
@@ -155,13 +155,13 @@ The partnership page
 
 Now open the partnership page. This page shows the company's partners. Each partner 
 is identified by an image with a long description. The block used is the Text block, 
-so feel free to play with this content tpe.
+so feel free to play with this content type.
 
 The leadership page
 ~~~~~~~~~~~~~~~~~~~
 
 Now open the leadership page. This page shows the company's team members. Each member
-has a picture and a long description that decribes the team member.
+has a picture and a long description that describes the team member.
 
 To represent a member there is a dedicated block, so remove the default content
 and add a new "Bootbusiness Member". Feel free to play with this Block.
@@ -212,7 +212,7 @@ to send a quick message to the company, and lists on the right the contacts for 
 office around the world.
 
 To manage the form you need to develop it as a normal Symfony2 form, then read `this tutorial`_
-where there is an explaination of how to change content at runtime, to display it on the page
+where there is an explanation of how to change content at runtime, to display it on the page
 
 Offices are managed with the dedicated Bootbusiness Contact Office block. The contacts
 template adds an office by default, so feel free to add a new office and to customize 

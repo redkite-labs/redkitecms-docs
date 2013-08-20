@@ -5,14 +5,14 @@ Sometimes you may need to display some data retrieved from the server side, for 
 a table which values are fetched from a database, or you may need to display a form
 and implement the logic to precess it.
 
-Those tasks cannot be achieved using AlphaLemon CMS editor but you can implement a 
+Those tasks cannot be achieved using RedKite CMS editor but you can implement a 
 Symfony2 listener to do that job.
 
 
 The rendering process
 ---------------------
 
-When AlphaLemon CMS has processed the user request, just one second before returning 
+When RedKite CMS has processed the user request, just one second before returning 
 the response, it dispatches a **BeforePageRenderingEvent** event. 
 
 You can implement a listener that responds that event and will return an html output
@@ -35,7 +35,7 @@ content will be used on the whole pages for that language.
 A listener that responds to the **page_renderer.before_[current page]_rendering** 
 event is called only for that page.
 
-Events are called exaclty in the order proposed above, so a specific page listener 
+Events are called exactly in the order proposed above, so a specific page listener 
 might override a content rendered at language or at site level.
 
 
@@ -50,7 +50,7 @@ replace the slot contents:
     // Acme/WebSiteBundle/EventListener/IndexRenderingListener.php
     namespace Acme\WebSiteBundle\EventListener\IndexRenderingListener
 
-    use AlphaLemon\ThemeEngineBundle\Core\Rendering\EventListener\BasePageRenderingListener;
+    use RedKiteLabs\ThemeEngineBundle\Core\Rendering\EventListener\BasePageRenderingListener;
 
     class IndexRenderingListener extends BasePageRenderingListener
     {
@@ -67,8 +67,8 @@ which must return an array of **AlSlotContent** objects:
     // Acme/WebSiteBundle/Listener/IndexRenderingListener.php
     namespace Acme\WebSiteBundle\EventListener\IndexRenderingListener
 
-    use AlphaLemon\ThemeEngineBundle\Core\Rendering\EventListener\BasePageRenderingListener;
-    use AlphaLemon\ThemeEngineBundle\Core\Rendering\SlotContent\AlSlotContent;
+    use RedKiteLabs\ThemeEngineBundle\Core\Rendering\EventListener\BasePageRenderingListener;
+    use RedKiteLabs\ThemeEngineBundle\Core\Rendering\SlotContent\AlSlotContent;
 
     class IndexRenderingListener extends BasePageRenderingListener
     {
@@ -119,7 +119,7 @@ Injector, **DIC** from now, as follows:
 
     <services>
         <service id="acme_web_site.index_listener" class="%acme_web_site.index_listener.class%">
-            <tag name="alpha_lemon_theme_engine.event_listener" event="page_renderer.before_index_rendering" method="onPageRendering" priority="0" />
+            <tag name="red_kite_labs_theme_engine.event_listener" event="page_renderer.before_index_rendering" method="onPageRendering" priority="0" />
             <argument type="service" id="service_container" />
         </service>
     </services>
@@ -132,10 +132,10 @@ and event.
 
 .. code-block:: xml
 
-    <tag name="alpha_lemon_theme_engine.event_listener" event="page_renderer.before_index_rendering" method="onPageRendering" priority="0" />
+    <tag name="red_kite_labs_theme_engine.event_listener" event="page_renderer.before_index_rendering" method="onPageRendering" priority="0" />
 
 The **name** option identifies the event to listen, and it must always be 
-**alpha_lemon_theme_engine.event_listener** for listeners that must respond to the event
+**red_kite_labs_theme_engine.event_listener** for listeners that must respond to the event
 we are talking about. 
 
 The **method** called is **onPageRendering**, which is defined in the **BasePageRenderingListener** 
@@ -145,7 +145,7 @@ The event option is defined as **page_renderer.before_index_rendering**:
 this means that this listener will be called only for the index page, as explained 
 in the **The rendering process** paragraph.
 
-If you want to call this listenr for the whole site pages, you must replace the event option 
+If you want to call this listener for the whole site pages, you must replace the event option 
 with **page_renderer.before_page_rendering**, while if you want to call this listener for 
 a specific language, you must replace the event option with **page_renderer.before_en_rendering**.
 
@@ -165,11 +165,11 @@ can be achieved simply declaring those assets as parameters in the DIC:
     Acme/WebSiteBundle/Resources/config/services.xml
     <parameters>
         <parameter key="acme_web_site.index_listener.alphalemon-cms-demo.external_javascripts" type="collection">            
-            <parameter>@AlphaLemonThemeEngineBundle/Resources/public/js/vendor/jquery/*</parameter>
-            <parameter>@AlphaLemonWebsiteBundle/Resources/public/vendor/tw-bootstrap/modals/js/bootstrap.min.js</parameter>
+            <parameter>@RedKiteLabsThemeEngineBundle/Resources/public/js/vendor/jquery/*</parameter>
+            <parameter>@RedKiteLabsWebsiteBundle/Resources/public/vendor/tw-bootstrap/modals/js/bootstrap.min.js</parameter>
         </parameter>
         <parameter key="acme_web_site.index_listener.alphalemon-cms-demo.external_stylesheets" type="collection">
-            <parameter>@AlphaLemonWebsiteBundle/Resources/public/vendor/tw-bootstrap/modals/css/bootstrap.min.css</parameter>
+            <parameter>@RedKiteLabsWebsiteBundle/Resources/public/vendor/tw-bootstrap/modals/css/bootstrap.min.css</parameter>
         </parameter>
     </parameters>
 
@@ -189,12 +189,12 @@ in our example:
     acme_web_site.index_listener.alphalemon-cms-demo.external_javascripts
     acme_web_site.index_listener.alphalemon-cms-demo.external_stylesheets
 
-Assets are saved into the public folder of the **AlphaLemonWebsiteBundle** and fetched
-usidn a relative path:
+Assets are saved into the public folder of the **RedKiteLabsWebsiteBundle** and fetched
+using a relative path:
 
 .. code-block:: text
 
-    @AlphaLemonWebsiteBundle/Resources/public/vendor/tw-bootstrap/modals/css/bootstrap.min.css
+    @RedKiteLabsWebsiteBundle/Resources/public/vendor/tw-bootstrap/modals/css/bootstrap.min.css
 
 
 This configuration adds the assets only for the declared page, **alphalemon-cms-demo** 

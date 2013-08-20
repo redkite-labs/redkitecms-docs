@@ -6,7 +6,7 @@ will learn:
 
     1. How to add an App-Block to an existing bundle
     2. How to add a controller and a route to handle the implemented actions
-    3. How to add an App-Block's extra asset to AlphaLemon CMS 
+    3. How to add an App-Block's extra asset to RedKite CMS 
     4. How to override the default action to save the block's content
 
 .. note::
@@ -28,11 +28,11 @@ Add the **AlBlockManagerBootstrapDropdownButtonTutorialBlock.php** file inside t
 
 .. code-block:: php   
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapDropdownButtonTutorialBlock.php  
-    namespace AlphaLemon\Block\BootstrapButtonTutorialBlockBundle\Core\Block;
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapDropdownButtonTutorialBlock.php  
+    namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block;
 
-    use AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\AlBlockManagerContainer;
-    use AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlock;
+    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\AlBlockManagerContainer;
+    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlock;
 
     /**
      * Description of AlBlockManagerBootstrapButtonBlock
@@ -129,16 +129,16 @@ Open the **app_block.xml** and add the App-Block class as a service:
 
  .. code-block:: xml
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
         [...]
-        <parameter key="bootstrap_dropdown_button_tutorial_block.block.class">AlphaLemon\Block\BootstrapButtonTutorialBlockBundle\Core\Block\AlBlockManagerBootstrapDropdownButtonTutorialBlock</parameter>
+        <parameter key="bootstrap_dropdown_button_tutorial_block.block.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block\AlBlockManagerBootstrapDropdownButtonTutorialBlock</parameter>
     </parameters>
 
     <services>    
         [...]    
         <service id="bootstrap_dropdown_button_tutorial_block.block" class="%bootstrap_dropdown_button_tutorial_block.block.class%">
-            <tag name="alphalemon_cms.blocks_factory.block" description="Dropdown Tutorial" type="BootstrapDropdownButtonTutorialBlock" group="bootstrap,Twitter Bootstrap" />
+            <tag name="red_kite_cms.blocks_factory.block" description="Dropdown Tutorial" type="BootstrapDropdownButtonTutorialBlock" group="bootstrap,Twitter Bootstrap" />
             <argument type="service" id="service_container" />
         </service>
     </services>
@@ -153,7 +153,7 @@ Open the **button.html.twig** template and change it as follows:
 
 .. code-block:: jinja
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/button.html.twig
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/button.html.twig
     {% extends "BootstrapButtonTutorialBlockBundle:Button:_button_params.html.twig" %}
 
     {% block body %}
@@ -166,8 +166,8 @@ paste the following code:
 
 .. code-block:: jinja
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/_button_params.html.twig
-    {% extends "AlphaLemonCmsBundle:Editor:base_editor.html.twig" %}
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/_button_params.html.twig
+    {% extends "RedKiteCmsBundle:Editor:base_editor.html.twig" %}
 
     {% set button_type = (data.button_type is defined and data.button_type) ? " " ~ data.button_type : "" %}
     {% set button_attribute = (data.button_type is defined and data.button_type) ? " " ~ data.button_attribute : "" %}
@@ -184,7 +184,7 @@ open it and paste the following code inside:
 
 .. code-block:: jinja
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/dropdown_button.html.twig
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/dropdown_button.html.twig
     {% extends "BootstrapButtonTutorialBlockBundle:Button:_button_params_params.html.twig" %}
 
     {% set button_dropup = "" %}
@@ -202,7 +202,7 @@ open it and paste the following code inside:
 
 .. code-block:: jinja
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/dropdown_button.html.twig
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/dropdown_button.html.twig
     {% extends "BootstrapButtonTutorialBlockBundle:Button:dropdown_button.html.twig" %}
 
     {% block body %}
@@ -225,7 +225,7 @@ open it and paste the following code inside:
 
 .. code-block:: jinja
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Item/_dropdown_items.html.twig
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Item/_dropdown_items.html.twig
     {% for item in items %}
         {% if item.children is defined and item.children|length > 0 %}
         <li class="dropdown-submenu">
@@ -247,17 +247,17 @@ open it and paste the following code inside:
         {% endif %}
     {% endfor %}
     
-The last template to implement is the one deputated to render the editor. Add the
+The last template to implement is the one delegated to render the editor. Add the
 **_dropdown_editor.html.twig** template under the **views/Editor** folder, open it and
 paste the following code inside:
 
 .. code-block:: jinja
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Editor/_dropdown_editor.html.twig
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Editor/_dropdown_editor.html.twig
     <div class="pull-left">
         <form id="al_item_form">
             <table>
-                {% include "AlphaLemonCmsBundle:Item:_form_renderer.html.twig" %}
+                {% include "RedKiteCmsBundle:Item:_form_renderer.html.twig" %}
                 <tr>
                     <td colspan="2" style="text-align: right">
                         <a class="al-editor-items btn" href="#" >Menu items</a>
@@ -290,12 +290,12 @@ open it and paste the following code:
 
 .. code-block:: php
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Core/Controller/JstreeDropdownButtonController.php
-    namespace AlphaLemon\Block\BootstrapButtonTutorialBlockBundle\Controller;
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Controller/JstreeDropdownButtonController.php
+    namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Controller;
 
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-    use AlphaLemon\AlphaLemonCmsBundle\Core\Form\ModelChoiceValues\ChoiceValues;
-    use AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlock;
+    use RedKiteLabs\RedKiteCmsBundle\Core\Form\ModelChoiceValues\ChoiceValues;
+    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlock;
 
     class JstreeDropdownButtonController extends Controller
     {
@@ -304,7 +304,7 @@ open it and paste the following code:
             $request = $this->container->get('request');
             
             // Fetches the block
-            $factoryRepository = $this->container->get('alpha_lemon_cms.factory_repository');
+            $factoryRepository = $this->container->get('red_kite_cms.factory_repository');
             $blocksRepository = $factoryRepository->createRepository('Block');
             $block = $blocksRepository->fromPk($request->get('idBlock'));
             
@@ -355,13 +355,13 @@ file inside the **Resources/config** and add the following code:
 
 .. code-block:: text
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/config/routing.yml    
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/routing.yml    
     jstree_dropdown_button:
         resource: "@BootstrapButtonTutorialBlockBundle/Resources/config/routing/dropdown_button.xml"
 
 .. note::
 
-    Don't worry about adding the route to main application routing file, the **AlphaLemonBootstrapBundle**
+    Don't worry about adding the route to main application routing file, the **RedKiteLabsBootstrapBundle**
     does this task for you.
     
 Execute the ajax transaction
@@ -369,7 +369,7 @@ Execute the ajax transaction
 
 To execute and render the action we must implement an ajax transaction.
 
-AlphaLemon CMS triggers several events at client side. One of them is raised when
+RedKite CMS triggers several events at client side. One of them is raised when
 the popover editor is opened, so we will handle that event to execute the ajax transaction.
 
 Add the file **dropdown_menu_editor_tutorial.js** inside the **Resources/public/js** folder and
@@ -377,7 +377,7 @@ add the following code:
 
 .. code-block:: js
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/public/js/dropdown_menu_editor_tutorial.js
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/public/js/dropdown_menu_editor_tutorial.js
     $(document).ready(function() {
         $(document).on("popoverShow", function(event, element){
             
@@ -389,7 +389,7 @@ only for the **BootstrapDropdownButtonTutorialBlock**, so change that code as fo
 
 .. code-block:: js
     
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/public/js/dropdown_menu_editor_tutorial.js
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/public/js/dropdown_menu_editor_tutorial.js
     $(document).ready(function() {
         $(document).on("popoverShow", function(event, element){
             blockType = element.attr('data-type');
@@ -407,7 +407,7 @@ Now, under the the code just added, paste the ajax transaction code:
 
 .. code-block:: js
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/public/js/dropdown_menu_editor_tutorial.js
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/public/js/dropdown_menu_editor_tutorial.js
     $(".al-editor-items").on('click', function(){
        if ( ! $('#al-dropdown-menu-items').is(":visible") && $('#al-dropdown-menu-items').html().trim() == "" ) {
             $.ajax({
@@ -462,7 +462,7 @@ Add the following code to **Resources/config/app_block.xml** file:
 
 .. code-block:: xml
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
         
         [...]
@@ -493,19 +493,19 @@ the parameter name with **.cms**, as we did for this parameter.
 
 Save the block's content
 ~~~~~~~~~~~~~~~~~~~~~~~~
-AlphaLemon CMS automatically add an handler that intecepts the **al_editor_save** element's
+RedKite CMS automatically add an handler that intercepts the **al_editor_save** element's
 click event.
 
 We are talking about the button added to the Block's editor which simply serializes
 the form and call the method to save the Block's content.
 
-This block has more than the form's values to save, so the default method must be overrided.
+This block has more than the form's values to save, so the default method must be override.
 Open the **dropdown_menu_editor_tutorial.js** and add the following code after the code that handles 
 the ajax transaction:
 
 .. code-block:: js
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/public/js/dropdown_menu_editor_tutorial.js
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/public/js/dropdown_menu_editor_tutorial.js
     $('.al_editor_save').unbind().on('click', function()
     {
         var value = $('#al_item_form').serialize();
@@ -518,10 +518,10 @@ the ajax transaction:
     });
     
 This code simply serializes the form then slugifies the jstree nodes, then passes this 
-value to **EditBlock** methos that saves the content.
+value to **EditBlock** methods that saves the content.
 
 To handle this change we need to override the **AlBlockManager's edit** method, which 
-is deputated to save the block's content.
+is delegated to save the block's content.
 
 Add this code at the end of the **AlBlockManagerBootstrapDropdownButtonTutorialBlock**:
 
@@ -564,7 +564,7 @@ Conclusion
 
 After reading this chapter you should be able to add an App-Block to an existing bundle,
 add a controller and a route to handle the implemented actions, add an App-Block's extra 
-asset to AlphaLemon CMS, override the default action to save the block's content
+asset to RedKite CMS, override the default action to save the block's content
 
 .. class:: fork-and-edit
 

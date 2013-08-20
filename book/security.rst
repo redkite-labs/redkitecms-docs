@@ -1,14 +1,14 @@
-AlphaLemon CMS security
-=======================
+RedKite CMS security
+====================
 
-This chapter covers in detail the AlphaLemon CMS security layer, explaining how to add, 
-edit and remove users and roles, and how to customize the AlphaLemon CMS default security 
+This chapter covers in detail the RedKite CMS security layer, explaining how to add, 
+edit and remove users and roles, and how to customize the RedKite CMS default security 
 policy.
 
 Users and roles definition
 --------------------------
 
-AlphaLemon CMS bases its security on the Symfony2 security layer to secure the backend 
+RedKite CMS bases its security on the Symfony2 security layer to secure the backend 
 editor and provides an high-level interface to manage users and roles.
 
 A user is someone who can access to the backend, providing an username and a password.
@@ -25,16 +25,16 @@ A user must have a role and this role grants or deny the access to a particular 
 Roles
 -----
 
-AlphaLemon CMS has three predefined roles, in its default configuration:
+RedKite CMS has three predefined roles, in its default configuration:
 
 1. ROLE_SUPER_ADMIN
 2. ROLE_ADMIN
 3. ROLE_USER
     
 **ROLE_SUPER_ADMIN** and **ROLE_ADMIN** have the same rights and have granted the access
-to whole AlphaLemon CMS resorces.
+to whole RedKite CMS resources.
 
-**ROLE_USER** have granted the access to whole AlphaLemon CMS resorce, instead of the
+**ROLE_USER** have granted the access to whole RedKite CMS resource, instead of the
 website deploy and the users management.
 
 Add a new Role
@@ -87,22 +87,22 @@ Advanced configuration
 ----------------------
 
 When you add new roles and/or you want to implement a restrictive security policy,
-you need to modify manually the AlphaLemon CMS security configuration file.
+you need to modify manually the RedKite CMS security configuration file.
 
-The default **AlphaLemon CMS security file** is saved into the AlphaLemon CMS 
-**Resources/config** folder and it is imported into the **AlphaLemon CMS config_alcms.yml**, 
+The default **RedKite CMS security file** is saved into the RedKite CMS 
+**Resources/config** folder and it is imported into the **RedKite CMS config_alcms.yml**, 
 file as shown below:
 
 .. code-block:: text
 
-    // AlphaLemonCmsBundle/config/config_alcms.yml
+    // RedKiteCmsBundle/config/config_alcms.yml
     imports:
     [...]
-        - { resource: "@AlphaLemonCmsBundle/Resources/config/security.yml" }
+        - { resource: "@RedKiteCmsBundle/Resources/config/security.yml" }
 
-AlphaLemon CMS is highly decoupled, and the security layer is not an exception. 
+RedKite CMS is highly decoupled, and the security layer is not an exception. 
 
-The implemented configuration impacts only on AlphaLemon CMS backend because is specific
+The implemented configuration impacts only on RedKite CMS backend because is specific
 for the **alcms** environments. This means you can implement your own security policy in 
 production when you need it, without collide with the backend.
 
@@ -121,7 +121,7 @@ with the **backend** token:
 .. code-block:: text
 
         [...]
-        alphalemon_cms:
+        red_kite_cms:
             pattern:    ~/backend
             form_login:
                 check_path:  /backend/login_check
@@ -164,13 +164,13 @@ How to customize the security.yml file
 
 Symfony does not permit to import or configure a security file from another 
 configuration file, so the only way to change the implemented rules is to modify 
-the **security.yml** file that comes with AlphaLemon CMS.
+the **security.yml** file that comes with RedKite CMS.
 
 It is really a bad idea to work on the security file that comes with
-**AlphaLemonCmsBundle** bundle, because when you would upgrade the cms, the changes 
+**RedKiteCmsBundle** bundle, because when you would upgrade the cms, the changes 
 you have made will be lost.
 
-To avoid that, you must copy the AlphaLemon's security file into the application's 
+To avoid that, you must copy the RedKite's security file into the application's 
 config folder, rename it, for example, to **security_cms.yml**, and change the import 
 directive in the config_alcms.yml:
 

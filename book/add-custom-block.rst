@@ -1,7 +1,7 @@
-Add a custom App-Block to AlphaLemon CMS
+Add a custom App-Block to RedKite CMS
 ========================================
 
-This chapter explains how to create a custom App-Block and use it with AlphaLemon CMS. 
+This chapter explains how to create a custom App-Block and use it with RedKite CMS. 
 In detail it explains how the create, the **BootstrapButtonTutorialBlockBundle**, which 
 lets you manage a Twitter Bootstrap button using a nice ajax interface.
 
@@ -19,10 +19,10 @@ What is a Block
 ---------------
 
 A **Block** is a container for one kind of content. In addiction an **App-Block**
-includes the editor to manage the block itself by AlphaLemon CMS, when the page
+includes the editor to manage the block itself by RedKite CMS, when the page
 is in editing mode.
 
-An App-Block could still be used outside AlphaLemon CMS as web page element.
+An App-Block could still be used outside RedKite CMS as web page element.
 
 How is structured a Block
 -------------------------
@@ -36,7 +36,7 @@ An App-Block is a standalone symfony2 bundle. This approach has several advantag
 Create the BootstrapButtonTutorialBlockBundle
 ---------------------------------------------
 
-Since AlphaLemon CMS 1.0 beta release, a command to generate the addictional
+Since RedKite CMS 1.0 beta release, a command to generate the additional
 files required by an App-Block is provided.
 
 Run the following command from your console to generate a new App-Block bundle named
@@ -44,7 +44,7 @@ Run the following command from your console to generate a new App-Block bundle n
 
 .. code-block:: text
 
-    php app/console alphalemon:generate:app-block --env=alcms
+    php app/console redkitecms:generate:app-block --env=alcms
 
 .. note::
 
@@ -53,22 +53,22 @@ Run the following command from your console to generate a new App-Block bundle n
 It will start the standard Symfony2 bundle generator command but will ask for some
 more information.
 
-Naming convenctions
+Naming conventions
 ~~~~~~~~~~~~~~~~~~~
 
 An AppBlock should always be created using a well defined namespace:
 
 .. code-block:: text
 
-    AlphaLemon/Block/[Bundle Name]Bundle
+    RedKite/Block/[Bundle Name]Bundle
 
-When you follow this convenction, you get two advantages:
+When you follow this convention, you get two advantages:
 
 1. The App-Block is distributable by composer
-2. The App-Block is autoloaded without changing anything
+2. The App-Block is auto loaded without changing anything
 
-If you prefer not to follow this convenctions, you must run that command with the 
-**--no-strict** options, then you must change the BundlesAutoloader  instantation 
+If you prefer not to follow this conventions, you must run that command with the 
+**--no-strict** options, then you must change the BundlesAutoloader  instantiation 
 in your **AppKernel** file as follows:
 
 .. code-block:: php
@@ -78,7 +78,7 @@ in your **AppKernel** file as follows:
     {
         [...]
 
-        $bootstrapper = new \AlphaLemon\BootstrapBundle\Core\Autoloader\BundlesAutoloader(__DIR__, $this->getEnvironment(), $bundles, null, array([path 1], [path 2]));
+        $bootstrapper = new \RedKiteLabs\BootstrapBundle\Core\Autoloader\BundlesAutoloader(__DIR__, $this->getEnvironment(), $bundles, null, array([path 1], [path 2]));
     }
 
 replacing the **[path n]** entries with the paths of your App-Blocks. 
@@ -106,14 +106,14 @@ Enter the bundle name, as follows:
 
 .. code-block:: text
 
-    Bundle namespace: AlphaLemon/Block/BootstrapButtonTutorialBlockBundle
+    Bundle namespace: RedKite/Block/BootstrapButtonTutorialBlockBundle
 
 The proposed bundle name **must be changed** to BootstrapButtonTutorialBlockBundle otherwise you might
 have troubles:
 
 .. code-block:: text
 
-    Bundle name [AlphaLemonBlockBootstrapButtonTutorialBlockBundle]: BootstrapButtonTutorialBlockBundle
+    Bundle name [RedKiteBlockBootstrapButtonTutorialBlockBundle]: BootstrapButtonTutorialBlockBundle
 
     The bundle can be generated anywhere. The suggested default directory uses
     the standard conventions.
@@ -125,11 +125,11 @@ The standard directory is fine:
     The bundle can be generated anywhere. The suggested default directory uses
     the standard conventions.
 
-    Target directory [/home/alphalemon/www/AlphaLemonCmsSandbox/src]:
+    Target directory [/home/RedKite/www/RedKiteCmsSandbox/src]:
 
 The generator asks you to choose the format you prefer because the standard Bundles'
-generator asks for that, but, at the moment, AlphaLemon ignores your choice and uses the
-annotation type by defaulr:
+generator asks for that, but, at the moment, RedKite ignores your choice and uses the
+annotation type by default:
 
 .. code-block:: text
 
@@ -148,11 +148,11 @@ contextual menu used to add a block to page:
     App-Block description: Button Tutorial
 
 Then you are asked for the App-Block group. App-Blocks that belongs the same group
-are kept toghter in the block adding menu.
+are kept together in the block adding menu.
 
 .. code-block:: text
 
-    Please enter the group name to keep toghether the App-Blocks that belongs that group.
+    Please enter the group name to keep together the App-Blocks that belongs that group.
 
     App-Block group: bootstrap,Twitter Bootstrap
     
@@ -168,7 +168,7 @@ already usable.
 The basis of AlBlockManager object
 ----------------------------------
 
-AlphaLemon CMS requires you to implement a new class derived from the **AlBlockManager**
+RedKite CMS requires you to implement a new class derived from the **AlBlockManager**
 object. This object manages a simple html content, but to define a Twitter Bootstrap button,
 we must define several parameters to manage the aspect of this block:
 
@@ -178,7 +178,7 @@ we must define several parameters to manage the aspect of this block:
     - If it spans the parent's full width
     - If it is disabled
     
-The best way to manage a content like this, is to define it in a json format. AlphaLemon 
+The best way to manage a content like this, is to define it in a json format. RedKite 
 CMS provides the  **AlBlockManagerJsonBlock** class that inherits from AlBlockManager 
 to manage this kind of contents. 
 
@@ -187,16 +187,16 @@ class which derives from the **AlBlockManagerJsonBlock** which requires as first
 the Symfony2 container: this is the object we will use for this block.
 
 This class can be placed everywhere into the bundle's folder, but it is a best practice 
-to add it insite the **[Bundle]/Core/Block** folder.
+to add it inside the **[Bundle]/Core/Block** folder.
 
 The command just run had already added this class for you, as follows:
 
 .. code-block:: php
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapButtonTutorialBlock.php  
-    namespace AlphaLemon\BootstrapButtonTutorialBlockBundle\Core\Block;
+    // src/RedKite/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapButtonTutorialBlock.php  
+    namespace RedKite\BootstrapButtonTutorialBlockBundle\Core\Block;
 
-    use AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockContainer;
+    use RedKite\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockContainer;
 
     /**
     * Description of BootstrapButtonTutorialBlockBundle
@@ -234,7 +234,7 @@ implements the **getDefaultValue** method required by the parent object.
 This method defines the default value displayed on the web page when a new content is 
 added and must return an array.
    
-How to tell AlphaLemonCMS to manage the Bundle
+How to tell RedKiteCMS to manage the Bundle
 ----------------------------------------------
 
 An App-Block Bundle is declared as services in the **Dependency Injector Container**.
@@ -244,21 +244,21 @@ folder of your bundle with the following code:
 
 .. code-block:: xml
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
+    // src/RedKite/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
-        <parameter key="bootstrap_button_tutorial_block.block.class">AlphaLemon\Block\BootstrapButtonTutorialBlockBundle\Core\Block\AlBlockManagerBootstrapButtonTutorialBlock</parameter>
+        <parameter key="bootstrap_button_tutorial_block.block.class">RedKite\Block\BootstrapButtonTutorialBlockBundle\Core\Block\AlBlockManagerBootstrapButtonTutorialBlock</parameter>
     </parameters>
 
     <services>        
         <service id="bootstrap_button_tutorial_block.block" class="%bootstrap_button_tutorial_block.block.class%">
-            <tag name="alphalemon_cms.blocks_factory.block" description="Button" type="BootstrapButtonBlock" group="bootstrap,Twitter Bootstrap" />
+            <tag name="red_kite_cms.blocks_factory.block" description="Button" type="BootstrapButtonBlock" group="bootstrap,Twitter Bootstrap" />
             <argument type="service" id="service_container" />
         </service>
     </services>
 
 While the config file name is not mandatory, it is a best practice to use a separated
 configuration file to define this service, to keep decoupled the configuration used 
-in production from the configuration used by AlphaLemon CMS
+in production from the configuration used by RedKite CMS
 
 The service
 ~~~~~~~~~~~
@@ -266,29 +266,29 @@ The service
 A new service named **bootstrap_button_tutorial_block.block** has been declared and adds the
 **BootstrapButtonTutorialBlockBundle** object to the **Dependency Injector Container**.
 
-This service is processed by a **Compiler Pass** so it has been tagged as **alphalemon_cms.blocks_factory.block**.
+This service is processed by a **Compiler Pass** so it has been tagged as **red_kite_cms.blocks_factory.block**.
 
-The block's tag accepts serveral options:
+The block's tag accepts several options:
 
-1. **name**: identifies the block. Must always be **alphalemon_cms.blocks_factory.block**
+1. **name**: identifies the block. Must always be **red_kite_cms.blocks_factory.block**
 2. **description**: the description that describes the block in the menu used to add a new block on the page
 3. **type**: the block's class type which **must be** the Bundle name without the Bundle suffix
-4. **group**: blocks that belong the same group are kept togheter and displayed one next the other in the menu used to add a new block on the page
+4. **group**: blocks that belong the same group are kept together and displayed one next the other in the menu used to add a new block on the page
 
 .. note::
 
     If you change your mind on description ad group names you chose when you run the
-    command, you could change theme here mananually.
+    command, you could change theme here manually.
         
-Customize the autogenerated AlBlockManagerBootstrapButtonTutorialBlock
-----------------------------------------------------------------------
+Customize the auto-generated AlBlockManagerBootstrapButtonTutorialBlock
+-----------------------------------------------------------------------
 
 Change the AlBlockManagerBootstrapButtonTutorialBlock class as follows:
 
 .. code-block:: php
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapButtonTutorialBlock.php
-    use AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockContainer;
+    // src/RedKite/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapButtonTutorialBlock.php
+    use RedKite\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockContainer;
 
     class AlBlockManagerBootstrapButtonTutorialBlock extends AlBlockManagerJsonBlockContainer
     {
@@ -323,11 +323,11 @@ Render the block's content
 **AlBlockManager** object provides the **getHtml** method to return the html rendered 
 from the block's content. 
 
-By default this method renders the **AlphaLemonCmsBundle:Block:base_block.html.twig** view:
+By default this method renders the **RedKiteCmsBundle:Block:base_block.html.twig** view:
 
 .. code-block:: jinja
 
-    // AlphaLemon/AlphaLemonCmsBundle/Resources/views/Block/base_block.html.twig
+    // RedKite/RedKiteCmsBundle/Resources/views/Block/base_block.html.twig
     {{ block is defined ? block.getContent|raw : "" }}
     
 This simple view renders the text saved into the block's content field or returns a blank
@@ -335,16 +335,16 @@ string when any block is given.
 
 It's quite easy to understand that this view is not so useful to render our json block,
 so we need to extend the getHtml method to render another view, but since 1.1.x release, 
-this method has been declared as **final**, so it is not overridable anymore. 
+this method has been declared as **final**, so it is not overridable any more. 
 
-Luckylly it calls the **renderhtml** protected method, the one that must be extended to render 
+Luckyily it calls the **renderhtml** protected method, the one that must be extended to render 
 a different view than the default one. 
 
 This method has already been added by the command that generates the App-Block:
 
 .. code-block:: php
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapButtonTutorialBlock.php
+    // src/RedKite/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapButtonTutorialBlock.php
     protected function renderHtml()
     {
         $items = $this->decodeJsonContent($this->alBlock->getContent());
@@ -383,7 +383,7 @@ The **button.html.twig** template contains the following code:
 
 .. code-block:: jinja
 
-    {% extends "AlphaLemonCmsBundle:Editor:base_editor.html.twig" %}
+    {% extends "RedKiteCmsBundle:Editor:base_editor.html.twig" %}
 
     {% block body %}
 
@@ -396,8 +396,8 @@ change it as follows
 
 .. code-block:: jinja
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/button.html.twig
-    {% extends "AlphaLemonCmsBundle:Editor:base_editor.html.twig" %}
+    // src/RedKite/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/button.html.twig
+    {% extends "RedKiteCmsBundle:Editor:base_editor.html.twig" %}
     
     {% block body %}
     
@@ -412,21 +412,21 @@ change it as follows
     
     {% endblock %}
     
-The button template is quite simple: we check if all the expected params are defined, then 
-these parameters are passed to button tag.
+The button template is quite simple: we check if all the expected parameters are defined, then 
+those parameters are passed to button tag.
 
 The editor
 ----------
 
-Since AlphaLemon CMS 1.1.x the blocks's editor is rendered into a Twitter Bootstrap
+Since RedKite CMS 1.1.x the block's editor is rendered into a Twitter Bootstrap
 popover. This component defines the html text into the **data-content** RDF annotation
-and, while this parameter is settable by javascript, AlphaLemon CMS uses the classical
+and, while this parameter is settable by javascript, RedKite CMS uses the classical
 approach: this means that the editor is directly bundled with the content into that
 RDF annotation.
 
 You might have noticed that the **button.html.twig** template already extends the 
-**AlphaLemonCmsBundle:Editor:base_editor.html.twig** which defines the attribute used
-by AlphaLemon CMS to render the block, which is assigned to **editor** variable in the
+**RedKiteCmsBundle:Editor:base_editor.html.twig** which defines the attribute used
+by RedKite CMS to render the block, which is assigned to **editor** variable in the
 parent template. 
 
 To have the editor injected into the button tag, you must add the **{{ editor|raw }}**
@@ -455,14 +455,14 @@ template contains the following code:
 
 .. code-block:: jinja
 
-    {% include "AlphaLemonCmsBundle:Editor:base_editor_form.html.twig" %}
+    {% include "RedKiteCmsBundle:Editor:base_editor_form.html.twig" %}
     
-The template includes the **AlphaLemonCmsBundle:Editor:base_editor_form.html.twig** a template
-deputated to render a generic form and renders a button to save the changes.
+The template includes the **RedKiteCmsBundle:Editor:base_editor_form.html.twig** a template
+delegated to render a generic form and a button to save the changes when a user clicks on it.
 
 .. note::
 
-    AlphaLemon CMS automatically attaches an handler to **.al_editor_save** element, 
+    RedKite CMS automatically attaches an handler to **.al_editor_save** element, 
     to save contents. In the next chapter you will learn how to override this method.
 
 The editor form
@@ -475,10 +475,10 @@ This form contains the following code:
 
 .. code-block:: php
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Core/Form/AlButtonType.php
-    namespace AlphaLemon\Block\BootstrapButtonTutorialBlockBundle\Core\Form;
+    // src/RedKite/Block/BootstrapButtonTutorialBlockBundle/Core/Form/AlButtonType.php
+    namespace RedKite\Block\BootstrapButtonTutorialBlockBundle\Core\Form;
 
-    use AlphaLemon\AlphaLemonCmsBundle\Core\Form\JsonBlock\JsonBlockType;
+    use RedKite\RedKiteCmsBundle\Core\Form\JsonBlock\JsonBlockType;
     use Symfony\Component\Form\FormBuilderInterface;
 
     class AlBootstrapButtonTutorialBlockType extends JsonBlockType
@@ -521,11 +521,11 @@ has defined it in the **app_block.xml** file as follows:
 
 .. code-block:: xml
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
+    // src/RedKite/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
         [...]
 
-        <parameter key="bootstrap_button_tutorial_block.form.class">AlphaLemon\Block\BootstrapButtonTutorialBlockBundle\Core\Form\AlBootstrapButtonTutorialBlockType</parameter>        
+        <parameter key="bootstrap_button_tutorial_block.form.class">RedKite\Block\BootstrapButtonTutorialBlockBundle\Core\Form\AlBootstrapButtonTutorialBlockType</parameter>        
     </parameters>
 
     <services>       
@@ -539,7 +539,7 @@ You must change the form's class definition as follows:
 
 .. code-block:: xml
     
-    <parameter key="bootstrap_button_tutorial_block.form.class">AlphaLemon\Block\BootstrapButtonTutorialBlockBundle\Core\Form\AlButtonType</parameter>        
+    <parameter key="bootstrap_button_tutorial_block.form.class">RedKite\Block\BootstrapButtonTutorialBlockBundle\Core\Form\AlButtonType</parameter>        
     
 Render the editor
 ~~~~~~~~~~~~~~~~~
@@ -572,7 +572,7 @@ We need to adjust it a little to reflect the changes we made:
 
 .. code-block:: php
 
-    // src/AlphaLemon/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapButtonTutorialBlock.php
+    // src/RedKite/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapButtonTutorialBlock.php
     public function editorParameters()
     {
         $items = $this->decodeJsonContent($this->alBlock->getContent());
@@ -609,4 +609,4 @@ template to display the content and create an editor to manage the content.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/RedKite/RedKite-docs

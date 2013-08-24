@@ -34,7 +34,7 @@ start:
 
 .. code-block:: text
 
-    php app/console redkitecms:generate:app-theme
+    php app/console redkitecms:generate:app-theme --env=alcms
 
 You'll get the following response:
 
@@ -372,7 +372,7 @@ at the beginning of this tutorial:
 
 .. code-block:: text
 
-    redkitecms:generate:templates FancyThemeBundle
+    redkitecms:generate:templates FancyThemeBundle  --env=alcms
 
 This command will generate the config files that define the theme's templates and their slots. If something goes wrong, a notice is displayed.
 

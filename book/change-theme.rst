@@ -210,7 +210,7 @@ Then I must recreate the theme structure using the built-in command:
 
 .. code:: text
 
-    php app/console redkitecms:generate:templates BootbusinessThemeBundle
+    php app/console redkitecms:generate:templates BootbusinessThemeBundle --env=alcms
     
 Now the page must be reloaded to get the changes just made. 
 

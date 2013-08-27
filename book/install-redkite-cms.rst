@@ -237,6 +237,22 @@ command:
     grab the **components** folder from the package **web** directory, and then copy it into 
     your application's web folder.
 
+Configure the FileBundle
+------------------------
+FileBundle is a base App-Block that can handle a file and show it on the page as a link
+or it can open that file and renders it on the page.
+
+To have it working you must define the **kernel_root_dir** param under the **twig** section
+of the application **config.yml** file:
+
+.. code-block:: text
+
+    twig:
+        [...]
+        globals:
+          kernel_root_dir: %kernel.root_dir%
+
+
 Remove the AcmeDemoBundle
 -------------------------
 Symfony2 comes with a built-in demo which must be removed:

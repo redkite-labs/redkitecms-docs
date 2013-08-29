@@ -99,6 +99,9 @@ Open the ***WebSiteController.php** file and add a new action as set out below:
 .. code-block:: php
 
     // src/Acme/WebSiteBundle/Controller/WebSiteController.php
+	[...]
+	use RedKiteLabs\ThemeEngineBundle\Core\Rendering\Controller\FrontendController;
+	
     class WebSiteController extends FrontendController
     {
         public function productsAction($id)
@@ -161,6 +164,9 @@ Open the controller and change it as follows:
 .. code-block:: php
 
     // src/Acme/WebSiteBundle/Controller/WebSiteController.php
+	[...]
+	use RedKiteLabs\ThemeEngineBundle\Core\Rendering\Controller\FrontendController;
+	
     class WebSiteController extends FrontendController
     {
         public function productAction($id)

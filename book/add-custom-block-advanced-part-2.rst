@@ -314,10 +314,9 @@ class, so create the **AlBlockManagerBootstrapThumbnailsTutorialBlock.php** insi
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapThumbnailsTutorialBlock.php
     namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block;
 
-    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlock;
-    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\AlBlockManagerContainer;
+    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockCollection;
 
-    class AlBlockManagerBootstrapThumbnailsTutorialBlock extends AlBlockManagerContainer
+    class AlBlockManagerBootstrapThumbnailsTutorialBlock extends AlBlockManagerJsonBlockCollection
     {
         public function getDefaultValue()
         {        
@@ -336,7 +335,7 @@ class, so create the **AlBlockManagerBootstrapThumbnailsTutorialBlock.php** insi
 
         protected function renderHtml()
         {
-            $items = AlBlockManagerJsonBlock::decodeJsonContent($this->alBlock->getContent());
+            $items = $this->decodeJsonContent($this->alBlock->getContent());
             
             return array('RenderView' => array(
                 'view' => 'BootstrapThumbnailBlockBundle:Thumbnail:thumbnails.html.twig',

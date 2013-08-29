@@ -5,8 +5,8 @@ Sometimes you may need to display some data retrieved from the server side, for 
 a table which values are fetched from a database, or you may need to display a form
 and implement the logic to precess it.
 
-Those tasks cannot be achieved using RedKite CMS editor but you can implement a 
-Symfony2 listener to do that job.
+Those tasks cannot be achieved using RedKite CMS editor but you can easily implement a 
+Symfony2 listener to cover that gap.
 
 
 The rendering process
@@ -15,8 +15,8 @@ The rendering process
 When RedKite CMS has processed the user request, just one second before returning 
 the response, it dispatches a **BeforePageRenderingEvent** event. 
 
-You can implement a listener that responds that event and will return an html output
-which will used to change the content on the slot.
+You can implement a listener that responds that event and return an html output which
+will be used to change the content on the slot.
 
 This event is dispatched three times:
 
@@ -42,8 +42,8 @@ might override a content rendered at language or at site level.
 The listener
 ------------
 
-To implement the listener you must create a class under your deploy bundle that will 
-replace the slot contents:
+To implement the listener you must create a new class for that object under the **EventListener**
+folder of your deploy bundle:
 
 .. code-block:: php
 
@@ -65,9 +65,9 @@ which must return an array of **AlSlotContent** objects:
 .. code-block:: php
 
     // Acme/WebSiteBundle/Listener/IndexRenderingListener.php
-    namespace Acme\WebSiteBundle\EventListener\IndexRenderingListener
+    namespace Acme\WebSiteBundle\EventListener;
 
-    use RedKiteLabs\ThemeEngineBundle\Core\Rendering\EventListener\BasePageRenderingListener;
+    use RedKiteLabs\ThemeEngineBundle\Core\Rendering\Listener\BasePageRenderingListener;
     use RedKiteLabs\ThemeEngineBundle\Core\Rendering\SlotContent\AlSlotContent;
 
     class IndexRenderingListener extends BasePageRenderingListener
@@ -88,7 +88,7 @@ which must return an array of **AlSlotContent** objects:
 As you can see, an **AlSlotContent** object is instantiated, then both the content and the 
 slot name are set and, at last, the replace method is called.
 
-This function must return an array, then the base class will traverse it and performs 
+This function must return an array, then the base class will traverse it to perform
 the operation specified by the AlSlotContent, in this specific case the content contained 
 into the **top_section_2** slot is replaced by the one defined in the AlSlotContent object.
 
@@ -114,7 +114,7 @@ Injector, **DIC** from now, as follows:
 
     Acme/WebSiteBundle/Resources/config/services.xml
     <parameters>
-        <parameter key="acme_web_site.index_listener.class">Acme\WebSiteBundle\EventListeners\IndexRenderingListener</parameter>
+        <parameter key="acme_web_site.index_listener.class">Acme\WebSiteBundle\EventListener\IndexRenderingListener</parameter>
     </parameters>
 
     <services>
@@ -125,7 +125,7 @@ Injector, **DIC** from now, as follows:
     </services>
 
 Under the hood, Symfony2 will translate this declaration and will create the **IndexRenderingListener**
-in the container. Learn more about that [LINK]
+in the container.
 
 The **tag** definition specifies the service purpose, in this case is to listen to
 and event.
@@ -164,11 +164,11 @@ can be achieved simply declaring those assets as parameters in the DIC:
 
     Acme/WebSiteBundle/Resources/config/services.xml
     <parameters>
-        <parameter key="acme_web_site.index_listener.alphalemon-cms-demo.external_javascripts" type="collection">            
+        <parameter key="acme_web_site.index_listener.index.external_javascripts" type="collection">            
             <parameter>@RedKiteLabsThemeEngineBundle/Resources/public/js/vendor/jquery/*</parameter>
             <parameter>@RedKiteLabsWebsiteBundle/Resources/public/vendor/tw-bootstrap/modals/js/bootstrap.min.js</parameter>
         </parameter>
-        <parameter key="acme_web_site.index_listener.alphalemon-cms-demo.external_stylesheets" type="collection">
+        <parameter key="acme_web_site.index_listener.index.external_stylesheets" type="collection">
             <parameter>@RedKiteLabsWebsiteBundle/Resources/public/vendor/tw-bootstrap/modals/css/bootstrap.min.css</parameter>
         </parameter>
     </parameters>
@@ -186,8 +186,8 @@ in our example:
 
 .. code-block:: text
 
-    acme_web_site.index_listener.alphalemon-cms-demo.external_javascripts
-    acme_web_site.index_listener.alphalemon-cms-demo.external_stylesheets
+    acme_web_site.index_listener.index.external_javascripts
+    acme_web_site.index_listener.index.external_stylesheets
 
 Assets are saved into the public folder of the **RedKiteLabsWebsiteBundle** and fetched
 using a relative path:
@@ -197,7 +197,7 @@ using a relative path:
     @RedKiteLabsWebsiteBundle/Resources/public/vendor/tw-bootstrap/modals/css/bootstrap.min.css
 
 
-This configuration adds the assets only for the declared page, **alphalemon-cms-demo** 
+This configuration adds the assets only for the declared page, **index** 
 as well, but can add assets for the whole pages of a language or site.
 
 So, to add assets for the whole site's page your parameter's key will be:

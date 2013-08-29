@@ -14,12 +14,8 @@ In this chapter you will learn:
 The Thumbnail Block
 -------------------
 
-The Thumbnail Block is a perfect example to explain this feature. 
+The **Thumbnail Block** is a perfect example to explain this feature. 
 
-.. note::
-
-    Just for convenience this App-Block is added to the **BootstrapButtonTutorialBlockBundle**,
-    in the real world it lives on dedicated bundle.
     
 Add an App-Block to an existing bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -70,7 +66,7 @@ open it and paste the following code:
             $form = $this->container->get('form.factory')->create($formClass, $item);
             
             return array(
-                "template" => 'BootstrapThumbnailBlockBundle:Editor:_thumbnail_editor.html.twig',
+                "template" => 'BootstrapThumbnailBlockBundle:Editor:thumbnail_editor.html.twig',
                 "title" => "Thumbnail editor",
                 "form" => $form->createView(),
             );
@@ -218,7 +214,7 @@ open it and paste the following code:
 The editor form
 ~~~~~~~~~~~~~~~
 
-Add the **_thumbnail_editor.html.twig** file inside the **Resources/views/Editor**, 
+Add the **thumbnail_editor.html.twig** file inside the **Resources/views/Editor**, 
 open it and paste the following code:
 
 .. code-block:: jinja
@@ -250,7 +246,7 @@ Open the **app_block.xml** and add the App-Block class as a service:
     
     <services>
         [...]
-        <service id="bootstrap_thumbnail_tutorial.block" class="%bootstrap_thumbnail_demo.block.class%">
+        <service id="bootstrap_thumbnail_tutorial.block" class="%bootstrap_thumbnail_tutorial.block.class%">
             <tag name="red_kite_cms.blocks_factory.block" description="Thumbnail Tutorial" type="BootstrapThumbnailTutorialBlock" group="bootstrap,Twitter Bootstrap" />
             <argument type="service" id="service_container" />
         </service>
@@ -263,7 +259,7 @@ Then add the form as service:
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
         [...]
-        <parameter key="bootstrap_thumbnail_demo.form.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form\AlThumbnailType</parameter>
+        <parameter key="bootstrap_thumbnail.form.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form\AlThumbnailType</parameter>
     </parameters>
     
     <services>
@@ -274,6 +270,12 @@ Then add the form as service:
     
 Make a block not visible in the adder menu
 ------------------------------------------
+
+We want to prevent a user can add this App-Block directly on a page because it will 
+be added only when a list of thumbnails is added to the page. 
+
+To achieve that task we must tell RedKite CMS to hide this block from the blocks adder 
+menu.
 
 Making a block not visible in the adder menu is simple as add the **getIsInternalBlock** 
 method to block manager:
@@ -291,29 +293,26 @@ method to block manager:
         }
     }
 
-By default this method returns **false**, so just override the base method and return 
-**true** to achieve this task.
+This method is implemented in the **AlBlockManager** class default and returns **false**
+by default. Just override the base method and return **true** to achieve this task.
 
 
 Implement a list of App-Blocks
 ------------------------------
 
-If you carefully read the thumbnail's template code, you surely notice that this block
-cannot live on its own. In fact the output html code results in a **li** element which 
-is just an item of a list of items. This is the reason because it has been declared as 
-**internal block**
+Now we will explain how to implement a list of objects, in our example a list of thumbnails.
 
 The ThumbnailsTutorial App-Block class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's now implement the **ThumbnailsTutorial** block. As usual we start to add the block's
-class, so create the **AlBlockManagerBootstrapThumbnailsDemoBlock.php** inside the
+class, so create the **AlBlockManagerBootstrapThumbnailsTutorialBlock.php** inside the
 **Core/Block** folder, open it and paste this code:
 
 .. code-block:: php
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapThumbnailsDemoBlock.php
-    namespace RedKiteCms\Block\BootstrapThumbnailBlockBundle\Core\Block;
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapThumbnailsTutorialBlock.php
+    namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block;
 
     use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlock;
     use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\AlBlockManagerContainer;
@@ -352,7 +351,7 @@ manage a list of **BootstrapThumbnailTutorialBlock** objects.
 The template
 ~~~~~~~~~~~~
 
-Create the **thumbnails.html.twig** inside the **BootstrapButtonTutorialBlockBundle/Core/Resources/views/Thumbnail** folder, 
+Create the **thumbnails.html.twig** under the **BootstrapButtonTutorialBlockBundle/Core/Resources/views/Thumbnail** folder, 
 open it and paste this code:
 
 .. code-block:: jinja
@@ -511,7 +510,8 @@ parameter in the **app_block.xml**:
 .. note::
 
     If you are not use symlinks for your assets, you must run the 
-    **./php app/console assets:install web --env=alcms [--symlink]** command.
+    **./php app/console assets:install web --env=alcms [--symlink]** command to install
+	this new asset.
         
 Conclusion
 ----------

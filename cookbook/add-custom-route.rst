@@ -1,39 +1,31 @@
 Add a custom route outside the CMS
 ==================================
-RedKite CMS automatically creates a Symfony2 route for each page that you add to your
-website and uses a permalink to describe the page link. 
-
-In addition, each route can be translated for any language used on your website.
-
-This approach could be a limit when you want to add a page managed by an action from
-a custom controller. 
-
-Since AlphaLemon CMS Release Candidate 2, this gap is covered in an elegant way. In 
-fact when you deploy your website, RedKite CMS creates the base views for each theme's
-template, then you just need to extend one of them and inject additional data 
-in a custom action.
-
-The project
------------
-We are going to add a custom route to display the details related to a generic
-product on a web page.
-
-We will fetch this information from a database, using **Doctrine ORM**, to demonstrate how
-RedKite CMS, which is powered by **Propel ORM**, simply sits beside your website and allows you to
-choose the tools you feel most comfortable with, without you having to use something you don't want
-to.
+In this cookbook entry we want to add a custom route to display the details related 
+to a generic product on a web page and render them on the page, using a template of 
+the current theme used by RedKite CMS for your website.
 
 The web page layout will be one of the templates that comes with the **BootbusinessThemeBundle**
-and the data fetched from the database will be displayed into some template's blocks.
+and the data fetched from the database, will be displayed into some template's blocks.
+
+In addition, we will fetch this information from a database, using **Doctrine ORM**, to 
+demonstrate how RedKite CMS, which is powered by **Propel ORM**, simply sits beside 
+your website and allows you to choose the tools you feel most comfortable with, without 
+forcing to use something you don't want to.
 
 .. note::
 
     This tutorial grabs some code from the Symfony2 Doctrine chapter and implements 
     some of the entities proposed there.
+	
+	You still need a configured Doctrine connection and a database which contains
+	the product table as defined by the Entity we are going to create.
     
-
+	
 Add a new route
 ---------------
+This tutorial assumes that the configured deploy bundle is **AcmeWebSiteBundle**.
+
+
 Be sure your deploy bundles **routing.yml** file is imported in the apps **routing.yml**
 configuration, otherwise import it as follows:
 
@@ -41,26 +33,26 @@ configuration, otherwise import it as follows:
 
     # app/config/routing.yml
     _WebSiteBundle:
-        resource: "@RedKiteLabsWebSiteBundle/Resources/config/routing.yml"
+        resource: "@AcmeWebSiteBundle/Resources/config/routing.yml"
 
-Open the **routing.yml** file under the **Resources/config** folder of your deploy
+Add or open the **routing.yml** file under the **Resources/config** folder of your deploy
 bundle and add the following route:
 
 .. code-block:: text
 
-    # src/RedKiteLabs/WebSiteBundle/Resources/config/routing.yml
+    # src/Acme/WebSiteBundle/Resources/config/routing.yml
     _product:
         pattern: /{_locale}/product/{id}
-        defaults: { _controller: RedKiteLabsWebSiteBundle:WebSite:product }
+        defaults: { _controller: AcmeWebSiteBundle:WebSite:product }
         
 Add the entity that manages the product
 ---------------------------------------
-Add the **Entity** folder inside your deploy bundle, and inside it create the **Product.php**
-file using the following code:
+Add the **Entity** folder to your deploy bundle, and create inside it the **Product.php**
+file, then add the following code:
 
 .. code-block:: php
 
-    // src/RedKiteLabs/WebSiteBundle/Entity/Product.php
+    // src/Acme/WebSiteBundle/Entity/Product.php
     namespace RedKiteLabs\WebSiteBundle\Entity;
 
     use Doctrine\ORM\Mapping as ORM;
@@ -97,7 +89,7 @@ Next, run the following Terminal command to generate the getters and setters:
 
 .. code-block:: text
 
-    php app/console doctrine:generate:entities RedKiteLabs/WebSiteBundle/Entity/Product
+    php app/console doctrine:generate:entities Acme/WebSiteBundle/Entity/Product
         
         
 Add the action
@@ -106,20 +98,20 @@ Open the ***WebSiteController.php** file and add a new action as set out below:
 
 .. code-block:: php
 
-    // src/RedKiteLabs/WebSiteBundle/Controller/WebSiteController.php
+    // src/Acme/WebSiteBundle/Controller/WebSiteController.php
     class WebSiteController extends FrontendController
     {
-        public function productsAction()
+        public function productsAction($id)
         {
             $product = $this->getDoctrine()
-                ->getRepository('RedKiteLabsWebSiteBundle:Product')
+                ->getRepository('AcmeWebSiteBundle:Product')
                 ->find($id);
 
             if (!$product) {
                 throw $this->createNotFoundException('No product found for id '.$id);
             }
               
-            return $this->render('RedKiteLabsWebSiteBundle:Product:product.html.twig', array(
+            return $this->render('AcmeWebSiteBundle:Product:product.html.twig', array(
                 'product' => $product,
                 'base_template' => $this->container->getParameter('red_kite_labs_theme_engine.base_template'),
             ));
@@ -128,12 +120,13 @@ Open the ***WebSiteController.php** file and add a new action as set out below:
     
 Add the template
 ----------------
-Now add a new **product.html.twig** template under the bundle's views folder:
+Create a new **Product** folder under the bundle's views folder and add a new **product.html.twig** 
+template under it. Open that template and enter the following code:
 
 .. code-block:: jinja
 
-    // src/RedKiteLabs/WebSiteBundle/Resources/views/product.html.twig
-    {% extends 'RedKiteLabsWebSiteBundle:' ~ environment_folder ~ ':' ~ app.request.get('_locale') ~ '/base/empty.html.twig' %}
+    // src/Acme/WebSiteBundle/Resources/views/product.html.twig
+    {% extends 'AcmeWebSiteBundle:' ~ environment_folder ~ ':' ~ app.request.get('_locale') ~ '/base/empty.html.twig' %}
     
     {% block page_title %}
         <h3>{{ product.getName }}</h3>
@@ -152,9 +145,7 @@ Now add a new **product.html.twig** template under the bundle's views folder:
     </table>
     {% endblock %}
     
-**Here is the trick.**
-
-The template extends the **empty.html.twig** base generated template,
+The template extends the **empty.html.twig** base template generated by RedKite CMS,
 and overrides two of its blocks: the **page_title** block, where the product name
 is displayed, and the **content** block which contains the product details.
 
@@ -169,20 +160,20 @@ Open the controller and change it as follows:
 
 .. code-block:: php
 
-    // src/RedKiteLabs/WebSiteBundle/Controller/WebSiteController.php
+    // src/Acme/WebSiteBundle/Controller/WebSiteController.php
     class WebSiteController extends FrontendController
     {
         public function productAction($id)
         {
             $product = $this->getDoctrine()
-                ->getRepository('RedKiteLabsWebSiteBundle:Product')
+                ->getRepository('AcmeWebSiteBundle:Product')
                 ->find($id);
 
             if (!$product) {
                 throw $this->createNotFoundException('No product found for id '.$id);
             }
               
-            return $this->render('RedKiteLabsWebSiteBundle:Product:product.html.twig', array(
+            return $this->render('AcmeWebSiteBundle:Product:product.html.twig', array(
                 'product' => $product,
                 'base_template' => $this->container->getParameter('red_kite_labs_theme_engine.base_template'),
                 'environment_folder' => $this->getEnvironmentFolder(),
@@ -216,14 +207,14 @@ Here is the code:
 
 .. code-block:: php
 
-    // src/RedKiteLabs/WebSiteBundle/Controller/WebSiteController.php
+    // src/Acme/WebSiteBundle/Controller/WebSiteController.php
     class WebSiteController extends FrontendController
     {
         public function productAction($id)
         {
             [...]
 
-            $response = $this->render('RedKiteLabsWebSiteBundle:Product:product.html.twig', array(
+            $response = $this->render('AcmeWebSiteBundle:Product:product.html.twig', array(
                 'product' => $product,
                 'base_template' => $this->container->getParameter('red_kite_labs_theme_engine.base_template'),
                 'environment_folder' => $this->getEnvironmentFolder(),
@@ -236,8 +227,8 @@ Here is the code:
         
 Deploy your website
 -------------------
-At the moment, the website base templates have not been created yet. So now we are going to
-do that.
+Since now, if you have not deployed the website yet, the base templates have not been 
+created. So now we are going to do that.
 
 To deploy the website for the stage environment simply open the toolbar and click the 
 **Deploy stage** button.

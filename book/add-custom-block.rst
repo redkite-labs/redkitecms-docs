@@ -22,8 +22,6 @@ A **Block** is a container for one kind of content. In addiction an **App-Block*
 includes the editor to manage the block itself by RedKite CMS, when the page
 is in editing mode.
 
-An App-Block could still be used outside RedKite CMS as web page element.
-
 How is structured a Block
 -------------------------
 
@@ -36,8 +34,7 @@ An App-Block is a standalone symfony2 bundle. This approach has several advantag
 Create the BootstrapButtonTutorialBlockBundle
 ---------------------------------------------
 
-Since RedKite CMS 1.0 beta release, a command to generate the additional
-files required by an App-Block is provided.
+RedKite CMS provides a command to generate the additional files required by an App-Block.
 
 Run the following command from your console to generate a new App-Block bundle named
 **BootstrapButtonTutorialBlockBundle** that will live under the **src** folder:
@@ -50,8 +47,8 @@ Run the following command from your console to generate a new App-Block bundle n
 
     This command must be run under the alcms environment.
 
-It will start the standard Symfony2 bundle generator command but will ask for some
-more information.
+It will start the standard Symfony2 bundle generator command but will ask for additional
+information.
 
 Naming conventions
 ~~~~~~~~~~~~~~~~~~~
@@ -68,7 +65,7 @@ When you follow this convention, you get two advantages:
 2. The App-Block is auto loaded without changing anything
 
 If you prefer not to follow this conventions, you must run that command with the 
-**--no-strict** options, then you must change the BundlesAutoloader  instantiation 
+**--no-strict** option, then you must change the BundlesAutoloader instantiation 
 in your **AppKernel** file as follows:
 
 .. code-block:: php
@@ -106,10 +103,10 @@ Enter the bundle name, as follows:
 
 .. code-block:: text
 
-    Bundle namespace: RedKite/Block/BootstrapButtonTutorialBlockBundle
+    Bundle namespace: RedKiteCms/Block/BootstrapButtonTutorialBlockBundle
 
-The proposed bundle name **must be changed** to BootstrapButtonTutorialBlockBundle otherwise you might
-have troubles:
+The proposed bundle name **must be changed** to BootstrapButtonTutorialBlockBundle 
+otherwise you might have troubles:
 
 .. code-block:: text
 
@@ -128,7 +125,7 @@ The standard directory is fine:
     Target directory [/home/RedKite/www/RedKiteCmsSandbox/src]:
 
 The generator asks you to choose the format you prefer because the standard Bundles'
-generator asks for that, but, at the moment, RedKite ignores your choice and uses the
+generator asks for that, but, at the moment, RedKite CMS ignores your choice and uses the
 annotation type by default:
 
 .. code-block:: text
@@ -165,6 +162,15 @@ Don't forget to let the command updates the AppKernel for you to enable the bund
 Well done! Your very first App-Bundle has been created! The App-Block just created is
 already usable.
 
+Don't forget to clear your cache for the **alcms environment** to have the App-Block working:
+
+
+.. code-block:: text
+
+    php app/console ca:c --env=alcms
+
+
+
 The basis of AlBlockManager object
 ----------------------------------
 
@@ -179,8 +185,8 @@ we must define several parameters to manage the aspect of this block:
     - If it is disabled
     
 The best way to manage a content like this, is to define it in a json format. RedKite 
-CMS provides the  **AlBlockManagerJsonBlock** class that inherits from AlBlockManager 
-to manage this kind of contents. 
+CMS provides the  **AlBlockManagerJsonBlock** class that inherits from **AlBlockManager**
+object, which has been designed to manage this kind of contents. 
 
 In addiction there is another derived class, the **AlBlockManagerJsonBlockContainer**
 class which derives from the **AlBlockManagerJsonBlock** which requires as first argument
@@ -193,8 +199,8 @@ The command just run had already added this class for you, as follows:
 
 .. code-block:: php
 
-    // src/RedKite/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapButtonTutorialBlock.php  
-    namespace RedKite\BootstrapButtonTutorialBlockBundle\Core\Block;
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapButtonTutorialBlock.php  
+    namespace RedKiteCms\BootstrapButtonTutorialBlockBundle\Core\Block;
 
     use RedKite\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockContainer;
 
@@ -244,9 +250,9 @@ folder of your bundle with the following code:
 
 .. code-block:: xml
 
-    // src/RedKite/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
-        <parameter key="bootstrap_button_tutorial_block.block.class">RedKite\Block\BootstrapButtonTutorialBlockBundle\Core\Block\AlBlockManagerBootstrapButtonTutorialBlock</parameter>
+        <parameter key="bootstrap_button_tutorial_block.block.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block\AlBlockManagerBootstrapButtonTutorialBlock</parameter>
     </parameters>
 
     <services>        
@@ -257,8 +263,10 @@ folder of your bundle with the following code:
     </services>
 
 While the config file name is not mandatory, it is a best practice to use a separated
-configuration file to define this service, to keep decoupled the configuration used 
-in production from the configuration used by RedKite CMS
+configuration file for an App-Block than the default one, to define this service.
+
+In this way the configuration used in production is decoupled than the one used by 
+RedKite CMS.
 
 The service
 ~~~~~~~~~~~
@@ -287,7 +295,7 @@ Change the AlBlockManagerBootstrapButtonTutorialBlock class as follows:
 
 .. code-block:: php
 
-    // src/RedKite/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapButtonTutorialBlock.php
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapButtonTutorialBlock.php
     use RedKite\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockContainer;
 
     class AlBlockManagerBootstrapButtonTutorialBlock extends AlBlockManagerJsonBlockContainer
@@ -313,9 +321,9 @@ Change the AlBlockManagerBootstrapButtonTutorialBlock class as follows:
     
 .. note::
     
-    The AlBlockManagerJson by default manages a list of items. This bundle manages only
-    one item, so we could avoid to define the item 0, but the json is written to respect 
-    consistency.
+    The **AlBlockManagerJson** object by default manages a list of items. This bundle 
+	manages only one item, so we could avoid to define the item 0, but the json is 
+	written to respect consistency.
 
 Render the block's content
 --------------------------
@@ -327,24 +335,24 @@ By default this method renders the **RedKiteCmsBundle:Block:base_block.html.twig
 
 .. code-block:: jinja
 
-    // RedKite/RedKiteCmsBundle/Resources/views/Block/base_block.html.twig
+    // RedKiteLabs/RedKiteCmsBundle/Resources/views/Block/base_block.html.twig
     {{ block is defined ? block.getContent|raw : "" }}
     
 This simple view renders the text saved into the block's content field or returns a blank
 string when any block is given.
 
 It's quite easy to understand that this view is not so useful to render our json block,
-so we need to extend the getHtml method to render another view, but since 1.1.x release, 
-this method has been declared as **final**, so it is not overridable any more. 
+so we need to extend the **getHtml method** to render another view, but this method is 
+declared as **final**, so it is not overridable. 
 
-Luckyily it calls the **renderhtml** protected method, the one that must be extended to render 
-a different view than the default one. 
+Luckyily it calls the **renderHtml** protected method, which is the one that must be 
+extended to render a different view than the default one. 
 
 This method has already been added by the command that generates the App-Block:
 
 .. code-block:: php
 
-    // src/RedKite/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapButtonTutorialBlock.php
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapButtonTutorialBlock.php
     protected function renderHtml()
     {
         $items = $this->decodeJsonContent($this->alBlock->getContent());
@@ -369,12 +377,6 @@ Let's give a small customization. Replace the view as follows:
 
 then rename the **views/Content** folder as **views/Button** and the template file name 
 from **bootstrapbuttontutorialblock.html.twig** to **button.html.twig**.
-
-.. note::
-
-    This change introduces a Compatibility Break with the previous release. To adapt
-    your old methods to the new object, simply replace the getHtml with the new renderHtml
-    method, respecting the method modifier.
     
 The button template
 ~~~~~~~~~~~~~~~~~~~
@@ -396,7 +398,7 @@ change it as follows
 
 .. code-block:: jinja
 
-    // src/RedKite/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/button.html.twig
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/button.html.twig
     {% extends "RedKiteCmsBundle:Editor:base_editor.html.twig" %}
     
     {% block body %}
@@ -418,24 +420,26 @@ those parameters are passed to button tag.
 The editor
 ----------
 
-Since RedKite CMS 1.1.x the block's editor is rendered into a Twitter Bootstrap
-popover. This component defines the html text into the **data-content** RDF annotation
-and, while this parameter is settable by javascript, RedKite CMS uses the classical
-approach: this means that the editor is directly bundled with the content into that
-RDF annotation.
+The block's editor is usually rendered into a Twitter Bootstrap popover.
+
+This component bundled with Twitter Bootstrap defines the html text into the **data-content** 
+RDF annotation and, while this parameter is settable by javascript, RedKite CMS uses 
+the classical approach: this means that the editor is directly bundled with the content 
+into that RDF annotation.
 
 You might have noticed that the **button.html.twig** template already extends the 
-**RedKiteCmsBundle:Editor:base_editor.html.twig** which defines the attribute used
+**RedKiteCmsBundle:Editor:base_editor.html.twig** where are defined the attribute used
 by RedKite CMS to render the block, which is assigned to **editor** variable in the
 parent template. 
 
 To have the editor injected into the button tag, you must add the **{{ editor|raw }}**
-instruction into the html tag which will be updated, in our case the button tag.
+instruction into the html tag which will be handled by the CMS, in our case the button tag.
 
 Change the code has follows
 
 .. code-block:: jinja
 
+	// src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/button.html.twig
     <button class="btn{{ button_type }}{{ button_attribute }}{{ button_tutorial_block }}{{ button_enabled }}" {{ editor|raw }}>{{ button_text }}</button>
 
 The instruction just added, simple adds the **data-editor="true"** attribute to the html
@@ -475,8 +479,8 @@ This form contains the following code:
 
 .. code-block:: php
 
-    // src/RedKite/Block/BootstrapButtonTutorialBlockBundle/Core/Form/AlButtonType.php
-    namespace RedKite\Block\BootstrapButtonTutorialBlockBundle\Core\Form;
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Form/AlButtonType.php
+    namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form;
 
     use RedKite\RedKiteCmsBundle\Core\Form\JsonBlock\JsonBlockType;
     use Symfony\Component\Form\FormBuilderInterface;
@@ -512,20 +516,19 @@ button's attributes. Change the class as follows:
         }
     }
     
-The form inherits from the **JsonBlockType** form which defines the form's name used
-to retrieve the values from the ajax transaction used to save the form values and
-removes the csrf_protection to false.
+This form inherits from the **JsonBlockType** one, which defines the form's name that
+retrieves the values from the ajax transaction used to save the form values.
 
 While it is not mandatory, this form is added to **DIC**, so the commands generator 
 has defined it in the **app_block.xml** file as follows:
 
 .. code-block:: xml
 
-    // src/RedKite/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
         [...]
 
-        <parameter key="bootstrap_button_tutorial_block.form.class">RedKite\Block\BootstrapButtonTutorialBlockBundle\Core\Form\AlBootstrapButtonTutorialBlockType</parameter>        
+        <parameter key="bootstrap_button_tutorial_block.form.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form\AlBootstrapButtonTutorialBlockType</parameter>        
     </parameters>
 
     <services>       
@@ -539,7 +542,7 @@ You must change the form's class definition as follows:
 
 .. code-block:: xml
     
-    <parameter key="bootstrap_button_tutorial_block.form.class">RedKite\Block\BootstrapButtonTutorialBlockBundle\Core\Form\AlButtonType</parameter>        
+    <parameter key="bootstrap_button_tutorial_block.form.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form\AlButtonType</parameter>        
     
 Render the editor
 ~~~~~~~~~~~~~~~~~
@@ -547,7 +550,7 @@ To render the editor we must pass this form to the editor itself. This task is a
 by the **editorParameters** method which has been added to AlBlockManagerBootstrapButtonTutorialBlock
 by the generator command.
 
-This method is used to define the parameter which are passed to the editor and overrides 
+This method is used to define the parameters which are passed to the editor and overrides 
 the method defined in the **AlBlockManager** object, which returns an empty array by default:
 
 .. code-block:: php
@@ -572,7 +575,7 @@ We need to adjust it a little to reflect the changes we made:
 
 .. code-block:: php
 
-    // src/RedKite/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapButtonTutorialBlock.php
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapButtonTutorialBlock.php
     public function editorParameters()
     {
         $items = $this->decodeJsonContent($this->alBlock->getContent());

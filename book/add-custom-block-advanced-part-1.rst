@@ -18,13 +18,14 @@ Add an App-Block to an existing bundle
 --------------------------------------
 
 This Block inherits from the Button block created in the previous chapter, so we don't
-add a new bundle to manage the block, but this App-Block is added to the BootstrapButtonTutorialBlockBundle.
+add a new bundle to manage the block, but this App-Block is directly added to the 
+**BootstrapButtonTutorialBlockBundle**.
 
 The object
 ~~~~~~~~~~
 
 Add the **AlBlockManagerBootstrapDropdownButtonTutorialBlock.php** file inside the 
-**BootstrapButtonTutorialBlockBundle/Core/block**, open it and add the following code:
+**BootstrapButtonTutorialBlockBundle/Core/Block** folder, open it and add the following code:
 
 .. code-block:: php   
 
@@ -35,7 +36,7 @@ Add the **AlBlockManagerBootstrapDropdownButtonTutorialBlock.php** file inside t
     use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlock;
 
     /**
-     * Description of AlBlockManagerBootstrapButtonBlock
+     * Description of AlBlockManagerBootstrapDropdownButtonTutorialBlock
      */
     class AlBlockManagerBootstrapDropdownButtonTutorialBlock extends AlBlockManagerContainer
     {
@@ -82,8 +83,8 @@ Add the **AlBlockManagerBootstrapDropdownButtonTutorialBlock.php** file inside t
         }
     }
     
-This block has some attributes similar to the Button ones, then it manages a list 
-of links, which are grouped under the **items** key.
+This block has some attributes similar to the ones that belongs the Button App-Block. 
+In addiction it manages a list of links, which are grouped under the **items** key.
 
 To render the content we must override the default **renderHtml** method as follows:
 
@@ -179,13 +180,18 @@ paste the following code:
 This block has the button_gropup attribute which not belongs the Button block, so we will manage this
 parameter in a separate template. 
 
+.. note::
+
+	The templates for the new button are added inside the **Button** folder for simplicity:
+	feel free to add them to another folder, i.e: Dropdown
+
 Add the **dropdown_button_params.html.twig** template under the **views/Button** folder, 
 open it and paste the following code inside:
 
 .. code-block:: jinja
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/dropdown_button.html.twig
-    {% extends "BootstrapButtonTutorialBlockBundle:Button:_button_params_params.html.twig" %}
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/dropdown_button_params.html.twig
+    {% extends "BootstrapButtonTutorialBlockBundle:Button:_button_params.html.twig" %}
 
     {% set button_dropup = "" %}
     {% set button_dropup_right = "" %}
@@ -203,7 +209,7 @@ open it and paste the following code inside:
 .. code-block:: jinja
 
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/dropdown_button.html.twig
-    {% extends "BootstrapButtonTutorialBlockBundle:Button:dropdown_button.html.twig" %}
+    {% extends "BootstrapButtonTutorialBlockBundle:Button:dropdown_button_params.html.twig" %}
 
     {% block body %}
     <div class="btn-group{{ button_dropup }}" {{ editor|raw }}>
@@ -337,6 +343,7 @@ inside the **Resources/config/routing** folder, open it an paste the following c
 
 .. code-block:: xml
 
+	// src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Resources/config/routing
     <?xml version="1.0" encoding="UTF-8" ?>
 
     <routes xmlns="http://symfony.com/schema/routing"
@@ -350,8 +357,7 @@ inside the **Resources/config/routing** folder, open it an paste the following c
         </route>
     </routes>
 
-Add the **routing.yml**
-file inside the **Resources/config** and add the following code:
+Add the **routing.yml** file inside the **Resources/config** and add the following code:
 
 .. code-block:: text
 
@@ -403,46 +409,49 @@ The **popoverShow** event passes as second argument the block we are editing. Th
 we can access all the editor's attributes. Here we need to check the **data-type** attribute 
 to be sure that the code is executed only for our block.
 
-Now, under the the code just added, paste the ajax transaction code:
+Now, inside the the **popoverShow** method, paste the ajax transaction code:
 
 .. code-block:: js
 
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/public/js/dropdown_menu_editor_tutorial.js
-    $(".al-editor-items").on('click', function(){
-       if ( ! $('#al-dropdown-menu-items').is(":visible") && $('#al-dropdown-menu-items').html().trim() == "" ) {
-            $.ajax({
-                  type: 'POST',
-                  url: frontController + 'backend/' + $('#al_available_languages option:selected').val() + '/al_show_jstree',
-                  data: {
-                      'page' :  $('#al_pages_navigator').html(),
-                      'language' : $('#al_languages_navigator').html(),  
-                      'pageId' :  $('#al_pages_navigator').attr('rel'),
-                      'languageId' : $('#al_languages_navigator').attr('rel'),                  
-                      'idBlock' : element.attr('data-block-id')
-                  },
-                  beforeSend: function()
-                  {
-                      $('body').AddAjaxLoader();
-                  },
-                  success: function(html)
-                  {
-                      $('#al-dropdown-menu-items').html(html);
-                  },
-                  error: function(err)
-                  {
-                      $('body').showDialog(err.responseText);
-                  },
-                  complete: function()
-                  {
-                      $('body').RemoveAjaxLoader();
-                  }
-            });
-        }
+	$(document).on("popoverShow", function(event, element){
+		[...]
+		$(".al-editor-items").on('click', function(){
+		   if ( ! $('#al-dropdown-menu-items').is(":visible") && $('#al-dropdown-menu-items').html().trim() == "" ) {
+				$.ajax({
+					  type: 'POST',
+					  url: frontController + 'backend/' + $('#al_available_languages option:selected').val() + '/al_show_jstree',
+					  data: {
+						  'page' :  $('#al_pages_navigator').html(),
+						  'language' : $('#al_languages_navigator').html(),  
+						  'pageId' :  $('#al_pages_navigator').attr('rel'),
+						  'languageId' : $('#al_languages_navigator').attr('rel'),                  
+						  'idBlock' : element.attr('data-block-id')
+					  },
+					  beforeSend: function()
+					  {
+						  $('body').AddAjaxLoader();
+					  },
+					  success: function(html)
+					  {
+						  $('#al-dropdown-menu-items').html(html);
+					  },
+					  error: function(err)
+					  {
+						  $('body').showDialog(err.responseText);
+					  },
+					  complete: function()
+					  {
+						  $('body').RemoveAjaxLoader();
+					  }
+				});
+			}
 
-        $("#al-dropdown-menu-items").toggle();
+			$("#al-dropdown-menu-items").toggle();
 
-        return false;
-    });
+			return false;
+		});
+	});
     
 This controls assures to execute the ajax transaction only the first time the editor is
 opened:
@@ -456,7 +465,7 @@ Add an external asset
 ~~~~~~~~~~~~~~~~~~~~~
 
 We must load this javascript file adding the asset to the website. This setting is 
-quite simple to accomplish: just add some parameters to the configuration file.
+quite simple to accomplish: just adding some parameters to the configuration file.
 
 Add the following code to **Resources/config/app_block.xml** file:
 
@@ -506,16 +515,21 @@ the ajax transaction:
 .. code-block:: js
 
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/public/js/dropdown_menu_editor_tutorial.js
-    $('.al_editor_save').unbind().on('click', function()
-    {
-        var value = $('#al_item_form').serialize();
-        if ($("#jstree").length > 0) {
-            value += '&items=' + JSON.stringify($("#jstree").jstree("get_json", $("#jstree").jstree("select_node", -1)))
-        }
-        $('#al_item_form').EditBlock('Content', value);
+	
+	$(document).on("popoverShow", function(event, element){
+		[...]
+	
+		$('.al_editor_save').unbind().on('click', function()
+		{
+			var value = $('#al_item_form').serialize();
+			if ($("#jstree").length > 0) {
+				value += '&items=' + JSON.stringify($("#jstree").jstree("get_json", $("#jstree").jstree("select_node", -1)))
+			}
+			$('#al_item_form').EditBlock('Content', value);
 
-        return false;
-    });
+			return false;
+		});
+	});
     
 This code simply serializes the form then slugifies the jstree nodes, then passes this 
 value to **EditBlock** methods that saves the content.
@@ -553,6 +567,9 @@ Add this code at the end of the **AlBlockManagerBootstrapDropdownButtonTutorialB
     
 Here the content returned by the jquery method is manipulated and then processed by the 
 base method.
+
+Install and dump assets
+-----------------------
   
 Use your App-Block
 ------------------
@@ -564,7 +581,7 @@ Conclusion
 
 After reading this chapter you should be able to add an App-Block to an existing bundle,
 add a controller and a route to handle the implemented actions, add an App-Block's extra 
-asset to RedKite CMS, override the default action to save the block's content
+asset to RedKite CMS and to override the default action which saves the block's content.
 
 .. class:: fork-and-edit
 

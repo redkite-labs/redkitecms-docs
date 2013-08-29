@@ -6,8 +6,9 @@ This chapter explains how to create a new theme for RedKite CMS.
 What is a Theme?
 ---------------
 
-An RedKite CMS Theme Application could be defined as a collection of twig templates which have their own assets like
-javascripts, stylesheets and images, packaged into a well-known structure, that defines a website design.
+An RedKite CMS Theme Application could be defined as a collection of twig templates which 
+have their own assets like javascripts, stylesheets and images, packaged into a well-known 
+structure.
 
 How is a Theme-App structured?
 -------------------------
@@ -20,17 +21,18 @@ A Theme-App is a standalone Symfony2 bundle. Using this approach has several adv
 
 Create the FancyThemeBundle
 ---------------------------
-RedKite CMS has two built-in commands which help to add a new theme:
+RedKite CMS has two built-in commands which help to manage a theme:
 
 - **redkitecms:generate:app-theme**
-- **redkitecms:generate:themplates**
+- **redkitecms:generate:templates**
 
-The first command generates a new App-Theme Bundle, the second one generate the templates configuration files.
+The first command generates a new App-Theme Bundle, the second one generates the templates 
+configuration files.
 
 To start a new theme, you must run the **redkitecms:generate:app-theme** command from your console.
 
-This command extends the Symfony's generate:bundle command, so the process should be familiar. Run the following command to
-start:
+This command extends the Symfony's generate:bundle command, so the process should be 
+familiar. Run the following command to start:
 
 .. code-block:: text
 
@@ -52,7 +54,8 @@ Answer as follows:
 
     Bundle namespace: Acme/Theme/FancyThemeBundle
 
-The proposed bundle name **must be changed** to FancyThemeBundle otherwise you may have trouble:
+The proposed bundle name **must be changed** to FancyThemeBundle otherwise you might
+have issues later:
 
 .. code-block:: text
 
@@ -66,18 +69,19 @@ Don't forget to let the command update the AppKernel for you to enable the bundl
 
     This command does not manipulate the sites routes.
 
-Your first App-Theme has been created, but, wait a moment, way a new command if
+Your first App-Theme has been created, but, wait a moment, why a new command if
 the creation procedure is the same of a normal bundle?
 
-Easy, because this commands adds a new configuration file into the **config** folder that sets
-the services to define the theme. See `themes internal configuration`_ to learn more.
+Just because this commands adds a new configuration file into the **config** folder that sets
+the services to define the theme. See `themes internal configuration`_ to learn more about
+this topic.
 
 Add the twig templates
 ----------------------
 
 When the theme is created, you must start to add your twig templates to the theme bundle.
 
-The **generate:app-theme** command, adds a new **Theme** folder under the **Resources/views**
+The **generate:app-theme** command, added a new **Theme** folder under the **Resources/views**
 folder of your App-Theme bundle: your templates must be placed inside that folder.
 
 The Theme folder structure
@@ -86,13 +90,14 @@ The Theme folder could be basically structured as follows:
 
 .. code-block:: text
 
-    Theme
-        home.html.twig
-        internal.html.twig
+	views
+		Theme
+			home.html.twig
+			internal.html.twig
 
-This theme has two templates, the **home** and the **internal** ones. This structure will definitely
-work, but, instead of that, a real world example would probably look more like 
-the following:
+This theme has two templates: the **home** and the **internal**. This structure will 
+definitely work, but, instead of that, a real world example would probably look more 
+as the following:
 
 .. code-block:: text
 
@@ -102,19 +107,20 @@ the following:
         home.html.twig
         internal.html.twig
 
-so a base template is saved into a theme's sub-folder and it contains the common parts 
-of the website's layout, while the other two templates inherit from the base template.
+a base template is added into a sub-folder. This one should contain the common parts 
+of the website's layout, while the other two templates will inherit from the base 
+one.
 
-The theme's configuration generated from a structure like that, produces two templates
+The theme's configuration generated from that structure, consists in two templates
 and three slots configuration files, in fact the files saved into the theme's root folder 
 become a template file, while a slot file is generated for all the templates, plus one
-named **base.xml** that contains the common slots found in files saved into sub-folders.
+named **base.xml**. This last one contains the common slots.
 
 Don't worry about the generation process for now, because it is explained in detail 
 in the next paragraphs.
 
-You might need to add more separation to templates, so your structure might look like 
-the following:
+You might need to add more separation to templates, so your theme structure could look 
+like the following below:
 
 .. code-block:: text
 
@@ -128,25 +134,27 @@ the following:
         internal.html.twig
         internal_1.html.twig
 
-in this case the home template might inherit from the **template_a.html.twig** and 
-the other two templates from the **template_b.html.twig** and, both of them, inherit 
-from **base.html.twig**
+in this case the home template inherits from the **template_a.html.twig** and 
+the others internal templates from the **template_b.html.twig**. The templates inside
+the support folder inherit from the **base.html.twig** template.
 
-Supposing that both the templates saved into the support folder have some slots 
-definition, that slots are merged with that found into the **base.html.twig** saved 
-into the **base.xml** file. 
+In this case if the support templates contain repeated slots, these are merged with 
+those found into the **base.html.twig** and all of them are saved into the **base.xml** 
+configuration file. 
 
 The design
 ~~~~~~~~~~
 
-RedKite CMS uses **twig** as template engine, so when you have converted the templates to html,
-you must write them to twig.
+RedKite CMS uses **twig** as template engine, so when you have converted the templates 
+to html from your design, you must adapt them to twig.
 
 Clean the template
 ~~~~~~~~~~~~~~~~~~
 
-First of all the template does not need the header section because it is inherited by the Symfony's
-base twig template or from another custom one, so remove everything that is external to the body tag:
+First of all, templates do not need the header section because it is inherited by the 
+base twig template provided by the CMS or from another custom one. 
+
+Please, remove everything that is external to the body tag:
 
 .. code-block:: html
 
@@ -165,8 +173,8 @@ base twig template or from another custom one, so remove everything that is exte
 	
 The twig template
 ~~~~~~~~~~~~~~~~~
-Create a new twig template file called **home.html.twig** under the **Resources/views/Theme** folder. Open it
-and add the following code:
+Create a new twig template file called **home.html.twig** under the **Resources/views/Theme** 
+folder. Open it and add the following code:
 
 .. code-block:: html+jinja
 
@@ -175,9 +183,9 @@ and add the following code:
     {% block body %}
     {% endblock %}
 
-The template must extend the template defined by the **base_template** variable. This is managed by the
-ThemeEngineBundle and it must have a body **block** where the contents saved from the html template
-you are creating must be placed:
+The template must extend the template defined by the ThemeEngineBundle's **base_template** 
+parameter. This template must have a body **block** where the contents saved from the 
+html template you are creating must be placed:
 
 .. code-block:: html+jinja
 
@@ -185,11 +193,23 @@ you are creating must be placed:
         [ JUST KEEP THIS ]
     {% endblock %}
 
+You can easily change this template just defining a new parameter in your **config.yml**:
+
+.. code-block:: text
+
+	ThemeEngineBundle:
+		base_template: MyAwesomeBundle:Theme:my-base.html-twig
+		
+.. note::
+
+	When you redefine the base template, be sure to redefine all the block sections
+	of base template, because RedKite CMS uses them.
+
 The slots
 ~~~~~~~~~
 
-Now you must identify the slots on the template. The **slot** is the html tag that contains the content you want to edit. For
-example consider the following code:
+Now you must identify the slots on the template. The **slot** is the html tag that 
+contains the content you want to edit. For example consider the following code:
 
 .. code-block:: html
 
@@ -200,8 +220,8 @@ example consider the following code:
     </div>
     [...]
 
-The content to edit is the one contained inside the div that has the logo id, so the only thing to do is to replace that content
-with a built-in twig function called **renderSlot**:
+The content to edit is the one contained inside the logo div. This content must be replaced
+by a built-in twig function called **renderSlot**:
 
 .. code-block:: html+jinja
 
@@ -212,12 +232,13 @@ with a built-in twig function called **renderSlot**:
     </div>
     [...]
 
-This function requires a string as argument which is the name of the slot.
+This function requires the name of the slot passed as a string as argument.
 
-The id assigned to the slot is not mandatory, so you could name it however you wish, but it is best practice to
-name the slot's id and the slot name in the same way.
+The id assigned to the slot is not mandatory, so you could call it as you wish, but 
+it is best practice to name the slot's id and the slot name in the same way.
 
-Another best practice to follow is to use the **renderSlot** function inside a **div** tag, so avoid something like this:
+Another best practice to follow is to use the **renderSlot** function inside a **div** tag, 
+so should avoid something like this:
 
 .. code-block:: html+jinja
 
@@ -232,8 +253,8 @@ Another best practice to follow is to use the **renderSlot** function inside a *
 Prepare your template to be overridden
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-That code is enough to render the contents placed on the slot logo, but if you plan to distribute your theme, you must
-wrap the renderSlot function with a block instruction:
+That code is enough to render the contents placed on the slot logo but you must wrap 
+the renderSlot function with a block instruction:
 
 .. code-block:: html+jinja
 
@@ -276,7 +297,8 @@ These sections should be added at the top of the page, although none of them are
 Define the slot attributes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To define the attributes of each slot you must add a comment which contains the attributes that follow:
+To define the slot's attributes you must add a twig comment below the block declaration
+as follows:
 
 .. code-block:: html+jinja
 
@@ -295,11 +317,11 @@ To define the attributes of each slot you must add a comment which contains the 
     </div>
     [...]
 
-Let's explain carefully. Each attribute section must start with the **BEGIN-SLOT** directive and close with the
-**END-SLOT** directive.
+Let's explain carefully. Each attribute section must start with the **BEGIN-SLOT** 
+directive and it must be closed by the **END-SLOT** directive.
 
-Attributes must be written in valid **yml** syntax. Yml requires a perfect indentation, so the first line defines the indentation for
-the other attributes:
+Attributes must be written in valid **yml** syntax. Yml requires a perfect indentation, 
+so the first line defines the indentation for the other attributes:
 
 .. code-block:: html+jinja
 
@@ -313,7 +335,7 @@ the other attributes:
 The code above will fail because the second attribute has a wrong indentation. When
 this happens, the section is skipped and the service is not instantiated.
 
-The **name** option is mandatory and when it is omitted the slot is skipped.
+The **name** option is mandatory and if it is omitted, RedKite CMS will skip the slot.
 
 Additional optional arguments
 ------------------------------
@@ -327,23 +349,24 @@ In addiction to **name** option, there are some attributes you could define:
 The blockType option
 ~~~~~~~~~~~~~~~~~~~~
 
-Defines the block type that RedKite CMS must add for that slot when a new page is added. By default, the block type
-added is Text.
+Defines the block type that RedKite CMS must add for that slot when a new page is added. 
+By default, the block type added is **Text**.
 
 The htmlContent option
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The **htmlContent** option overrides the default content added by the block type, so when you need to use the
-default value added by the block, simply don't declare this option.
+The **htmlContent** option overrides the default content added by the block, so when 
+you want to use the default value, simply don't declare this option.
 
 The repeated option
 ~~~~~~~~~~~~~~~~~~~
 
-Most of the contents displayed on a web page are repeated through the website pages. For example the site logo
-is usually the same for all the site's pages, while a navigation menu is the same for a specific language.
+Most of the contents displayed on a web page are repeated through the website pages. 
+For example the site logo is usually the same for all the site's pages, while a navigation 
+menu is the same for a specific language.
 
-The repeated option manages this behaviour and repeats the content for the blocks that live on a slot. The
-possible values for this option are:
+The repeated option manages this behaviour and repeats the content for the blocks 
+that live on a slot. The possible values for this option are:
 
 1. page (default)
 2. language
@@ -351,8 +374,8 @@ possible values for this option are:
 
 When this argument is not declared, a block repeated at page level is added.
 
-None of them is required, but when you don't need to specify any attribute, you must make sure you
-define the section:
+None of them is required, but when you don't need to specify any attribute, you must 
+be sure to define however this section:
 
 .. code-block:: html+jinja
 
@@ -360,44 +383,39 @@ define the section:
         name: logo
     END-SLOT #}
 
-
-While this comment could be placed everywhere on your template, it's strongly suggested to place it
-above the **renderSlot** call.
-
-
-Let the magic begin
+Create the templates
 ~~~~~~~~~~~~~~~~~~~~
-When your templates are ready, you may let the magic begin, running the second command given
-at the beginning of this tutorial:
+When your templates are ready, you may run the command which creates the services in 
+the DIC:
 
 .. code-block:: text
 
     redkitecms:generate:templates FancyThemeBundle  --env=alcms
 
-This command will generate the config files that define the theme's templates and their slots. If something goes wrong, a notice is displayed.
+This command will generate the config files that define the theme's templates and their 
+slots. If something goes wrong, a notice is displayed.
 
 Overriding a template
--------------------
+---------------------
 
-Let's assume that you want to use a new theme, called **AwesomeThemeBundle** and that this theme has two templates, named home.twig.html and internal.twig.html.
+To override the template of and existing Theme, you must create a new folder named as 
+the theme you want to use, for example **AwesomeThemeBundle**, under the **app/Resources/views** 
+folder of your application, than add a new template under that folder, called as the 
+one you want to override, for example **home.twig.html**. 
 
-When the **renderSlot** function has been explained, it is best practice to adopt for distributable themes, to wrap the render block function
-with a block section to let the template overridable.
-
-To override a template, simply create a new folder named as the new theme you want to use, so **AwesomeThemeBundle**, under the **app/Resources/views** folder
-of your application than add a new **home.twig.html**. Open it and add the following code:
+Open that template and add the following code:
 
 .. code-block:: jinja
 
     // app/Resources/views/AwesomeThemeBundle/home.html.twig
     {% extends 'AwesomeThemeBundle:Theme:home.html.twig' %}
 
-    {% block left_sidebar %}
-    {{ renderSlot('top_section_1') }}
+    {% block logo %}
+    {{ renderSlot('logo') }}
     {% endblock %}
 
-This code overrides the **AwesomeThemeBundle's home.html.twig** template replacing the **left_sidebar** slot with the contents saved with the **top_section_1** slot
-you have filled in your previous **home.html.twig** template.
+This code overrides the **AwesomeThemeBundle's home.html.twig** template, replacing the 
+**logo** slot with the contents saved in the **logo** slot.
 
 .. class:: fork-and-edit
 

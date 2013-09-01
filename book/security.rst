@@ -8,12 +8,12 @@ policy.
 Users and roles definition
 --------------------------
 
-RedKite CMS bases its security on the Symfony2 security layer to secure the backend 
-editor and provides an high-level interface to manage users and roles.
+RedKite CMS exploits the Symfony2 security layer to secure the backend editor and 
+provides an high-level interface to manage users and roles.
 
 A user is someone who can access to the backend, providing an username and a password.
 
-A role defines the rights on available resources.
+A role defines the rights a user has on the available resources.
 
 A user must have a role and this role grants or deny the access to a particular resource.
 
@@ -90,12 +90,12 @@ When you add new roles and/or you want to implement a restrictive security polic
 you need to modify manually the RedKite CMS security configuration file.
 
 The default **RedKite CMS security file** is saved into the RedKite CMS 
-**Resources/config** folder and it is imported into the **RedKite CMS config_alcms.yml**, 
+**Resources/config** folder and it is imported into the **RedKite CMS config_rkcms.yml**, 
 file as shown below:
 
 .. code-block:: text
 
-    // RedKiteCmsBundle/config/config_alcms.yml
+    // RedKiteCmsBundle/config/config_rkcms.yml
     imports:
     [...]
         - { resource: "@RedKiteCmsBundle/Resources/config/security.yml" }
@@ -103,13 +103,13 @@ file as shown below:
 RedKite CMS is highly decoupled, and the security layer is not an exception. 
 
 The implemented configuration impacts only on RedKite CMS backend because is specific
-for the **alcms** environments. This means you can implement your own security policy in 
+for the **rkcms** environments. This means you can implement your own security policy in 
 production when you need it, without collide with the backend.
 
 The security file in detail
 ---------------------------
 
-Here is a detailed explanation on how the security file is created.
+Here is a detailed explanation on how the security file is made.
 
 
 The firewall
@@ -166,17 +166,17 @@ Symfony does not permit to import or configure a security file from another
 configuration file, so the only way to change the implemented rules is to modify 
 the **security.yml** file that comes with RedKite CMS.
 
-It is really a bad idea to work on the security file that comes with
+Obviously, it is really a bad idea to work on the security file that comes with
 **RedKiteCmsBundle** bundle, because when you would upgrade the cms, the changes 
 you have made will be lost.
 
 To avoid that, you must copy the RedKite's security file into the application's 
 config folder, rename it, for example, to **security_cms.yml**, and change the import 
-directive in the config_alcms.yml:
+directive in the config_rkcms.yml:
 
 .. code-block:: text
 
-    // app/config/config_alcms.yml
+    // app/config/config_rkcms.yml
     imports:
     [...]
     - { resource: "security_cms.yml" }
@@ -185,7 +185,7 @@ Customizing the security for your website
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 A real life example could be the following one: you may need to add a new role, 
 called **ROLE_PUBLISHER**, to allow granted users, which belongs that role, to publish 
-the website, to leverage site admins from this task.
+the website, to leverage site administrators from this task.
 
 First of all you must add that role in the website as explained before, then you must 
 change the rule that secures the deploy action as follows:
@@ -227,6 +227,6 @@ rule as follows:
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
 .. _`Symfony2 documentation`: http://symfony.com/doc/current/book/security.html
 .. _`Symfony2 security chapter`: http://symfony.com/doc/current/book/security.html

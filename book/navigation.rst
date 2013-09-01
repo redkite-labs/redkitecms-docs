@@ -10,7 +10,7 @@ Moving through the website pages when you are in the CMS backend, is a really si
 operation: you can just click on a link that points an internal page and RedKite 
 CMS will move to that page. 
 
-To navigate in this way, the page you are browsing must not be in in contents
+To navigate in this way, the page you are browsing, must not be in in contents
 editing mode.
 
 Sometimes the page link you want to reach is not available on the page you are browsing 
@@ -30,12 +30,12 @@ to move to from the appropriate combobox and RedKite CMS will immediately move t
 Edit an internal link
 ---------------------
 
-Pages can be linked together in several ways: you can use the link Block, the one delegated to 
-manage links or you can add a link into an hypertext block, using the inline editor.
+Pages can be linked together in several ways: you can use the link Block, which is the 
+one delegated to manage links or you can add a link into an hypertext block, using the 
+inline editor.
 
 Sometimes you would like to change the permalink of a page: if this page has already been
-linked through the website, RedKite CMS updates the links to that page for you, in all
-the contents that the old link is present.
+linked through the website, RedKite CMS updates all the links that points that page for you.
 
 
 Navigate through languages
@@ -43,7 +43,7 @@ Navigate through languages
 
 As explained above you can move through website languages using the **Nav** menu but,
 in a multi-languages website, you must use the Languages Navigation Menu Block, which 
-renders a menu made with the website languages flags. 
+renders a menu made from languages flags. 
 
 Each flag is automatically linked the the page you are browsing, pointing the appropriate
 language.

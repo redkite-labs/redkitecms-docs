@@ -4,11 +4,11 @@ RedKite CMS tests suite
 Most parts of RedKite CMS have unit and/or functional and/or integrated tests associated 
 with them. 
 
-These tests are written using PHPUnit and are required when making contributions to all RedKite 
+These tests are written using **PHPUnit** and are required when making contributions to all RedKite 
 Labs ecosystem. 
 
-You'll always find all of the unit, integrated and functional tests in the Tests directory. 
-By convention unit tests lives under the **Tests/Unit** folder, integrated ones the **Tests/Integrated** 
+You'll always find all the Unit, Integrated and Functional tests in the Tests directory. 
+By convention unit tests lives under the **Tests/Unit** folder, integrated ones under the **Tests/Integrated** 
 directory and functional are under **Tests/Functional** folder.
 
 To run test suite you need PHPUnit installed on your system. You can find how to install this tool
@@ -18,7 +18,7 @@ Run the tests suite
 -------------------
 
 To configure your Symfony2 application to run RedKite CMS test suite you need to configure
-the configuration file that comes with the application itself. Usually there is a file called
+the PHPUnit configuration file that comes with the application itself. Usually there is a file called
 **phpunit.xml.dist** file placed under the **app** folder.
 
 The best way to add your custom configuration is to copy that file to **phpunit.xml** and 
@@ -39,9 +39,9 @@ file.
 
 .. note::
 
-    This configuration is already present in RedKite CMS Sandbox, since 1.1.0 RC4 release.
+    This configuration is already present in the RedKite CMS Sandbox.
 
-To run the tests suite, simply give the following command from the top directory of your application:
+To run the tests suite, simply run the following command from the top directory of your application:
 
 .. code:: text
 
@@ -101,4 +101,4 @@ If everything is correct, ask for your PR.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs

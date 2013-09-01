@@ -6,7 +6,7 @@ This document will explain in detail how to translate RedKite CMS in your langua
 .. note::
 
     Before go, you need to knows that you are required to fork **RedKite CMS** bundle 
-    to translate RedKite CMS: learn how at http://alphalemon,com/how-to-get-alphalemon-cms-source-code-and-bundle-structure
+    to translate RedKite CMS: learn how at http://redkite-labs,com/how-to-get-redkite-cms-source-code-and-bundle-structure
 
 RedKite CMS uses Symfony2's Translation component to manage the interface translation.
 Catalogues live under the standard RedKiteCmsBundle's **Resources/translations** 
@@ -120,4 +120,4 @@ as follows:
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs

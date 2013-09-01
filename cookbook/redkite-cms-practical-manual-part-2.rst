@@ -10,7 +10,7 @@ Add a new page
 
 .. image:: //bundles/alphalemonwebsite/media/bootbusiness/img17.jpg
 
-Click on the down tab to open the toolbar and click on the "Pages" button to open
+Click on the toolbar down tab to open it and click on the "Pages" button to open
 the pages management panel.
 
 .. image:: //bundles/alphalemonwebsite/media/bootbusiness/img18.jpg
@@ -28,10 +28,10 @@ you, so page name is converted to "product-1" and permalink is converted to
 "redkite-content-management-system".
 
 While it is not mandatory, you should fill the "Title" and the "Description" information 
-because of search engines indexation, helping the SEO of the website.
+because it is important when search engines will index your page.
 
-Another important section for SEO (Search Engines Optimization) is the "Sitemap" section,
-where you can assign the priority to page indexation.
+Another important section for SEO (Search Engines Optimization) is the "Sitemap" one,
+where you can assign the priority to page.
 
 When you are done, click the "Save" button to add the page to your website, then close
 the panel by clicking the bottom of panel.
@@ -41,8 +41,7 @@ Manage menu links on main toolbar
 
 .. image:: //bundles/alphalemonwebsite/media/bootbusiness/img19.jpg
 
-Place the cursor over the toolbar container's area and click into it: the links give a
-red trash icon button and a blue add icon button added after the links.
+Place the cursor over the toolbar container's area and click into it.
 
 .. image:: //bundles/alphalemonwebsite/media/bootbusiness/img20.jpg
 
@@ -63,10 +62,6 @@ Put your mouse into the dropdown block's area and click to start editing the blo
 
 Click into the "Button Text" textbox and type "Products and Services", then click the "Menu items"
 button. 
-
-.. note:: 
-
-    This editor has some rendering issues, and will be fixed ASAP, but it still works correctly at the moment.
 
 .. image:: //bundles/alphalemonwebsite/media/bootbusiness/img23.jpg
 
@@ -118,7 +113,7 @@ Add these pages and always check the "Published" checkbox:
 .. note:: 
 
     if you don't provide a permalink, the page name is used. Please do not 
-    do this for your website when page names are poor as the ones you just added.
+    do this for your website when page names are poor as the ones you've just added.
 
 Add a new "Nav dropdown" to the top navbar, name it "About", open the "Menu items"
 and link the first three pages.
@@ -222,7 +217,7 @@ the contacts on your own.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
 .. _`this tutorial`: http://alphalemon.com/how-to-change-a-content-at-runtime
 
 

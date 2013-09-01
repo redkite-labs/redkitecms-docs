@@ -29,7 +29,7 @@ If you want that the new language will become the website main language check th
 .. image:: //bundles/alphalemonwebsite/media/manual/img-22.jpg
 
 The website's main language is the first language displayed when a user, that browses 
-your website, does not require any specific language, for example http://alphalemon.com 
+your website, does not require any specific language, for example http://redkite-labs.com 
 address.
 
 When you add a new language, RedKite CMS copies all the main language contents 
@@ -50,6 +50,10 @@ Edit a language
 
 To edit a language you must first select it from the languages list, then you can 
 choose a new language from the **Language** combobox.
+
+When a language is to become the main language of the site, you must select that language 
+and check the **Is main** checkbox: you cannot degrade the current main language to work 
+out that job.
 
 When you want to change the website main language, you must select the language you 
 want to promote and edit it checking the **Is main** checkbox. 
@@ -75,4 +79,4 @@ you must first promote another language as main.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs

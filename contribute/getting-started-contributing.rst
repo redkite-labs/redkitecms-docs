@@ -14,9 +14,9 @@ In order to work with RedKite CMS as a developer, it's recommended that:
 - You know **php5** and **Object Oriented Programming**, since RedKite CMS is written in php.
 - You know **Symfony2**, since RedKite CMS is a **Symfony2 Bundle**.
 - While it is not mandatory, it is better if you are comfortable with **Propel**, since RedKite CMS uses it as ORM.    
-- RedKite CMS files are generated from **Sass** and compiled with **Compass**, so you should have that tool installed on your system.
+- RedKite CMS stylesheets are generated from **Sass** and compiled with **Compass**, so you should have that tool installed on your system.
 - You're comfortable with **command-line programs**.
-- **You understand unit and functional tests and why they're important.**
+- You understand unit and functional tests and why they're important.
 - You know **PHPUnit**, since RedKite CMS tests are written for this testing suite.
 - Javascript dependencies are managed with **Twitter's Bower**, so you should install it.
 
@@ -25,19 +25,19 @@ RedKite Labs licensing philosophy
 
 Although **Symfony2** and a huge part of its ecosystem is license under a **MIT License**,
 which permits to use and redistribute the software both in Open Source and proprietary 
-contexts, **RedKite CMS** is licensed under the **GPL2 license**, which means that it can be 
+contexts, **RedKite CMS** is licensed under the **GPL2 License**, which means that it can be 
 used both in an Open Source or in a proprietary context, but changes and derived redistributions
-must be released as Open Source software under the same license used by AlphaLemom CMS.
+must be released as Open Source software under the same license used by RedKite CMS.
 
-AlphaLemom CMS final output consists in a set of Twig templates and Symfony2 routing
+RedKite CMS final output consists in a set of Twig templates and Symfony2 routing
 configuration files which normally would be licensed under the GPL2 license, because they
 are generated with a GPL software.
 
-Despite of that, those generated files are licensed under the MIT license, so the application
-you are using maintains, the MIT license.
+Despite of that, we create and exception for those files, and we choose the MIT license for them.
 
 This is possible because a Symfony2 application powered by RedKite CMS, does not require
-that bundle to run in production, so in this case, the viral effect of GPL license is cancelled.
+the CMS and the App-Blocks to run in production, so in this case, the viral effect of GPL 
+license is cancelled.
 
 Open sourced App-Blocks should be released under the MIT license or another permissive license
 like the LGPL, while they can be released under the GPL2 because, as for RedKite CMS, they 
@@ -64,7 +64,7 @@ This section explains how to do that and a little about the source code structur
 
 Section 2: Run the tests
 ------------------------
-There are a lot of unit tests included with CSS Lint to make sure that we're keeping 
+There are a lot of unit tests included with RedKite CMS to make sure that we're keeping 
 on top of code quality. This section explains how to run the unit tests.
 
 `Go to run the tests section`_
@@ -81,7 +81,7 @@ to submit those changes back via a pull request.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
 .. _`Go to source code section`: how-to-get-alphalemon-cms-source-code-and-bundle-structure
-.. _`Go to run the tests section`: https://github.com/alphalemon/alphalemon-docs
-.. _`Go to contributing section`: https://github.com/alphalemon/alphalemon-docs
+.. _`Go to run the tests section`: https://github.com/redkite/redkite-docs
+.. _`Go to contributing section`: https://github.com/redkite/redkite-docs

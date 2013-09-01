@@ -523,5 +523,5 @@ create a block that manage a list of blocks and use the inlinelist plugin.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
 .. _`renderSlot`: add-a-custom-theme-to-alphalemon-cms#the-slots

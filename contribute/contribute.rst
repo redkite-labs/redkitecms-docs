@@ -23,7 +23,7 @@ should open an `issue at github`_.
 
 Contribute to RedKite CMS Core
 ---------------------------------
-When you want to contribute to RedKite CMS Core by fixing issues or add new features,
+When you want to contribute to RedKite CMS Core by fixing issues or adding new features,
 you should fork the repository, make your changes and use pull request to let us review
 your patch.
 
@@ -34,7 +34,7 @@ Regardless of the changes you are making, please make sure that your pull reques
 includes appropriate tests. 
 
 If you're submitting a change to RedKite CMS core, update or add to the units 
-tests in the Tests directory. 
+tests in the **Tests** directory. 
 
 If you are submitting a new App-Block, be sure to have properly added unit test to cover
 the code and functional tests when your bundle uses internal controllers.
@@ -54,7 +54,7 @@ If you want to share your awesome Theme or Block bundles with the community, you
 it on a repository at github.
 
 To have your bundle distributed on RedKite CMS website, open a pull request at 
-`RedKite CMS repository`_ and post the link to your repository, in the pull request body.
+`RedKite Blocks repository`_ and post the link to your repository, in the pull request body.
 
 Your Theme or Block bundle will be evaluated and then it will be published.
 
@@ -70,8 +70,8 @@ fork this repository and send us your pull requests.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
-.. _`issue at github`: https://github.com/alphalemon
-.. _`this document`: how-to-run-the-alphalemon-cms-test-suite
-.. _`RedKite CMS repository`: https://github.com/alphalemon/AlphaLemonCmsBundle/pulls
-.. _`repository at github`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/redkite-labs/redkite-docs
+.. _`issue at github`: https://github.com/redkite-labs
+.. _`this document`: how-to-run-the-redkite-cms-test-suite
+.. _`RedKite CMS repository`: https://github.com/redkite-blocks
+.. _`repository at github`: https://github.com/redkite-labs/redkite-docs

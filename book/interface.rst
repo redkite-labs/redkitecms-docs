@@ -68,6 +68,6 @@ At last, from the toolbar, you can change the RedKite CMS interface language too
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
 .. _`blocks management`: alphalemon-cms-inline-contents-editor
 .. _`navigate through the website`: alphalemon-cms-website-navigation

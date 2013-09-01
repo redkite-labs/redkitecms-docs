@@ -14,7 +14,7 @@ Themes could be added to your application in two ways:
 
 To create a custom theme, you should read the `dedicated tutorial`_, while to add an
 existing theme to your application using composer, you must follow the instructions 
-provided by each third-parties block.
+provided by each third-parties theme.
 
 
 The user interface
@@ -25,11 +25,10 @@ Open the top toolbar and click on the **Themes** button to open the panel.
 .. image:: //bundles/alphalemonwebsite/media/manual/img-19.jpg
 
 The themes panel is divided in two columns, on the left there is rendered
-the theme in use and on the right column there are displayed the available
+the theme in use and on the right column there are displayed all the available
 themes.
 
-All themes provides information about the theme itself, like the theme name,
-the author and more. 
+Each theme provides information about itself, like the theme name, the author and more. 
 
 While the active theme has any command to interact with, all the available themes
 have three commands placed under each theme:
@@ -52,7 +51,7 @@ and on the left you have two commands:
 2. Back
     
 The **Nav** button hides the theme's templates, so click it to display them and
-you can switch to templates simply selecting them.
+switch to another template selecting it from the combobox.
 
 The **Back** button returns back to the editor.
 
@@ -76,6 +75,6 @@ on the button and confirm the action.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
 .. _`dedicated tutorial`: http://alphalemon.com/add-a-custom-theme-to-alphalemon-cms
 .. _`detailed tutorial`: how-to-change-the-website-theme-with-alphalemon-cms

@@ -14,14 +14,9 @@ After completing the tutorial you will be able to:
     2. Add, edit, remove list of blocks
     3. Add and move through pages
 
-The time needed to complete the whole tutorial is estimated at one hour. 
+The time needed to complete the whole tutorial is estimated in one hour. 
 
-Also refer to the `Users Manual`_ This will give more information about the functionalities explained in
-the tutorial, and about other functionalities such as users, languages and themes management.
-
-The first part of the tutorial focuses on blocks management.
-
-Enjoy!
+The first part of the tutorial is focused on blocks management.
 
 
 Edit a block
@@ -34,12 +29,12 @@ Image block
 
 .. image:: //bundles/alphalemonwebsite/media/bootbusiness/img1.jpg
 
-Place the cursor over the products first image and left click to open the editor.
+Place the cursor over the first product's image and left click into the image's area to open the editor.
 
 .. image:: //bundles/alphalemonwebsite/media/bootbusiness/img2.jpg
 
 Click into the src input box to open the **media library**. This tool allows you to manage each
-type of file on your website. For this example you will be able to manage images files.
+type of file on your website.
 
 .. image:: //bundles/alphalemonwebsite/media/bootbusiness/img3.jpg
 
@@ -68,10 +63,10 @@ Remove a block
 
 .. image:: //bundles/alphalemonwebsite/media/bootbusiness/img5.jpg
 
-Put your mouse over the button below the text you have just edited and click on the trash icon
+Put your mouse on the button below the text you have just edited and click on the trash icon
 to remove the block.
 
-You will be prompted to confirm the operation: click ok.
+You will be prompted to confirm the operation: click Ok.
 
 
 Add a new block
@@ -79,9 +74,9 @@ Add a new block
 
 .. image:: //bundles/alphalemonwebsite/media/bootbusiness/img6.jpg
 
-When you remove the last block, RedKite CMS writes some significant text into the 
-block's area. This explains that the slot does not contains any content: place the cursor 
-over that block and click on the plus icon.
+When you remove the last block, RedKite CMS adds a place-holder into the block's area,
+which explains that the slot does not contains any content: place the cursor over that 
+block and click on the plus icon.
 
 .. image:: //bundles/alphalemonwebsite/media/bootbusiness/img7.jpg
 
@@ -98,8 +93,9 @@ into the block's area.
 
 .. image:: //bundles/alphalemonwebsite/media/bootbusiness/img9.jpg
 
-A red trash icon is displayed under each button and a blue plus icon is displayed after
-the last button.
+A red trash icon is displayed under each button and a blue plus icon is added just 
+before the first block and under each buttons. The interface has been changed since that
+picture has been taken.
 
 Remove an included block from a composite block
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -116,7 +112,7 @@ Now place your cursor over the first button and click on it to open the editor.
 Type "Buy now" into the "Button text" input and choose "primary" from the "Button type" 
 combobox, then click "Save" to confirm.
 
-Do the same with the nearing button but only change the "Button text" in "Read more".
+Do the same with the button next but only change the "Button text" in "Read more".
 
 .. image:: //bundles/alphalemonwebsite/media/bootbusiness/img12.jpg
 
@@ -146,6 +142,6 @@ Now you should repeat the same process for other products and services.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
 .. _`install RedKite CMS`: http://alphalemon.com/download-alphalemon-cms-for-symfony2-framework
 .. _`Users Manual`: http://alphalemon.com/user-manual-part-1

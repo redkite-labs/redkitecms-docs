@@ -13,8 +13,8 @@ The panel is divided in two columns: the bigger placed on the left contains the 
 to add and modify a page, while on the right there is a list which contains all the website 
 pages.
 
-The main column is tabbed, so there are many sections you must check before add a 
-page.
+The panel that contains the form to manage the page information is made by tabs, so 
+there are several sections you need to fill up to add or modify a page.
 
 The page tab
 ------------
@@ -29,7 +29,7 @@ The page name option
 The **Page name** is an unique internal name that globally identifies the page. This
 value is inserted into the text box which has the same name.
 
-This information could be manipulated buy RedKite CMS when you enter some particular 
+This information could be manipulated by RedKite CMS when you enter some particular 
 characters like spaces or accented letters.
 
 For example the **contact us** page name is transformed to **contact-us**.
@@ -39,8 +39,8 @@ This information is mandatory.
 
 The template name option
 ~~~~~~~~~~~~~~~~~~~~~~~~
-The **Template name** represents the name of the layout the page will get. Template
-names belongs the theme you are using in your website.
+The **Template name** represents the name of the layout the page will get. The template
+names come from the theme you are using in your website.
 
 This value must be selected using the combobox which has the same name.
 
@@ -50,13 +50,14 @@ This information is mandatory.
 The home page option
 ~~~~~~~~~~~~~~~~~~~~
 The website's home page is the first page displayed when a user, that browses your website,
-does not require any specific page, for example http://alphalemon.com address.
+does not require any specific page, for example http://redkite-labs.com address.
 
 If you want that the page you are adding or editing will become the website home page, 
 just check this option.
 
-You cannot degrade the current home page, this means you cannot unchecked the **Home page**
-checkbox for the home page.
+When a page is to become the homepage of the site, you must select that page and check
+the **Home page** checkbox: you cannot degrade the current home page to work 
+out that job.
 
 The home page cannot be removed from the website, so, when you need to remove it,
 you must first promote another page as home.
@@ -65,7 +66,7 @@ you must first promote another page as home.
 The published option
 ~~~~~~~~~~~~~~~~~~~~
 This option is useful in a team where members work on the website at the same time, because
-it explicitly forces someone with appropriate rights, to declare that the page is 
+it explicitly forces someone with appropriate rights, to declare the page as 
 ready to be published in production.
 
 In fact a page is not published by default, so only the users which have enough privileges
@@ -101,20 +102,20 @@ permalink.
 
 Let's dive into an example.
 
-Think about the http://alphalemon.com website download page: we could have chosen a 
+Think about the http://redkite-labs.com website download page: we could have chosen a 
 permalink called **download** and it would have worked fine, but we defined a long description
-to define this page: **download-alphalemon-cms-for-symfony2-framework**.
+to define this page: **download-redkite-cms-for-symfony2-and-twitter-bootstrap-frameworks**.
 
 This is not a simply matter of taste, in fact we provide a lot of information about 
 our product in that permalink: we specify the **download** keyword, the product name, 
-which is obviously **alphalemon**, we declared that it is a **cms** and that is written 
-to work with the **symfony2 framework**.
+which is obviously **redkite**, we declared that it is a **cms** and that is written 
+to work with **Symfony2** and **Twitter Bootstrap** frameworks.
 
 All these information should produce a better result when a search engine indexes that
 page. 
 
 Obviously the permalink must be consistent with contents saved in the page, otherwise 
-search engines will penalize your site.
+search engines will penalize that page and your site.
 
 This information is manipulated, when needed, as for the **Page name** attribute.
 
@@ -148,7 +149,7 @@ must provide.
 
 The keywords option
 ~~~~~~~~~~~~~~~~~~~
-This information should provide a list ok keywords used in the page. This one has
+This information should provide a list of keywords used in the page. This one has
 been widely abused in the past, so many search engines ignore it today.
 
 
@@ -207,5 +208,5 @@ because RedKite CMS removes all the page attributes.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
 .. _`sitemap protocol`: http://www.sitemaps.org/protocol.html

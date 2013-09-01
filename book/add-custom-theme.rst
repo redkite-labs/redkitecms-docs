@@ -421,5 +421,5 @@ This code overrides the **AwesomeThemeBundle's home.html.twig** template, replac
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
 .. _`themes internal configuration`: the-internals-of-theme-configuration

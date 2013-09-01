@@ -15,27 +15,27 @@ In this chapter you will learn:
 Introduction
 ------------
 
-An RedKite CMS theme is made by templates, a set of twig files which contain a special 
+A RedKite CMS theme is made by templates, a set of twig files which contain a special 
 twig function delegated to render the content on the page. 
 
-Each template is made by slots, a place-holder where one or more blocks are placed.
+Each template is made by slots, a place-holder where one or more blocks are stored.
 A block represent the content displayed on the page.
 
-RedKite CMS parses all the website's pages and changes the templates as requested,
-then backs up all the blocks' contents and for each page and adds the default contents 
-from new templates.
+When you change the theme, under the hood, RedKite CMS parses all the website's pages 
+and changes the templates as requested, then backs up all the blocks' contents and 
+for each page and adds the default contents from new templates.
 
 At the end of this operation, your website is rebuilt using the new theme and previous
 contents can be restored mapping the slots from previous templates with the new theme
 templates.
 
-For this chapter I'll change the theme used on redkite-labs.com website with the **BootbusinessTheme**,
-the new bundled theme which comes with a fresh install of RedKite CMS.
+For this chapter I'll change the theme used on redkite-labs.com website with the 
+**BootbusinessTheme**, the theme which comes with a fresh install of RedKite CMS.
 
 .. note::
 
-    Please be careful, this operation is obtrusive. Before start it is strongly suggested 
-    to make a database backup.
+    Please be careful, this operation is obtrusive. Before start you should make 
+	a backup of your database.
 
 Mapping the templates
 ---------------------
@@ -47,7 +47,7 @@ from the top toolbar.
 On the left there is the active theme used on the website and on the right there are
 the available themes.
 
-I look for the **BootbusinessThemeBundle** and I click on the **Activate** button 
+I look for the **BootbusinessThemeBundle** then I click on the **Activate** button 
 placed under the **BootbusinessTheme** to start this procedure.
 
 A new window opens and the current Theme's templates are listed on the left and
@@ -83,7 +83,7 @@ When the page has been reloaded, RedKite CMS added the **Slots** and the **Final
 buttons to **Commands Panel** on the left.
 
 To start matching the slots click on the **Slots** button, blocks are now active and
-get surrounded by a green square when you place the mouse over them.
+are surrounded by a green square when you place the mouse over them.
 
 .. image:: //bundles/alphalemonwebsite/media/change_theme/img_04.jpg
 
@@ -101,7 +101,7 @@ That's ok and I click the **Save** button to confirm.
 
 .. image:: //bundles/alphalemonwebsite/media/change_theme/img_06.jpg
 
-Obviously images don't fit, so I should redefine them, but this is not the purpose of 
+Obviously images don't fit, so I should redefine them, but this is beyond the scope of 
 this tutorial.
 
 Now I select again the same slot: the **screenshot_box** changed its colour to a light 
@@ -126,8 +126,8 @@ There two ways to adjust this situation:
     - copy the title from the new paragraph to the other one
     - override the template and remove the title paragraph
     
-While the first way is easier than the second one, I choose to move the second way to mainatain
-consistency between templates.
+While the first way is easier than the second one, I choose to move the second way to 
+maintain consistency between templates.
 
 The template I'm working on is the **home.html.twig** one, so to override it, I must 
 create the same file under the **app/Resources/views/BootbusinessThemeBundle**, as well
@@ -169,8 +169,8 @@ I repeat the same steps to import the **video_content** slot.
 
 .. image:: //bundles/alphalemonwebsite/media/change_theme/img_09.jpg
 
-redkite-labs.com website has more slots than the current template, so I must add some
-new slots to the overriding template:
+Old alphalemon.com website had more slots than the current template, so I had to add 
+some new slots to the overriding template:
 
 .. code:: jinja
     
@@ -216,8 +216,8 @@ Now the page must be reloaded to get the changes just made.
 
 .. image:: //bundles/alphalemonwebsite/media/change_theme/img_10.jpg
 
-RedKite CMS does not know this new slots, so it displays them as an empty slot.
-I just need to map this new slots as did before, to import the contents from provious
+RedKite CMS does not know these new slots, so it displays them as empty slots.
+I just need to map these new slots as did before, to import the contents from previous
 theme.
 
 .. image:: //bundles/alphalemonwebsite/media/change_theme/img_11.jpg
@@ -226,7 +226,7 @@ Override an extended template
 -----------------------------
 
 I repeat the mapping process for the footer's blocks. At the end of this step I must
-be sure to avoid to render the section's titles because titles come with contents.
+be sure to avoid to render the section's titles, because titles come with contents.
 
 .. image:: //bundles/alphalemonwebsite/media/change_theme/img_12.jpg
 
@@ -298,8 +298,8 @@ To load the stylesheet I add a new entry to **stylesheets** function into the
 
 .. image:: //bundles/alphalemonwebsite/media/change_theme/img_13.jpg
 
-Obviously I should implement more adjustments to have a nicer result, but this is not
-the purpose of this tutorial.
+Obviously I should implement more adjustments to have a nicer result, but this is 
+beyond the scope of this tutorial.
     
 .. note::
 
@@ -309,19 +309,19 @@ the purpose of this tutorial.
 The stock of the situation
 --------------------------
     
-This would therefore appear to be a good point to take stock of the situation.
+This would therefore appear to be a good point to take the stock of the situation.
 
 The home page is quite finished: the main contents section of the page is completed, there 
 are some contents which would be modified without grabbing blocks from previous theme.
 
-Main toolbar which has not been touched any more, because the block's types are different, 
+The main toolbar has not been touched any more, because the block's types are different, 
 in fact this new theme uses the **BootstrapNavbarBlock** while the previous website used 
 the **Menu** block. In this situation I must rewrite the links without recovering the 
 main menu. 
 
 .. note::
 
-    This last operation goes beyond the purpose of this tutorial, so it has not been
+    This last operation is beyond the scoope of this tutorial, so it has not been
     made.
 
 As last thing, I enter inside one of the other pages, no matters which one, to recover
@@ -335,9 +335,8 @@ seems to fail, but it is only needed a page reload to have it working as expecte
 .. image:: //bundles/alphalemonwebsite/media/change_theme/img_15.jpg
 
 The most important thing to notice is that, while this slot is repeated at page level, 
-- this means that each page has its own content which differs from other pages -, it 
-is not required to do this operation for each page, because the slot is the same for
-all pages.
+- this means that each page has its own content which differs from other pages -, this 
+operation is made just one time for the whole pages of the website.
 
 I must import the stylesheets that renders the php code, so I open the **empty.html.twig**
 template and I add the following code:
@@ -376,8 +375,10 @@ can be made in two ways:
     - Full
     
 **Partial finalization** only removes the changed slots which has already been mapped with 
-a slot from previous theme, **Full finalization** removes both the changed blocks and the
-backup blocks, so if you Use a partial finalization, you can continue with mapping slots,
+slots from previous theme, **Full finalization** removes both the changed blocks and the
+backup blocks. 
+
+When you use the partial finalization, you can continue with mapping slots,
 when you full finalize, this is not possible any more.
 
 .. note::
@@ -389,5 +390,5 @@ when you full finalize, this is not possible any more.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
 .. _`Symfony2 cookbook`: http://symfony.com/doc/current/cookbook/bundles/inheritance.html

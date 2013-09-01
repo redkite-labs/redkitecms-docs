@@ -45,8 +45,8 @@ To rename a file right click on it and choose **Rename** from the contextual men
 Delete one or more files
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-To delete one of more files, select them and then right click on one of them. Choose 
-**Delete** from the contextual menu.
+To delete one of more files, select them and right click over one of them to open the
+contextual menu and choose **Delete** to proceed.
 
 .. image:: //bundles/alphalemonwebsite/media/manual/img-26.jpg
 
@@ -74,3 +74,11 @@ click on one of them and select the **Duplicate** command when you want to copy 
 Cut / Paste commands when you want to move.
 
 When you want only to move a file or a folder you can use drag and drop too.
+
+
+
+.. class:: fork-and-edit
+
+Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
+
+.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs

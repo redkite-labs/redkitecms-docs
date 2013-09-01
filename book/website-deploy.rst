@@ -8,17 +8,17 @@ Deploy the website
 ------------------
 
 RedKite CMS website deploying process consist in converting the data entered in the
-backend to Symfony2 templates and routes, and to copy assets from the backend to 
+backend, to Symfony2 templates and routes and to copy assets from the backend to 
 stage or production environments.
 
 RedKite CMS generates a Twig template for each page you entered in the backend. This
-template inherits from the assigned template and creates Twig blocks that override
-the ones defined in the original template.
+template inherits from the assigned template and creates the Twig blocks from the 
+App-Blocks on the page. These blocks override the ones defined in the original template.
 
 Each page generates a Symfony2 route to map the url (permalink) with the Symfony2
 controller which renders the page.
 
-At last, it removes the current assets and replaces them copying all the new assets 
+At last, it removes the current assets and replaces them, copying all the new assets 
 from the backend to stage or production folders.
 
 All these files are generated and copied to the **Deploy bundle** defined when 
@@ -27,15 +27,15 @@ RedKite CMS has been installed.
 .. note::
 
     The deploying process is very quick but it takes some time because, when the
-    RedKite CMS process is ended, RedKite CMS must call the Symfony2 commands 
-    to reinstall assets, dump assets for assetic and clean the cache.
+    generation process ends, RedKite CMS must call the Symfony2 commands 
+    to install and dump assets and to clear the cache.
 
 
 The deploying process
 ^^^^^^^^^^^^^^^^^^^^^
 
 Deploying the website is a hard work, but only for RedKite CMS, in fact
-you are only required to choose the deploying environment.
+you are only required to click on the environment you'd like to deploy.
 
 To deploy for the stage environment simply click the **Deploy stage** button
 from the top toolbar.
@@ -75,7 +75,8 @@ following folders and files into the deploy bundle:
 
 .. note::
     
-    Files generated for stage environment can be safety removed or ignored in production.
+    Files generated for stage environment should be removed when the website goes
+	to production.
     
                  
 When you deploying for the production environment, RedKite CMS generates the 
@@ -107,7 +108,7 @@ following folders and files into the deploy bundle:
 Working in locale
 -----------------
 
-When you have installed RedKite CMS directly on your remote server your changes
+If you have installed RedKite CMS directly on your remote server your changes
 are immediately displayed on your website, after deploying.
 
 If you manage your website on your laptop, you must transfer files to the remote 
@@ -121,4 +122,4 @@ Symfony2 cookbook entry which covers the topic in detail.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs

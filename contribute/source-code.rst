@@ -15,7 +15,7 @@ the main repository using this command:
 
 .. code:: text
 
-    git clone https://github.com/alphalemon/RedKiteCmsSandbox.git
+    git clone https://github.com/redkite-labs/RedKiteCmsSandbox.git
 
 If you're planning on contributing to RedKite CMS, then it's a good idea to fork the 
 repository. You can find instructions for forking a repository at http://help.github.com/fork-a-repo/.
@@ -29,7 +29,7 @@ After forking the RedKite CMS repository, you need to configure the application'
         "repositories": [
             {
                 "type": "vcs",
-                "url": "[ YOUR GITHUB ALPHALEMON CMS FORKED REPO URL]"
+                "url": "[ YOUR GITHUB REDKITE CMS FORKED REPO URL]"
             }
         ],
     }
@@ -89,6 +89,6 @@ The Bundle's structure is the following:
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
 .. _`Symfony2 code standards`: http://symfony.com/doc/current/contributing/code/standards.html
 .. _`Best Practices for structuring Bundles`: http://symfony.com/doc/current/cookbook/bundles/best_practices.html

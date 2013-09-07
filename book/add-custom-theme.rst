@@ -1,5 +1,5 @@
 Add a custom Theme-App to RedKite CMS
-========================================
+=====================================
 
 This chapter explains how to create a new theme for RedKite CMS.
 
@@ -269,30 +269,23 @@ the renderSlot function with a block instruction:
 
 Define the template assets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-Each template comes with one or more external assets, like javascript and stylesheet files. Those assets
-are declared in a comment section as follows:
+Each template comes with one or more external assets, like javascript and stylesheet files,
+which must be added to the template adapted to work with RedKite CMS.
 
-.. code-block:: html+jinja
+The base layout used to render each page provides several sections which can be extend in a
+template to add extra assets to the page.
 
-    {# BEGIN-EXTERNAL-STYLESHEETS
-    @BusinessWebsiteThemeBundle/Resources/public/css/reset.css
-    @BusinessWebsiteThemeBundle/Resources/public/css/style.css
-    END-EXTERNAL-STYLESHEETS #}
+There is a `cookbook entry`_ which covers in detail this topic.
 
-There are four recognized sections by RedKite CMS:
 
-.. code-block:: text
+.. note:: 
 
-    BEGIN-EXTERNAL-STYLESHEETS / END-EXTERNAL-STYLESHEETS
-    BEGIN-EXTERNAL-JAVASCRIPTS / END-EXTERNAL-JAVASCRIPTS
-    BEGIN-CMS-STYLESHEETS / END-CMS-STYLESHEETS
-    BEGIN-CMS-JAVASCRIPTS / END-CMS-JAVASCRIPTS
-
-The first sections are used to declare the website's external stylesheets files, and the second is for javascripts.
-The other two sections are used respectively to declare stylesheets or javascripts that RedKite CMS must load
-only when the CMS is active.
-
-These sections should be added at the top of the page, although none of them are mandatory.
+	Following syntaxes are not supported anymore:
+	
+		- BEGIN-EXTERNAL-STYLESHEETS / END-EXTERNAL-STYLESHEETS
+		- BEGIN-EXTERNAL-JAVASCRIPTS / END-EXTERNAL-JAVASCRIPTS
+		- BEGIN-CMS-STYLESHEETS / END-CMS-STYLESHEETS
+		- BEGIN-CMS-JAVASCRIPTS / END-CMS-JAVASCRIPTS
 
 Define the slot attributes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -423,3 +416,4 @@ Found a typo ? Something is wrong in this documentation ? `Just fork and edit it
 
 .. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
 .. _`themes internal configuration`: the-internals-of-theme-configuration
+.. _`cookbook entry`: 

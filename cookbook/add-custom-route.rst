@@ -17,8 +17,8 @@ forcing to use something you don't want to.
     This tutorial grabs some code from the Symfony2 Doctrine chapter and implements 
     some of the entities proposed there.
 	
-	You still need a configured Doctrine connection and a database which contains
-	the product table as defined by the Entity we are going to create.
+    You still need a configured Doctrine connection and a database which contains
+    the product table as defined by the Entity we are going to create.
     
 	
 Add a new route

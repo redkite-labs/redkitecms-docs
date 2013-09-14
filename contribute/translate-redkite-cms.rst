@@ -42,12 +42,12 @@ structured as follows:
     <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
         <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="1">
-                <source>The block has been successfully removed</source>
+            <trans-unit id="blocks-controller-1">
+                <source>blocks_controller_block_removed</source>
                 <target>The block has been successfully removed</target>
             </trans-unit>
-            <trans-unit id="2">
-                <source>The block has not been removed</source>
+            <trans-unit id="blocks-controller-2">
+                <source>blocks_controller_block_not_removed</source>
                 <target>The block has not been removed</target>
             </trans-unit>
             
@@ -55,9 +55,13 @@ structured as follows:
         </body>
         </file>
     </xliff>
-    
-What you must do is to replace each target section with the translation of the message in your
-language:
+
+Each text is encapsulated into a **trans-unit** tag and this one has two attributes:
+**source** and **target**.
+
+The **source** attribute is a label that describes the real text and must not be transalted,
+so you have to replace each target section with the translation of the message in your
+language. See the sample below:
 
 .. code:: xml
 
@@ -65,12 +69,12 @@ language:
     <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
         <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="1">
-                <source>The block has been successfully removed</source>
+            <trans-unit id="blocks-controller-1">
+                <source>blocks_controller_block_removed</source>
                 <target>Il blocco è stato correttamente eliminato</target>
             </trans-unit>
-            <trans-unit id="2">
-                <source>The block has not been removed</source>
+            <trans-unit id="blocks-controller-2">
+                <source>blocks_controller_block_not_removed</source>
                 <target>Il blocco non è stato eliminato</target>
             </trans-unit>
             

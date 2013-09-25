@@ -144,4 +144,4 @@ Found a typo ? Something is wrong in this documentation ? `Just fork and edit it
 
 .. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
 .. _`install RedKite CMS`: http://redkite-labs.com/download-redkite-cms-built-on-top-of-symfony2-and-twitter-bootstrap-frameworks
-.. _`Users Manual`: http://alphalemon.com/user-manual-part-1
+.. _`Users Manual`: http://redkite-labs.com/redkite-cms-practical-manual-part-1

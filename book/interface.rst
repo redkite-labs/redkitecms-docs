@@ -70,4 +70,4 @@ Found a typo ? Something is wrong in this documentation ? `Just fork and edit it
 
 .. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
 .. _`blocks management`: redkite-cms-inline-contents-editor
-.. _`navigate through the website`: alphalemon-cms-website-navigation
+.. _`navigate through the website`: redkite-cms-website-navigation

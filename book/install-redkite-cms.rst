@@ -387,7 +387,7 @@ If the bak file does not exist, it means that the file has not been changed yet.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
+.. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
 .. _`composer`: http://getcomposer.org
 .. _`RedKite CMS sandbox`: download-alphalemon-cms-for-symfony2-framework
 .. _`Symfony2 setup and configuration tutorial`: http://symfony.com/doc/current/book/installation.html#configuration-and-setup

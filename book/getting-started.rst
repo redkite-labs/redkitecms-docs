@@ -46,7 +46,7 @@ impatient, or take it easy and continue reading `the book`_.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
+.. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
 .. _`learn more about it`: http://symfony.com
 .. _`official gallery` : http://builtwithbootstrap.com/
 .. _`how to install` : how-to-install-alphalemon-cms

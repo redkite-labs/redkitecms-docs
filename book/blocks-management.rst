@@ -175,4 +175,4 @@ provided by each third-parties block.
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
 .. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
-.. _`dedicated tutorial` : add-a-new-block-app-to-alphalemon-cms
+.. _`dedicated tutorial` : add-a-new-block-app-to-redkite-cms

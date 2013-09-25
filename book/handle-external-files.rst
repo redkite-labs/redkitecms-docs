@@ -81,4 +81,4 @@ When you want only to move a file or a folder you can use drag and drop too.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
+.. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs

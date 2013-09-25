@@ -414,6 +414,6 @@ This code overrides the **AwesomeThemeBundle's home.html.twig** template, replac
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
+.. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
 .. _`themes internal configuration`: the-internals-of-theme-configuration
 .. _`cookbook entry`: 

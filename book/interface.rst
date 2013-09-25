@@ -16,7 +16,7 @@ When the CMS is started, the home page is loaded and you can start immediately e
 
 The interface has been minimized to have the less impact on page:
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-1.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-1.jpg
 
 Edit contents
 ~~~~~~~~~~~~~
@@ -25,7 +25,7 @@ To edit contents, simply click on the **Edit** button: this operation makes
 the editable blocks active and ready for changes. The edit block toggles to
 **Stop**
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-3.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-3.jpg
 
 A **Block** is such a container for a particular kind of content, so we may have
 a block that contains an hypertext content, a block that contains an image, a block 
@@ -53,13 +53,13 @@ The toolbar is placed at the top of the page and is hidden by default. In the mi
 top of the screen there is a small tab with a white down arrow that opens the toolbar
 when you click over it.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-2.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-2.jpg
 
 The toolbar contains all the commands you need to manage the website, like pages, languages,
 themes and more. The most of this commands open a panel that scrolls down from the toolbar and
 inside this panel there are rendered the interfaces that let you manage the section required.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-4.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-4.jpg
 
 At last, from the toolbar, you can change the RedKite CMS interface language too.
 

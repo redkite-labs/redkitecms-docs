@@ -22,7 +22,7 @@ The user interface
 
 Open the top toolbar and click on the **Themes** button to open the panel.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-19.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-19.jpg
 
 The themes panel is divided in two columns, on the left there is rendered
 the theme in use and on the right column there are displayed all the available

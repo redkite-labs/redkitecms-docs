@@ -15,14 +15,14 @@ A Block come always with an editor able to handled its content. Usually each edi
 rendered inside a popover placed under the block to edit, except hypertext contents, which
 are directly managed on the page, using an inline editor.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-5.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-5.jpg
 
 Here you can see the editor for a Twitter Bootstrap button.
 
 The rectangle, that surrounds the block you are editing, changes to blue but the **Blocks menu** 
 remains active, so you can always change the editor just clicking on another block.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-6.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-6.jpg
 
 
 Interact with blocks
@@ -40,7 +40,7 @@ which contains three icons:
 2. Cross icon moves the block
 3. Trash icon removes the active block
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-7.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-7.jpg
     
 .. note::
 
@@ -57,14 +57,14 @@ in groups. RedKite CMS comes with several base blocks which are grouped under th
 **Default** group, while other listed blocks could have been added by third-parties themes
 or could have been required directly from the application
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-8.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-8.jpg
 
 When you add an additional App-Block to RedKite CMS, this is displayed under the 
 group it is assigned by the block's developer.
 
 To add a block to the page simply click over it.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-9.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-9.jpg
 
 Here a new hypertext content block has been added.
 
@@ -74,7 +74,7 @@ Remove a block
 To remove a block you must highlight it and then click on the **trash icon** placed 
 into the small toolbar attached to the block highlighter.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-10.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-10.jpg
 
 You will be prompted to confirm the operation.
 
@@ -87,7 +87,7 @@ its area to open the editor.
 Usually a RedKite CMS block has an editor rendered into a popover placed under the active 
 block, but the default hypertext editor let you edit blocks inline on the page.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-11.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-11.jpg
 
 Each editor is different than the others, so you may have a form where you can enter the
 attributes for an image, you may have a single textarea where to enter a script from
@@ -103,7 +103,7 @@ case RedKite CMS adds a place-holder that explains this situation.
 
 This place-holder works as a normal block with the only difference that it is not editable.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-12.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-12.jpg
 
 Included blocks
 ^^^^^^^^^^^^^^^
@@ -114,19 +114,19 @@ editable one by one and the including block may be editable too.
 A perfect example to explain this kind of block, is the **BootbusinessThumbnail** App-Block.
 It is a gray bordered container that includes an image and a hypertext.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-13.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-13.jpg
 
 You can change the image
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-14.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-14.jpg
 
 modify the hypertext to describe the image 
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-15.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-15.jpg
 
 and change the size of the container, editing the container block.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-16.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-16.jpg
 
 .. note::
 
@@ -148,7 +148,7 @@ Plus icon adds another block next the one you clicked, trash icon removes the bl
 A perfect example is the **BootbusinessThumbnailsList** which displays one or more
 **BootbusinessThumbnail** blocks in an horizontal row.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-17.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-17.jpg
 
 This block is designed to add always a BootbusinessThumbnail: this means that, when you
 click the add button a new thumbnail is added.

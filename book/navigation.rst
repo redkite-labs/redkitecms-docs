@@ -24,7 +24,7 @@ where are listed the whole website languages and pages.
 Just click on the **Nav** button and the panel opens. Now choose the page or language
 to move to from the appropriate combobox and RedKite CMS will immediately move to.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-18.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-18.jpg
 
 
 Edit an internal link

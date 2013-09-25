@@ -9,7 +9,7 @@ The panel interface
 Website languages are managed using the **Languages panel**: click the **Languages** 
 button on the main toolbar placed at the top of the page to open it.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-20.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-20.jpg
 
 The panel is divided in two columns: the bigger placed on the left contains the interface 
 to manage a language's attributes, while on the right there is a list which contains all 
@@ -21,12 +21,12 @@ Add a new language
 To add a new language, simply choose the one you want to add to your website from 
 the **Language** combobox, then click the  **Save** button.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-21.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-21.jpg
 
 If you want that the new language will become the website main language check the 
 **Is main** checkbox. 
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-22.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-22.jpg
 
 The website's main language is the first language displayed when a user, that browses 
 your website, does not require any specific language, for example http://redkite-labs.com 

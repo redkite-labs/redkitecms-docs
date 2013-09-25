@@ -42,16 +42,16 @@ Add a new Role
 
 Click the **Security** button on the top toolbar, to open the security panel
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-31.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-31.jpg
 
 then click the **Roles** button placed beside the **New** button, under the users list.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-32.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-32.jpg
 
 The available roles are now listed. Click the **New** button and enter the new role 
 into the **Role** textbox. 
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-33.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-33.jpg
 
 .. note::
 
@@ -80,7 +80,7 @@ Users management
 Users management works exactly as explained for roles, the only difference is
 about the number of information required, which is higher for users than roles.
 
-.. image:: //bundles/alphalemonwebsite/media/manual/img-34.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/img-34.jpg
 
 
 Advanced configuration

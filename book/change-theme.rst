@@ -53,7 +53,7 @@ placed under the **BootbusinessTheme** to start this procedure.
 A new window opens and the current Theme's templates are listed on the left and
 near each template, there is a combo box which contains the new Theme's templates.
 
-.. image:: //bundles/alphalemonwebsite/media/change_theme/img_01.jpg
+.. image:: //bundles/redkitelabswebsite/media/change_theme/img_01.jpg
 
 RedKite CMS automatically selects the templates with the same name, others must be
 selected manually.
@@ -67,7 +67,7 @@ The first one is automatically mapped because the **BootbusinessTheme** has a te
 named with the same name, while I must manually map the **internal** template. I choose 
 the one named **empty**, simply choosing it from the combo box.
 
-.. image:: //bundles/alphalemonwebsite/media/change_theme/img_02.jpg
+.. image:: //bundles/redkitelabswebsite/media/change_theme/img_02.jpg
 
 Everything is right now, so I click the **Change** button to start the procedure.
 
@@ -77,7 +77,7 @@ Map slots
 At this point we want to recover the most of the previous contents. This step is
 achieved matching the slots from the previous template with the ones of the current template.
 
-.. image:: //bundles/alphalemonwebsite/media/change_theme/img_03.jpg
+.. image:: //bundles/redkitelabswebsite/media/change_theme/img_03.jpg
 
 When the page has been reloaded, RedKite CMS added the **Slots** and the **Finalize** 
 buttons to **Commands Panel** on the left.
@@ -85,7 +85,7 @@ buttons to **Commands Panel** on the left.
 To start matching the slots click on the **Slots** button, blocks are now active and
 are surrounded by a green square when you place the mouse over them.
 
-.. image:: //bundles/alphalemonwebsite/media/change_theme/img_04.jpg
+.. image:: //bundles/redkitelabswebsite/media/change_theme/img_04.jpg
 
 Now I click on the content that contains the main slider and a panel that contains
 all the previous template's slot names appears on the right bottom corner.
@@ -95,11 +95,11 @@ Slots are grouped by repeated status.
 redkite-labs.com has a slider on the homepage, so I want to match this slot to import the 
 previous slot blocks into this one: to do this I simply click on the screenshot_box.
 
-.. image:: //bundles/alphalemonwebsite/media/change_theme/img_05.jpg
+.. image:: //bundles/redkitelabswebsite/media/change_theme/img_05.jpg
 
 That's ok and I click the **Save** button to confirm.
 
-.. image:: //bundles/alphalemonwebsite/media/change_theme/img_06.jpg
+.. image:: //bundles/redkitelabswebsite/media/change_theme/img_06.jpg
 
 Obviously images don't fit, so I should redefine them, but this is beyond the scope of 
 this tutorial.
@@ -114,12 +114,12 @@ Override a template
 Now I want to import the content placed on **main_content** slot into the slot where 
 there is displayed the first rows of thumbnails. 
 
-.. image:: //bundles/alphalemonwebsite/media/change_theme/img_07.jpg
+.. image:: //bundles/redkitelabswebsite/media/change_theme/img_07.jpg
 
 In this case the paragraph's title is written inside this block, while the new template 
 separates the title from the paragraph just above.
 
-.. image:: //bundles/alphalemonwebsite/media/change_theme/img_08.jpg
+.. image:: //bundles/redkitelabswebsite/media/change_theme/img_08.jpg
 
 There two ways to adjust this situation:
 
@@ -167,7 +167,7 @@ any more.
 
 I repeat the same steps to import the **video_content** slot.
 
-.. image:: //bundles/alphalemonwebsite/media/change_theme/img_09.jpg
+.. image:: //bundles/redkitelabswebsite/media/change_theme/img_09.jpg
 
 Old alphalemon.com website had more slots than the current template, so I had to add 
 some new slots to the overriding template:
@@ -214,13 +214,13 @@ Then I must recreate the theme structure using the built-in command:
     
 Now the page must be reloaded to get the changes just made. 
 
-.. image:: //bundles/alphalemonwebsite/media/change_theme/img_10.jpg
+.. image:: //bundles/redkitelabswebsite/media/change_theme/img_10.jpg
 
 RedKite CMS does not know these new slots, so it displays them as empty slots.
 I just need to map these new slots as did before, to import the contents from previous
 theme.
 
-.. image:: //bundles/alphalemonwebsite/media/change_theme/img_11.jpg
+.. image:: //bundles/redkitelabswebsite/media/change_theme/img_11.jpg
 
 Override an extended template
 -----------------------------
@@ -228,7 +228,7 @@ Override an extended template
 I repeat the mapping process for the footer's blocks. At the end of this step I must
 be sure to avoid to render the section's titles, because titles come with contents.
 
-.. image:: //bundles/alphalemonwebsite/media/change_theme/img_12.jpg
+.. image:: //bundles/redkitelabswebsite/media/change_theme/img_12.jpg
 
 The footer is a common section shared between templates, this means that one or more
 templates used by this theme inherit from the view where the footer section is defined.
@@ -296,7 +296,7 @@ To load the stylesheet I add a new entry to **stylesheets** function into the
         {% endstylesheets %}
     {% endblock %}
 
-.. image:: //bundles/alphalemonwebsite/media/change_theme/img_13.jpg
+.. image:: //bundles/redkitelabswebsite/media/change_theme/img_13.jpg
 
 Obviously I should implement more adjustments to have a nicer result, but this is 
 beyond the scope of this tutorial.
@@ -327,12 +327,12 @@ main menu.
 As last thing, I enter inside one of the other pages, no matters which one, to recover
 the main content, so I repeated the operation to assign the previous slot to the new one.
 
-.. image:: //bundles/alphalemonwebsite/media/change_theme/img_14.jpg
+.. image:: //bundles/redkitelabswebsite/media/change_theme/img_14.jpg
 
 This block is a File content loaded with twig, so when I do the change, the operation
 seems to fail, but it is only needed a page reload to have it working as expected.
 
-.. image:: //bundles/alphalemonwebsite/media/change_theme/img_15.jpg
+.. image:: //bundles/redkitelabswebsite/media/change_theme/img_15.jpg
 
 The most important thing to notice is that, while this slot is repeated at page level, 
 - this means that each page has its own content which differs from other pages -, this 
@@ -363,7 +363,7 @@ I remove the page title as well:
         {% endblock %} 
     </div>
 
-.. image:: //bundles/alphalemonwebsite/media/change_theme/img_16.jpg
+.. image:: //bundles/redkitelabswebsite/media/change_theme/img_16.jpg
 
 Finalize the theme
 ------------------

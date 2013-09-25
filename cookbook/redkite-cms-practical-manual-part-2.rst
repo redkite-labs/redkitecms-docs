@@ -8,12 +8,12 @@ This second part is focused on pages management.
 Add a new page
 ~~~~~~~~~~~~~~
 
-.. image:: //bundles/alphalemonwebsite/media/bootbusiness/img17.jpg
+.. image:: //bundles/redkitelabswebsite/media/bootbusiness/img17.jpg
 
 Click on the toolbar down tab to open it and click on the "Pages" button to open
 the pages management panel.
 
-.. image:: //bundles/alphalemonwebsite/media/bootbusiness/img18.jpg
+.. image:: //bundles/redkitelabswebsite/media/bootbusiness/img18.jpg
 
 Type "product 1" in the "Page name" textbox, choose "product" from the "Templates" combobox,
 and click the "Published" checkbox to immediately publish the page when you deploy the website
@@ -39,16 +39,16 @@ the panel by clicking the bottom of panel.
 Manage menu links on main toolbar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: //bundles/alphalemonwebsite/media/bootbusiness/img19.jpg
+.. image:: //bundles/redkitelabswebsite/media/bootbusiness/img19.jpg
 
 Place the cursor over the toolbar container's area and click into it.
 
-.. image:: //bundles/alphalemonwebsite/media/bootbusiness/img20.jpg
+.. image:: //bundles/redkitelabswebsite/media/bootbusiness/img20.jpg
 
 Click on the red icon under the first link to remove it, then repeat the operation
 for the other one, then click into the toolbar and click the "Add" button.
 
-.. image:: //bundles/alphalemonwebsite/media/bootbusiness/img21.jpg
+.. image:: //bundles/redkitelabswebsite/media/bootbusiness/img21.jpg
 
 Choose the "Nav dropdown" block to add a dropdown menu to the toolbar. 
 
@@ -56,19 +56,19 @@ Choose the "Nav dropdown" block to add a dropdown menu to the toolbar.
 
     All these steps will be simplified when the "Move" function is implemented.
 
-.. image:: //bundles/alphalemonwebsite/media/bootbusiness/img22.jpg
+.. image:: //bundles/redkitelabswebsite/media/bootbusiness/img22.jpg
 
 Put your mouse into the dropdown block's area and click to start editing the block.
 
 Click into the "Button Text" textbox and type "Products and Services", then click the "Menu items"
 button. 
 
-.. image:: //bundles/alphalemonwebsite/media/bootbusiness/img23.jpg
+.. image:: //bundles/redkitelabswebsite/media/bootbusiness/img23.jpg
 
 Click on the "Item 1" and choose "redkite-content-management-system" to assign the page 
 to a link.
 
-.. image:: //bundles/alphalemonwebsite/media/bootbusiness/img24.jpg
+.. image:: //bundles/redkitelabswebsite/media/bootbusiness/img24.jpg
 
 Now right-click "Item 1", choose "Rename" and type "RedKite CMS". Click the 
 Save button to confirm.
@@ -90,7 +90,7 @@ feel free to play with contents on this page in your own time.
 
 When you are done, click the nav button to open the navigation menu.
 
-.. image:: //bundles/alphalemonwebsite/media/bootbusiness/img26.jpg
+.. image:: //bundles/redkitelabswebsite/media/bootbusiness/img26.jpg
 
 From this panel, you may choose the language and the page to move to. This panel is very
 useful because it gives you access to all the pages of the website, so when a page is
@@ -118,7 +118,7 @@ Add these pages and always check the "Published" checkbox:
 Add a new "Nav dropdown" to the top navbar, name it "About", open the "Menu items"
 and link the first three pages.
 
-.. image:: //bundles/alphalemonwebsite/media/bootbusiness/img27.jpg
+.. image:: //bundles/redkitelabswebsite/media/bootbusiness/img27.jpg
 
 Now you must add a new item, so right click the "Menu" node and click "Create" from the
 contextual menu, rename the item just added as "News" and add the last Events item.
@@ -132,16 +132,16 @@ each work is represented by an image.
 I think a thumbnail is more appropriate to better represent a work, so I use this block 
 instead of images. 
 
-.. image:: //bundles/alphalemonwebsite/media/bootbusiness/img29.jpg
+.. image:: //bundles/redkitelabswebsite/media/bootbusiness/img29.jpg
 
 Change the "Page title" in "Our works" ad main title and  "the portfolio" ad subtitle,
 then remove the block in the middle of the page.
 
-.. image:: //bundles/alphalemonwebsite/media/bootbusiness/img30.jpg
+.. image:: //bundles/redkitelabswebsite/media/bootbusiness/img30.jpg
 
 Add a new "Thumbnail list" block.
 
-.. image:: //bundles/alphalemonwebsite/media/bootbusiness/img31.jpg
+.. image:: //bundles/redkitelabswebsite/media/bootbusiness/img31.jpg
 
 Add now two thumbnails in this block, then add another "Thumbnail list" block for other works.
 
@@ -171,7 +171,7 @@ The events page
 
 Open the events page. Here is a listing of the company's events. 
 
-.. image:: //bundles/alphalemonwebsite/media/bootbusiness/img34.jpg
+.. image:: //bundles/redkitelabswebsite/media/bootbusiness/img34.jpg
 
 To represent each event there is a dedicated block, the "Bootbusiness Event", so remove 
 the default content and add a new Event block.
@@ -189,12 +189,12 @@ and link them in the top toolbar, adding two Link blocks.
 The faq page
 ~~~~~~~~~~~~
 
-.. image:: //bundles/alphalemonwebsite/media/bootbusiness/img35.jpg
+.. image:: //bundles/redkitelabswebsite/media/bootbusiness/img35.jpg
 
 Open the faq page. This page shows a frequently questions list, which is managed by
 an Accordion block, so remove the main content and add a new Accordion.
 
-.. image:: //bundles/alphalemonwebsite/media/bootbusiness/img36.jpg
+.. image:: //bundles/redkitelabswebsite/media/bootbusiness/img36.jpg
 
 This block is a list, so it is managed exactly like the main toolbar's links, while each
 accordion item is managed by a Text block.

@@ -218,7 +218,7 @@ the contacts on your own.
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
 .. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
-.. _`this tutorial`: http://alphalemon.com/how-to-change-a-content-at-runtime
+.. _`this tutorial`: http://redkite-labs.com/how-to-change-a-content-at-runtime
 
 
 

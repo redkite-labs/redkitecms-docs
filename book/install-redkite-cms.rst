@@ -389,7 +389,7 @@ Found a typo ? Something is wrong in this documentation ? `Just fork and edit it
 
 .. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
 .. _`composer`: http://getcomposer.org
-.. _`RedKite CMS sandbox`: download-alphalemon-cms-for-symfony2-framework
+.. _`RedKite CMS sandbox`: download-redkite-cms-built-on-top-of-symfony2-and-twitter-bootstrap-frameworks
 .. _`Symfony2 setup and configuration tutorial`: http://symfony.com/doc/current/book/installation.html#configuration-and-setup
 .. _`yui compressor`: https://github.com/yui/yuicompressor/downloads
 .. _`Symfony2 book`: http://symfony.com/doc/current/book/page_creation.html#before-you-begin-create-the-bundle

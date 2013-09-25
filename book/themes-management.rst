@@ -77,4 +77,4 @@ Found a typo ? Something is wrong in this documentation ? `Just fork and edit it
 
 .. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
 .. _`dedicated tutorial`: http://redkite-labs.com/add-a-custom-theme-to-redkite-cms
-.. _`detailed tutorial`: how-to-change-the-website-theme-with-alphalemon-cms
+.. _`detailed tutorial`: how-to-change-the-website-theme-with-redkite-cms

@@ -50,5 +50,5 @@ Found a typo ? Something is wrong in this documentation ? `Just fork and edit it
 .. _`learn more about it`: http://symfony.com
 .. _`official gallery` : http://builtwithbootstrap.com/
 .. _`how to install` : how-to-install-redkite-cms
-.. _`quick start` : alphalemon-cms-practical-manual-part-1
+.. _`quick start` : redkite-cms-practical-manual-part-1
 .. _`the book` : alphalemon-cms-backend-editor-and-stage-environments-design

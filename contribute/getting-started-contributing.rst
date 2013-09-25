@@ -82,6 +82,6 @@ to submit those changes back via a pull request.
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
 .. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
-.. _`Go to source code section`: how-to-get-alphalemon-cms-source-code-and-bundle-structure
+.. _`Go to source code section`: how-to-get-redkite-cms-source-code-and-bundle-structure
 .. _`Go to run the tests section`: https://github.com/redkite-labs/redkitecms-docs
 .. _`Go to contributing section`: https://github.com/redkite-labs/redkitecms-docs

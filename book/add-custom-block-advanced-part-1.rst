@@ -588,4 +588,4 @@ asset to RedKite CMS and to override the default action which saves the block's 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
 .. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
-.. _`Add a new App-Block`: http://www.alphalemon.com/add-a-new-block-app-to-alphalemon-cms
+.. _`Add a new App-Block`: http://redkite-labs.com/add-a-new-block-app-to-redkite-cms

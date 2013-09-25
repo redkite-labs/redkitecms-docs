@@ -227,6 +227,6 @@ rule as follows:
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
+.. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
 .. _`Symfony2 documentation`: http://symfony.com/doc/current/book/security.html
 .. _`Symfony2 security chapter`: http://symfony.com/doc/current/book/security.html

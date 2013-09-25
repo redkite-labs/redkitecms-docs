@@ -89,6 +89,6 @@ The Bundle's structure is the following:
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
+.. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
 .. _`Symfony2 code standards`: http://symfony.com/doc/current/contributing/code/standards.html
 .. _`Best Practices for structuring Bundles`: http://symfony.com/doc/current/cookbook/bundles/best_practices.html

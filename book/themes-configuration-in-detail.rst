@@ -291,4 +291,4 @@ RedKite CMS adds two place-holders to identify the auto-generated code.
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
 .. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
-.. _`add a new theme`: add-a-custom-theme-to-alphalemon-cms
+.. _`add a new theme`: add-a-custom-theme-to-redkite-cms

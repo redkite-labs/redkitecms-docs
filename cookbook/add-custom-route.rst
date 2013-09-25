@@ -266,6 +266,6 @@ RedKite CMS and how to manage data from a database, using **Doctrine** ORM inste
 
 Found a typo? Is something not correct in this documentation? `Just fork and edit it!`_
 
-.. _`Just fork and edit it!`: https://github.com/redkite/redkite-docs
-.. _`Add a new App-Block`: http://alphalemon.com/add-a-new-block-app-to-alphalemon-cms
-.. _`How to change a content at runtime`: http://alphalemon.com/how-to-change-a-content-at-runtime
+.. _`Just fork and edit it!`: https://github.com/redkite-labs/redkitecms-docs
+.. _`Add a new App-Block`: http://redkite-labs.com/add-a-new-block-app-to-redkite-cms
+.. _`How to change a content at runtime`: http://redkite-labs.com/how-to-change-a-content-at-runtime

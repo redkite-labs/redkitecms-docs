@@ -208,5 +208,5 @@ because RedKite CMS removes all the page attributes.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/redkite/redkite-docs
+.. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
 .. _`sitemap protocol`: http://www.sitemaps.org/protocol.html

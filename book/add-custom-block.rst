@@ -612,4 +612,4 @@ template to display the content and create an editor to manage the content.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/RedKite/RedKite-docs
+.. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs

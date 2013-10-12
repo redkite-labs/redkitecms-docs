@@ -126,9 +126,15 @@ From the top level folder of your Symfony2 application, run the following comman
 
     php app/console generate:bundle
 
-By default RedKite CMS looks for the **Acme/WebSite** bundle. Obviously you can
-choose any name you wish for your bundle: the RedKite CMS installer will ask you
-for this.
+Here you should enter your default company name when asked. For example RedKite Labs website
+deploy bundle has been called **RedKiteLabs/WebSiteBundle** where **RedKiteLabs**
+is the company name and **WebSiteBundle** is the bundle name.
+
+.. note::
+
+    RedKite CMS installer proposes by default **Acme** as company name and **WebSiteBundle** 
+    as bundle: just enter yours when you will be asked.
+
 
 Add the RedKite CMS installer bundle to AppKernel
 ----------------------------------------------------

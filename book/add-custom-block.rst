@@ -385,7 +385,7 @@ The **button.html.twig** template contains the following code:
 
 .. code-block:: jinja
 
-    {% extends "RedKiteCmsBundle:Editor:base_editor.html.twig" %}
+    {% extends "{% extends 'RedKiteCmsBundle:Block:Editor/_editor.html.twig' %}" %}
 
     {% block body %}
 
@@ -399,7 +399,7 @@ change it as follows
 .. code-block:: jinja
 
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/button.html.twig
-    {% extends "RedKiteCmsBundle:Editor:base_editor.html.twig" %}
+    {% extends "{% extends 'RedKiteCmsBundle:Block:Editor/_editor.html.twig' %}" %}
     
     {% block body %}
     
@@ -428,7 +428,7 @@ the classical approach: this means that the editor is directly bundled with the 
 into that RDF annotation.
 
 You might have noticed that the **button.html.twig** template already extends the 
-**RedKiteCmsBundle:Editor:base_editor.html.twig** where are defined the attribute used
+**{% extends 'RedKiteCmsBundle:Block:Editor/_editor.html.twig' %}** where are defined the attribute used
 by RedKite CMS to render the block, which is assigned to **editor** variable in the
 parent template. 
 

@@ -109,7 +109,7 @@ and paste the following code:
 .. code-block:: jinja
 
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Thumbnail/thumbnail.html.twig
-    {% extends "RedKiteCmsBundle:Editor:base_editor.html.twig" %}
+    {% extends "{% extends 'RedKiteCmsBundle:Block:Editor/_editor.html.twig' %}" %}
 
     {% block body %}
     {% if key is not defined %}
@@ -356,7 +356,7 @@ open it and paste this code:
 .. code-block:: jinja
 
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Thumbnail/thumbnails.html.twig
-    {% extends "RedKiteCmsBundle:Editor:base_editor.html.twig" %}
+    {% extends "{% extends 'RedKiteCmsBundle:Block:Editor/_editor.html.twig' %}" %}
 
     {% block body %}
     <ul class="thumbnails al-thumbnail-list" {{ editor|raw }}>

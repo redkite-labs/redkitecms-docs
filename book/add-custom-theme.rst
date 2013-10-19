@@ -91,9 +91,9 @@ The Theme folder could be basically structured as follows:
 .. code-block:: text
 
 	views
-		Theme
-			home.html.twig
-			internal.html.twig
+            Theme
+                home.html.twig
+                internal.html.twig
 
 This theme has two templates: the **home** and the **internal**. This structure will 
 definitely work, but, instead of that, a real world example would probably look more 
@@ -280,12 +280,12 @@ There is a `cookbook entry`_ which covers in detail this topic.
 
 .. note:: 
 
-	Following syntaxes are not supported anymore:
+    Following syntaxes have been deprecated:
 	
-		- BEGIN-EXTERNAL-STYLESHEETS / END-EXTERNAL-STYLESHEETS
-		- BEGIN-EXTERNAL-JAVASCRIPTS / END-EXTERNAL-JAVASCRIPTS
-		- BEGIN-CMS-STYLESHEETS / END-CMS-STYLESHEETS
-		- BEGIN-CMS-JAVASCRIPTS / END-CMS-JAVASCRIPTS
+        - BEGIN-EXTERNAL-STYLESHEETS / END-EXTERNAL-STYLESHEETS
+        - BEGIN-EXTERNAL-JAVASCRIPTS / END-EXTERNAL-JAVASCRIPTS
+        - BEGIN-CMS-STYLESHEETS / END-CMS-STYLESHEETS
+        - BEGIN-CMS-JAVASCRIPTS / END-CMS-JAVASCRIPTS
 
 Define the slot attributes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~

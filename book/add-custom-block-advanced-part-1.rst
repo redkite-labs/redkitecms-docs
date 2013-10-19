@@ -168,7 +168,7 @@ paste the following code:
 .. code-block:: jinja
 
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/_button_params.html.twig
-    {% extends "RedKiteCmsBundle:Editor:base_editor.html.twig" %}
+    {% extends "{% extends 'RedKiteCmsBundle:Block:Editor/_editor.html.twig' %}" %}
 
     {% set button_type = (data.button_type is defined and data.button_type) ? " " ~ data.button_type : "" %}
     {% set button_attribute = (data.button_type is defined and data.button_type) ? " " ~ data.button_attribute : "" %}

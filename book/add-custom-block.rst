@@ -385,7 +385,7 @@ The **button.html.twig** template contains the following code:
 
 .. code-block:: jinja
 
-    {% extends "{% extends 'RedKiteCmsBundle:Block:Editor/_editor.html.twig' %}" %}
+    {% extends 'RedKiteCmsBundle:Block:Editor/_editor.html.twig' %}
 
     {% block body %}
 
@@ -399,7 +399,7 @@ change it as follows
 .. code-block:: jinja
 
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/button.html.twig
-    {% extends "{% extends 'RedKiteCmsBundle:Block:Editor/_editor.html.twig' %}" %}
+    {% extends 'RedKiteCmsBundle:Block:Editor/_editor.html.twig' %}
     
     {% block body %}
     

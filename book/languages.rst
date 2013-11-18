@@ -11,9 +11,9 @@ button on the main toolbar placed at the top of the page to open it.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/img-20.jpg
 
-The panel is divided in two columns: the bigger placed on the left contains the interface 
-to manage a language's attributes, while on the right there is a list which contains all 
-the website languages.
+The languages panel is divided in two columns: on the left are listed all the languages
+used in the website, while on the right it is placed the interface to add or edit
+a language.
 
 
 Add a new language
@@ -29,8 +29,8 @@ If you want that the new language will become the website main language check th
 .. image:: //bundles/redkitelabswebsite/media/manual/img-22.jpg
 
 The website's main language is the first language displayed when a user, that browses 
-your website, does not require any specific language, for example http://redkite-labs.com 
-address.
+your website, does not require any specific language. This means that when the http://redkite-labs.com 
+address is requested, the language used is the one marked as the main language.
 
 When you add a new language, RedKite CMS copies all the main language contents 
 to the new language, generates a temporary permalink for each page, prefixing it with 
@@ -40,8 +40,8 @@ the new language name, and updates the linked permalinks for the new language's 
 Select and de-select a language
 -------------------------------
 
-To select a language you must choose it from the languages list on the right, clicking 
-on the language name. 
+To select a language just click on the language name from the website languages list. 
+This will highlight the language and fill up the form with the language's values. 
 
 To deselect a language, just click on the selected one.
 
@@ -51,12 +51,8 @@ Edit a language
 To edit a language you must first select it from the languages list, then you can 
 choose a new language from the **Language** combobox.
 
-When a language is to become the main language of the site, you must select that language 
-and check the **Is main** checkbox: you cannot degrade the current main language to work 
-out that job.
-
-When you want to change the website main language, you must select the language you 
-want to promote and edit it checking the **Is main** checkbox. 
+When you want to promote a language as the website main language, you must select 
+the language you want to promote and edit it, checking on the **Is main** checkbox. 
 
 You cannot degrade the current main language, this means you cannot unchecked the **Is main**
 checkbox for the main language.
@@ -66,8 +62,8 @@ Click the **Save** button to confirm your changes.
 Delete a language
 -----------------
 
-To delete a language you must first select it, then you must click the **Delete**
-button placed under the languages list.
+To delete a language, just click on the thrash icon placed on the right of the language 
+you want to remove.
 
 You will be prompted to confirm the operation.
 

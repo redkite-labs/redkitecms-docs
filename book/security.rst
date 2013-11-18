@@ -48,10 +48,9 @@ then click the **Roles** button placed beside the **New** button, under the user
 
 .. image:: //bundles/redkitelabswebsite/media/manual/img-32.jpg
 
-The available roles are now listed. Click the **New** button and enter the new role 
-into the **Role** textbox. 
-
-.. image:: //bundles/redkitelabswebsite/media/manual/img-33.jpg
+The website roles are now listed on the left while the interface to add or edit a role
+is on the right. To add a new role just fill up the **Role** field when any other role
+is selected.
 
 .. note::
 
@@ -59,19 +58,17 @@ into the **Role** textbox.
     
 Click on the **Save** button to confirm your changes.
 
-Click on the **Roles** button to return back to roles list.
-
 Edit a Role
 ~~~~~~~~~~~
 
-To edit a role, simply click on the **Edit** button near the role you want to 
-modify, then proceed as explained in **Add a new Role** section.
+To edit a role just select it clicking on its name and change the value in the form
+on the right.
 
 Delete a Role
 ~~~~~~~~~~~~~
 
-To delete a role, simply click on the **Delete** button near the role you want to 
-remove and confirm your choice.
+To delete a role, just click on the thrash icon placed on the right of the role you 
+want to remove.
 
 
 Users management

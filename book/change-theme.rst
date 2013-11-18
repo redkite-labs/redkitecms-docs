@@ -135,7 +135,7 @@ explained in the `Symfony2 cookbook`_.
 
 .. note::
 
-    Since now, you should switch to dev environment **- alcms_dev.php -** because
+    Since now, you should switch to dev environment **- rkcms_dev.php -** because
     working with templates in prod environment requires frequently to clear the cache 
     to have your change displayed. 
 
@@ -210,7 +210,7 @@ Then I must recreate the theme structure using the built-in command:
 
 .. code:: text
 
-    php app/console redkitecms:generate:templates BootbusinessThemeBundle --env=alcms
+    php app/console redkitecms:generate:templates BootbusinessThemeBundle --env=rkcms
     
 Now the page must be reloaded to get the changes just made. 
 

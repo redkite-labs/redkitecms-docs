@@ -7,15 +7,15 @@ Navigation
 ----------
 
 Moving through the website pages when you are in the CMS backend, is a really simple
-operation: you can just click on a link that points an internal page and RedKite 
-CMS will move to that page. 
+operation: just click on a link that points an internal page and RedKite CMS will 
+move to that page. 
 
-To navigate in this way, the page you are browsing, must not be in in contents
-editing mode.
+The page you are browsing must not be in in editing mode to navigate through the website
+pages.
 
-Sometimes the page link you want to reach is not available on the page you are browsing 
-at the moment or it may happen that that page has not been linked yet or you are in edit mode 
-and you do not want to turn off the contents editor, just to click a link on a page.
+Sometimes the page link you want to reach could not be available on the page you are  
+at the moment or it may happen that that page has not been linked yet or you are in edit 
+mode  and you do not want to turn off the contents editor, just to click a link on a page.
 
 When this situation occurs, the **Nav** menu helps you. This small blue partially 
 hidden panel is placed under the **Edit** button and contains two combo boxes 
@@ -42,8 +42,8 @@ Navigate through languages
 --------------------------
 
 As explained above you can move through website languages using the **Nav** menu but,
-in a multi-languages website, you must use the Languages Navigation Menu Block, which 
-renders a menu made from languages flags. 
+in a multi-languages website, you should use the Languages Navigation Menu Block, which 
+renders a menu made by languages flags. 
 
 Each flag is automatically linked the the page you are browsing, pointing the appropriate
 language.

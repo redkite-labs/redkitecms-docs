@@ -41,11 +41,11 @@ Run the following command from your console to generate a new App-Block bundle n
 
 .. code-block:: text
 
-    php app/console redkitecms:generate:app-block --env=alcms
+    php app/console redkitecms:generate:app-block --env=rkcms
 
 .. note::
 
-    This command must be run under the alcms environment.
+    This command must be run under the rkcms environment.
 
 It will start the standard Symfony2 bundle generator command but will ask for additional
 information.
@@ -124,15 +124,14 @@ The standard directory is fine:
 
     Target directory [/home/RedKite/www/RedKiteCmsSandbox/src]:
 
-The generator asks you to choose the format you prefer because the standard Bundles'
-generator asks for that, but, at the moment, RedKite CMS ignores your choice and uses the
-annotation type by default:
+
+To help you get started faster, the command can generate some
+code snippets for you.
 
 .. code-block:: text
 
-    Determine the format to use for the generated configuration.
+    Do you want to generate the whole directory structure [no]? 
 
-    Configuration format (yml, xml, php, or annotation) [annotation]:
 
 Now you are asked for the App-Block description, which is the one displayed in the
 contextual menu used to add a block to page:
@@ -162,12 +161,12 @@ Don't forget to let the command updates the AppKernel for you to enable the bund
 Well done! Your very first App-Bundle has been created! The App-Block just created is
 already usable.
 
-Don't forget to clear your cache for the **alcms environment** to have the App-Block working:
+Don't forget to clear your cache for the **rkcms environment** to have the App-Block working:
 
 
 .. code-block:: text
 
-    php app/console ca:c --env=alcms
+    php app/console ca:c --env=rkcms
 
 
 
@@ -399,6 +398,7 @@ change it as follows
 .. code-block:: jinja
 
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/button.html.twig
+
     {% extends 'RedKiteCmsBundle:Block:Editor/_editor.html.twig' %}
     
     {% block body %}
@@ -459,9 +459,9 @@ template contains the following code:
 
 .. code-block:: jinja
 
-    {% include "RedKiteCmsBundle:Editor:base_editor_form.html.twig" %}
+    {% include "RedKiteCmsBundle:Block:Editor/_editor_form.html.twig" %}
     
-The template includes the **RedKiteCmsBundle:Editor:base_editor_form.html.twig** a template
+The template includes the **RedKiteCmsBundle:Block:Editor/_editor_form.html.twig** a template
 delegated to render a generic form and a button to save the changes when a user clicks on it.
 
 .. note::
@@ -505,14 +505,14 @@ button's attributes. Change the class as follows:
     {
         public function buildForm(FormBuilderInterface $builder, array $options)
         {
-            parent::buildForm($builder, $options);
-            
             // Add here your fields
             $builder->add('button_text');
             $builder->add('button_type', 'choice', array('choices' => array('' => 'base', 'btn-primary' => 'primary', 'btn-info' => 'info', 'btn-success' => 'success', 'btn-warning' => 'warning', 'btn-danger' => 'danger', 'btn-inverse' => 'inverse')));
             $builder->add('button_attribute', 'choice', array('choices' => array("" => "normal", "btn-mini" => "mini", "btn-small" => "small", "btn-large" => "large")));
             $builder->add('button_tutorial_block', 'choice', array('choices' => array("" => "normal", "btn-block" => "block")));
             $builder->add('button_enabled', 'choice', array('choices' => array("" => "enabled", "disabled" => "disabled")));
+
+            parent::buildForm($builder, $options);
         }
     }
     
@@ -542,7 +542,7 @@ You must change the form's class definition as follows:
 
 .. code-block:: xml
     
-    <parameter key="bootstrap_button_tutorial_block.form.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form\AlButtonType</parameter>        
+    <parameter key="bootstrap_button_tutorial_block.form.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form\AlButtonType</parameter>
     
 Render the editor
 ~~~~~~~~~~~~~~~~~
@@ -594,10 +594,17 @@ We need to adjust it a little to reflect the changes we made:
 This function generates the form and then returns an array which contains the template
 to render, the title displayed on the popover and the form.
 
+.. note::
+
+    This block will render a Twitter Bootstrap 2.x button. The real button will implement
+    two form classes, one as this one and another dedicated to handle Twitter Bootstrap 3.x
+    parameters.
+
 Use your App-Block
 ------------------
 
-To use your new App-Block, just add it to your website!
+To use your new App-Block, enter inside RedKite CMS backend and just add it to your 
+website from the adder blocks menu.
     
 Conclusion
 ----------

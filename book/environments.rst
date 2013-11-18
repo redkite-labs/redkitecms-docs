@@ -40,7 +40,7 @@ environment definition taken from the Symfony2 book:
     http://localhost/app.php/hello/Ryan
     
 They introduced the concept of **front controller** which is a simple php file that 
-defines the unique entry point of your application.
+defines the unique entry point for the entire application.
 
 Let's explain this concept by examples. Supposing your website has three pages: home, 
 about and contacts pages.

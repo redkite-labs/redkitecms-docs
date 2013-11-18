@@ -1,3 +1,10 @@
+.. note::
+
+    This document is outdated and it is not compatible with RedKite CMS RC. It will
+    be fixed as soon as possible. 
+
+    Skip safety this chapter and move further to next one.
+
 Create the Dropdown Menu App-Block
 ==================================
 
@@ -496,7 +503,7 @@ the parameter name with **.cms**, as we did for this parameter.
 
 .. note::
 
-    Don't forget to run **php app/console assets:install web --env=alcms** to have your
+    Don't forget to run **php app/console assets:install web --env=rkcms** to have your
     assets published under the Document Root of your website.
 
 

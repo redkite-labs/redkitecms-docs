@@ -9,12 +9,12 @@ The panel interface
 Website pages are managed using the **Pages panel** click the **Pages** button on 
 the main toolbar placed at the top of the page to open it.
 
-The panel is divided in two columns: the bigger placed on the left contains the interface 
-to add and modify a page, while on the right there is a list which contains all the website 
-pages.
+The pages panel is divided in two columns: on the left are listed all the pages
+used in the website, while on the right it is placed the interface to add or edit
+a page.
 
-The panel that contains the form to manage the page information is made by tabs, so 
-there are several sections you need to fill up to add or modify a page.
+This last one is made by tabs, so there are several sections you need to fill up 
+when you want to add or modify a page.
 
 The page tab
 ------------
@@ -52,22 +52,21 @@ The home page option
 The website's home page is the first page displayed when a user, that browses your website,
 does not require any specific page, for example http://redkite-labs.com address.
 
-If you want that the page you are adding or editing will become the website home page, 
-just check this option.
+When you want to promote a page as the website main page, you must select the page 
+you want to promote and edit it, checking on the **Home page** checkbox. 
 
-When a page is to become the homepage of the site, you must select that page and check
-the **Home page** checkbox: you cannot degrade the current home page to work 
-out that job.
+You cannot degrade the current main page, this means you cannot unchecked the **Home page**
+checkbox for the main page.
 
 The home page cannot be removed from the website, so, when you need to remove it,
-you must first promote another page as home.
+you must first promote another page as the website homepage.
 
 
 The published option
 ~~~~~~~~~~~~~~~~~~~~
 This option is useful in a team where members work on the website at the same time, because
-it explicitly forces someone with appropriate rights, to declare the page as 
-ready to be published in production.
+it explicitly forces someone with appropriate rights, to declare the page ready to be 
+published in production.
 
 In fact a page is not published by default, so only the users which have enough privileges
 could change this option and declare a page as publishable.
@@ -117,7 +116,7 @@ page.
 Obviously the permalink must be consistent with contents saved in the page, otherwise 
 search engines will penalize that page and your site.
 
-This information is manipulated, when needed, as for the **Page name** attribute.
+This information is handled, when needed, as for the **Page name** attribute.
 
 The title option
 ~~~~~~~~~~~~~~~~
@@ -174,18 +173,15 @@ Add a new page
 To add a new page you must be sure that any other page is selected in the pages list 
 and that the form is completely blank. This is the situation you get when you open the panel.
 
-Fill all the required information and click the **Save** button to confirm.
+Fill up all the required information and click the **Save** button to confirm.
 
 Select and de-select a page
 ---------------------------
 
-To select a page you must choose it from the pages list on the right, clicking on the 
-page name. 
+To select a page just click on the page name from the website pages list. This will 
+highlight the page and fill up the form with the page's values. 
 
-After that, you must choose the language from the **Languages** combobox placed over 
-the pages list, to load the page's attributes for the chosen language
-
-To deselect a page, just click on it.
+To deselect a page, just click on the selected one.
 
 Edit a page
 -----------
@@ -193,15 +189,18 @@ Edit a page
 To edit a page you must first select it, then you can change what you need and click on
 the **Save** button to confirm your changes. 
 
+Change the page language
+------------------------
+
+To load the page's values for a language just choose the language from the combo-box
+placed inside the page row you want to edit.
+
 
 Delete a page
 -------------
 
-To delete a page you must first select it, then you must click the **Delete**
-button placed under the pages list.
-
-When you need to do this operation, you are not required to choose a language
-because RedKite CMS removes all the page attributes.
+To delete a page, just click on the thrash icon placed on the right of the page you 
+want to remove.
 
 
 .. class:: fork-and-edit

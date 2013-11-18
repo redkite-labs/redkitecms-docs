@@ -1,12 +1,12 @@
-Add the Sunshine Theme-Block to RedKite CMS
-==============================================
+Add the Bootbusiness Theme-Block to RedKite CMS
+===============================================
 
-A simple theme.
+A great theme design for a professional website. This is the default theme that comes with a Standard RedKite CMS installation.
 
 Installation
 ------------
 
-You can add the **Sunshine Theme-Block** to the application managed by RedKite 
+You can add the **Bootbusiness Theme-Block** to the application managed by RedKite 
 CMS, adding it to the **composer.json** of your Symfony2 application:
 
 .. code-block:: text
@@ -16,7 +16,7 @@ CMS, adding it to the **composer.json** of your Symfony2 application:
 		
         "require": {
             [...]        
-            "redkite-labs/sunshine-theme-bundle": "dev-master",        
+            "redkite-labs/bootbusiness-theme-bundle": "dev-master",        
         }
     }
 

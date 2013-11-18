@@ -21,8 +21,8 @@ The interface has been minimized to have the less impact on page:
 Edit contents
 ~~~~~~~~~~~~~
 
-To edit contents, simply click on the **Edit** button: this operation makes
-the editable blocks active and ready for changes. The edit block toggles to
+To edit contents, just click on the **Edit** button: this operation makes
+the editable blocks active and ready for changes. The edit button toggles to
 **Stop**
 
 .. image:: //bundles/redkitelabswebsite/media/manual/img-3.jpg
@@ -31,7 +31,7 @@ A **Block** is such a container for a particular kind of content, so we may have
 a block that contains an hypertext content, a block that contains an image, a block 
 that contains a link and so on. 
 
-Each Block has an appropriate inline editor to change its content.
+Each Block has an appropriate inline editor to handle the content.
 
 This topic is covered in detail in the `blocks management`_ chapter.
 

@@ -1,40 +1,25 @@
 RedKite CMS installation procedure
 ==================================
 
-RedKite CMS is distributed using `composer`_, so the first thing to do is to grab
-it from their website.
+RedKite CMS requires a Symfony2 Standard edition application to run. We created several
+precompiled distributions of our Content Management System to cover the wide range of 
+requirements:
 
-.. note::
+- `RedKite CMS Sandbox Get & Go`_
+- `RedKite CMS Sandbox`_
+- `RedKite CMS Sandbox without vendors`_
 
-    This tutorial explains how to install RedKite CMS into an existing project,
-    in which the dependencies are managed by composer.
+There is a dedicated page for each distribution where you can get the package and learn 
+how to install and configure it.
 
-    To start an RedKite CMS project from scratch, you are encouraged to use the
-    `RedKite CMS sandbox`_.
+Sometimes it could be required to start installing RedKite CMS from the scratch, for
+example when you need to use  RedKite CMS with an existing project.
 
+The next paragraphs of this chapter will focus on this topic.
 
-Composer installation
----------------------
-
-To install composer, move to the root folder of your application then run the following
-command to download composer:
-
-.. code-block:: text
-
-    curl -s http://getcomposer.org/installer | php
-
-If you do not have curl installed, then you can use:
-
-.. code-block:: text
-	
-	 php -r "eval('?>'.file_get_contents('https://getcomposer.org/installer'));"
-
-
-Add RedKite CMS to your composer.json file
------------------------------------------
-
-RedKite CMS requires a **Symfony 2.3** application, so download the latest Symfony2 
-release then open the composer.json file and add the following packages:
+Add RedKite CMS to a Symfony2 project from the scratch
+------------------------------------------------------
+The very first thing to do is to add RedKite CMS to the composer.json file:
 
 .. code-block:: text
 
@@ -47,10 +32,11 @@ release then open the composer.json file and add the following packages:
         ],
         "require": {
             [...]
-            "redkite-cms/redkite-cms-bundle": "dev-master",
-			"redkite-cms/installer-bundle": "dev-master",
-			"redkite-labs/bootbusiness-theme-bundle": "dev-master",
-			"redkite-cms/tinymce-block-bundle": "dev-master"
+            "redkite-cms/redkite-cms-bundle": "~1.1.0-rc",
+            "redkite-cms/installer-bundle": "~1.1.0-rc",
+            "redkite-labs/bootbusiness-theme-bundle": "~1.1.0-rc",
+            "redkite-cms/redkite-cms-base-blocks": "~1.1.0-rc",
+	    "redkite-cms/tinymce-block-bundle": "~1.1.0-rc"
         },
         "minimum-stability": "dev"
     }
@@ -65,19 +51,11 @@ release then open the composer.json file and add the following packages:
 Install RedKite CMS
 ----------------------
 
-To install, run the following command
+To get the packages, run the following command from a console:
 
 .. code-block:: text
 
     php composer.phar update
-
-
-RedKite CMS set-up
-------------------
-
-RedKite CMS requires several steps in order to properly set-up the CMS itself. Luckily
-the **RedKiteCmsInstallerBundle** will do the most of the job for you, providing a web 
-installer interface or an interactive Symfony2 command to install RedKite CMS.
 
 
 Install other dependencies
@@ -178,7 +156,7 @@ and add this code:
 
 .. note::
 
-    Don't forget to arrange the **namespace** according with your configuration.
+    Do not forget to arrange the **namespace** according with your configuration.
 
 If you want to use a controller with a different name, you must obviously rename the
 controller itself, then you must tell RedKite CMS to generate the routes pointing
@@ -195,7 +173,7 @@ file:
         deploy_bundle:
           controller: Site
 
-Don't forget to rename the controller to **SiteController.php** and change the controller's 
+Do not forget to rename the controller to **SiteController.php** and change the controller's 
 code as follows:
 
 .. code-block:: php
@@ -258,8 +236,8 @@ of the application **config.yml** file:
           kernel_root_dir: %kernel.root_dir%
 
 
-Remove the AcmeDemoBundle
--------------------------
+Remove the AcmeDemoBundle when present
+--------------------------------------
 Symfony2 comes with a built-in demo which should be removed:
 
 Delete the **src/Acme/DemoBundle** folder.
@@ -311,59 +289,10 @@ you must add the routes for the install bundle:
 
     If you plan to install using the console, you can safety skip this step.
 
-Xdebug configuration
---------------------
-When you use **Xdebug** with your php installation, you need to configure that module
-as follows:
-
-.. code-block:: text
-    
-    xdebug.max_nesting_level=1000
-
-otherwise you could get an error or, worse, the page rendering could stop, without
-displaying nothing on the screen.
-
-.. note::
-
-    If you don't use **Xdebug** you can safety skip this step.
-
-Installing from the console
----------------------------
-
-Installing RedKite CMS from the console is really easy:
-
-.. code-block:: text
-
-    app/console redkitecms:install
-
-This will run the interactive command which installs RedKite CMS, so just provide 
-the required information and you are done!
-
-Point your browser at
-
-.. code-block:: text
-
-    http://localhost/rkcms.php/backend/en/index
-
-to start using RedKite CMS.
-
-Installing using the web interface
-----------------------------------
-
-To start RedKite CMS installation, simply point your browser at:
-
-.. code-block:: text
-
-    http://localhost/app_dev.php/install
-
-Provide the required information and you are done! Once the process is complete, a web
-page is rendered with the process summary and gives you the information required
-to start.
-
-Permissions
------------
-Don't forget to set-up the permissions on the installation folder as explained in the
-`Symfony2 set-up and configuration tutorial`_
+Install
+-------
+Now you are ready to install RedKite CMS, so you can follow the instructions provided
+for a RedKite CMS Sandbox.
 
 
 What to do if something goes wrong
@@ -395,7 +324,9 @@ Found a typo ? Something is wrong in this documentation ? `Just fork and edit it
 
 .. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
 .. _`composer`: http://getcomposer.org
-.. _`RedKite CMS sandbox`: download-redkite-cms-built-on-top-of-symfony2-and-twitter-bootstrap-frameworks
 .. _`Symfony2 setup and configuration tutorial`: http://symfony.com/doc/current/book/installation.html#configuration-and-setup
 .. _`yui compressor`: https://github.com/yui/yuicompressor/downloads
 .. _`Symfony2 book`: http://symfony.com/doc/current/book/page_creation.html#before-you-begin-create-the-bundle
+.. _`RedKite CMS Sandbox Get & Go` : download-get-and-go-redkite-cms-sandbox
+.. _`RedKite CMS Sandbox` : download-redkite-cms-sandbox
+.. _`RedKite CMS Sandbox without vendors` : download-redkite-cms-sandbox-without-vendors

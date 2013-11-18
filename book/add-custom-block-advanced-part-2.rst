@@ -66,7 +66,7 @@ open it and paste the following code:
             $form = $this->container->get('form.factory')->create($formClass, $item);
             
             return array(
-                "template" => 'BootstrapThumbnailBlockBundle:Editor:thumbnail_editor.html.twig',
+                "template" => 'BootstrapButtonTutorialBlockBundle:Editor:thumbnail_editor.html.twig',
                 "title" => "Thumbnail editor",
                 "form" => $form->createView(),
             );
@@ -221,7 +221,7 @@ open it and paste the following code:
 
     <form id="al_item_form">
         <table>
-            {% include "RedKiteCmsBundle:Item:_form_renderer.html.twig" %}
+            {% include "RedKiteCmsBundle:Block:Editor/Form/_form_renderer.html.twig" %}
             <tr>
                 <td colspan="2" style="text-align: right">
                     <a class="al_editor_save btn btn-primary" href="#" >Save</a>
@@ -338,7 +338,7 @@ class, so create the **AlBlockManagerBootstrapThumbnailsTutorialBlock.php** insi
             $items = $this->decodeJsonContent($this->alBlock->getContent());
             
             return array('RenderView' => array(
-                'view' => 'BootstrapThumbnailBlockBundle:Thumbnail:thumbnails.html.twig',
+                'view' => 'BootstrapButtonTutorialBlockBundle:Thumbnail:thumbnails.html.twig',
                 'options' => array('values' => $items),
             ));
         }
@@ -493,7 +493,7 @@ To stop a list the code is quite trivial:
     
     element.inlinelist('stop');
     
-To enable the javascript just define the **bootstrapdropdownbuttontutorialblock.external_javascripts.cms**
+To enable the javascript just define the **bootstrapthumbnailtutorialblock.external_javascripts.cms**
 parameter in the **app_block.xml**:
 
 .. code-block:: xml
@@ -501,16 +501,16 @@ parameter in the **app_block.xml**:
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
         [...]
-        <parameter key="bootstrapdropdownbuttontutorialblock.external_javascripts.cms" type="collection">
-            <parameter>@BootstrapButtonTutorialBlockBundle/Resources/public/js/dropdown_menu_editor_tutorial.js</parameter>
+        <parameter key="bootstrapthumbnailtutorialblock.external_javascripts.cms" type="collection">
+            <parameter>@BootstrapButtonTutorialBlockBundle/Resources/public/js/thumbnail_tutorial_editor.js</parameter>
         </parameter>
     </parameters>
     
 .. note::
 
     If you are not use symlinks for your assets, you must run the 
-    **./php app/console assets:install web --env=alcms [--symlink]** command to install
-	this new asset.
+    **php app/console assets:install web --env=rkcms [--symlink]** command to install 
+    this new asset.
         
 Conclusion
 ----------

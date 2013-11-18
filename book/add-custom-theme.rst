@@ -36,7 +36,7 @@ familiar. Run the following command to start:
 
 .. code-block:: text
 
-    php app/console redkitecms:generate:app-theme --env=alcms
+    php app/console redkitecms:generate:app-theme --env=rkcms
 
 You'll get the following response:
 
@@ -383,7 +383,7 @@ the DIC:
 
 .. code-block:: text
 
-    redkitecms:generate:templates FancyThemeBundle  --env=alcms
+    redkitecms:generate:templates FancyThemeBundle  --env=rkcms
 
 This command will generate the config files that define the theme's templates and their 
 slots. If something goes wrong, a notice is displayed.

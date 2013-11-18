@@ -23,7 +23,7 @@ To implement this configuration, you must create a **config.yml** file inside th
 **Resources/config** folder of your theme bundle and then add the following configuration:
 
 
-..code:: text
+.. code-block:: text
 
     red_kite_labs_theme_engine:
         bootstrap:
@@ -32,7 +32,7 @@ To implement this configuration, you must create a **config.yml** file inside th
 replacing the **[ThemeBundle Name]** with the name of your theme bundle. For your convenience
 follows the configuration used by the **BootbusinessThemeBundle**:
 
-..code:: text
+.. code-block:: text
 
     red_kite_labs_theme_engine:
         bootstrap:
@@ -57,7 +57,7 @@ to avoid unwanted behaviors when Twitter Bootstrap will be updated.
 
 For your convenience follows the RedKite labs website theme configuration:
 
-..code:: text
+.. code-block:: text
     red_kite_labs_theme_engine:
       bootstrap:
         theme: [{theme: RedKiteLabsThemeBundle, version: 3.x}]

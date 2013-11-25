@@ -1,20 +1,15 @@
-.. note::
+Create the File App-Block
+=========================
 
-    This document is outdated and it is not compatible with RedKite CMS RC. It will
-    be fixed as soon as possible. 
+This chapter explains how to create a block to handle a file which can be rendered on 
+a page as a link or its content rendered directly on the page. 
 
-    Skip safety this chapter and move further to next one.
-
-Create the Dropdown Menu App-Block
-==================================
-
-This chapter explains how to create the dropdown menu App-Block. In this chapter you 
-will learn:
+In this chapter you will learn:
 
     1. How to add an App-Block to an existing bundle
     2. How to add a controller and a route to handle the implemented actions
     3. How to add an App-Block's extra asset to RedKite CMS 
-    4. How to override the default action to save the block's content
+    4. How to execute a javascript when the editor popover is opened
 
 .. note::
 
@@ -24,575 +19,362 @@ will learn:
 Add an App-Block to an existing bundle
 --------------------------------------
 
-This Block inherits from the Button block created in the previous chapter, so we don't
-add a new bundle to manage the block, but this App-Block is directly added to the 
-**BootstrapButtonTutorialBlockBundle**.
+An App-Block can live as a stand alone bundle or it can be packed together with other
+App-Blocks in one bundle.
 
-The object
-~~~~~~~~~~
+Just to explain how to add a block to an existing bundle we will add this new App-Block 
+to the **BootstrapButtonTutorialBlockBundle**, though these two blocks does not tie together
+so much.
 
-Add the **AlBlockManagerBootstrapDropdownButtonTutorialBlock.php** file inside the 
-**BootstrapButtonTutorialBlockBundle/Core/Block** folder, open it and add the following code:
+The App-Block class
+~~~~~~~~~~~~~~~~~~~
+
+To add the new App-Block class to the BootstrapButtonTutorialBlockBundle, just create 
+the **AlBlockManagerFileTutorial.php** file inside the **BootstrapButtonTutorialBlockBundle/Core/Block**, 
+open it and add the following code:
 
 .. code-block:: php   
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapDropdownButtonTutorialBlock.php  
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerFileTutorial.php  
     namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block;
 
-    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\AlBlockManagerContainer;
-    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlock;
+    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockContainer;
 
-    /**
-     * Description of AlBlockManagerBootstrapDropdownButtonTutorialBlock
-     */
-    class AlBlockManagerBootstrapDropdownButtonTutorialBlock extends AlBlockManagerContainer
+    class AlBlockManagerFileTutorial extends AlBlockManagerJsonBlockContainer
     {
         public function getDefaultValue()
         {
-            $value = '
-                    {
-                        "0": {
-                            "button_text": "Dropdown Button 1",
-                            "button_type": "",
-                            "button_attribute": "",
-                            "button_gropup" : "none",
-                            "items": [
-                                {
-                                    "data" : "Item 1", 
-                                    "metadata" : {  
-                                        "type": "link",
-                                        "href": "#",
-                                        "attributes": {}
-                                    }
-                                },
-                                { 
-                                    "data" : "Item 2", 
-                                    "metadata" : {  
-                                        "type": "link",
-                                        "href": "#",
-                                        "attributes": {}
-                                    }
-                                },
-                                { 
-                                    "data" : "Item 3", 
-                                    "metadata" : {  
-                                        "type": "link",
-                                        "href": "#",
-                                        "attributes": {}
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                ';
-            
-            return array('Content' => $value);
+            $value = 
+            '{
+                "0" : {
+                    "file" : "Click to load a file",
+                    "description" : "",
+                    "opened" : false
+                }
+            }';
+
+            return array(
+                'Content' => $value,
+            );
         }
     }
     
-This block has some attributes similar to the ones that belongs the Button App-Block. 
-In addiction it manages a list of links, which are grouped under the **items** key.
+This block has three attributes handled by a json markup which are declared in the 
+**getDefaultValue** method.
 
-To render the content we must override the default **renderHtml** method as follows:
+The first step to take is to render the file as link, so we must override the default 
+**renderHtml** method as follows:
 
- .. code-block:: php   
+.. code-block:: php   
+
+    [...]
+    use RedKiteLabs\RedKiteCmsBundle\Core\AssetsPath\AlAssetsPath;
  
     protected function renderHtml()
     {
-        $items = AlBlockManagerJsonBlock::decodeJsonContent($this->alBlock->getContent());
+        $items = $this->decodeJsonContent($this->alBlock);
+        $item = $items[0];
+        $file = $item['file'];
         
+        $options = array(
+            'webfolder' => $this->container->getParameter('red_kite_cms.web_folder'),
+            'folder' => AlAssetsPath::getUploadFolder($this->container),
+            'filename' => $file,
+        );
+        
+        $options['displayValue'] = (array_key_exists('description', $item) && ! empty($item['description'])) ? $item['description'] : $file;
+                
         return array('RenderView' => array(
-            'view' => 'BootstrapButtonTutorialBlockBundle:Button:dropdown_button.html.twig',
-            'options' => array('data' => $items[0]),
+            'view' => 'BootstrapButtonTutorialBlockBundle:Content:File/file.html.twig',
+            'options' => $options,
         ));
     }
+
+The **AlAssetsPath** provides the paths for common assets folders, in our block we
+need the upload folder, so we will use the **getUploadFolder** method which returns
+this information.
+
+This method renders the **BootstrapButtonTutorialBlockBundle:File:file.html.twig**
+which has not been created yet, so add the **file.html.twig** under the BootstrapButtonTutorialBlockBundle's
+**Resources/views/File** folder, open it and add the following code:
+
+.. code-block:: jinja
+
+    {% extends "RedKiteCmsBundle:Block:Editor/_editor.html.twig" %}
+
+    {% block body %}
+    <a href="/{{ folder }}/{{ filename }}" {{ editor|raw }}>{{ displayValue }}</a>
+    {% endblock %}
     
-We must define the parameters passed to the block's editor:
+At last we must define the parameters passed to the block's editor:
     
- .. code-block:: php   
+.. code-block:: php   
     
     public function editorParameters()
     {
-        $items = AlBlockManagerJsonBlock::decodeJsonContent($this->alBlock->getContent());
+        $items = $this->decodeJsonContent($this->alBlock);
         $item = $items[0];
-        $attributes = $item["items"];  
-        unset($item["items"]); // The form does not require this information
-        
-        $formClass = $this->container->get('bootstrapbuttonblock.form');
-        $buttonForm = $this->container->get('form.factory')->create($formClass, $item);
+             
+        $formClass = $this->container->get('file.form');
+        $form = $this->container->get('form.factory')->create($formClass, $item); 
         
         return array(
-            "template" => 'BootstrapButtonTutorialBlockBundle:Editor:_dropdown_editor.html.twig',
-            "title" => "Dropdown button editor",
-            "form" => $buttonForm->createView(),
-            'attributes' => $attributes,  
+            'template' => 'RedKiteCmsBundle:Block:Editor/_editor_form.html.twig',
+            'title' => Files editor,
+            'form' => $form->createView(),
         );
     }
 
+We don't need to define a new editor template because we will use the **_editor_form.html.twig**
+provided by RedKiteCms.
 
-The service
-~~~~~~~~~~~
+.. note ::
 
-Open the **app_block.xml** and add the App-Block class as a service:
+    For simplicity, the editor uses the **file.form** service, declared in the **RedKiteCmsBaseBlocksBundle**,
+    which defined the editor's form: feel free to give it a look.
 
- .. code-block:: xml
+
+Declare the App-Block as a service
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To have to App-Bock working, we must open the **app_block.xml** and add the App-Block class as a service:
+
+.. code-block:: xml
 
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
         [...]
-        <parameter key="bootstrap_dropdown_button_tutorial_block.block.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block\AlBlockManagerBootstrapDropdownButtonTutorialBlock</parameter>
+        <parameter key="bootstrap_file_tutorial_block.block.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block\AlBlockManagerFileTutorial</parameter>
     </parameters>
 
     <services>    
         [...]    
-        <service id="bootstrap_dropdown_button_tutorial_block.block" class="%bootstrap_dropdown_button_tutorial_block.block.class%">
-            <tag name="red_kite_cms.blocks_factory.block" description="Dropdown Tutorial" type="BootstrapDropdownButtonTutorialBlock" group="bootstrap,Twitter Bootstrap" />
+        <service id="bootstrap_file_tutorial_block.block" class="%bootstrap_file_tutorial_block.block.class%">
+            <tag name="red_kite_cms.blocks_factory.block" description="File Tutorial" type="FileTutorialBlock" group="bootstrap,Twitter Bootstrap" />
             <argument type="service" id="service_container" />
         </service>
     </services>
     
-The content template
-~~~~~~~~~~~~~~~~~~~~
+Load a file
+-----------
 
-Some attributes used by this new block are the same used by the Button block, so a
-small refactor is needed.
+To load or update the file we must use the Media Library that comes with RedKite CMS.
 
-Open the **button.html.twig** template and change it as follows:
+To accomplish this task we must add a javascript action which must take care to open
+the media library and add the reference to the chosen file to the file input box.
 
-.. code-block:: jinja
+The media library requires a connection to an action where it must be defined a connector
+to bind the media library itself with the server, so we would have to add a new controller
+with a new route.
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/button.html.twig
-    {% extends "BootstrapButtonTutorialBlockBundle:Button:_button_params.html.twig" %}
+The controller
+~~~~~~~~~~~~~~
 
-    {% block body %}
-    <button class="btn{{ button_type }}{{ button_attribute }}{{ button_tutorial_block }}{{ button_enabled }}" {{ editor|raw }}>{{ button_text }}</button>
-    {% endblock %}
+To add the controller just create the new **ElFinderFileTutorialController.php** class file
+under the **Controller** folder, open it and add the following code:
 
-The template now extends the **BootstrapButtonTutorialBlockBundle:Button:_button_params.html.twig**
-which does not exist yet, so add this new file inside the **views/Button**, open it and 
-paste the following code:
-
-.. code-block:: jinja
-
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/_button_params.html.twig
-    {% extends 'RedKiteCmsBundle:Block:Editor/_editor.html.twig' %}
-
-    {% set button_type = (data.button_type is defined and data.button_type) ? " " ~ data.button_type : "" %}
-    {% set button_attribute = (data.button_type is defined and data.button_type) ? " " ~ data.button_attribute : "" %}
-    {% set button_text = (data.button_text is defined and data.button_text) ? " " ~ data.button_text : "Click me" %}
-    {% set button_tutorial_block = (data.button_tutorial_block is defined and data.button_tutorial_block) ? " " ~ data.button_tutorial_block : "" %}
-    {% set button_enabled = (data.button_enabled is defined and data.button_enabled) ? " " ~ data.button_enabled : "" %}
-
-
-This block has the button_gropup attribute which not belongs the Button block, so we will manage this
-parameter in a separate template. 
-
-.. note::
-
-	The templates for the new button are added inside the **Button** folder for simplicity:
-	feel free to add them to another folder, i.e: Dropdown
-
-Add the **dropdown_button_params.html.twig** template under the **views/Button** folder, 
-open it and paste the following code inside:
-
-.. code-block:: jinja
-
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/dropdown_button_params.html.twig
-    {% extends "BootstrapButtonTutorialBlockBundle:Button:_button_params.html.twig" %}
-
-    {% set button_dropup = "" %}
-    {% set button_dropup_right = "" %}
-    {% if data.button_dropup is defined and data.button_dropup != "none" %}
-        {% set button_dropup = " dropup" %}
-        {% if data.button_dropup == "right" %}
-            {% set button_dropup_right = " pull-right" %}
-        {% endif %}
-    {% endif %}
-
-
-Add the **dropdown_button.html.twig** template under the **views/Button** folder, 
-open it and paste the following code inside:
-
-.. code-block:: jinja
-
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/dropdown_button.html.twig
-    {% extends "BootstrapButtonTutorialBlockBundle:Button:dropdown_button_params.html.twig" %}
-
-    {% block body %}
-    <div class="btn-group{{ button_dropup }}" {{ editor|raw }}>
-        <a class="btn dropdown-toggle{{ button_type }}{{ button_attribute }}" data-toggle="dropdown" href="#">
-            {{ button_text }}
-            <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu{{ button_dropup_right }}">
-            {% include "BootstrapButtonTutorialBlockBundle:Item:_dropdown_items.html.twig" with {'items': data.items} %}
-        </ul>
-    </div>
-    {% endblock %}
-
-This template includes the **BootstrapButtonTutorialBlockBundle:Item:_dropdown_items.html.twig**
-view, which is responsible to render the dropdown items.
-
-Add the **_dropdown_items.html.twig** template under the **views/Item** folder, 
-open it and paste the following code inside:
-
-.. code-block:: jinja
-
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Item/_dropdown_items.html.twig
-    {% for item in items %}
-        {% if item.children is defined and item.children|length > 0 %}
-        <li class="dropdown-submenu">
-            <a tabindex="-1" href="#">{{ item.data }}</a>
-            <ul class="dropdown-menu">
-                {% include "BootstrapButtonBlockBundle:Item:_dropdown_items.html.twig" with {'items': item.children} %}
-            </ul>
-        </li>
-        {% else %}   
-            {% if item.metadata.type is defined and item.metadata.type == 'divider' %}
-            <li class="divider"></li>
-            {% else %}
-                {% if item.metadata.type is defined %}
-                <li><a href="{{ item.metadata.href }}">{{ item.data }}</a></li>
-                {% else %}
-                <li><a href="#">{{ item.data }}</a></li>
-                {% endif %} 
-            {% endif %} 
-        {% endif %}
-    {% endfor %}
+.. code-block:: php   
     
-The last template to implement is the one delegated to render the editor. Add the
-**_dropdown_editor.html.twig** template under the **views/Editor** folder, open it and
-paste the following code inside:
-
-.. code-block:: jinja
-
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Editor/_dropdown_editor.html.twig
-    <div class="pull-left">
-        <form id="al_item_form">
-            <table>
-                {% include "RedKiteCmsBundle:Item:_form_renderer.html.twig" %}
-                <tr>
-                    <td colspan="2" style="text-align: right">
-                        <a class="al-editor-items btn" href="#" >Menu items</a>
-                        <a class="al_editor_save btn btn-primary" href="#" >Save</a>
-                    </td>
-                </tr>
-            </table>        
-        </form>
-    </div>
-    <div id="al-dropdown-menu-items" class="pull-left" style="display:none;"></div>
-    <div class="clearfix"></div>
-    
-This template is similar to the one that handles the button's editor but in addiction
-adds the **Menu items** button and an empty div where the interface to manage the 
-dropdown button's items will be rendered.
-    
-Render the items' editor
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-The dropdown items' editor is rendered using an ajax transaction, so we need to add a
-controller to process this request, then we inject the request's response into the
-**al-dropdown-menu-items** element.
-
-.. note::
-
-    Items are displayed by the Jstree jquery plugin which is implemented by the JstreeBundle
-
-Add the **JstreeDropdownButtonController.php** file inside the **BootstrapButtonTutorialBlockBundle/Controller**,
-open it and paste the following code:
-
-.. code-block:: php
-
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Controller/JstreeDropdownButtonController.php
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Controller
     namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Controller;
 
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-    use RedKiteLabs\RedKiteCmsBundle\Core\Form\ModelChoiceValues\ChoiceValues;
-    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlock;
 
-    class JstreeDropdownButtonController extends Controller
+    class ElFinderFileTutorialController extends Controller
     {
-        public function showAction()
+        public function connectFileAction()
         {
-            $request = $this->container->get('request');
-            
-            // Fetches the block
-            $factoryRepository = $this->container->get('red_kite_cms.factory_repository');
-            $blocksRepository = $factoryRepository->createRepository('Block');
-            $block = $blocksRepository->fromPk($request->get('idBlock'));
-            
-            // Retrieves the dropbutton items
-            $items = AlBlockManagerJsonBlock::decodeJsonContent($block->getContent());
-            $item = $items[0];
-            $attributes = $item["items"]; 
-            
-            $seoRepository = $factoryRepository->createRepository('Seo');
-            
-            // Prepares the options to pass to the template
-            $options = array(               
-                'attributes' => $attributes,                 
-                'jstree_nodes' => json_encode($attributes), 
-                'attributes_form' => 'BootstrapButtonTutorialBlockBundle:Jstree:_jstree_attribute.html.twig',                
-                'pages' => ChoiceValues::getPermalinks($seoRepository, $request->get('languageId')),
-            );
-            
-            return $this->container->get('templating')->renderResponse('JstreeBundle:Jstree:_jstree.html.twig', $options);
+            $connector = $this->container->get('el_finder.file_tutorial_connector');
+            $connector->connect();
         }
     }
-    
-The controller simply renders the **JstreeBundle:Jstree:_jstree.html.twig** template
 
-Add the route
-~~~~~~~~~~~~~
+This action is really simple, it gets the **el_finder.file_tutorial_connector** service, we are
+creating in the next paragraph, and calls the **connect** method. We don't need to
+return a Response here because the connect method takes care to return the right
+data for us.
 
-We need to define a route to display the controller **showAction**. Add the **dropdown_button.xml**
-inside the **Resources/config/routing** folder, open it an paste the following code:
+The route for the controller
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: xml
+To run that action we must create a new route, so create the **file.xml** file under the
+**Resources/config/routing/file**, open it and add the following code inside:
 
-	// src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Resources/config/routing
+.. code-block:: xml  
+
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/routing/file
     <?xml version="1.0" encoding="UTF-8" ?>
 
     <routes xmlns="http://symfony.com/schema/routing"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-        <route id="_show_menu_editor" pattern="/backend/{_locale}/al_show_jstree">
-            <default key="_controller">BootstrapButtonTutorialBlockBundle:JstreeDropdownButton:show</default>
+        <route id="_file_connect" pattern="/backend/{_locale}/al_elFinderFileTutorialConnect">
+            <default key="_controller">BootstrapButtonTutorialBlockBundle:ElFinderFileTutorial:connectFile</default>
             <default key="_locale">en</default>
-            <requirement key="_method">POST</requirement>
         </route>
     </routes>
 
-Add the **routing.yml** file inside the **Resources/config** and add the following code:
+Now we must create a **routing.yml** file under the **Resources/config** folder, open it
+and add the following code:
 
-.. code-block:: text
+.. code-block:: yml
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/routing.yml    
-    jstree_dropdown_button:
-        resource: "@BootstrapButtonTutorialBlockBundle/Resources/config/routing/dropdown_button.xml"
+    _bootstrap_button_tutorial_block_file:
+        resource: "@BootstrapButtonTutorialBlockBundle/Resources/config/routing/file/file.xml"
+
+When you add a routing.yml file under a bundle managed my the **RedKiteLabsBootstrapBundle**
+it takes care to autoload the routes for you.
+
+
+The ElFinderFileConnector service
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Now we must create the ElFinder service, so add a new **ElFinderFileTutorialConnector.php**
+class under the **Core/ElFinder/File** folder, open it and add the following code:
+
+.. code-block:: php
+
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/ElFinder/File
+    namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\ElFinder\File;
+
+    use RedKiteLabs\RedKiteCmsBundle\Core\ElFinder\Base\ElFinderBaseConnector;
+
+    class ElFinderFileTutorialConnector extends ElFinderBaseConnector
+    {
+        protected function configure()
+        {
+            return $this->generateOptions('files', 'Files');
+        }
+    }
+
+This object inherits from a base connector object, you should give a look, and defines
+the mandatory **configure** method which returns an array of options, generated by the
+**generateOptions** method, which requires a folder name as first argument and an alias
+for the second one.
 
 .. note::
 
-    Don't worry about adding the route to main application routing file, the **RedKiteLabsBootstrapBundle**
-    does this task for you.
-    
-Execute the ajax transaction
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To execute and render the action we must implement an ajax transaction.
-
-RedKite CMS triggers several events at client side. One of them is raised when
-the popover editor is opened, so we will handle that event to execute the ajax transaction.
-
-Add the file **dropdown_menu_editor_tutorial.js** inside the **Resources/public/js** folder and
-add the following code:
-
-.. code-block:: js
-
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/public/js/dropdown_menu_editor_tutorial.js
-    $(document).ready(function() {
-        $(document).on("popoverShow", function(event, element){
-            
-        });
-    }); 
-    
-Before adding the ajax transaction code we must be sure that this code is executed
-only for the **BootstrapDropdownButtonTutorialBlock**, so change that code as follows:
-
-.. code-block:: js
-    
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/public/js/dropdown_menu_editor_tutorial.js
-    $(document).ready(function() {
-        $(document).on("popoverShow", function(event, element){
-            blockType = element.attr('data-type');
-            if (blockType != 'BootstrapDropdownButtonTutorialBlock') {
-                return;
-            }
-        });
-    }); 
-    
-The **popoverShow** event passes as second argument the block we are editing. This means
-we can access all the editor's attributes. Here we need to check the **data-type** attribute 
-to be sure that the code is executed only for our block.
-
-Now, inside the the **popoverShow** method, paste the ajax transaction code:
-
-.. code-block:: js
-
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/public/js/dropdown_menu_editor_tutorial.js
-	$(document).on("popoverShow", function(event, element){
-		[...]
-		$(".al-editor-items").on('click', function(){
-		   if ( ! $('#al-dropdown-menu-items').is(":visible") && $('#al-dropdown-menu-items').html().trim() == "" ) {
-				$.ajax({
-					  type: 'POST',
-					  url: frontController + 'backend/' + $('#al_available_languages option:selected').val() + '/al_show_jstree',
-					  data: {
-						  'page' :  $('#al_pages_navigator').html(),
-						  'language' : $('#al_languages_navigator').html(),  
-						  'pageId' :  $('#al_pages_navigator').attr('rel'),
-						  'languageId' : $('#al_languages_navigator').attr('rel'),                  
-						  'idBlock' : element.attr('data-block-id')
-					  },
-					  beforeSend: function()
-					  {
-						  $('body').AddAjaxLoader();
-					  },
-					  success: function(html)
-					  {
-						  $('#al-dropdown-menu-items').html(html);
-					  },
-					  error: function(err)
-					  {
-						  $('body').showDialog(err.responseText);
-					  },
-					  complete: function()
-					  {
-						  $('body').RemoveAjaxLoader();
-					  }
-				});
-			}
-
-			$("#al-dropdown-menu-items").toggle();
-
-			return false;
-		});
-	});
-    
-This controls assures to execute the ajax transaction only the first time the editor is
-opened:
-
-.. code-block:: js
-
-    if ( ! $('#al-dropdown-menu-items').is(":visible") && $('#al-dropdown-menu-items').html().trim() == "" )
+    For simplicity the folder name has been hardcoded, in the real world it is
+    declared as a container's parameter.
 
 
-Add an external asset
-~~~~~~~~~~~~~~~~~~~~~
-
-We must load this javascript file adding the asset to the website. This setting is 
-quite simple to accomplish: just adding some parameters to the configuration file.
-
-Add the following code to **Resources/config/app_block.xml** file:
+This service must be declared in the Dependency Injector Container as follows:
 
 .. code-block:: xml
 
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
-        
         [...]
-                
-        <parameter key="bootstrapdropdownbuttontutorialblock.external_javascripts.cms" type="collection">
-            <parameter>@BootstrapButtonTutorialBlockBundle/Resources/public/js/dropdown_menu_editor_tutorial.js</parameter>
-        </parameter>
+        <parameter key="el_finder.file_tutorial_connector">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\ElFinder\File\ElFinderFileTutorialConnector</parameter>        
     </parameters>
-    
-So, to add an external asset from your App-Block, you must add a new parameter to the
-Dependency Injector Container.
 
-The rule to add an external file is:
+    <services>    
+        [...]    
+        <service id="el_finder.file_tutorial_connector" class="%el_finder.file_tutorial_connector%" >
+            <argument type="service" id="service_container" />
+        </service>
+    </services>
 
-.. code-block:: text    
+The javascript asset
+~~~~~~~~~~~~~~~~~~~~
 
-    [block name in lower case].external_stylesheets
-    [block name in lower case].external_javascripts
+Everything is ready, so we just need to add a javascript asset which will take care 
+to open the media library.
 
-If you need to add one or more assets only when the editor is active, you must suffix 
-the parameter name with **.cms**, as we did for this parameter.
-
-.. note::
-
-    Don't forget to run **php app/console assets:install web --env=rkcms** to have your
-    assets published under the Document Root of your website.
-
-
-Save the block's content
-~~~~~~~~~~~~~~~~~~~~~~~~
-RedKite CMS automatically add an handler that intercepts the **al_editor_save** element's
-click event.
-
-We are talking about the button added to the Block's editor which simply serializes
-the form and call the method to save the Block's content.
-
-This block has more than the form's values to save, so the default method must be override.
-Open the **dropdown_menu_editor_tutorial.js** and add the following code after the code that handles 
-the ajax transaction:
+Create a new **file_tutorial_editor.js** under the **Resources/public/file/js** folder,
+open it and add the following code:
 
 .. code-block:: js
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/public/js/dropdown_menu_editor_tutorial.js
-	
-	$(document).on("popoverShow", function(event, element){
-		[...]
-	
-		$('.al_editor_save').unbind().on('click', function()
-		{
-			var value = $('#al_item_form').serialize();
-			if ($("#jstree").length > 0) {
-				value += '&items=' + JSON.stringify($("#jstree").jstree("get_json", $("#jstree").jstree("select_node", -1)))
-			}
-			$('#al_item_form').EditBlock('Content', value);
-
-			return false;
-		});
-	});
-    
-This code simply serializes the form then slugifies the jstree nodes, then passes this 
-value to **EditBlock** methods that saves the content.
-
-To handle this change we need to override the **AlBlockManager's edit** method, which 
-is delegated to save the block's content.
-
-Add this code at the end of the **AlBlockManagerBootstrapDropdownButtonTutorialBlock**:
-
-.. code-block:: php   
-        
-    protected function edit(array $values)
-    {
-        if (array_key_exists('Content', $values)) {
-            $unserializedData = array();
-            $serializedData = $values['Content'];
-            parse_str($serializedData, $unserializedData);
-
-            // re-encodes the jstree items
-            $v = $unserializedData["al_json_block"];                
-            if (array_key_exists("items", $unserializedData)) {
-                unset($unserializedData["al_json_block"]);            
-                $menuItems = json_decode($unserializedData["items"], true);
-                $v += array('items' => $menuItems[0]["children"]); // Excludes the root node "Menu"
-            } else {
-                $items = AlBlockManagerJsonBlock::decodeJsonContent($this->alBlock->getContent());
-                $v += array('items' => $items[0]["items"]);
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/public/file/js/file_tutorial_editor.js
+    $(document).ready(function() {
+        $(document).on("popoverShow", function(event, element){
+            if (element.attr('data-type') != 'FileTutorialBlock') {
+                return;
             }
 
-            $values['Content'] = json_encode(array($v));
-        }
+            // your code
+        });
+    }); 
 
-        return parent::edit($values); 
-    }
+This code responds to the **popoverShow** event triggered when the editor popover 
+is opened. This event passes as second argument the element which is being edited,
+so we must check that it belongs the block type we are working on, in this example
+the **FileTutorial**.
     
-Here the content returned by the jquery method is manipulated and then processed by the 
-base method.
 
-Install and dump assets
------------------------
+Now we will add the code to open the media library under the [ your code ] section:
+
+.. code-block:: js
+
+    $('#al_json_block_file').click(function()
+    {              
+        $('<div/>').dialogelfinder({
+            url : frontController + 'backend/' + $('#al_available_languages option:selected').val() + '/al_elFinderFileTutorialConnect',
+            lang : 'en',
+            width : 840,
+            destroyOnClose : true,
+            commandsOptions : {
+                getfile: {
+                    oncomplete: 'destroy'
+                }
+            },
+            getFileCallback : function(file, fm) {
+                $('#al_json_block_file').val(file.path);
+            }
+        }).dialogelfinder('instance');
+    });
+
+First of all, we bind the **al_json_block_file event click**, so each time the users
+click into the file inputbox, the media library is opened.
+
+The most important options to point out are the **url** which executes the action we implemented
+before and the **getFileCallback** which sets back the file path.
+
+Add the asset to the cms
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The last thing to do is to add this asset to the cms. This task is made adding a parameter
+to the DIC, so open the app_block.xml file and add the following code inside:
+
+.. code-block:: xml
+
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
+    <parameters>
+        [...]
+        <parameter key="file.external_javascripts.cms" type="collection">
+            <parameter>@BootstrapButtonTutorialBlockBundle/Resources/public/file/js/file_tutorial_editor.js</parameter>
+        </parameter>
+    </parameters>  
+
+This parameter is parsed by RedKite CMS and added to the external javascripts only when 
+the editor is active to avoid loading this asset in production.
+
+This last task is made adding the **cms** suffix to the **file.external_javascripts**
+key.
+
+.. note ::
+
+    To have your asset available you must run the 
+
   
 Use your App-Block
 ------------------
 
-To use your new App-Block, just add it to your website!
+To use your new App-Block, enter inside RedKite CMS backend and just add it to your 
+website from the adder blocks menu.
   
 Conclusion
 ----------
 
 After reading this chapter you should be able to add an App-Block to an existing bundle,
 add a controller and a route to handle the implemented actions, add an App-Block's extra 
-asset to RedKite CMS and to override the default action which saves the block's content.
+asset to RedKite CMS, override the default action to save the block's content
 
 .. class:: fork-and-edit
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
-.. _`Add a new App-Block`: http://redkite-labs.com/add-a-new-block-app-to-redkite-cms
+.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
+.. _`Add a new App-Block`: http://www.alphalemon.com/add-a-new-block-app-to-alphalemon-cms

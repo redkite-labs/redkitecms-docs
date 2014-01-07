@@ -1,8 +1,8 @@
 Create the File App-Block
 =========================
 
-This chapter explains how to create a block to handle a file which can be rendered on 
-a page as a link or its content rendered directly on the page. 
+This chapter explains how to create a block to handle a file, which can be rendered on 
+a page as a link and the UI to manage it.
 
 In this chapter you will learn:
 
@@ -19,12 +19,12 @@ In this chapter you will learn:
 Add an App-Block to an existing bundle
 --------------------------------------
 
-An App-Block can live as a stand alone bundle or it can be packed together with other
-App-Blocks in one bundle.
+An App-Block can live as a standalone bundle or it can be packed together with other
+App-Blocks in a single bundle. Thhis means that a bundle can handle one or more App-Blocks.
 
-Just to explain how to add a block to an existing bundle we will add this new App-Block 
-to the **BootstrapButtonTutorialBlockBundle**, though these two blocks does not tie together
-so much.
+The block, we are going to create, does not tie so much with the block created in the 
+`Add a new App-Block`_ but, just to explain how to add a block to an existing bundle, 
+we will add this new App-Block to the **BootstrapButtonTutorialBlockBundle**.
 
 The App-Block class
 ~~~~~~~~~~~~~~~~~~~
@@ -49,7 +49,6 @@ open it and add the following code:
                 "0" : {
                     "file" : "Click to load a file",
                     "description" : "",
-                    "opened" : false
                 }
             }';
 
@@ -59,11 +58,11 @@ open it and add the following code:
         }
     }
     
-This block has three attributes handled by a json markup which are declared in the 
-**getDefaultValue** method.
+This block's default value is made by a json markup and it is defined by the file and 
+description attributes, declared in the **getDefaultValue** method.
 
-The first step to take is to render the file as link, so we must override the default 
-**renderHtml** method as follows:
+We must override the default **renderHtml** method to render the file as link, as 
+follows:
 
 .. code-block:: php   
 
@@ -91,11 +90,11 @@ The first step to take is to render the file as link, so we must override the de
     }
 
 The **AlAssetsPath** provides the paths for common assets folders, in our block we
-need the upload folder, so we will use the **getUploadFolder** method which returns
-this information.
+need the upload folder, so we will use the **getUploadFolder** method, which is deputated
+to return this information.
 
 This method renders the **BootstrapButtonTutorialBlockBundle:File:file.html.twig**
-which has not been created yet, so add the **file.html.twig** under the BootstrapButtonTutorialBlockBundle's
+which has not been created yet, so add the **file.html.twig** under the BootstrapButtonTutorialBlockBundle
 **Resources/views/File** folder, open it and add the following code:
 
 .. code-block:: jinja
@@ -106,7 +105,9 @@ which has not been created yet, so add the **file.html.twig** under the Bootstra
     <a href="/{{ folder }}/{{ filename }}" {{ editor|raw }}>{{ displayValue }}</a>
     {% endblock %}
     
-At last we must define the parameters passed to the block's editor:
+Now RedKite CMS can render the block on the page. We just need to define the editor,
+so we need to override the **editorParameters** method to define the parameter to
+pass to the editor. Add the following code to the **AlBlockManagerFileTutorial*:
     
 .. code-block:: php   
     
@@ -115,7 +116,7 @@ At last we must define the parameters passed to the block's editor:
         $items = $this->decodeJsonContent($this->alBlock);
         $item = $items[0];
              
-        $formClass = $this->container->get('file.form');
+        $formClass = $this->container->get('file_tutorial.form');
         $form = $this->container->get('form.factory')->create($formClass, $item); 
         
         return array(
@@ -128,14 +129,38 @@ At last we must define the parameters passed to the block's editor:
 We don't need to define a new editor template because we will use the **_editor_form.html.twig**
 provided by RedKiteCms.
 
-.. note ::
+The editor requires a form to manage its parameters. This form must be declared as 
+a service called **file_tutorial.form** in the DIC.
 
-    For simplicity, the editor uses the **file.form** service, declared in the **RedKiteCmsBaseBlocksBundle**,
-    which defined the editor's form: feel free to give it a look.
+Add the **FileTutorialType.php** under the **BootstrapButtonTutorialBlockBundle/Core/Block/Form**
+folder, open it and paste the following code inside:
+
+.. code-block:: php   
+
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Form/FileTutorialType.php  
+    namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form;
+
+    use Symfony\Component\Form\FormBuilderInterface;
+    use RedKiteCms\Block\RedKiteCmsBaseBlocksBundle\Core\Form\Base\AlBaseType;
+
+    class FileTutorialType extends AlBaseType
+    {
+        public function buildForm(FormBuilderInterface $builder, array $options)
+        {
+            $builder->add('file');
+            $builder->add('description', 'textarea');
+
+            parent::buildForm($builder, $options);
+        }
+    }
+
+We will override the **RedKiteCms\Block\RedKiteCmsBaseBlocksBundle\Core\Form\Base\AlBaseType**
+which provides some standard configurations like the form name. Feel free to give it 
+a look to understnd hor it is designed.
 
 
-Declare the App-Block as a service
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Declare the App-Block and the form as services
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To have to App-Bock working, we must open the **app_block.xml** and add the App-Block class as a service:
 
@@ -145,6 +170,7 @@ To have to App-Bock working, we must open the **app_block.xml** and add the App-
     <parameters>
         [...]
         <parameter key="bootstrap_file_tutorial_block.block.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block\AlBlockManagerFileTutorial</parameter>
+        <parameter key="file_tutorial.form.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form\FileTutorialType</parameter>
     </parameters>
 
     <services>    
@@ -153,25 +179,29 @@ To have to App-Bock working, we must open the **app_block.xml** and add the App-
             <tag name="red_kite_cms.blocks_factory.block" description="File Tutorial" type="FileTutorialBlock" group="bootstrap,Twitter Bootstrap" />
             <argument type="service" id="service_container" />
         </service>
+
+        <service id="file_tutorial.form" class="%file_tutorial.form.class%">
+        </service>
     </services>
     
 Load a file
 -----------
 
-To load or update the file we must use the Media Library that comes with RedKite CMS.
+To load or update the file, we must use the Media Library that comes with RedKite CMS.
 
-To accomplish this task we must add a javascript action which must take care to open
+To accomplish this task we must add a javascript action, which takes care to open
 the media library and add the reference to the chosen file to the file input box.
 
-The media library requires a connection to an action where it must be defined a connector
-to bind the media library itself with the server, so we would have to add a new controller
-with a new route.
+The media library requires a connection to an action to initialize a connector to bind
+the media library itself with the server. 
+
+To accomplish this task, we must implement a controller with a dedicated route.
 
 The controller
 ~~~~~~~~~~~~~~
 
-To add the controller just create the new **ElFinderFileTutorialController.php** class file
-under the **Controller** folder, open it and add the following code:
+To add the controller simply create the new **ElFinderFileTutorialController.php** 
+class file under the **Controller** folder, open it and add the following code:
 
 .. code-block:: php   
     
@@ -189,10 +219,62 @@ under the **Controller** folder, open it and add the following code:
         }
     }
 
-This action is really simple, it gets the **el_finder.file_tutorial_connector** service, we are
-creating in the next paragraph, and calls the **connect** method. We don't need to
-return a Response here because the connect method takes care to return the right
+This action is really simple, in fact it gets the **el_finder.file_tutorial_connector** service 
+and calls the **connect** method. 
+
+We don't need to return a Response here because the connect method takes care to return the right
 data for us.
+
+The ElFinderFileConnector service
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ElFinder service has not been created yet, so add a new **ElFinderFileTutorialConnector.php**
+class under the **Core/ElFinder/File** folder, open it and add the following code:
+
+.. code-block:: php
+
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/ElFinder/File
+    namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\ElFinder\File;
+
+    use RedKiteLabs\RedKiteCmsBundle\Core\ElFinder\Base\ElFinderBaseConnector;
+
+    class ElFinderFileTutorialConnector extends ElFinderBaseConnector
+    {
+        protected function configure()
+        {
+            return $this->generateOptions('files', 'Files');
+        }
+    }
+
+This object inherits from a base connector object, you should give a look, and defines
+the mandatory **configure** method which returns an array of options, generated by the
+**generateOptions** method.
+
+This last method requires a folder name as first argument and an alias displayed on
+the media library as second one.
+
+.. note::
+
+    For simplicity the folder name has been hardcoded, in the real world it should be
+    declared as a container's parameter.
+
+
+This service must be declared in the Dependency Injector Container as follows:
+
+.. code-block:: xml
+
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
+    <parameters>
+        [...]
+        <parameter key="el_finder.file_tutorial_connector">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\ElFinder\File\ElFinderFileTutorialConnector</parameter>        
+    </parameters>
+
+    <services>    
+        [...]    
+        <service id="el_finder.file_tutorial_connector" class="%el_finder.file_tutorial_connector%" >
+            <argument type="service" id="service_container" />
+        </service>
+    </services>
 
 The route for the controller
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -223,64 +305,13 @@ and add the following code:
     _bootstrap_button_tutorial_block_file:
         resource: "@BootstrapButtonTutorialBlockBundle/Resources/config/routing/file/file.xml"
 
-When you add a routing.yml file under a bundle managed my the **RedKiteLabsBootstrapBundle**
-it takes care to autoload the routes for you.
-
-
-The ElFinderFileConnector service
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Now we must create the ElFinder service, so add a new **ElFinderFileTutorialConnector.php**
-class under the **Core/ElFinder/File** folder, open it and add the following code:
-
-.. code-block:: php
-
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/ElFinder/File
-    namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\ElFinder\File;
-
-    use RedKiteLabs\RedKiteCmsBundle\Core\ElFinder\Base\ElFinderBaseConnector;
-
-    class ElFinderFileTutorialConnector extends ElFinderBaseConnector
-    {
-        protected function configure()
-        {
-            return $this->generateOptions('files', 'Files');
-        }
-    }
-
-This object inherits from a base connector object, you should give a look, and defines
-the mandatory **configure** method which returns an array of options, generated by the
-**generateOptions** method, which requires a folder name as first argument and an alias
-for the second one.
-
-.. note::
-
-    For simplicity the folder name has been hardcoded, in the real world it is
-    declared as a container's parameter.
-
-
-This service must be declared in the Dependency Injector Container as follows:
-
-.. code-block:: xml
-
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
-    <parameters>
-        [...]
-        <parameter key="el_finder.file_tutorial_connector">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\ElFinder\File\ElFinderFileTutorialConnector</parameter>        
-    </parameters>
-
-    <services>    
-        [...]    
-        <service id="el_finder.file_tutorial_connector" class="%el_finder.file_tutorial_connector%" >
-            <argument type="service" id="service_container" />
-        </service>
-    </services>
+When you add a routing.yml file under a bundle managed by the **RedKiteLabsBootstrapBundle**,
+this last one takes care to autoload the routes for you.
 
 The javascript asset
 ~~~~~~~~~~~~~~~~~~~~
 
-Everything is ready, so we just need to add a javascript asset which will take care 
-to open the media library.
+Everything is ready, so we just need to add a javascript asset, to open the media library.
 
 Create a new **file_tutorial_editor.js** under the **Resources/public/file/js** folder,
 open it and add the following code:
@@ -299,9 +330,11 @@ open it and add the following code:
     }); 
 
 This code responds to the **popoverShow** event triggered when the editor popover 
-is opened. This event passes as second argument the element which is being edited,
+is opened.
+
+This event passes as second argument, the element which is being edited,
 so we must check that it belongs the block type we are working on, in this example
-the **FileTutorial**.
+the **FileTutorialBlock**.
     
 
 Now we will add the code to open the media library under the [ your code ] section:
@@ -327,9 +360,9 @@ Now we will add the code to open the media library under the [ your code ] secti
     });
 
 First of all, we bind the **al_json_block_file event click**, so each time the users
-click into the file inputbox, the media library is opened.
+click inside the file inputbox, the media library is opened.
 
-The most important options to point out are the **url** which executes the action we implemented
+The most important options to point out here are the **url**, which executes the action we implemented
 before and the **getFileCallback** which sets back the file path.
 
 Add the asset to the cms
@@ -353,11 +386,6 @@ the editor is active to avoid loading this asset in production.
 
 This last task is made adding the **cms** suffix to the **file.external_javascripts**
 key.
-
-.. note ::
-
-    To have your asset available you must run the 
-
   
 Use your App-Block
 ------------------

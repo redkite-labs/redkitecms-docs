@@ -8,20 +8,21 @@ Preliminary operations
 Before starting, check that your theme does not contain dirty code. See example below:
 	
 .. code-block:: html+jinja
-	<ul>
-		{# <li id="facebook-like-button">
-			{% block facebook_like_button %}
-				{# BEGIN-SLOT
-					name: facebook_like_button
-					repeated: site
-					htmlContent: |
-						Facebook like
-				END-SLOT }
-				{{ renderSlot('facebook_like_button') }}
-			{% endblock %}
-		</li> #}
-		<li>...
-	</ul>
+
+    <ul>
+        {# <li id="facebook-like-button">
+            {% block facebook_like_button %}
+                {# BEGIN-SLOT
+                    name: facebook_like_button
+                    repeated: site
+                    htmlContent: |
+                            Facebook like
+                END-SLOT }
+                {{ renderSlot('facebook_like_button') }}
+            {% endblock %}
+        </li> #}
+        <li>...
+    </ul>
 	
 In this example there is a commented slot block which must be removed.
 
@@ -33,28 +34,29 @@ outside the block statement:
 
 .. code-block:: html+jinja
 
-	{# BEGIN-SLOT
-		name: logo
-		repeated: site
-		htmlContent: |
-			<a href="#"><img src="images/logo.png" title="Download RedKite CMS" alt="" /></a>
-	END-SLOT #}
-	{% block logo %}
-		{{ renderSlot('logo') }}
-	{% endblock %}
+    {# BEGIN-SLOT
+        name: logo
+        repeated: site
+        htmlContent: |
+                <a href="#"><img src="images/logo.png" title="Download RedKite CMS" alt="" /></a>
+    END-SLOT #}
+    {% block logo %}
+        {{ renderSlot('logo') }}
+    {% endblock %}
 	
 That code is wrong and must be replace with this one:
 	
 .. code-block:: html+jinja
-	{% block logo %}
-		{# BEGIN-SLOT
-			name: logo
-			repeated: site
-			htmlContent: |
-				<a href="#"><img src="images/logo.png" title="Download RedKite CMS" alt="" /></a>
-		END-SLOT #}
-		{{ renderSlot('logo') }}
-	{% endblock %}
+
+    {% block logo %}
+        {# BEGIN-SLOT
+            name: logo
+            repeated: site
+            htmlContent: |
+                    <a href="#"><img src="images/logo.png" title="Download RedKite CMS" alt="" /></a>
+        END-SLOT #}
+        {{ renderSlot('logo') }}
+    {% endblock %}
 
 When you are done, you must backup your theme because the migration command will rewrite
 several parts of your theme, so you must save a backup if something goes wrong.
@@ -99,9 +101,16 @@ as a service in this same file:
         </service>
     </services>
 	
-At last you must rebuild the templates as usual:
+At last you must rebuild the templates and clear the cache as usual:
 
 .. code-block:: text
 
     php app/console --env=rkcms redkitecms:generate:templates [ YourThemeBundle ]
+    php app/console --env=rkcms ca:c
 
+
+.. class:: fork-and-edit
+
+Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
+
+.. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs

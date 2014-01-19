@@ -32,11 +32,11 @@ The very first thing to do is to add RedKite CMS to the composer.json file:
         ],
         "require": {
             [...]
-            "redkite-cms/redkite-cms-bundle": "~1.1.0-rc",
-            "redkite-cms/installer-bundle": "~1.1.0-rc",
-            "redkite-labs/bootbusiness-theme-bundle": "~1.1.0-rc",
-            "redkite-cms/redkite-cms-base-blocks": "~1.1.0-rc",
-	    "redkite-cms/tinymce-block-bundle": "~1.1.0-rc"
+            "redkite-cms/redkite-cms-bundle": "1.1.*",
+            "redkite-cms/installer-bundle": "1.1.*",
+            "redkite-labs/bootbusiness-theme-bundle": "1.1.*",
+            "redkite-cms/redkite-cms-base-blocks": "1.1.*",
+	    "redkite-cms/tinymce-block-bundle": "1.1.*"
         },
         "minimum-stability": "dev"
     }

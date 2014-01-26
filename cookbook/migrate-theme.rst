@@ -16,7 +16,7 @@ Before starting, check that your theme does not contain dirty code. See example 
                     name: facebook_like_button
                     repeated: site
                     htmlContent: |
-                            Facebook like
+                        Facebook like
                 END-SLOT }
                 {{ renderSlot('facebook_like_button') }}
             {% endblock %}
@@ -38,7 +38,7 @@ outside the block statement:
         name: logo
         repeated: site
         htmlContent: |
-                <a href="#"><img src="images/logo.png" title="Download RedKite CMS" alt="" /></a>
+            <a href="#"><img src="images/logo.png" title="Download RedKite CMS" alt="" /></a>
     END-SLOT #}
     {% block logo %}
         {{ renderSlot('logo') }}
@@ -53,7 +53,7 @@ That code is wrong and must be replace with this one:
             name: logo
             repeated: site
             htmlContent: |
-                    <a href="#"><img src="images/logo.png" title="Download RedKite CMS" alt="" /></a>
+                <a href="#"><img src="images/logo.png" title="Download RedKite CMS" alt="" /></a>
         END-SLOT #}
         {{ renderSlot('logo') }}
     {% endblock %}

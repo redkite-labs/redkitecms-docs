@@ -53,8 +53,8 @@ Submit your Theme or Block bundles
 If you want to share your awesome Theme or Block bundles with the community, you need to maintain
 it on a repository at github.
 
-To have your bundle distributed on RedKite CMS website, open a pull request at 
-`RedKite Blocks repository`_ and post the link to your repository, in the pull request body.
+To have your bundle distributed on RedKite CMS website, open an issue at `RedKite Apps repository`_ 
+and post the link to your repository in the issue body.
 
 Your Theme or Block bundle will be evaluated and then it will be published.
 

@@ -73,5 +73,5 @@ Found a typo ? Something is wrong in this documentation ? `Just fork and edit it
 .. _`Just fork and edit it !`: https://github.com/redkite-labs/redkite-docs
 .. _`issue at github`: https://github.com/redkite-labs
 .. _`this document`: how-to-run-the-redkite-cms-test-suite
-.. _`RedKite CMS repository`: https://github.com/redkite-blocks
 .. _`repository at github`: https://github.com/redkite-labs/redkite-docs
+.. _`RedKite Apps repository`: https://github.com/redkite-labs/RedKiteApps

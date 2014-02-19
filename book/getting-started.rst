@@ -1,45 +1,42 @@
 Getting started
 ===============
 
-RedKite CMS is a Content Management System application, built on top of Symfony2
+RedKite CMS is a Content Management System application built on top of the Symfony2
 and Twitter Bootstrap frameworks.
 
-What does it mean that sentence? Let's explain it!
+What does this mean? Let's look further:
 
-A **Content Management System (CMS)** is a specific application that let you manage
-website contents directly into your browser, which is the native place where a website
-lives. 
+A **Content Management System (CMS)** is a system that let you manage, edit, store and publish
+website contents in a repository.  You can directly edit the contents of the pages in your browser where it is easier to 
+visualize what the final product will look like.
 
-Usually you are not required to have programming skills to use this kind of software.
+Most CMS's do not require you to have programming skills to use.
 
 **Symfony2** is a PHP framework. A framework is a set of libraries designed with the 
 purpose to simplify common developing tasks. This one provides a robust security layer, implements 
 tools to prevent your website from common web attacks, provides a routing system to 
 manage the website navigation, provides the tools to interact with a database and more.
 
-Symfony2 had been chosen because it is really powerful and easy to use and due to its
-huge community.
+Symfony2 was chosen because it is really powerful and easy to use and has a strong and active community.
 
 If you decide to use RedKite CMS to build your website, you must understand that you
-choose to build a Symfony2 website, so, you may thrust me that this framework is really
-awesome, but you are encouraged to `learn more about it`_ before go.
+are choosing to build a Symfony2 website and you must trust me that this framework is really
+awesome.  But you are encouraged to `learn more about it`_ before you do.
 
 **Twitter Bootstrap** is a collection of tools for creating websites and web applications. 
 It contains HTML and CSS-based design templates for typography, forms, buttons, charts, 
 navigation and other interface components, as well as optional JavaScript extensions.
 
-This framework helps to build a website that looks fine, without the effort to design 
-everything from the scratch.
+This framework helps you build a professional looking website without the need to design 
+everything from scratch.
 
-RedKite CMS default theme is a professional looked theme build on top of this framework,
-which has easily been adapted for our application. 
+The RedKite CMS default theme is a professional looking theme built on top of this framework,
+which has been adapted for our application. 
 
-Give a look to their `official gallery`_ where are shown several websites made on top of 
-Twitter Bootstrap.
+Take a look at the Twitter Bootstrap `official gallery`_ where several websites built with Twitter Bootstrap are showcased.
 
-If that sounds like you, you can immediately learn `how to install`_ your first RedKite 
-CMS application and, after that, move to the `quick start`_ documents if you are very 
-impatient, or take it easy and continue reading `the book`_.
+If all of this sounds appealing to you, you can immediately learn `how to install`_ your first RedKite 
+CMS application.  After that, jump to the `quick start`_ documents if you are impatient.  Or you can simply continue reading `the book`_.
 
 
 .. class:: fork-and-edit

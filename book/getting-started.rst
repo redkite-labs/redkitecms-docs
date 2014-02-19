@@ -4,13 +4,13 @@ Getting started
 RedKite CMS is a Content Management System application built on top of the Symfony2
 and Twitter Bootstrap frameworks.
 
-What does this mean? Let's look further into this!
+What does this mean? Let's look further:
 
 A **Content Management System (CMS)** is a system that let you manage, edit, store and publish
 website contents in a repository.  You can directly edit the contents of the pages in your browser where it is easier to 
 visualize what the final product will look like.
 
-Usually you are not required to have programming skills to use a CMS.
+Most CMS's do not require you to have programming skills to use.
 
 **Symfony2** is a PHP framework. A framework is a set of libraries designed with the 
 purpose to simplify common developing tasks. This one provides a robust security layer, implements 

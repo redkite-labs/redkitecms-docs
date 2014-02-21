@@ -1,19 +1,19 @@
 Environments
 ============
 
-This chapter explains in detail RedKite CMS environments configuration. 
+This chapter explains the RedKite CMS environments configuration in detail. 
 
 
 .. note::
 
-    This is a quite technical chapter but explains just a simple concept, so you should
-    take it easy.
+    This is quite a technical chapter but explains a simple yet important concept, so you should
+    read this chapter carefully.
 
 
 What is a work environment?
 ---------------------------
 
-Symfony2 handles several environments where your website may run. Here there is the 
+Symfony2 handles several environments where your website may run. Here is the 
 environment definition taken from the Symfony2 book:
 
     An application can run in various environments. The different environments share the same PHP code
@@ -39,19 +39,20 @@ environment definition taken from the Symfony2 book:
 
     http://localhost/app.php/hello/Ryan
     
-They introduced the concept of **front controller** which is a simple php file that 
+They introduced the concept of a **front controller** which is a simple php file that 
 defines the unique entry point for the entire application.
 
-Let's explain this concept by examples. Supposing your website has three pages: home, 
+Let's explain this concept with examples. Suppose your website has three pages: home, 
 about and contacts pages.
 
-To open those pages you will require the following addresses in your browser:
+To open these pages you will use the following addresses in your browser:
 
 .. code:: text
 
     http://localhost/[FRONT CONTROLLER]/homepage
     http://localhost/[FRONT CONTROLLER]/about
     http://localhost/[FRONT CONTROLLER]/contacts
+    
     
 Symfony2 comes with two default front controllers, which are:
 
@@ -60,7 +61,7 @@ Symfony2 comes with two default front controllers, which are:
     app.php
     app_dev.php
     
-so when your website runs in production environment you will use the app.php front controller:
+so when your website runs in production environment you would use the app.php front controller:
 
 .. code:: text
 
@@ -68,7 +69,7 @@ so when your website runs in production environment you will use the app.php fro
     http://localhost/app.php/about
     http://localhost/app.php/contacts
     
-if you want to run your site in the development environment your will require the following
+if you want to run your site in the development environment you would use the following
 addresses:
 
 .. code:: text
@@ -77,16 +78,17 @@ addresses:
     http://localhost/app_dev.php/about
     http://localhost/app_dev.php/contacts
     
+    
 What changes between using one front controller instead another one? Just the configuration. 
-In fact, your application may have as many front controllers you require and each of them 
-has a different configuration that changes the behaviour of your application that runs in
-one particular environment. 
+In fact, your application may have as many front controllers as you require and each of them 
+has a different configuration that changes the behaviour of your application in
+each environment. 
 
 So we can say that "Each front controller defines an environment".
 
 .. note::
 
-    **app.php** is the default front controller and it is the one used when any front
+    **app.php** is the default front controller and it is the one used when no front
     controller has been explicitly declared. For this reason, you can safety omit it:
     **http://localhost/contacts** will serve the contacts page in production.
     
@@ -108,19 +110,19 @@ RedKite CMS introduces four other environments to the Symfony2 default ones:
     Devs environments simply enable the debug for the environment they
     inherit.
 
-These environments have been implemented to keep completely separated the backend
+These environments have been implemented to completely separate the backend
 editor from the production environment.
 
-In fact, all the changes you made in the application backend, are not deployed to production 
-environment until you explicitly do that operation.
+In fact, all the changes you make in the application backend are not deployed to the production 
+environment until you explicitly execute that operation.
 
 Let's explain those environments in detail.
 
 RedKite CMS editor environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-The **rkcms front controller** handles the environment where RedKite CMS
-lives, so to edit your website you must use it as follows:
+The **rkcms front controller** handles the environment where the RedKite CMS
+lives.  So, to edit your website you would use it as follows:
 
 .. code:: text
 
@@ -133,27 +135,27 @@ address:
 
     http://localhost/rkcms.php/backend
     
-this because Symfony2 does not secure an entire environment, so RedKite CMS uses
+this is because Symfony2 does not secure an entire environment, so RedKite CMS uses
 the **backend** token to tell Symfony2 that all the routes that contain that specific
-token, requires an authenticated user to have the access granted to the requested resource.
+token, requires an authenticated user to have access granted to the requested resource.
 
-When that url is required, RedKite CMS, but I should say Symfony2 to be more precise, 
+When that url is accessed, RedKite CMS (more specifically Symfony's security layer) 
 redirects the application to the login page for the authentication process. 
 
-When the user correctly signed in, RedKite CMS opens the website home page and the whole
-website can be managed.
+When the user correctly signs in, RedKite CMS opens the website home page and the 
+website can now be managed.
 
 RedKite CMS stage environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The stage environment is the place where you can review your website before deploy it
+The stage environment is the place where you can review your website before deploying it
 to production: it lives between the backend and the frontend (production) environments.
 
-In addiction, it is the place where you can implement pages which require to fetch data
+In addition, this is the place where you can implement and test pages which require retrieving data
 from the server: for example if you need to fetch some data from a database and render 
-them on a page, you will work in this environment to implement your page.
+them on a page, you will work in this environment to test your page.
 
-To enter the stage environment, simply enter the following url in your browser:
+To access the stage environment, simply enter the following url in your browser:
 
 .. code:: text
 

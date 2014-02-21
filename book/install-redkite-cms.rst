@@ -3,7 +3,7 @@ RedKite CMS installation procedure
 
 RedKite CMS requires a Symfony2 Standard edition application to run. We created several
 precompiled distributions of our Content Management System to cover the wide range of 
-requirements:
+scenarios:
 
 - `RedKite CMS Sandbox Get & Go`_
 - `RedKite CMS Sandbox`_
@@ -12,12 +12,12 @@ requirements:
 There is a dedicated page for each distribution where you can get the package and learn 
 how to install and configure it.
 
-Sometimes it could be required to start installing RedKite CMS from the scratch, for
-example when you need to use  RedKite CMS with an existing project.
+Sometimes you might need to install RedKite CMS from scratch, for
+example when you want to use RedKite CMS with an existing project.
 
 The next paragraphs of this chapter will focus on this topic.
 
-Add RedKite CMS to a Symfony2 project from the scratch
+Add RedKite CMS to a Symfony2 project from scratch
 ------------------------------------------------------
 The very first thing to do is to add RedKite CMS to the composer.json file:
 
@@ -43,7 +43,7 @@ The very first thing to do is to add RedKite CMS to the composer.json file:
 
 .. note::
 
-    RedKite CMS uses TinyMCE as default editor to manage an hypertext content, but
+    RedKite CMS uses TinyMCE as the default editor to manage hypertext content, but
     there is a bundle that uses the CKEditor editor. If you are more comfortable with
     this one, replace the **"redkite-cms/tinymce-block-bundle" : "dev-master"**
     declaration with **"redkite-cms/ckeditor-block-bundle" : "dev-master"**
@@ -61,8 +61,8 @@ To get the packages, run the following command from a console:
 Install other dependencies
 --------------------------
 
-RedKite CMS requires by default the `yui compressor`_ which is useful to compact 
-your assets into one, to reduces page time loading. Grab and unpack it into the **app/Resources/java**
+RedKite CMS requires by default the `yui compressor`_ which is useful to compress 
+your assets which reduces page load times. Grab and unpack it into the **app/Resources/java**
 folder and rename it **yuicompressor.jar**.
 
 .. note::
@@ -95,8 +95,8 @@ From the Symfony2 book:
     Before you begin, you'll need to create a bundle. Learn more about this topic
     from the `Symfony2 book`_
 
-RedKite CMS does not add anything new to Symfony2, so also requires that you create 
-that bundle.
+RedKite CMS is a bundle that extends the Symfony framework.  It is not a "stand alone" bundle and thus it requires 
+that you create a bundle.
 
 From the top level folder of your Symfony2 application, run the following command:
 
@@ -104,14 +104,14 @@ From the top level folder of your Symfony2 application, run the following comman
 
     php app/console generate:bundle
 
-Here you should enter your default company name when asked. For example RedKite Labs website
-deploy bundle has been called **RedKiteLabs/WebSiteBundle** where **RedKiteLabs**
+When prompted by the generate bundle command you should enter your default company and bundle names. For example 
+RedKite Labs website deploy bundle has been called **RedKiteLabs/WebSiteBundle** where **RedKiteLabs**
 is the company name and **WebSiteBundle** is the bundle name.
 
 .. note::
 
     RedKite CMS installer proposes by default **Acme** as company name and **WebSiteBundle** 
-    as bundle: just enter yours when you will be asked.
+    as bundle: just enter yours when you are prompted.
 
 
 Add the RedKite CMS installer bundle to AppKernel
@@ -139,7 +139,7 @@ Websites routes are handled in production by a single **Controller** named by de
 **Website**.
 
 You must add this controller to your application to render your website. This task 
-is achieved adding a new controller or simply modify the default one added by Symfony. 
+is achieved by adding a new controller or by simply modifying the default one added by Symfony. 
 
 Add a **WebSiteController.php** file inside the Controller folder of your bundle. Open it 
 and add this code:
@@ -156,13 +156,13 @@ and add this code:
 
 .. note::
 
-    Do not forget to arrange the **namespace** according with your configuration.
+    Do not forget to change the **namespace** according with your configuration.
 
-If you want to use a controller with a different name, you must obviously rename the
-controller itself, then you must tell RedKite CMS to generate the routes pointing
+If you want to use a controller with a different name, you must rename the
+controller itself, then you must tell RedKite CMS to generate the routes pointing to
 this controller.
 
-This last step is achieved adding the following configuration to your **config_rkcms.yml**
+This last step is achieved by adding the following configuration to your **config_rkcms.yml**
 file:
 
 .. code-block:: text
@@ -206,7 +206,7 @@ If you plan to use a different folder, you can specify that one as follows:
  
     php app/console redkitecms:build:bower --web-folder=[folder name]
 
-To finally install the assets, enter into the application's web folder and run the following
+Finally, to install the assets, enter into the application's web folder and run the following
 command:
 
 .. code-block:: text
@@ -218,14 +218,14 @@ command:
 
     if you don't have **bower** installed, you can download the RedKite CMS Sandbox and
     grab the **components** folder from the package's **web** directory, and then copy 
-	it into your application's web folder.
+    it into your application's web folder.
 
 Configure the FileBundle
 ------------------------
 FileBundle is a base App-Block that handles a file. This file can be rendered on the page 
 as a link to the file itself or it can render its contents.
 
-To have it working you must define the **kernel_root_dir** param under the **twig** section
+To get it working you must define the **kernel_root_dir** param under the **twig** section
 of the application **config.yml** file:
 
 .. code-block:: text
@@ -236,7 +236,7 @@ of the application **config.yml** file:
           kernel_root_dir: %kernel.root_dir%
 
 
-Remove the AcmeDemoBundle when present
+Remove the AcmeDemoBundle if present
 --------------------------------------
 Symfony2 comes with a built-in demo which should be removed:
 
@@ -291,17 +291,17 @@ you must add the routes for the install bundle:
 
 Install
 -------
-Now you are ready to install RedKite CMS, so you can follow the instructions provided
+Now you are ready to install RedKite CMS, so follow the instructions provided
 for a RedKite CMS Sandbox.
 
 
 What to do if something goes wrong
 ----------------------------------
-The RedKite CMS installer changes some of the configuration files of your application,
+The RedKite CMS installer changes some of the configuration files in your application,
 so if something goes wrong during the set-up, you could have problems running the install
 process again after these changes have been implemented.
 
-Luckily, the installer backs up those files, so to fix the problem, you have simply to
+Luckily, the installer backs up those files, so to fix the problem, you simply have to
 remove the files changed by the installer and restore the backed up ones.
 
 Those files are:
@@ -312,7 +312,7 @@ Those files are:
     app/config/config.yml
     app/config/routing.yml
 
-For all of those files, the installer creates a specular copy with the **.bak** extension
+For each of these files, the installer creates a special copy with the **.bak** extension
 before changing the file itself.
 
 If the bak file does not exist, it means that the file has not been changed yet.

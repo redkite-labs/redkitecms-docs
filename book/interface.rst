@@ -6,13 +6,13 @@ This chapter contains an overview of the RedKite CMS editor interface.
 The interface
 -------------
 
-After you signed in, RedKite CMS redirects to the main page of your website
+After you sign in, RedKite CMS redirects you to the main page of your website
 and loads the editor to manage the whole website.
 
-RedKite CMS is an inline application, this means you can edit your website contents
+RedKite CMS is an inline application, this means you can edit the website contents
 directly on each page of your website.
 
-When the CMS is started, the home page is loaded and you can start immediately editing it.
+When the CMS is started, the home page is loaded and you can immediately start editing it.
 
 The interface has been minimized to have the less impact on page:
 
@@ -22,13 +22,13 @@ Edit contents
 ~~~~~~~~~~~~~
 
 To edit contents, just click on the **Edit** button: this operation makes
-the editable blocks active and ready for changes. The edit button toggles to
+the editable blocks active and ready for changes. Click the edit button again to toggle to
 **Stop**
 
 .. image:: //bundles/redkitelabswebsite/media/manual/img-3.jpg
 
-A **Block** is such a container for a particular kind of content, so we may have
-a block that contains an hypertext content, a block that contains an image, a block 
+A **Block** is a container for different kinds of content.  So we may have
+a block that contains hypertext content, a block that contains an image, a block 
 that contains a link and so on. 
 
 Each Block has an appropriate inline editor to handle the content.
@@ -39,10 +39,10 @@ This topic is covered in detail in the `blocks management`_ chapter.
 Navigate through website pages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-RedKite CMS let you navigate through website pages:
+RedKite CMS let you navigate through website pages by:
 
-1. Clicking directly on pages internal links
-2. Using the **Nav** menu placed under the **Edit** button
+1. Clicking directly on internal page links
+2. Using the **Nav** menu located under the **Edit** button
 
 This topic is covered in detail in the `navigate through the website`_ chapter.
     
@@ -51,17 +51,17 @@ The toolbar
 
 The toolbar is placed at the top of the page and is hidden by default. In the middle
 top of the screen there is a small tab with a white down arrow that opens the toolbar
-when you click over it.
+when you click it.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/img-2.jpg
 
 The toolbar contains all the commands you need to manage the website, like pages, languages,
-themes and more. The most of this commands open a panel that scrolls down from the toolbar and
-inside this panel there are rendered the interfaces that let you manage the section required.
+themes and more.  Most of these commands open a panel that drops down from the toolbar and
+display a panel with an interface that lets you manage the section.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/img-4.jpg
 
-At last, from the toolbar, you can change the RedKite CMS interface language too.
+From the toolbar you can also change the RedKite CMS interface language.
 
 
 .. class:: fork-and-edit

@@ -61,31 +61,11 @@ To get the packages, run the following command from a console:
 Install other dependencies
 --------------------------
 
-RedKite CMS requires by default the `yui compressor`_ which is useful to compress 
-your assets which reduces page load times. Grab and unpack it into the **app/Resources/java**
-folder and rename it **yuicompressor.jar**.
+Since 1.1.2 release, RedKite CMS does not require the **yui compresso** package, so you 
+can choose the minifier tool you prefer or none.
 
-.. note::
+Learn more about this topic on `Symfony2 website`_ 
 
-    The compiled yui compressor is saved into the package's **build** folder.
-
-    The **java** folder does not exist and must be created.
-
-
-While it's strongly suggested to use this tool, you may not have it installed. In this case
-you must add the following configuration to your **config_rkcms.yml** file:
-
-.. code-block:: text
-
-    app/config/config_rkcms.yml
-
-    red_kite_cms:
-        enable_yui_compressor: false
-
-.. note::
-
-    The **config_rkcms.yml** is created into the app/config folder by the RedKite CMS
-    installer, so you must install the CMS, then add the configuration as shown.
 
 The deploy bundle
 -----------------
@@ -330,3 +310,4 @@ Found a typo ? Something is wrong in this documentation ? `Just fork and edit it
 .. _`RedKite CMS Sandbox Get & Go` : download-get-and-go-redkite-cms-sandbox
 .. _`RedKite CMS Sandbox` : download-redkite-cms-sandbox
 .. _`RedKite CMS Sandbox without vendors` : download-redkite-cms-sandbox-without-vendors
+.. _`Symfony2 website` : http://symfony.com/doc/current/cookbook/assetic/index.html

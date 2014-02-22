@@ -335,7 +335,7 @@ the **renderSlot** statement:
         {{ renderSlot('logo') }}
     {% endblock %}
 
-This section takes careful explanation. Each attribute section must start with the **BEGIN-SLOT** 
+This section requires a careful explanation. Each attribute section must start with the **BEGIN-SLOT** 
 directive and it must be closed by the **END-SLOT** directive.
 
 Attributes must be written in valid **yml** syntax. Yml requires a perfect indentation, 
@@ -363,6 +363,7 @@ You can define some other attributes in addition to **name** option:
 1. blockType
 2. htmlContent
 3. repeated
+4. blockDefinition
 
 The blockType option
 ~~~~~~~~~~~~~~~~~~~~
@@ -370,11 +371,68 @@ The blockType option
 Defines the block type that RedKite CMS must add for that slot when a new page is added. 
 By default, the block type added is **Text**.
 
+
 The htmlContent option
 ~~~~~~~~~~~~~~~~~~~~~~
 
 The **htmlContent** option overrides the default content added by the block, so when 
 you want to use the default value, simply don't declare this option.
+
+
+The blockDefinition option (Since RedKite CMS 1.1.2)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The **blockDefinition** option overrides the values of the Block's properties. For example
+an Image block is defined by the following **json** structure;
+
+.. code-block:: text
+
+    {
+        "0" : {
+            "src": "",
+            "data_src": "holder.js/260x180",
+            "title" : "%s",
+            "alt" : "%s".
+            "class" : ""
+        }
+    }
+
+To change the value of some properties, you can define the **blockDefinition** attribute 
+as follows:
+
+.. code-block:: text
+
+    blockDefinition:
+        0:
+            data_src: holder.js/700x250
+            class: img-responsive img-home-portfolio
+
+
+You can change the definition for a more complex Block, defining how included blocks
+must be initialized. Here's a definition for a **BootstrapNavbarBlock**:
+
+.. code-block:: text
+
+    blockDefinition:
+        inverted: navbar-inverse  
+        items: 
+            0:
+                blockType: BootstrapNavbarMenuBlock
+                alignment: navbar-right
+                items: 
+                    0:
+                        blockType: Link
+                        0:
+                            value: About
+                    1:
+                        blockType: Link
+                        0:
+                            value: Services
+                    2:
+                        blockType: Link
+                        0:
+                            value: Contact
+      
 
 The repeated option
 ~~~~~~~~~~~~~~~~~~~

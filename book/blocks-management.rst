@@ -15,7 +15,7 @@ A Block come always with an editor able to handled its content. Usually each edi
 rendered inside a popover placed under the block to edit, except hypertext contents, which
 are directly managed on the page, using an inline editor.
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-1.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-1.jpg
 
 Here you can see the editor for a Twitter Bootstrap button.
 
@@ -23,7 +23,7 @@ The rectangle that surrounds the block you are editing, changes to blue (red arr
 the **Blocks menu** remains active, so you can always change the editor just clicking 
 on another block (orange arrow).
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-2.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-2.jpg
 
 
 Interact with blocks
@@ -32,7 +32,7 @@ Interact with blocks
 To start editing a page, you must click on the **Edit button**, placed on the control 
 panel placed on the left side of the page. 
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-14.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-14.jpg
 
 This action turns on the editable blocks, which are highlighted by a red rectangle 
 that overlays the active block, when the mouse is placed over it.
@@ -53,14 +53,14 @@ add a block over the highlighted one or on the **plus icon bottom arrow **, poin
 the orange arrow on the picture, when you need to add a block under the current highlighted
 block.
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-3.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-3.jpg
 
 A panel, which contains all the available blocks, opens over the button icon. Blocks are listed 
 in groups. RedKite CMS comes with several base blocks which are grouped under the
 **Default** group, while other listed blocks could have been added by third-parties themes
 or could have been required directly from the application
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-4.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-4.jpg
 
 When you add your custom App-Block to RedKite CMS, this is displayed under the 
 group it is assigned by the block's developer.
@@ -68,7 +68,7 @@ group it is assigned by the block's developer.
 To add a block to the page simply click over it: an Hypertext block has been choosen
 in the picture below.
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-5.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-5.jpg
 
 
 Remove a block
@@ -77,7 +77,7 @@ Remove a block
 To remove a block you must highlight it and then click on the **trash icon** placed 
 into the small toolbar attached to the block highlighter.
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-6.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-6.jpg
 
 You will be prompted to confirm the operation.
 
@@ -90,7 +90,7 @@ its area to open the editor.
 Usually a RedKite CMS block has an editor rendered into a popover placed under the active 
 block, but the default hypertext editor let you edit blocks inline on the page.
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-7.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-7.jpg
 
 Each editor is different than others, so you may have a form where you can enter the
 attributes for an image, you may have a single textarea where to enter a script from
@@ -100,11 +100,11 @@ list of images and a form to change their attributes as for the Twitter bootstra
 All popover editors provide a **Save** button placed at the bottom right of the popover 
 itself. This button saves the content to the database.  
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-15.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-15.jpg
 
 For hypertext inline editors the save button is placed inside the editor's toolbar.
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-16.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-16.jpg
 
 Please notice that in the example pitcure the save button is not available because
 any change to the content had been made.
@@ -114,7 +114,7 @@ case RedKite CMS adds a place-holder that covers this situation.
 
 This place-holder works as a normal block with the only difference that it is not editable.
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-8.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-8.jpg
 
 Included blocks
 ^^^^^^^^^^^^^^^
@@ -125,19 +125,19 @@ editable one by one and the including block may be editable too.
 A perfect example to explain this kind of block, is the **Rich thumbnails list** App-Block.
 It is a gray bordered container that includes an image and a hypertext.
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-9.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-9.jpg
 
 You can edit the image
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-10.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-10.jpg
 
 modify the hypertext to describe the image 
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-11.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-11.jpg
 
 and change the size of the container, editing the container block.
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-12.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-12.jpg
 
 .. note::
 
@@ -156,7 +156,7 @@ corner of the block itself.
 
 Plus icon adds another block next the one you clicked, trash icon removes the block.
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-13.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-13.jpg
 
 This block is designed to add always the same kind of block when you click on the add 
 button.
@@ -164,7 +164,7 @@ button.
 Despite of that, the Menu Block has another behaviour, in fact, when you click the add 
 button, it lets you choose the block you want to add, from the Blocks adder panel.
 
-.. image:: //bundles/redkitelabswebsite/media/manual/contents-17.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-17.jpg
 
 
 Add a new block type to your application

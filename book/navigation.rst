@@ -17,14 +17,15 @@ Sometimes the page link you want to reach may not be available on the page you a
 on at the moment or it may happen that that page has not been linked yet.  Or you are in edit 
 modeand you do not want to turn off the contents editor just to click a link on a page.
 
-When this situation occurs, the **Nav** menu helps you. This small blue partially 
-hidden panel is located under the **Edit** button and contains two combo boxes 
-which lists the whole website languages and pages.
+When this situation occurs, the **Navigation** menu helps you. This small blue partially 
+hidden panel is located under the button to edit blocks.
 
-Just click on the **Nav** button and the panel opens. Now choose the page or language
+It contains two combo boxes  which lists the whole website languages and pages.
+
+Just click on the **Navigation** button and the panel opens. Now choose the page or language
 from the appropriate combobox and RedKite CMS will immediately move to it.
 
-.. image:: //bundles/redkitelabswebsite/media/manual/img-18.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/navigation/navigation-1.jpg
 
 
 Edit an internal link

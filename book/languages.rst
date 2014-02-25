@@ -9,7 +9,7 @@ The panel interface
 Website languages are managed using the **Languages panel**: click the **Languages** 
 button on the main toolbar placed at the top of the page to open it.
 
-.. image:: //bundles/redkitelabswebsite/media/manual/img-20.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/languages/languages-1.jpg
 
 The languages panel is divided in two columns: on the left are listed all the languages
 used in the website, while on the right it is placed the interface to add or edit
@@ -21,12 +21,12 @@ Add a new language
 To add a new language, simply choose the one you want to add to your website from 
 the **Language** combobox, then click the  **Save** button.
 
-.. image:: //bundles/redkitelabswebsite/media/manual/img-21.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/languages/languages-2.jpg
 
 If you want that the new language will become the website main language check the 
 **Is main** checkbox. 
 
-.. image:: //bundles/redkitelabswebsite/media/manual/img-22.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/languages/languages-3.jpg
 
 The website's main language is the first language displayed when a user, that browses 
 your website, does not require any specific language. This means that when the http://redkite-labs.com 

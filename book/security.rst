@@ -42,11 +42,11 @@ Add a new Role
 
 Click the **Security** button on the top toolbar, to open the security panel
 
-.. image:: //bundles/redkitelabswebsite/media/manual/img-31.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/security/security-1.jpg
 
 then click the **Roles** button placed beside the **New** button, under the users list.
 
-.. image:: //bundles/redkitelabswebsite/media/manual/img-32.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/security/security-2.jpg
 
 The website roles are now listed on the left while the interface to add or edit a role
 is on the right. To add a new role just fill up the **Role** field when any other role
@@ -77,7 +77,7 @@ Users management
 Users management works exactly as explained for roles, the only difference is
 about the number of information required, which is higher for users than roles.
 
-.. image:: //bundles/redkitelabswebsite/media/manual/img-34.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/security/security-3.jpg
 
 
 Advanced configuration

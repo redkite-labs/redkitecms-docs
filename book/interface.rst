@@ -6,17 +6,50 @@ This chapter contains an overview of the RedKite CMS editor interface.
 The interface
 -------------
 
-After you sign in, RedKite CMS redirects you to the main page of your website
+After you sign in, RedKite CMS redirects you to the main page of yoursite
 and loads the editor to manage the whole website.
 
 RedKite CMS is an inline application, this means you can edit the website contents
 directly on each page of your website.
 
-When the CMS is started, the home page is loaded and you can immediately start editing it.
+The contro panel
+~~~~~~~~~~~~~~~~
+When you start the editor the first time, the control panel is a small box placed 
+in the top left corner of the page.
 
-The interface has been minimized to have the less impact on page:
+.. image:: //bundles/redkitelabswebsite/media/manual/interface/interface-1.jpg
 
-.. image:: //bundles/redkitelabswebsite/media/manual/img-1.jpg
+This box contains can be moved on the vertical axis by clicking the small arrows placed
+on the box top and bottom.
+
+The box can be moved in three positions, the first one is in the top left corner of
+the page, in the middle of the page
+
+.. image:: //bundles/redkitelabswebsite/media/manual/interface/interface-2.jpg
+
+and in the bottom.
+
+.. image:: //bundles/redkitelabswebsite/media/manual/interface/interface-3.jpg
+
+The control panel can be expanded so all the available commands are displayed
+
+.. image:: //bundles/redkitelabswebsite/media/manual/interface/interface-4.jpg
+
+and then it can be maximized
+
+.. image:: //bundles/redkitelabswebsite/media/manual/interface/interface-5.jpg
+
+The control panel position and status are saved, so when you will move to pages or reopen
+the editor, the control panel is restored in the same position where it had been 
+left.
+
+The minimized control panel has just three available commands:
+
+.. image:: //bundles/redkitelabswebsite/media/manual/interface/interface-6.jpg
+
+1. The button to toggle the control panel from mini to maximized (black arrow)
+2. The command to edit the contents on the page (green arrow)
+3. The command to open the quick navigation menu
 
 Edit contents
 ~~~~~~~~~~~~~
@@ -25,7 +58,7 @@ To edit contents, just click on the **Edit** button: this operation makes
 the editable blocks active and ready for changes. Click the edit button again to toggle to
 **Stop**
 
-.. image:: //bundles/redkitelabswebsite/media/manual/img-3.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/interface/interface-7.jpg
 
 A **Block** is a container for different kinds of content.  So we may have
 a block that contains hypertext content, a block that contains an image, a block 
@@ -45,23 +78,6 @@ RedKite CMS let you navigate through website pages by:
 2. Using the **Nav** menu located under the **Edit** button
 
 This topic is covered in detail in the `navigate through the website`_ chapter.
-    
-The toolbar
-~~~~~~~~~~~
-
-The toolbar is placed at the top of the page and is hidden by default. In the middle
-top of the screen there is a small tab with a white down arrow that opens the toolbar
-when you click it.
-
-.. image:: //bundles/redkitelabswebsite/media/manual/img-2.jpg
-
-The toolbar contains all the commands you need to manage the website, like pages, languages,
-themes and more.  Most of these commands open a panel that drops down from the toolbar and
-display a panel with an interface that lets you manage the section.
-
-.. image:: //bundles/redkitelabswebsite/media/manual/img-4.jpg
-
-From the toolbar you can also change the RedKite CMS interface language.
 
 
 .. class:: fork-and-edit

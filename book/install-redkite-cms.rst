@@ -2,7 +2,7 @@ RedKite CMS installation procedure
 ==================================
 
 RedKite CMS requires a Symfony2 Standard edition application to run. We created several
-precompiled distributions of our Content Management System to cover the wide range of 
+precompiled distributions of our Content Management System to cover a wide range of 
 scenarios:
 
 - `RedKite CMS Sandbox Get & Go`_
@@ -15,7 +15,7 @@ how to install and configure it.
 Sometimes you might need to install RedKite CMS from scratch, for
 example when you want to use RedKite CMS with an existing project.
 
-The next paragraphs of this chapter will focus on this topic.
+The following paragraphs of this chapter will focus on this topic.
 
 Add RedKite CMS to a Symfony2 project from scratch
 ------------------------------------------------------
@@ -61,7 +61,7 @@ To get the packages, run the following command from a console:
 Install other dependencies
 --------------------------
 
-Since 1.1.2 release, RedKite CMS does not require the **yui compresso** package, so you 
+As of the 1.1.2 release, RedKite CMS does not require the **yui compressor** package, so you 
 can choose the minifier tool you prefer or none.
 
 Learn more about this topic on `Symfony2 website`_ 
@@ -115,14 +115,14 @@ To enable the RedKite CMS installer you must add it to your AppKernel file:
 
 Website controller
 ------------------
-Websites routes are handled in production by a single **Controller** named by default
-**Website**.
+Websites routes are handled in production by a single **Controller** which is named **Website**
+by default.
 
 You must add this controller to your application to render your website. This task 
 is achieved by adding a new controller or by simply modifying the default one added by Symfony. 
 
-Add a **WebSiteController.php** file inside the Controller folder of your bundle. Open it 
-and add this code:
+Add the file **WebSiteController.php** inside the Controller folder of your bundle.  Then open it 
+and add the following code:
 
 .. code-block:: php
     
@@ -136,7 +136,7 @@ and add this code:
 
 .. note::
 
-    Do not forget to change the **namespace** according with your configuration.
+    Do not forget to change the **namespace** to match your configuration.
 
 If you want to use a controller with a different name, you must rename the
 controller itself, then you must tell RedKite CMS to generate the routes pointing to
@@ -169,10 +169,10 @@ code as follows:
 Install assets
 --------------
 
-RedKite CMS uses Twitter's **bower** package manager to manage external assets
+RedKite CMS uses Twitter's **bower** package manager to manage the external assets
 required by RedKite CMS.
 
-A console command is provided to generate the required **component.json** file under 
+A console command is provided to generate the required **component.json** file in 
 the application web folder, which usually is called **web**. Run the following command 
 to create that file:
 
@@ -180,7 +180,7 @@ to create that file:
 
     php app/console redkitecms:build:bower
 
-If you plan to use a different folder, you can specify that one as follows:
+If you plan to use a different folder, you can specify it as follows:
 
 .. code-block:: text
  
@@ -218,7 +218,7 @@ of the application **config.yml** file:
 
 Remove the AcmeDemoBundle if present
 --------------------------------------
-Symfony2 comes with a built-in demo which should be removed:
+Symfony2 comes with a built-in demo bundle which should be removed:
 
 Delete the **src/Acme/DemoBundle** folder.
 
@@ -272,7 +272,7 @@ you must add the routes for the install bundle:
 Install
 -------
 Now you are ready to install RedKite CMS, so follow the instructions provided
-for a RedKite CMS Sandbox.
+for the RedKite CMS Sandbox.
 
 
 What to do if something goes wrong
@@ -281,7 +281,7 @@ The RedKite CMS installer changes some of the configuration files in your applic
 so if something goes wrong during the set-up, you could have problems running the install
 process again after these changes have been implemented.
 
-Luckily, the installer backs up those files, so to fix the problem, you simply have to
+Luckily, the installer backs up those files.  So to fix the problem, you simply have to
 remove the files changed by the installer and restore the backed up ones.
 
 Those files are:

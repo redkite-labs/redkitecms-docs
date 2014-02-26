@@ -15,42 +15,33 @@ A block represent the content displayed on the page.
 When you change the theme, under the hood, RedKite CMS parses all the website's pages 
 and changes the templates as requested.
 
-For this chapter I'll change the theme used on redkite-labs.com website with the 
-**BootbusinessTheme**, the theme which comes with a fresh install of RedKite CMS.
-
 Mapping the templates
 ---------------------
 
 The very first step to do is to map the current website theme's templates with the 
-templates of the **BootbusinessTheme** theme. To do this, I'll open the Themes panel 
-from the top toolbar.
+templates of the new theme. This operation is made from the **Themes panel**.
 
 On the left there is the active theme used on the website and on the right there are
 the available themes.
 
-I look for the **BootbusinessThemeBundle** then I click on the **Activate** button 
-placed under the **BootbusinessTheme** to start this procedure.
+To change a theme click on the **Activate** button placed under the new theme.
 
-A new window opens and the current Theme's templates are listed on the left and
-near each template, there is a combo box which contains the new Theme's templates.
+The panel which let you map the theme's templates will open.
 
-.. image:: //bundles/redkitelabswebsite/media/change_theme/img_01.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/themes/themes-2.jpg
 
-RedKite CMS automatically selects the templates with the same name, others must be
-selected manually.
+RedKite CMS parses the templates used in the current website and displays them in 
+rows. On the right of each template, it places a dropdown where lists all the templates
+found in the new theme. 
 
-RedKite Labs website theme is made by two templates: 
+When RedKite CMS founds templates with the same name, it automatically maps them, while
+others must be mapped by hand. 
 
-1. home
-2. internal
-    
-The first one is automatically mapped because the **BootbusinessTheme** has a template
-called with the same name, while I must manually map the **internal** template. I choose 
-the one named **empty**, simply choosing it from the combo box.
+To map a template manually, simply choose the right template from the dropdown.
 
-.. image:: //bundles/redkitelabswebsite/media/change_theme/img_02.jpg
+.. image:: //bundles/redkitelabswebsite/media/manual/themes/themes-3.jpg
 
-Everything is right now, so I click the **Change** button to start the procedure.
+When all the templates are mapped, click on the **Change** button to start the procedure.
 
 
 .. class:: fork-and-edit

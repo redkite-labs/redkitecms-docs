@@ -20,38 +20,15 @@ In order to work with RedKite CMS as a developer, it's recommended that:
 - You know **PHPUnit**, since RedKite CMS tests are written for this testing suite.
 - Javascript dependencies are managed with **Twitter's Bower**, so you should install it.
 
-RedKite Labs licensing philosophy
----------------------------------
+RedKite CMS license
+-------------------
 
-Although **Symfony2** and a huge part of its ecosystem is license under a **MIT License**,
-which permits to use and redistribute the software both in Open Source and proprietary 
-contexts, **RedKite CMS** is licensed under the **GPL2 License**, which means that it can be 
-used both in an Open Source or in a proprietary context, but changes and derived redistributions
-must be released as Open Source software under the same license used by RedKite CMS.
+RedKite CMS since the 1.1.3 version is released under the therms of **MIT License** to 
+give the maximum freedom to all people who want to use our Content Management System
+to improve the management of their website.
 
-RedKite CMS final output consists in a set of Twig templates and Symfony2 routing
-configuration files which normally would be licensed under the GPL2 license, because they
-are generated with a GPL software.
-
-Despite of that, we create and exception for those files, and we choose the MIT license for them.
-
-This is possible because a Symfony2 application powered by RedKite CMS, does not require
-the CMS and the App-Blocks to run in production, so in this case, the viral effect of GPL 
-license is cancelled.
-
-Open sourced App-Blocks should be released under the MIT license or another permissive license
-like the LGPL, while they can be released under the GPL2 because, as for RedKite CMS, they 
-are not required by the final Symfony application.
-
-Open sourced App-Themes must be released under the MIT License or equivalent because they are
-required by the final Symfony application.
-
-Summarizing:
-
-- RedKite CMS Bundle -> GPL2 License
-- RedKite CMS final output -> MIT  License
-- App-Blocks -> MIT/LGPL preferred, GPL2 possible
-- Theme-Blocks -> MIT preferred, but an equivalent license can be used
+When you get your own RedKite CMS copy, you should receive your license copy with the
+source code. 
     
 If that sounds like you, then continue reading to get started.
 

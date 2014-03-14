@@ -4,8 +4,8 @@ RedKite CMS tests suite
 Most parts of RedKite CMS have unit and/or functional and/or integrated tests associated 
 with them. 
 
-These tests are written using **PHPUnit** and are required when making contributions to all RedKite 
-Labs ecosystem. 
+These tests are written using **PHPUnit** and are required when making contributions to 
+RedKite CMS.
 
 You'll always find all the Unit, Integrated and Functional tests in the Tests directory. 
 By convention unit tests lives under the **Tests/Unit** folder, integrated ones under the **Tests/Integrated** 

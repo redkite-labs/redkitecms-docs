@@ -9,11 +9,13 @@ Add a new page
 ~~~~~~~~~~~~~~
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img17.jpg
+    :class: img-responsive
 
 Click on the toolbar down tab to open it and click on the "Pages" button to open
 the pages management panel.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img18.jpg
+    :class: img-responsive
 
 Type "product 1" in the "Page name" textbox, choose "product" from the "Templates" combobox,
 and click the "Published" checkbox to immediately publish the page when you deploy the website
@@ -40,15 +42,18 @@ Manage menu links on main toolbar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img19.jpg
+    :class: img-responsive
 
 Place the cursor over the toolbar container's area and click into it.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img20.jpg
+    :class: img-responsive
 
 Click on the red icon under the first link to remove it, then repeat the operation
 for the other one, then click into the toolbar and click the "Add" button.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img21.jpg
+    :class: img-responsive
 
 Choose the "Nav dropdown" block to add a dropdown menu to the toolbar. 
 
@@ -57,6 +62,7 @@ Choose the "Nav dropdown" block to add a dropdown menu to the toolbar.
     All these steps will be simplified when the "Move" function is implemented.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img22.jpg
+    :class: img-responsive
 
 Put your mouse into the dropdown block's area and click to start editing the block.
 
@@ -64,11 +70,13 @@ Click into the "Button Text" textbox and type "Products and Services", then clic
 button. 
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img23.jpg
+    :class: img-responsive
 
 Click on the "Item 1" and choose "redkite-content-management-system" to assign the page 
 to a link.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img24.jpg
+    :class: img-responsive
 
 Now right-click "Item 1", choose "Rename" and type "RedKite CMS". Click the 
 Save button to confirm.
@@ -91,6 +99,7 @@ feel free to play with contents on this page in your own time.
 When you are done, click the nav button to open the navigation menu.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img26.jpg
+    :class: img-responsive
 
 From this panel, you may choose the language and the page to move to. This panel is very
 useful because it gives you access to all the pages of the website, so when a page is
@@ -119,6 +128,7 @@ Add a new "Nav dropdown" to the top navbar, name it "About", open the "Menu item
 and link the first three pages.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img27.jpg
+    :class: img-responsive
 
 Now you must add a new item, so right click the "Menu" node and click "Create" from the
 contextual menu, rename the item just added as "News" and add the last Events item.
@@ -133,15 +143,18 @@ I think a thumbnail is more appropriate to better represent a work, so I use thi
 instead of images. 
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img29.jpg
+    :class: img-responsive
 
 Change the "Page title" in "Our works" ad main title and  "the portfolio" ad subtitle,
 then remove the block in the middle of the page.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img30.jpg
+    :class: img-responsive
 
 Add a new "Thumbnail list" block.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img31.jpg
+    :class: img-responsive
 
 Add now two thumbnails in this block, then add another "Thumbnail list" block for other works.
 
@@ -172,6 +185,7 @@ The events page
 Open the events page. Here is a listing of the company's events. 
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img34.jpg
+    :class: img-responsive
 
 To represent each event there is a dedicated block, the "Bootbusiness Event", so remove 
 the default content and add a new Event block.
@@ -190,11 +204,13 @@ The faq page
 ~~~~~~~~~~~~
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img35.jpg
+    :class: img-responsive
 
 Open the faq page. This page shows a frequently questions list, which is managed by
 an Accordion block, so remove the main content and add a new Accordion.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img36.jpg
+    :class: img-responsive
 
 This block is a list, so it is managed exactly like the main toolbar's links, while each
 accordion item is managed by a Text block.

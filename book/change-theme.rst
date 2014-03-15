@@ -29,6 +29,7 @@ To change a theme click on the **Activate** button placed under the new theme.
 The panel which let you map the theme's templates will open.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/themes/themes-2.jpg
+    :class: img-responsive
 
 RedKite CMS parses the templates used in the current website and displays them in 
 rows. On the right of each template, it places a dropdown where lists all the templates
@@ -40,6 +41,7 @@ others must be mapped by hand.
 To map a template manually, simply choose the right template from the dropdown.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/themes/themes-3.jpg
+    :class: img-responsive
 
 When all the templates are mapped, click on the **Change** button to start the procedure.
 

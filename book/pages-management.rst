@@ -22,6 +22,7 @@ The page tab
 The **Page** tab contains the page attributes described below.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/pages/pages-1.jpg
+    :class: img-responsive
 
 
 The page name option
@@ -81,6 +82,7 @@ The Seo tab
 The **SEO** tab contains the Search Engines Options attributes described below.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/pages/pages-2.jpg
+    :class: img-responsive
 
 
 The permalink option
@@ -161,6 +163,7 @@ website is deployed.
 This file helps search engines to correctly parse the pages of your website.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/pages/pages-3.jpg
+    :class: img-responsive
 
 From this tab you can set the sitemap attributes for the page.
 

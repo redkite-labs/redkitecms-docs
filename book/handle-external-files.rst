@@ -25,11 +25,13 @@ Upload a file
 To upload a file click the **Upload files** button on the toolbar 
 
 .. image:: //bundles/redkitelabswebsite/media/manual/medialibrary/medialibrary-1.jpg
+    :class: img-responsive
 
 or right click on the background files area and choose the **Upload files** entry 
 from the contextual menu.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/medialibrary/medialibrary-2.jpg
+    :class: img-responsive
 
 A window opens and you can choose the file you want to transfer from your hard disk.
 You can upload more files a time too.
@@ -40,6 +42,7 @@ Rename a file
 To rename a file right click on it and choose **Rename** from the contextual menu.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/medialibrary/medialibrary-3.jpg
+    :class: img-responsive
 
 
 Delete one or more files
@@ -49,6 +52,7 @@ To delete one of more files, select them and right click over one of them to ope
 contextual menu and choose **Delete** to proceed.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/medialibrary/medialibrary-4.jpg
+    :class: img-responsive
 
 
 Add, rename, delete folders
@@ -58,6 +62,7 @@ To add a new folder right click on the background files area and choose the **Ne
 entry from the contextual menu.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/medialibrary/medialibrary-5.jpg
+    :class: img-responsive
 
 
 This will create a new folder, and selects the default text to let you give it an appropriate 

@@ -23,6 +23,7 @@ The user interface
 Open the top toolbar and click on the **Themes** button to open the panel.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/themes/themes-1.jpg
+    :class: img-responsive
 
 The themes panel is divided in two columns, on the left there is rendered
 the theme in use and on the right column there are displayed all the available

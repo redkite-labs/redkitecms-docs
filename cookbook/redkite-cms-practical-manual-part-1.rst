@@ -28,15 +28,18 @@ Image block
 ~~~~~~~~~~~
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img1.jpg
+    :class: img-responsive
 
 Place the cursor over the first product's image and left click into the image's area to open the editor.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img2.jpg
+    :class: img-responsive
 
 Click into the src input box to open the **media library**. This tool allows you to manage each
 type of file on your website.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img3.jpg
+    :class: img-responsive
 
 Upload an image. I've already uploaded the images bundled with the bootbusiness original 
 theme. Next double click on the one you want to insert.
@@ -53,6 +56,7 @@ Text block
 ~~~~~~~~~~
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img4.jpg
+    :class: img-responsive
 
 Place your cursor over the text below the image and left click to edit the content.
 Type some text to describe your product, then click the save button to confirm.
@@ -62,6 +66,7 @@ Remove a block
 --------------
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img5.jpg
+    :class: img-responsive
 
 Put your mouse on the button below the text you have just edited and click on the trash icon
 to remove the block.
@@ -73,12 +78,14 @@ Add a new block
 ---------------
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img6.jpg
+    :class: img-responsive
 
 When you remove the last block, RedKite CMS adds a place-holder into the block's area,
 which explains that the slot does not contains any content: place the cursor over that 
 block and click on the plus icon.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img7.jpg
+    :class: img-responsive
 
 A panel that contains all the available blocks is displayed. Click on the Buttons Group
 block to add it into the empty slot.
@@ -87,11 +94,13 @@ Manage a list of blocks
 -----------------------
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img8.jpg
+    :class: img-responsive
 
 Place the cursor near one of the buttons to highlight the block's container, then click
 into the block's area.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img9.jpg
+    :class: img-responsive
 
 A red trash icon is displayed under each button and a blue plus icon is added just 
 before the first block and under each buttons. The interface has been changed since that
@@ -101,11 +110,13 @@ Remove an included block from a composite block
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img10.jpg
+    :class: img-responsive
 
 Now we are going to remove a button. In this case it is not important which button 
 is removes, so click one of the trash icons and confirm your choice.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img11.jpg
+    :class: img-responsive
 
 Now place your cursor over the first button and click on it to open the editor.
 
@@ -115,6 +126,7 @@ combobox, then click "Save" to confirm.
 Do the same with the button next but only change the "Button text" in "Read more".
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img12.jpg
+    :class: img-responsive
 
 Place your cursor into the products container's area and click into it.
 
@@ -122,19 +134,23 @@ And an included block into a composite block
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img13.jpg
+    :class: img-responsive
 
 Click on the plus icon button to add a new product.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img14.jpg
+    :class: img-responsive
 
 Place the cursor over the first product container's area and click into it to open 
 the editor to change the product's width.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img15.jpg
+    :class: img-responsive
 
 Choose "span4 (300px)" from the combo box and click the save button.
 
 .. image:: //bundles/redkitelabswebsite/media/bootbusiness/img16.jpg
+    :class: img-responsive
 
 Now you should repeat the same process for other products and services.
 

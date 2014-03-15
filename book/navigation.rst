@@ -26,6 +26,7 @@ Just click on the **Navigation** button and the panel opens. Now choose the page
 from the appropriate combobox and RedKite CMS will immediately move to it.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/navigation/navigation-1.jpg
+    :class: img-responsive
 
 
 Edit an internal link

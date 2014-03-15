@@ -12,12 +12,13 @@ and loads the editor to manage the whole website.
 RedKite CMS is an inline application, this means you can edit the website contents
 directly on each page of your website.
 
-The contro panel
+The control panel
 ~~~~~~~~~~~~~~~~
 When you start the editor the first time, the control panel is a small box placed 
 in the top left corner of the page.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/interface/interface-1.jpg
+    :class: img-responsive
 
 This box contains can be moved on the vertical axis by clicking the small arrows placed
 on the box top and bottom.
@@ -26,18 +27,22 @@ The box can be moved in three positions, the first one is in the top left corner
 the page, in the middle of the page
 
 .. image:: //bundles/redkitelabswebsite/media/manual/interface/interface-2.jpg
+    :class: img-responsive
 
 and in the bottom.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/interface/interface-3.jpg
+    :class: img-responsive
 
 The control panel can be expanded so all the available commands are displayed
 
 .. image:: //bundles/redkitelabswebsite/media/manual/interface/interface-4.jpg
+    :class: img-responsive
 
 and then it can be maximized
 
 .. image:: //bundles/redkitelabswebsite/media/manual/interface/interface-5.jpg
+    :class: img-responsive
 
 The control panel position and status are saved, so when you will move to pages or reopen
 the editor, the control panel is restored in the same position where it had been 
@@ -46,6 +51,7 @@ left.
 The minimized control panel has just three available commands:
 
 .. image:: //bundles/redkitelabswebsite/media/manual/interface/interface-6.jpg
+    :class: img-responsive
 
 1. The button to toggle the control panel from mini to maximized (black arrow)
 2. The command to edit the contents on the page (green arrow)
@@ -59,6 +65,7 @@ the editable blocks active and ready for changes. Click the edit button again to
 **Stop**
 
 .. image:: //bundles/redkitelabswebsite/media/manual/interface/interface-7.jpg
+    :class: img-responsive
 
 A **Block** is a container for different kinds of content.  So we may have
 a block that contains hypertext content, a block that contains an image, a block 

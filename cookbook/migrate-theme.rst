@@ -68,7 +68,7 @@ To migrate the theme, just run the following command:
 
 .. code-block:: text
 
-    php app/console --env=rkcms redkitecms:migrate:theme [ YourThemeBundle ]
+    php app/rkconsole --env=rkcms redkitecms:migrate:theme [ YourThemeBundle ]
 
 When the operation is completed, open the xml file that defines the theme service,
 located at **[ YourThemeBundle ]/Resources/config/your_theme_bundle_theme.xml** file 
@@ -105,8 +105,8 @@ At last you must rebuild the templates and clear the cache as usual:
 
 .. code-block:: text
 
-    php app/console --env=rkcms redkitecms:generate:templates [ YourThemeBundle ]
-    php app/console --env=rkcms ca:c
+    php app/rkconsole --env=rkcms redkitecms:generate:templates [ YourThemeBundle ]
+    php app/rkconsole --env=rkcms ca:c
 
 
 .. class:: fork-and-edit

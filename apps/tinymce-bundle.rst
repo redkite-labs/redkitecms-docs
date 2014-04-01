@@ -53,7 +53,7 @@ as follows:
 
 .. code-block:: text
 
-    app/console cache:clear --env=rkcms
+    app/rkconsole cache:clear --env=rkcms
 	
 .. note::
 

@@ -31,6 +31,98 @@ RedKite CMS has been installed.
     to install and dump assets and to clear the cache.
 
 
+Preliminary configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^
+RedKite CMS is highly decoupled from your Symfony2 application and, since 1.1.3
+release, it lies on its own kernel. This means you need to configure manually
+your **app/AppKernel.php** file to have your website working in production.
+
+In particular you need to configure your theme.
+
+Quick setup
+^^^^^^^^^^^
+
+The quickest way to configure your theme is using the **BootstrapBundle**, which
+provides bundles autoloading functionalities. This bundle is already available because
+it is used by the RedKite CMS.
+
+Add the following configuration to AppKernel to configure that bundle:
+
+.. code-block:: php
+
+    // app/AppKernel.php
+    public function registerBundles()
+    {
+        $bundles = array(
+            [...]
+
+            new RedKiteLabs\RedKiteCms\BootstrapBundle\RedKiteLabsBootstrapBundle(),
+        );
+
+
+        [...]
+
+        $bootstrapper = new \RedKiteLabs\BootstrapBundle\Core\Autoloader\BundlesAutoloader(__DIR__, $this->getEnvironment(), $bundles);
+        $bundles = $bootstrapper->getBundles();
+
+        return $bundles;
+    }
+
+then replace the  **registerContainerConfiguration** with this one:
+
+.. code-block:: php
+
+    // app/AppKernel.php
+    public function registerContainerConfiguration(LoaderInterface $loader)
+    {
+        $configFolder = __DIR__ . '/config/bundles/config/' . $this->getEnvironment();
+        if (is_dir($configFolder)) {
+            $finder = new \Symfony\Component\Finder\Finder();
+            $configFiles = $finder->depth(0)->name('*.yml')->in($configFolder);
+            foreach ($configFiles as $config) {
+                $loader->load((string)$config);
+            };
+        };
+
+        $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
+    }
+
+
+Please note that this change is permanent, so it works for all bundles saved under the **src/RedkiteCms/** namespace. This means
+that if you will change your theme, you do not need to repeat this configuration again.
+
+Adopting this approach, leverages you to deal with theme's configuration files. For example if your theme requires **assetic**,
+you will configure a **config.yml** file under the theme itself and it will be handled by the **BootstrapBundle**.
+
+On the other hand, that bundle will load all the themes under the **src/RedkiteCms/Themes**, also the ones you don't use in
+production.
+
+
+Symfony2 setup
+^^^^^^^^^^^^^^
+
+If you want to follow the canonical Symfony2 approach, just configure your theme as a normal bundle:
+
+.. code-block:: php
+
+    public function registerBundles()
+    {
+        $bundles = array(
+            [...]
+
+            new RedKiteCms\Theme\AwesomeThemeBundle\AwesomeThemeBundle(),
+        );
+
+If your theme uses **assetic**, add the proper configuration to your **app/config.yml**:
+
+.. code-block:: text
+
+    assetic:
+        bundles:        [ AwesomeThemeBundle ]
+
+When you will change the theme for you application, you have to configure that theme again.
+
+
 The deploying process
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -51,7 +143,7 @@ The deploying generation result
 When you deploying for the stage environment, RedKite CMS generates the 
 following folders and files into the deploy bundle:
 
-.. code:: text
+.. code-block:: text
 
     Resources
         config
@@ -82,7 +174,7 @@ following folders and files into the deploy bundle:
 When you deploying for the production environment, RedKite CMS generates the 
 following folders and files into the deploy bundle:
 
-.. code:: text
+.. code-block:: text
 
     Resources
         config

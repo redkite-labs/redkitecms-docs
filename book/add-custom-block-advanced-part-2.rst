@@ -509,7 +509,7 @@ parameter in the **app_block.xml**:
 .. note::
 
     If you are not use symlinks for your assets, you must run the 
-    **php app/console assets:install web --env=rkcms [--symlink]** command to install 
+    **php app/rkconsole assets:install web --env=rkcms [--symlink]** command to install
     this new asset.
         
 Conclusion

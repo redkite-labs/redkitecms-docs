@@ -36,7 +36,7 @@ familiar. Run the following command to start:
 
 .. code-block:: text
 
-    php app/console redkitecms:generate:app-theme --env=rkcms
+    php app/rkconsole redkitecms:generate:app-theme --env=rkcms
 
 You'll get the following response:
 
@@ -70,7 +70,7 @@ Finally, you must clear the cache to have the theme auto loaded:
 
 .. code-block:: text
 
-    php app/console ca:c --env=rkcms
+    php app/rkconsole ca:c --env=rkcms
 	
 Sometimes it might not be enough to do this, and the theme might not be correctly displayed inside
 the RedKite CMS themes panel. When that happens you must manually remove the **app/cache** 

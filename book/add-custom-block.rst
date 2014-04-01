@@ -41,7 +41,7 @@ Run the following command from your console to generate a new App-Block bundle n
 
 .. code-block:: text
 
-    php app/console redkitecms:generate:app-block --env=rkcms
+    php app/rkconsole redkitecms:generate:app-block --env=rkcms
 
 .. note::
 
@@ -166,7 +166,7 @@ Don't forget to clear your cache for the **rkcms environment** to have the App-B
 
 .. code-block:: text
 
-    php app/console ca:c --env=rkcms
+    php app/rkconsole ca:c --env=rkcms
 
 
 

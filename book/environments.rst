@@ -145,6 +145,10 @@ redirects the application to the login page for the authentication process.
 When the user correctly signs in, RedKite CMS opens the website home page and the 
 website can now be managed.
 
+.. note::
+
+    The user name is "admin" and its password is "admin".
+
 RedKite CMS stage environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -267,7 +267,7 @@ you must add the routes for the install bundle:
 
 .. note::
 
-    If you plan to install using the console, you can safety skip this step.
+    If you plan to install using the console, you can safely skip this step.
 
 Install
 -------

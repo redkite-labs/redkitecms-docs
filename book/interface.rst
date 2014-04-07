@@ -6,10 +6,10 @@ This chapter contains an overview of the RedKite CMS editor interface.
 The interface
 -------------
 
-After you sign in, RedKite CMS redirects you to the main page of yoursite
-and loads the editor to manage the whole website.
+After you sign in, RedKite CMS redirects you to the main page of your website.
+Then it loads the editor to manage the whole website.
 
-RedKite CMS is an inline application, this means you can edit the website contents
+RedKite CMS is an inline application. This means you can edit the website contents
 directly on each page of your website.
 
 The control panel

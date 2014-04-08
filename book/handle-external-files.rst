@@ -1,8 +1,7 @@
 Manage assets 
 =============
 
-This chapter explains in detail how to manage external assets like images, zip files, 
-pdf files and more.
+This chapter explains in detail how to manage external assets like image, audio, video, archive and text files and more. The files can be of any format: ZIP, PDF, MP3, AVI and more.
 
 
 The media library
@@ -15,8 +14,8 @@ The most important things you can do with this tool are:
     - Upload files
     - Preview a file
     - Rename a file
-    - Delete one or more files
-    - Add, rename, delete folders
+    - Delete files
+    - Create, rename, delete folders
     - Copy/move files between sub-folders
     
 Upload a file

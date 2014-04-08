@@ -244,7 +244,7 @@ You can easily change this template just by defining a new parameter in your `co
 
     red_kite_labs_theme_engine:
         # ...
-        base_template: MyAwesomeBundle:Theme:my-base.html-twig
+        base_template: MyAwesomeBundle:Theme:my-base.html.twig
 		
 .. note::
 

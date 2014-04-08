@@ -10,7 +10,7 @@ Add a new theme
 Themes could be added to your application in two ways:
 
 1. Create a custom theme
-2. Add an existing theme in your composer.json file
+2. Add an existing theme to your composer.json file
 
 To create a custom theme, you should read the `dedicated tutorial`_, while to add an
 existing theme to your application using composer, you must follow the instructions 
@@ -25,7 +25,7 @@ Open the top toolbar and click on the **Themes** button to open the panel.
 .. image:: //bundles/redkitelabswebsite/media/manual/themes/themes-1.jpg
     :class: img-responsive
 
-The themes panel is divided in two columns, on the left there is rendered
+The themes panel is divided into two columns. On the left there is rendered
 the theme in use and on the right column there are displayed all the available
 themes.
 
@@ -43,7 +43,7 @@ Let's explain them in detail.
 Preview a theme
 ---------------
 
-This command let you see the design of a theme as its author has designed it.
+This command lets you see the design of a theme as its author has designed it.
 
 To preview a theme simply click on the **Preview** action. The theme is rendered
 and on the left you have two commands:

@@ -6,7 +6,7 @@ This chapter explains how to create a new theme for RedKite CMS.
 What is a Theme?
 ---------------
 
-An RedKite CMS Theme Application could be defined as a collection of twig templates which 
+A RedKite CMS Theme Application could be defined as a collection of twig templates which 
 have their own assets like javascripts, stylesheets and images, packaged into a well-known 
 structure.
 

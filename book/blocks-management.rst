@@ -7,11 +7,11 @@ Blocks
 ------
 
 A **Block** is a container for one kind of content. A block can contain a simple
-content like an hypertext, an image, a link but it can also contain more articulated kind
-of contents, like a button, a carousel, a thumbnail from Twitter Bootstrap
+content like an hypertext, an image, a link but it can also contain more articulated kinds
+of content, like a button, a carousel, a thumbnail from Twitter Bootstrap
 or the Facebook like button.
 
-A Block come always with an editor able to handled its content. Usually each editor is
+A Block comes always with an editor able to handle its content. Usually each editor is
 rendered inside a popover placed under the block to edit, except hypertext contents, which
 are directly managed on the page, using an inline editor.
 
@@ -21,7 +21,7 @@ are directly managed on the page, using an inline editor.
 Here you can see the editor for a Twitter Bootstrap button.
 
 The rectangle that surrounds the block you are editing, changes to blue (red arrow) but 
-the **Blocks menu** remains active, so you can always change the editor just clicking 
+the **Block's menu** remains active, so you can always change the editor by just clicking 
 on another block (orange arrow).
 
 .. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-2.jpg
@@ -51,9 +51,9 @@ Add a block
 ^^^^^^^^^^^
 
 To add a new block, you must first highlight it, then you must click on the 
-**plus icon top arrow **, pointed by the red arrow an the picture, when you need to
+**plus icon top arrow **, pointed by the red arrow on the picture, when you need to
 add a block over the highlighted one or on the **plus icon bottom arrow **, pointed by 
-the orange arrow on the picture, when you need to add a block under the current highlighted
+the orange arrow on the picture, when you need to add a block under the currently highlighted
 block.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-3.jpg
@@ -70,7 +70,7 @@ or could have been required directly from the application
 When you add your custom App-Block to RedKite CMS, this is displayed under the 
 group it is assigned by the block's developer.
 
-To add a block to the page simply click over it: an Hypertext block has been choosen
+To add a block to the page simply click over it: an Hypertext block has been chosen
 in the picture below.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-5.jpg
@@ -95,7 +95,7 @@ To start editing the content handled by a block, you must place the mouse over i
 its area to open the editor.
 
 Usually a RedKite CMS block has an editor rendered into a popover placed under the active 
-block, but the default hypertext editor let you edit blocks inline on the page.
+block, but the default hypertext editor lets you edit blocks inline on the page.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/contents/contents-7.jpg
     :class: img-responsive
@@ -163,7 +163,7 @@ and change the size of the container, editing the container block.
 List of blocks
 ^^^^^^^^^^^^^^
 
-A **List of blocks** is a particular block which can contain singles and/or included blocks
+A **List of blocks** is a particular block which can contain single and/or included blocks
 and renders them in an horizontal or vertical row.
 
 When these blocks are edited, each child block gets two icons placed in the bottom right

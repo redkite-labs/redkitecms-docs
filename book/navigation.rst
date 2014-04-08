@@ -15,7 +15,7 @@ pages.
 
 Sometimes the page link you want to reach may not be available on the page you are  
 on at the moment or it may happen that that page has not been linked yet.  Or you are in edit 
-modeand you do not want to turn off the contents editor just to click a link on a page.
+mode and you do not want to turn off the contents editor just to click a link on a page.
 
 When this situation occurs, the **Navigation** menu helps you. This small blue partially 
 hidden panel is located under the button to edit blocks.
@@ -37,7 +37,7 @@ one delegated to manage links or you can add a link to a hypertext block using t
 inline editor.
 
 Sometimes you would like to change the permalink of a page: if this page has already been
-linked through the website, RedKite CMS updates all the links that points to that page for you.
+linked through the website, RedKite CMS updates all the links that point to that page for you.
 
 
 Navigate through languages
@@ -59,3 +59,5 @@ same page for the Italian language.
 .. class:: fork-and-edit
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
+
+.. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs

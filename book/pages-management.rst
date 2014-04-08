@@ -1,7 +1,7 @@
 Pages management
 ================
 
-This chapter explains in detail how an RedKite CMS page is structured and how to 
+This chapter explains in detail how a RedKite CMS page is structured and how to 
 entirely manage website pages.
 
 The panel interface
@@ -9,8 +9,8 @@ The panel interface
 Website pages are managed using the **Pages panel** click the **Pages** button on 
 the main toolbar placed at the top of the page to open it.
 
-The pages panel is divided in two columns: on the left are listed all the pages
-used in the website, while on the right it is placed the interface to add or edit
+The pages panel is divided into two columns: On the left are listed all the pages
+used in the website, while on the right there is placed the interface to add or edit
 a page.
 
 This last one is made by tabs, so there are several sections you need to fill up 
@@ -73,7 +73,7 @@ In fact a page is not published by default, so only the users which have enough 
 could change this option and declare a page as publishable.
 
 Another situation when this option is useful could be when you are working on a page and 
-you want keep it private just because it is not ready to be published yet.
+you want to keep it private just because it is not ready to be published yet.
 
 
 The Seo tab
@@ -88,8 +88,8 @@ The **SEO** tab contains the Search Engines Options attributes described below.
 The permalink option
 ~~~~~~~~~~~~~~~~~~~~
 
-The **permalink** represents a static permanent link that identifies the page outside
-the site.
+The **permalink** represents a static permanent link that identifies the page of the website to the outside
+web.
 
 This value is inserted into the textarea which has the same name.
 
@@ -125,13 +125,13 @@ The title option
 This information represents the page title and it is displayed in the top bar of the
 browser. 
 
-It should not contain more than 50 characters and must be consistent with page's contents.
+It should not contain more than 50 characters and it must be consistent with the page's contents.
 
 This value is inserted into the textarea which has the same name.
 
-This is another important information you must provide while it is not mandatory,
-because search engines give it a great importance for indexing the page, so, as for 
-permalink you must very accurate to choose the page title.
+This is another important information you should provide while it is not mandatory,
+because search engines give it a great importance for indexing the page. So as for 
+the permalink you must be very accurate in choosing the page title.
 
 
 The description option
@@ -140,7 +140,7 @@ This information must provide a small brief description about the arguments expo
 on the page. 
 
 This information is not displayed anywhere, it should not contain more than 255 characters 
-and must be consistent with page's contents.
+and it must be consistent with the page's contents.
 
 This value is inserted into the textarea which has the same name.
 

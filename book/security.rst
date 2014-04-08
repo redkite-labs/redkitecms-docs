@@ -8,14 +8,14 @@ policy.
 Users and roles definition
 --------------------------
 
-RedKite CMS exploits the Symfony2 security layer to secure the backend editor and 
-provides an high-level interface to manage users and roles.
+RedKite CMS exploits the Symfony2 security layer to secure the backend editor and it
+provides a high-level interface to manage users and roles.
 
-A user is someone who can access to the backend, providing an username and a password.
+A user is someone who can access to the backend, providing a username and a password.
 
 A role defines the rights a user has on the available resources.
 
-A user must have a role and this role grants or deny the access to a particular resource.
+A user must have a role and this role grants or denies the access to a particular resource.
 
 .. note::
 
@@ -32,9 +32,9 @@ RedKite CMS has three predefined roles, in its default configuration:
 3. ROLE_USER
     
 **ROLE_SUPER_ADMIN** and **ROLE_ADMIN** have the same rights and have granted the access
-to whole RedKite CMS resources.
+to the whole RedKite CMS resources.
 
-**ROLE_USER** have granted the access to whole RedKite CMS resource, instead of the
+**ROLE_USER** have granted the access to the whole RedKite CMS resources, with the exception of the
 website deploy and the users management.
 
 Add a new Role
@@ -63,7 +63,7 @@ Click on the **Save** button to confirm your changes.
 Edit a Role
 ~~~~~~~~~~~
 
-To edit a role just select it clicking on its name and change the value in the form
+To edit a role just select it by clicking on its name and change the value in the form
 on the right.
 
 Delete a Role
@@ -76,8 +76,8 @@ want to remove.
 Users management
 ~~~~~~~~~~~~~~~~
 
-Users management works exactly as explained for roles, the only difference is
-about the number of information required, which is higher for users than roles.
+The Users management works exactly as explained for the roles. The only difference is
+the number of information required. This number is higher for users than for roles.
 
 .. image:: //bundles/redkitelabswebsite/media/manual/security/security-3.jpg
     :class: img-responsive
@@ -102,9 +102,9 @@ file as shown below:
 
 RedKite CMS is highly decoupled, and the security layer is not an exception. 
 
-The implemented configuration impacts only on RedKite CMS backend because is specific
+The implemented configuration impacts only on the RedKite CMS backend because it is specific
 for the **rkcms** environments. This means you can implement your own security policy in 
-production when you need it, without collide with the backend.
+production when you need it, without colliding with the backend.
 
 The security file in detail
 ---------------------------
@@ -115,7 +115,7 @@ Here is a detailed explanation on how the security file is made.
 The firewall
 ~~~~~~~~~~~~
 
-The implemented firewall is quite simple, in fact it secures all the urls which start 
+The implemented firewall is quite simple. In fact it secures all the urls which start 
 with the **backend** token:
 
 .. code-block:: text
@@ -163,12 +163,12 @@ How to customize the security.yml file
 --------------------------------------
 
 Symfony does not permit to import or configure a security file from another 
-configuration file, so the only way to change the implemented rules is to modify 
-the **security.yml** file that comes with RedKite CMS.
+configuration file. So the only way to change the implemented rules is to modify 
+the **security.yml** file that comes with the RedKite CMS.
 
 Obviously, it is really a bad idea to work on the security file that comes with
-**RedKiteCmsBundle** bundle, because when you would upgrade the cms, the changes 
-you have made will be lost.
+**RedKiteCmsBundle** bundle, because if you would upgrade the cms, the changes 
+you have made would get lost.
 
 To avoid that, you must copy the RedKite's security file into the application's 
 config folder, rename it, for example, to **security_cms.yml**, and change the import 
@@ -184,10 +184,10 @@ directive in the config_rkcms.yml:
 Customizing the security for your website
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 A real life example could be the following one: you may need to add a new role, 
-called **ROLE_PUBLISHER**, to allow granted users, which belongs that role, to publish 
-the website, to leverage site administrators from this task.
+called **ROLE_PUBLISHER**, to allow granted users to gain this role in order to publish 
+the website. This leverages the site administrators from this task.
 
-First of all you must add that role in the website as explained before, then you must 
+First of all you must add that role to the website as explained before. Then you must 
 change the rule that secures the deploy action as follows:
 
 .. code-block:: text
@@ -206,12 +206,12 @@ To let that work you must change the role_hierarchy as follows:
         ROLE_ADMIN:             ROLE_PUBLISHER
         ROLE_SUPER_ADMIN:       ROLE_ADMIN
 
-You can learn more about this reading the `Symfony2 security chapter`_.
+You can learn more about this by reading the `Symfony2 security chapter`_.
 
-Let's now assume that you want to avoid users granted by **ROLE_USER** role to delete 
+Let's now assume that you want to avoid users granted by the **ROLE_USER** role to delete 
 contents.
 
-The route that points this action is the **deleteBlock**, so you must add the new security
+The route that points to this action is the **deleteBlock**, so you must add the new security
 rule as follows:
 
 .. code-block:: text

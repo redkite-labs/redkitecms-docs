@@ -31,8 +31,8 @@ If you want that the new language will become the website main language check th
 .. image:: //bundles/redkitelabswebsite/media/manual/languages/languages-3.jpg
     :class: img-responsive
 
-The website's main language is the first language displayed when a user, that browses 
-your website, does not require any specific language. This means that when the http://redkite-labs.com 
+The website’s main language is the first language displayed to a visitor of your website.
+He does not require to select any specific language. This means that when the http://redkite-labs.com 
 address is requested, the language used is the one marked as the main language.
 
 When you add a new language, RedKite CMS copies all the main language contents 
@@ -57,7 +57,7 @@ choose a new language from the **Language** combobox.
 When you want to promote a language as the website main language, you must select 
 the language you want to promote and edit it, checking on the **Is main** checkbox. 
 
-You cannot degrade the current main language, this means you cannot unchecked the **Is main**
+You cannot degrade the current main language, this means you cannot uncheck the **Is Main**
 checkbox for the main language.
 
 Click the **Save** button to confirm your changes.

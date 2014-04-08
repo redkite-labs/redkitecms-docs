@@ -2,24 +2,24 @@ Website deploying
 =================
 
 This chapter explains in detail how to deploy your website from the RedKite CMS
-backend editor, to the stage or production environments.
+backend editor to the stage or production environments.
 
 Deploy the website
 ------------------
 
-RedKite CMS website deploying process consist in converting the data entered in the
-backend, to Symfony2 templates and routes and to copy assets from the backend to 
-stage or production environments.
+The RedKite CMS website deploying process consists in converting the data entered in the
+backend, to Symfony2 templates and routes. And it consists in copying assets from the backend to 
+the stage or to the production environments.
 
-RedKite CMS generates a Twig template for each page you entered in the backend. This
-template inherits from the assigned template and creates the Twig blocks from the 
+The RedKite CMS generates a Twig template for each page you entered in the backend. This
+Twig template inherits from the assigned template and it creates the Twig blocks from the 
 App-Blocks on the page. These blocks override the ones defined in the original template.
 
 Each page generates a Symfony2 route to map the url (permalink) with the Symfony2
 controller which renders the page.
 
-At last, it removes the current assets and replaces them, copying all the new assets 
-from the backend to stage or production folders.
+At last, it removes the current assets and replaces them, by copying of all the new assets 
+from the backend to the stage or to the production folders.
 
 All these files are generated and copied to the **Deploy bundle** defined when 
 RedKite CMS has been installed.
@@ -35,15 +35,15 @@ Preliminary configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 RedKite CMS is highly decoupled from your Symfony2 application and, since 1.1.3
 release, it lies on its own kernel. This means you need to configure manually
-your **app/AppKernel.php** file to have your website working in production.
+your **app/AppKernel.php** file to get your website working in production.
 
 In particular you need to configure your theme.
 
 Quick setup
 ^^^^^^^^^^^
 
-The quickest way to configure your theme is using the **BootstrapBundle**, which
-provides bundles autoloading functionalities. This bundle is already available because
+The quickest way to configure your theme is by using the **BootstrapBundle**, which
+provides the bundles autoloading functionalities. This bundle is already available because
 it is used by the RedKite CMS.
 
 Add the following configuration to AppKernel to configure that bundle:
@@ -126,7 +126,7 @@ When you will change the theme for you application, you have to configure that t
 The deploying process
 ^^^^^^^^^^^^^^^^^^^^^
 
-Deploying the website is a hard work, but only for RedKite CMS, in fact
+Deploying the website is a hard work, but only for the RedKite CMS. In fact
 you are only required to click on the environment you'd like to deploy.
 
 To deploy for the stage environment simply click the **Deploy stage** button
@@ -140,7 +140,7 @@ Both of them will prompt a confirmation message.
 The deploying generation result
 -------------------------------
 
-When you deploying for the stage environment, RedKite CMS generates the 
+When you are deploying for the stage environment, the RedKite CMS generates the 
 following folders and files into the deploy bundle:
 
 .. code-block:: text
@@ -171,7 +171,7 @@ following folders and files into the deploy bundle:
 	to production.
     
                  
-When you deploying for the production environment, RedKite CMS generates the 
+When you are deploying for the production environment, RedKite CMS generates the 
 following folders and files into the deploy bundle:
 
 .. code-block:: text
@@ -206,7 +206,7 @@ are immediately displayed on your website, after deploying.
 If you manage your website on your laptop, you must transfer files to the remote 
 server after you deployed the website.
 
-RedKite CMS does not provide any tool to do this job, so you can refer this
+The RedKite CMS does not provide any tool to do this job. So you can refer to this
 Symfony2 cookbook entry which covers the topic in detail.
 
 

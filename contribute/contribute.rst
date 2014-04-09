@@ -1,7 +1,7 @@
 Contributing
 ============
 One of the great things about open source projects is that anyone can contribute code. 
-RedKite CMS has thrived thanks to the contributions of numerous people and we want 
+The RedKite CMS has thrived thanks to the contributions of numerous people. We want 
 to encourage everyone to submit their patches freely. To help you in that process, 
 there are several things that you should keep in mind.
 
@@ -23,7 +23,7 @@ should open an `issue at github`_.
 
 Contribute to RedKite CMS Core
 ---------------------------------
-When you want to contribute to RedKite CMS Core by fixing issues or adding new features,
+When you want to contribute to the RedKite CMS Core by fixing issues or adding new features,
 you should fork the repository, make your changes and use pull request to let us review
 your patch.
 
@@ -36,8 +36,8 @@ includes appropriate tests.
 If you're submitting a change to RedKite CMS core, update or add to the units 
 tests in the **Tests** directory. 
 
-If you are submitting a new App-Block, be sure to have properly added unit test to cover
-the code and functional tests when your bundle uses internal controllers.
+If you are submitting a new App-Block, be sure to have properly added unit tests to cover
+the code and functional tests if your bundle uses internal controllers.
 
 More about tests is explained in `this document`_.
 
@@ -51,9 +51,9 @@ by new tests you may write.
 Submit your Theme or Block bundles
 ----------------------------------
 If you want to share your awesome Theme or Block bundles with the community, you need to maintain
-it on a repository at github.
+them on a repository at github.
 
-To have your bundle distributed on RedKite CMS website, open an issue at `RedKite Apps repository`_ 
+To have your bundle distributed on the RedKite CMS website, open an issue at `RedKite Apps repository`_ 
 and post the link to your repository in the issue body.
 
 Your Theme or Block bundle will be evaluated and then it will be published.
@@ -62,7 +62,7 @@ Your Theme or Block bundle will be evaluated and then it will be published.
 Contribute with the documentation
 ---------------------------------
 RedKite CMS has its official documentation on a dedicated `repository at github`_. If 
-you want to to contribute fixing typos on the current documentation or add new entries, just
+you want to contribute by fixing typos on the current documentation or add new entries, just
 fork this repository and send us your pull requests.
 
 
@@ -70,7 +70,7 @@ fork this repository and send us your pull requests.
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/redkite-labs/redkite-docs
+.. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
 .. _`issue at github`: https://github.com/redkite-labs
 .. _`this document`: how-to-run-the-redkite-cms-test-suite
 .. _`repository at github`: https://github.com/redkite-labs/redkite-docs

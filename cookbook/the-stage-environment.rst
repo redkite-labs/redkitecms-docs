@@ -36,7 +36,7 @@ then confirming the operation.
 Work on the stage environment
 -----------------------------
 The stage environment is accessible using the **stage.php** front controller. The best way
-to interact with it, is to open a new tab on your browser, usual using the **Alt+T combination**,
+to interact with it, is to open a new tab on your browser, usual using the **t+T combination**,
 and point the stage environment from there:
 
 .. code::

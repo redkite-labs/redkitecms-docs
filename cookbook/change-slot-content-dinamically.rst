@@ -60,7 +60,7 @@ The listener extends the **BasePageRenderingListener**, which contains all the l
 required to respond to the event and to manage the slot's content. 
 
 Parent class requires the derived class implements the **renderSlotContents** method,
-which must return an array of **AlSlotContent** objects:
+which must return an array of **SlotContent** objects:
 
 .. code-block:: php
 
@@ -68,13 +68,13 @@ which must return an array of **AlSlotContent** objects:
     namespace Acme\WebSiteBundle\EventListener;
 
     use RedKiteLabs\ThemeEngineBundle\Core\Rendering\Listener\BasePageRenderingListener;
-    use RedKiteLabs\ThemeEngineBundle\Core\Rendering\SlotContent\AlSlotContent;
+    use RedKiteLabs\ThemeEngineBundle\Core\Rendering\SlotContent\SlotContent;
 
     class IndexRenderingListener extends BasePageRenderingListener
     {
         protected function renderSlotContents()
         {
-            $slotContent = new AlSlotContent();
+            $slotContent = new SlotContent();
             $slotContent
                 ->setContent('My great replaced content')
                 ->setSlotName('top_section_2')
@@ -85,12 +85,12 @@ which must return an array of **AlSlotContent** objects:
         }
     }
 
-As you can see, an **AlSlotContent** object is instantiated, then both the content and the 
+As you can see, an **SlotContent** object is instantiated, then both the content and the
 slot name are set and, at last, the replace method is called.
 
 This function must return an array, then the base class will traverse it to perform
-the operation specified by the AlSlotContent, in this specific case the content contained 
-into the **top_section_2** slot is replaced by the one defined in the AlSlotContent object.
+the operation specified by the SlotContent, in this specific case the content contained
+into the **top_section_2** slot is replaced by the one defined in the SlotContent object.
 
 Sometimes it could be useful to inject content into a slot instead of replacing the 
 existing one: in this case just call the **inject()** method instead of the **replace()**.

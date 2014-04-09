@@ -20,17 +20,17 @@ The **Thumbnail Block** is a perfect example to explain this feature.
 Add an App-Block to an existing bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Add the **AlBlockManagerBootstrapThumbnailTutorialBlock.php** file inside the **Core/Block**, 
+Add the **BlockManagerBootstrapThumbnailTutorialBlock.php** file inside the **Core/Block**,
 open it and paste the following code:
 
 .. code-block:: php
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapThumbnailTutorialBlock.php
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/BlockManagerBootstrapThumbnailTutorialBlock.php
     namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block;
 
-    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockContainer;
+    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\BlockManagerJsonBlockContainer;
 
-    class AlBlockManagerBootstrapThumbnailTutorialBlock extends AlBlockManagerJsonBlockContainer
+    class BlockManagerBootstrapThumbnailTutorialBlock extends BlockManagerJsonBlockContainer
     {
         public function getDefaultValue()
         {
@@ -172,18 +172,18 @@ This block includes other blocks, but requires an editor to change the width of 
 We use a Symfony2 form which has only a combo box which contains the available images
 widths.
 
-Add the **AlThumbnailType.php** file inside the **Core/Form**, 
+Add the **ThumbnailType.php** file inside the **Core/Form**,
 open it and paste the following code:
 
 .. code-block:: php
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Form/AlThumbnailType.php
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Form/ThumbnailType.php
     namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form;
 
     use RedKiteLabs\RedKiteCmsBundle\Core\Form\JsonBlock\JsonBlockType;
     use Symfony\Component\Form\FormBuilderInterface;
 
-    class AlThumbnailType extends JsonBlockType
+    class ThumbnailType extends JsonBlockType
     {
         public function buildForm(FormBuilderInterface $builder, array $options)
         {
@@ -241,7 +241,7 @@ Open the **app_block.xml** and add the App-Block class as a service:
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
         [...]
-        <parameter key="bootstrap_thumbnail_tutorial.block.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block\AlBlockManagerBootstrapThumbnailTutorialBlock</parameter>        
+        <parameter key="bootstrap_thumbnail_tutorial.block.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block\BlockManagerBootstrapThumbnailTutorialBlock</parameter>
     </parameters>
     
     <services>
@@ -259,7 +259,7 @@ Then add the form as service:
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
         [...]
-        <parameter key="bootstrap_thumbnail.form.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form\AlThumbnailType</parameter>
+        <parameter key="bootstrap_thumbnail.form.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form\ThumbnailType</parameter>
     </parameters>
     
     <services>
@@ -282,8 +282,8 @@ method to block manager:
 
 .. code-block:: php
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapThumbnailsTutorialBlock.php
-    class AlBlockManagerBootstrapThumbnailsTutorialBlock extends AlBlockManagerJsonBlockContainer
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/BlockManagerBootstrapThumbnailsTutorialBlock.php
+    class BlockManagerBootstrapThumbnailsTutorialBlock extends BlockManagerJsonBlockContainer
     {
         [...]
         
@@ -293,7 +293,7 @@ method to block manager:
         }
     }
 
-This method is implemented in the **AlBlockManager** class default and returns **false**
+This method is implemented in the **BlockManager** class default and returns **false**
 by default. Just override the base method and return **true** to achieve this task.
 
 
@@ -306,17 +306,17 @@ The ThumbnailsTutorial App-Block class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's now implement the **ThumbnailsTutorial** block. As usual we start to add the block's
-class, so create the **AlBlockManagerBootstrapThumbnailsTutorialBlock.php** inside the
+class, so create the **BlockManagerBootstrapThumbnailsTutorialBlock.php** inside the
 **Core/Block** folder, open it and paste this code:
 
 .. code-block:: php
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerBootstrapThumbnailsTutorialBlock.php
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/BlockManagerBootstrapThumbnailsTutorialBlock.php
     namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block;
 
-    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockCollection;
+    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\BlockManagerJsonBlockCollection;
 
-    class AlBlockManagerBootstrapThumbnailsTutorialBlock extends AlBlockManagerJsonBlockCollection
+    class BlockManagerBootstrapThumbnailsTutorialBlock extends BlockManagerJsonBlockCollection
     {
         public function getDefaultValue()
         {        
@@ -418,7 +418,7 @@ Open the **app_block.xml** and add the App-Block class as a service:
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
         [...]
-        <parameter key="bootstrap_thumbnails_tutorial.block.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block\AlBlockManagerBootstrapThumbnailsTutorialBlock</parameter>        
+        <parameter key="bootstrap_thumbnails_tutorial.block.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block\BlockManagerBootstrapThumbnailsTutorialBlock</parameter>
     </parameters>
     
     <services>

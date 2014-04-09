@@ -30,17 +30,17 @@ The App-Block class
 ~~~~~~~~~~~~~~~~~~~
 
 To add the new App-Block class to the BootstrapButtonTutorialBlockBundle, just create 
-the **AlBlockManagerFileTutorial.php** file inside the **BootstrapButtonTutorialBlockBundle/Core/Block**, 
+the **BlockManagerFileTutorial.php** file inside the **BootstrapButtonTutorialBlockBundle/Core/Block**,
 open it and add the following code:
 
 .. code-block:: php   
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/AlBlockManagerFileTutorial.php  
+    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/BlockManagerFileTutorial.php
     namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block;
 
-    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockContainer;
+    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\BlockManagerJsonBlockContainer;
 
-    class AlBlockManagerFileTutorial extends AlBlockManagerJsonBlockContainer
+    class BlockManagerFileTutorial extends BlockManagerJsonBlockContainer
     {
         public function getDefaultValue()
         {
@@ -67,7 +67,7 @@ follows:
 .. code-block:: php   
 
     [...]
-    use RedKiteLabs\RedKiteCmsBundle\Core\AssetsPath\AlAssetsPath;
+    use RedKiteLabs\RedKiteCmsBundle\Core\AssetsPath\AssetsPath;
  
     protected function renderHtml()
     {
@@ -77,7 +77,7 @@ follows:
         
         $options = array(
             'webfolder' => $this->container->getParameter('red_kite_cms.web_folder'),
-            'folder' => AlAssetsPath::getUploadFolder($this->container),
+            'folder' => AssetsPath::getUploadFolder($this->container),
             'filename' => $file,
         );
         
@@ -89,7 +89,7 @@ follows:
         ));
     }
 
-The **AlAssetsPath** provides the paths for common assets folders, in our block we
+The **AssetsPath** provides the paths for common assets folders, in our block we
 need the upload folder, so we will use the **getUploadFolder** method, which is deputated
 to return this information.
 
@@ -107,7 +107,7 @@ which has not been created yet, so add the **file.html.twig** under the Bootstra
     
 Now RedKite CMS can render the block on the page. We just need to define the editor,
 so we need to override the **editorParameters** method to define the parameter to
-pass to the editor. Add the following code to the **AlBlockManagerFileTutorial*:
+pass to the editor. Add the following code to the **BlockManagerFileTutorial*:
     
 .. code-block:: php   
     
@@ -141,9 +141,9 @@ folder, open it and paste the following code inside:
     namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form;
 
     use Symfony\Component\Form\FormBuilderInterface;
-    use RedKiteCms\Block\RedKiteCmsBaseBlocksBundle\Core\Form\Base\AlBaseType;
+    use RedKiteCms\Block\RedKiteCmsBaseBlocksBundle\Core\Form\Base\BaseType;
 
-    class FileTutorialType extends AlBaseType
+    class FileTutorialType extends BaseType
     {
         public function buildForm(FormBuilderInterface $builder, array $options)
         {
@@ -154,7 +154,7 @@ folder, open it and paste the following code inside:
         }
     }
 
-We will override the **RedKiteCms\Block\RedKiteCmsBaseBlocksBundle\Core\Form\Base\AlBaseType**
+We will override the **RedKiteCms\Block\RedKiteCmsBaseBlocksBundle\Core\Form\Base\BaseType**
 which provides some standard configurations like the form name. Feel free to give it 
 a look to understnd hor it is designed.
 
@@ -169,7 +169,7 @@ To have to App-Bock working, we must open the **app_block.xml** and add the App-
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
     <parameters>
         [...]
-        <parameter key="bootstrap_file_tutorial_block.block.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block\AlBlockManagerFileTutorial</parameter>
+        <parameter key="bootstrap_file_tutorial_block.block.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block\BlockManagerFileTutorial</parameter>
         <parameter key="file_tutorial.form.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form\FileTutorialType</parameter>
     </parameters>
 

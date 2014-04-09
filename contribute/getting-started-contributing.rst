@@ -3,34 +3,34 @@ Developer Guide
 
 This guide is intended for those who wish to:
 
-- Contribute code to RedKite CMS core
-- Contribute code to RedKite CMS ecosystem
-- Contribute code to RedKite CMS documentation    
-- Contribute code to RedKite CMS existing Blocks and Themes
-- Create their own Blocks and Themes and share them on RedKite CMS website
+- Contribute code to the RedKite CMS core
+- Contribute code to the RedKite CMS ecosystem
+- Contribute code to the RedKite CMS documentation    
+- Contribute code to the RedKite CMS existing Blocks and Themes
+- Create their own Blocks and Themes and share them on the RedKite CMS website
 
 In order to work with RedKite CMS as a developer, it's recommended that:
 
 - You know **php5** and **Object Oriented Programming**, since RedKite CMS is written in php.
 - You know **Symfony2**, since RedKite CMS is a **Symfony2 Bundle**.
-- While it is not mandatory, it is better if you are comfortable with **Propel**, since RedKite CMS uses it as ORM.    
-- RedKite CMS stylesheets are generated from **Sass** and compiled with **Compass**, so you should have that tool installed on your system.
+- While it is not mandatory, it is better if you are comfortable with **Propel**, since the RedKite CMS uses it as ORM.    
+- The RedKite CMS stylesheets are generated from **Sass** and compiled with **Compass**, so you should have that tool installed on your system.
 - You're comfortable with **command-line programs**.
 - You understand unit and functional tests and why they're important.
-- You know **PHPUnit**, since RedKite CMS tests are written for this testing suite.
+- You know **PHPUnit**, since the RedKite CMS tests are written for this testing suite.
 - Javascript dependencies are managed with **Twitter's Bower**, so you should install it.
 
 RedKite CMS license
 -------------------
 
-RedKite CMS since the 1.1.3 version is released under the therms of **MIT License** to 
+The RedKite CMS since the 1.1.3 version is released under the therms of **MIT License** to 
 give the maximum freedom to all people who want to use our Content Management System
 to improve the management of their website.
 
 When you get your own RedKite CMS copy, you should receive your license copy with the
 source code. 
     
-If that sounds like you, then continue reading to get started.
+If you like its sound, then continue reading to get started.
 
 Section 1: Get the Source Code
 ------------------------------
@@ -42,7 +42,7 @@ This section explains how to do that and a little about the source code structur
 Section 2: Run the tests
 ------------------------
 There are a lot of unit tests included with RedKite CMS to make sure that we're keeping 
-on top of code quality. This section explains how to run the unit tests.
+the source codes at a high level of quality. This section explains how to run the unit tests.
 
 `Go to run the tests section`_
 

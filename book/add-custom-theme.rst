@@ -243,13 +243,16 @@ html template you are creating must be placed:
         </div>
     {% endblock %}
 
-You can easily change this template just by defining a new parameter in your `config_rkcms.yml`:
+You can easily change this template just by defining a new parameter in both `config.yml` and
+`config_rkcms.yml`:
 
 .. code-block:: text
 
     red_kite_labs_theme_engine:
         # ...
         base_template: MyAwesomeBundle:Theme:my-base.html.twig
+
+this because RedKite CMS does not inherit its configuration from Symfony2 configuration.
 		
 .. note::
 

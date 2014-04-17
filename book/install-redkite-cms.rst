@@ -109,7 +109,7 @@ To enable the RedKite CMS installer you must add it to your AppKernel file:
 
             [...]   
             
-            new RedKiteCms\InstallerBundle\RedKiteCmsInstallerBundle(),
+            new RedKiteLabs\RedKiteCms\InstallerBundle\RedKiteCmsInstallerBundle(),
         );
     }
 

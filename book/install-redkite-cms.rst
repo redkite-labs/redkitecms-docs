@@ -18,7 +18,7 @@ example when you want to use RedKite CMS with an existing project.
 The following paragraphs of this chapter will focus on this topic.
 
 Add RedKite CMS to a Symfony2 project from scratch
-------------------------------------------------------
+--------------------------------------------------
 The very first thing to do is to add RedKite CMS to the composer.json file:
 
 .. code-block:: text
@@ -32,13 +32,16 @@ The very first thing to do is to add RedKite CMS to the composer.json file:
         ],
         "require": {
             [...]
+            "propel/propel-bundle": "1.2.*",
+            "propel/propel1": "1.7.0",
+            "knplabs/knp-markdown-bundle": "1.2.*@dev",
             "redkite-cms/redkite-cms-bundle": "1.1.*",
             "redkite-cms/installer-bundle": "1.1.*",
             "redkite-labs/bootbusiness-theme-bundle": "1.1.*",
+            "redkite-labs/modern-business-theme-bundle": "1.1.*",
             "redkite-cms/redkite-cms-base-blocks": "1.1.*",
-	    "redkite-cms/tinymce-block-bundle": "1.1.*"
-        },
-        "minimum-stability": "dev"
+	        "redkite-cms/tinymce-block-bundle": "1.1.*"
+        }
     }
 
 .. note::
@@ -49,7 +52,7 @@ The very first thing to do is to add RedKite CMS to the composer.json file:
     declaration with **"redkite-cms/ckeditor-block-bundle" : "dev-master"**
 
 Install RedKite CMS
-----------------------
+-------------------
 
 To get the packages, run the following command from a console:
 
@@ -95,7 +98,7 @@ is the company name and **WebSiteBundle** is the bundle name.
 
 
 Add the RedKite CMS installer bundle to AppKernel
-----------------------------------------------------
+-------------------------------------------------
 
 To enable the RedKite CMS installer you must add it to your AppKernel file:
 
@@ -217,7 +220,7 @@ of the application **config.yml** file:
 
 
 Remove the AcmeDemoBundle if present
---------------------------------------
+------------------------------------
 Symfony2 comes with a built-in demo bundle which should be removed:
 
 Delete the **src/Acme/DemoBundle** folder.

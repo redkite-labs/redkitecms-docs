@@ -17,9 +17,12 @@ example when you want to use RedKite CMS with an existing project.
 
 The following paragraphs of this chapter will focus on this topic.
 
-Add RedKite CMS to a Symfony2 project from scratch
---------------------------------------------------
-The very first thing to do is to add RedKite CMS to the composer.json file:
+Add RedKite CMS to a Symfony2 existing project
+----------------------------------------------
+When you need to add RedKite CMS to a Symfony2 existing project, you need to do
+some additional work.
+
+The very first operation to do is to add RedKite CMS to the composer.json file:
 
 .. code-block:: text
 
@@ -40,7 +43,8 @@ The very first thing to do is to add RedKite CMS to the composer.json file:
             "redkite-labs/bootbusiness-theme-bundle": "1.1.*",
             "redkite-labs/modern-business-theme-bundle": "1.1.*",
             "redkite-cms/redkite-cms-base-blocks": "1.1.*",
-	        "redkite-cms/tinymce-block-bundle": "1.1.*"
+	        "redkite-cms/tinymce-block-bundle": "1.1.*",
+            "redkite-cms/markdown-bundle": "1.1.*"
         }
     }
 
@@ -70,6 +74,25 @@ can choose the minifier tool you prefer or none.
 Learn more about this topic on `Symfony2 website`_ 
 
 
+Add the RedKite CMS installer bundle to AppKernel
+-------------------------------------------------
+
+RedKite CMS Application comes with an installer which does the hard work. You just need to enable it in your AppKernel file:
+
+.. code-block:: php
+
+    //app/AppKernel.php
+
+    public function registerBundles()
+    {
+        $bundles = array(
+
+            [...]
+
+            new RedKiteLabs\RedKiteCms\InstallerBundle\RedKiteCmsInstallerBundle(),
+        );
+    }
+
 The deploy bundle
 -----------------
 
@@ -95,26 +118,6 @@ is the company name and **WebSiteBundle** is the bundle name.
 
     RedKite CMS installer proposes by default **Acme** as company name and **WebSiteBundle** 
     as bundle: just enter yours when you are prompted.
-
-
-Add the RedKite CMS installer bundle to AppKernel
--------------------------------------------------
-
-To enable the RedKite CMS installer you must add it to your AppKernel file:
-
-.. code-block:: php
-
-    //app/AppKernel.php
-
-    public function registerBundles()
-    {
-        $bundles = array(
-
-            [...]   
-            
-            new RedKiteLabs\RedKiteCms\InstallerBundle\RedKiteCmsInstallerBundle(),
-        );
-    }
 
 Website controller
 ------------------
@@ -281,7 +284,7 @@ for the RedKite CMS Sandbox.
 What to do if something goes wrong
 ----------------------------------
 The RedKite CMS installer changes some of the configuration files in your application,
-so if something goes wrong during the set-up, you could have problems running the install
+so if something goes wrong during the set up, you could have problems running the install
 process again after these changes have been implemented.
 
 Luckily, the installer backs up those files.  So to fix the problem, you simply have to

@@ -97,32 +97,6 @@ you will configure a **config.yml** file under the theme itself and it will be h
 On the other hand, that bundle will load all the themes under the **src/RedkiteCms/Themes**, also the ones you don't use in
 production.
 
-
-Symfony2 setup
-^^^^^^^^^^^^^^
-
-If you want to follow the canonical Symfony2 approach, just configure your theme as a normal bundle:
-
-.. code-block:: php
-
-    public function registerBundles()
-    {
-        $bundles = array(
-            [...]
-
-            new RedKiteCms\Theme\AwesomeThemeBundle\AwesomeThemeBundle(),
-        );
-
-If your theme uses **assetic**, add the proper configuration to your **app/config.yml**:
-
-.. code-block:: text
-
-    assetic:
-        bundles:        [ AwesomeThemeBundle ]
-
-When you will change the theme for you application, you have to configure that theme again.
-
-
 The deploying process
 ^^^^^^^^^^^^^^^^^^^^^
 

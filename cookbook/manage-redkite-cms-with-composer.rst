@@ -1,7 +1,7 @@
 Upgrade RedKite CMS to use composer
 ===================================
 RedKite CMS repository has been redesigned to simplify the development. That change
-involved the whole cms bundles which have been moved from the application vendor folder
+involved the whole cms' bundles which have been moved from the application vendor folder
 to the src one.
 
 Due to that change RedKite CMS bundles have been removed from composer because they come
@@ -11,7 +11,7 @@ So, how to upgrade RedKite CMS when a new release is available since composer ma
 has been removed?
 
 This is quite simple because you just need to download the new release from RedKite CMS
-website and replce the src/RedKiteLabs folder with the patch just downloaded.
+website and replace the src/RedKiteLabs folder with the patch just downloaded.
 
 Awesome, but if you want to use composer? That's quite easy too.
 
@@ -41,7 +41,6 @@ Here's are the steps required to handle RedKite CMS with composer.
 .. code-block:: text
 
     php composer.phar update
-
 
 
 

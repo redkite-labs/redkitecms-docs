@@ -275,10 +275,10 @@ you must add the routes for the install bundle:
 
     If you plan to install using the console, you can safely skip this step.
 
-Install
--------
-Now you are ready to install RedKite CMS, so follow the instructions provided
-for the RedKite CMS Sandbox.
+Install RedKite CMS
+-------------------
+Now you are ready to install RedKite CMS: just follow the instructions provided
+for the `RedKite CMS Application`_ and start enjoy this application.
 
 
 What to do if something goes wrong
@@ -297,6 +297,7 @@ Those files are:
     app/AppKernel.php
     app/config/config.yml
     app/config/routing.yml
+    app/config/parameters.yml
 
 For each of these files, the installer creates a special copy with the **.bak** extension
 before changing the file itself.
@@ -317,3 +318,4 @@ Found a typo ? Something is wrong in this documentation ? `Just fork and edit it
 .. _`RedKite CMS Sandbox` : download-redkite-cms-sandbox
 .. _`RedKite CMS Sandbox without vendors` : download-redkite-cms-sandbox-without-vendors
 .. _`Symfony2 website` : http://symfony.com/doc/current/cookbook/assetic/index.html
+.. _`RedKite CMS Application` : download-redkite-cms-sandbox#set-up-redkite-cms-application

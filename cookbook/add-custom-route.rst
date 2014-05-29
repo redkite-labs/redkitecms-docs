@@ -220,7 +220,7 @@ Here is the code:
         {
             [...]
 
-            $response = $this->render('AcmeWebSiteBundle:Product:WebSite.html.twig', array(
+            $response = $this->render('AcmeWebSiteBundle:WebSite:product.html.twig', array(
                 'product' => $product,
                 'base_template' => $this->container->getParameter('red_kite_labs_theme_engine.base_template'),
                 'environment_folder' => $this->getEnvironmentFolder(),

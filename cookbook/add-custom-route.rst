@@ -53,7 +53,7 @@ file, then add the following code:
 .. code-block:: php
 
     // src/Acme/WebSiteBundle/Entity/Product.php
-    namespace RedKiteLabs\WebSiteBundle\Entity;
+    namespace Acme\WebSiteBundle\Entity;
 
     use Doctrine\ORM\Mapping as ORM;
 
@@ -104,7 +104,7 @@ Open the ***WebSiteController.php** file and add a new action as set out below:
 	
     class WebSiteController extends FrontendController
     {
-        public function productsAction($id)
+        public function productAction($id)
         {
             $product = $this->getDoctrine()
                 ->getRepository('AcmeWebSiteBundle:Product')
@@ -114,7 +114,7 @@ Open the ***WebSiteController.php** file and add a new action as set out below:
                 throw $this->createNotFoundException('No product found for id '.$id);
             }
               
-            return $this->render('AcmeWebSiteBundle:Product:product.html.twig', array(
+            return $this->render('AcmeWebSiteBundle:WebSite:product.html.twig', array(
                 'product' => $product,
                 'base_template' => $this->container->getParameter('red_kite_labs_theme_engine.base_template'),
             ));
@@ -123,7 +123,7 @@ Open the ***WebSiteController.php** file and add a new action as set out below:
     
 Add the template
 ----------------
-Create a new **Product** folder under the bundle's views folder and add a new **product.html.twig** 
+Create a new **WebSite** folder under the bundle's views folder and add a new **product.html.twig** 
 template under it. Open that template and enter the following code:
 
 .. code-block:: jinja
@@ -179,7 +179,7 @@ Open the controller and change it as follows:
                 throw $this->createNotFoundException('No product found for id '.$id);
             }
               
-            return $this->render('AcmeWebSiteBundle:Product:product.html.twig', array(
+            return $this->render('AcmeWebSiteBundle:WebSite:product.html.twig', array(
                 'product' => $product,
                 'base_template' => $this->container->getParameter('red_kite_labs_theme_engine.base_template'),
                 'environment_folder' => $this->getEnvironmentFolder(),
@@ -220,7 +220,7 @@ Here is the code:
         {
             [...]
 
-            $response = $this->render('AcmeWebSiteBundle:Product:product.html.twig', array(
+            $response = $this->render('AcmeWebSiteBundle:WebSite:product.html.twig', array(
                 'product' => $product,
                 'base_template' => $this->container->getParameter('red_kite_labs_theme_engine.base_template'),
                 'environment_folder' => $this->getEnvironmentFolder(),

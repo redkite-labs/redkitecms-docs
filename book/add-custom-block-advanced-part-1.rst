@@ -38,7 +38,7 @@ open it and add the following code:
     // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/BlockManagerFileTutorial.php
     namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block;
 
-    use RedKiteLabs\RedKiteCmsBundle\Core\Content\Block\JsonBlock\BlockManagerJsonBlockContainer;
+    use RedKiteLabs\RedKiteCms\RedKiteCmsBundle\Core\Content\Block\JsonBlock\BlockManagerJsonBlockContainer;;
 
     class BlockManagerFileTutorial extends BlockManagerJsonBlockContainer
     {
@@ -48,7 +48,7 @@ open it and add the following code:
             '{
                 "0" : {
                     "file" : "Click to load a file",
-                    "description" : "",
+                    "description" : ""
                 }
             }';
 
@@ -67,7 +67,7 @@ follows:
 .. code-block:: php   
 
     [...]
-    use RedKiteLabs\RedKiteCmsBundle\Core\AssetsPath\AssetsPath;
+    use RedKiteLabs\RedKiteCms\RedKiteCmsBundle\Core\AssetsPath\AssetsPath;
  
     protected function renderHtml()
     {
@@ -141,7 +141,7 @@ folder, open it and paste the following code inside:
     namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form;
 
     use Symfony\Component\Form\FormBuilderInterface;
-    use RedKiteCms\Block\RedKiteCmsBaseBlocksBundle\Core\Form\Base\BaseType;
+    use RedKiteLabs\RedKiteCms\RedKiteCmsBaseBlocksBundle\Core\Form\Base\BaseType;
 
     class FileTutorialType extends BaseType
     {

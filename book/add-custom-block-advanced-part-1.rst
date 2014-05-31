@@ -404,5 +404,5 @@ asset to RedKite CMS, override the default action to save the block's content
 
 Found a typo ? Something is wrong in this documentation ? `Just fork and edit it !`_
 
-.. _`Just fork and edit it !`: https://github.com/alphalemon/alphalemon-docs
-.. _`Add a new App-Block`: http://www.alphalemon.com/add-a-new-block-app-to-alphalemon-cms
+.. _`Just fork and edit it !`: https://github.com/redkite-labs/redkitecms-docs
+.. _`Add a new App-Block`: http://redkite-labs.com/add-a-new-block-app-to-redkite-cms

@@ -94,7 +94,7 @@ Next, run the following Terminal command to generate the getters and setters:
         
 Add the action
 --------------
-Open the ***WebSiteController.php** file and add a new action as set out below:
+Open the **WebSiteController.php** file and add a new action as set out below:
 
 .. code-block:: php
 
@@ -128,7 +128,7 @@ template under it. Open that template and enter the following code:
 
 .. code-block:: jinja
 
-    // src/Acme/WebSiteBundle/Resources/views/product.html.twig
+    // src/Acme/WebSiteBundle/Resources/views/WebSite/product.html.twig
     {% extends 'AcmeWebSiteBundle:' ~ environment_folder ~ ':' ~ app.request.get('_locale') ~ '/base/empty.html.twig' %}
     
     {% block page_title %}

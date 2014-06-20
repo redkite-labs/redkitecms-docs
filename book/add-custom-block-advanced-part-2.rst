@@ -442,7 +442,7 @@ folder, open it and paste the following code:
 .. code-block:: js
 
     $(document).ready(function() {
-        $(document).on("blockEditing", function(event, element){
+        $(document).on("startEditingBlocks", function(event, element){
             if (element.attr('data-type') != 'BootstrapThumbnailsTutorialBlock') {
                 return;
             }
@@ -450,7 +450,7 @@ folder, open it and paste the following code:
             element.inlinelist('start', { addValue: '{"operation": "add", "value": { "type": "BootstrapThumbnailBlock" }}'     });
         });
 
-        $(document).on("blockStopEditing", function(event, element){ 
+        $(document).on("stopEditingBlocks", function(event, element){ 
             if (element.attr('data-type') != 'BootstrapThumbnailsTutorialBlock') {
                 return;
             }

@@ -459,8 +459,8 @@ folder, open it and paste the following code:
         });
     });
 
-Here we define two handlers, one that listens to the **blockEditing** event and another
-one that listens to **blockStopEditing** event, which occurs respectively when you
+Here we define two handlers, one that listens to the **startEditingBlocks** event and another
+one that listens to **stopEditingBlocks** event, which occurs respectively when you
 start and stop to edit a block.
 
 In both of events we make sure that the our code is executed only when the block is

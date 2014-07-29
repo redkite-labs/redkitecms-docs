@@ -108,55 +108,42 @@ and paste the following code:
 
 .. code-block:: jinja
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Thumbnail/thumbnail.html.twig
+    {# src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Thumbnail/thumbnail.html.twig #}
     {% extends 'RedKiteCmsBundle:Block:Editor/_editor.html.twig' %}
 
     {% block body %}
-    {% if key is not defined %}
-    {% set key = 0 %}
-    {% endif %}
-    {% set baseSlotName = block_manager.get.getId ~ "-" ~ key %} 
+    {% set baseSlotName = block_manager.get.getId ~ "-" ~ key|default(0) %}
     <li{% if thumbnail.width is defined and thumbnail.width != "none" %} class="{{ thumbnail.width }}"{% endif %} {{ editor|raw }}>
         <div class="thumbnail">
-            {% set blockSlotName = baseSlotName ~ "-0" %}  
-            {{ renderIncludedBlock(blockSlotName, block_manager, "Image", true) }}
+            {{ renderIncludedBlock(blockSlotName ~ "-0", block_manager, "Image", true) }}
             <div class="caption">
-                {% set blockSlotName = baseSlotName ~ "-1" %} 
-                {{ renderIncludedBlock(blockSlotName, block_manager, "Text", true) }}
+                {{ renderIncludedBlock(baseSlotName ~ "-1", block_manager, "Text", true) }}
             </div>
         </div>
     </li>
     {% endblock %}
 
-
 The first part of the key here is defined by the following instruction:
 
 .. code-block:: jinja
 
-    {% set baseSlotName = block_manager.get.getId ~ "-" ~ key %} 
+    {% set baseSlotName = block_manager.get.getId ~ "-" ~ key|default(0) %} 
     
 the current block's id is fetched from the **block_manager** object which is always
 passed to the editor and the **key** is passed to the template as a parameter from another
-template or is defined as **0** when the **key** parameter is not defined:
-
-.. code-block:: jinja
-
-    {% if key is not defined %}
-    {% set key = 0 %}
-    {% endif %}
+template or is defined as **0** when the **key** parameter is not defined.
 
 The included block is rendered as follows
 
 .. code-block:: jinja
-            
-    {% set blockSlotName = baseSlotName ~ "-0" %}  
-    {{ renderIncludedBlock(blockSlotName, block_manager, "Image", true) }}
-    
-The first step is to define the **blockSlotName** variable which joins the block's
-position, **0** in this example, to **baseSlotName** variable then the key is passed to
-the **renderIncludedBlock** method.
 
-In addiction the **renderIncludedBlock** accepts the following arguments:
+    {{ renderIncludedBlock(baseSlotName ~ "-0", block_manager, "Image", true) }}
+    
+The first step is to join the block's position, **0** in this example, to
+**baseSlotName** variable. Then the key is passed to the **renderIncludedBlock**
+method.
+
+In addition the **renderIncludedBlock** accepts the following arguments:
 
     - **parent**: the parent block manager. **Default: null**
     - **type**: the block type to add. **Default: Text**
@@ -221,7 +208,7 @@ open it and paste the following code:
 
     <form id="al_item_form">
         <table>
-            {% include "RedKiteCmsBundle:Block:Editor/Form/_form_renderer.html.twig" %}
+            {{ include("RedKiteCmsBundle:Block:Editor/Form/_form_renderer.html.twig") }}
             <tr>
                 <td colspan="2" style="text-align: right">
                     <a class="al_editor_save btn btn-primary" href="#" >Save</a>
@@ -360,16 +347,14 @@ open it and paste this code:
 
     {% block body %}
     <ul class="thumbnails al-thumbnail-list" {{ editor|raw }}>
-        {% if values|length > 0 %}
         {% for key, thumbnail in values %}
         {% set baseSlotName = block_manager.get.getId ~ "-" ~ key %} 
         
         {% set attributes = 'data-hide-blocks-menu=true data-item=' ~ key ~ ' data-slot-name=' ~ baseSlotName %}
         {{ renderIncludedBlock(baseSlotName, block_manager, thumbnail.type, true, "", attributes) }}    
-        {% endfor %}
         {% else %}
         <li class="al-empty">Any thumbnail added</li>
-        {% endif %}
+        {% endfor %}
     </ul>
     {% endblock %}
 

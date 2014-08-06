@@ -1,47 +1,35 @@
-Add a custom App-Block to RedKite CMS
-========================================
-
-This chapter explains how to create a custom App-Block and use it with RedKite CMS. 
-In detail it explains how the create, the **BootstrapButtonTutorialBlockBundle**, which 
-lets you manage a Twitter Bootstrap button using a nice ajax interface.
+Add a custom block to RedKite CMS
+=================================
+This chapter explains how to create a custom block and use it with RedKite CMS. 
+In detail it explains how the create, the **TutorialLinkBlock** to manage a link.
 
 In this chapter you will learn:
 
-    1. How to create a new App-Block using the built-in command
-    2. How to create a new object to manage the content rendered on the page
-    3. How to create a service that handles that object
-    4. How to manage a json content instead of an html content
-    5. How to create a template to display the content
-    6. How to create an editor to manage the content
+    1. How to create a new block using the built-in command
+    2. How to create a Block to describe the content to render
+    3. How to create the BlockManager to handle the block and how to add it to the DIC
+    4. How to create a twig template to render the block
+    5. How to create a twig template to render based a a form to handle the block properties
+    6. How to create configure the templates as parameters in the DIC
 
 
 What is a Block
 ---------------
+A **Block** is a container for one kind of content. In addiction an **block**
+includes the editor to manage the block itself by RedKite CMS, when the backend editor 
+is active.
 
-A **Block** is a container for one kind of content. In addiction an **App-Block**
-includes the editor to manage the block itself by RedKite CMS, when the page
-is in editing mode.
+Create the TutorialLinkBlock
+----------------------------
 
-How is structured a Block
--------------------------
+RedKite CMS provides a command to generate the additional files required by a block.
 
-An App-Block is a standalone symfony2 bundle. This approach has several advantages:
-
-1. Is a Symfony2 Bundle
-2. Is reusable in many web sites
-3. Assets required by the content are packed into a well known structure
-
-Create the BootstrapButtonTutorialBlockBundle
----------------------------------------------
-
-RedKite CMS provides a command to generate the additional files required by an App-Block.
-
-Run the following command from your console to generate a new App-Block bundle named
-**BootstrapButtonTutorialBlockBundle** that will live under the **src** folder:
+Run the following command from your console to generate a new block bundle named
+**TutorialLinkBlock** that will live under the **src** folder:
 
 .. code-block:: text
 
-    php app/rkconsole redkitecms:generate:app-block --env=rkcms
+    php app/rkconsole redkitecms:generate:block --env=rkcms
 
 .. note::
 
@@ -51,9 +39,9 @@ It will start the standard Symfony2 bundle generator command but will ask for ad
 information.
 
 Naming conventions
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
-An AppBlock should always be created using a well defined namespace:
+A block should always be created using a well defined namespace:
 
 .. code-block:: text
 
@@ -61,10 +49,10 @@ An AppBlock should always be created using a well defined namespace:
 
 When you follow this convention, you get two advantages:
 
-1. The App-Block is distributable by composer
-2. The App-Block is auto loaded without changing anything
+1. The block is distributable by composer
+2. The block is auto loaded without changing anything
 
-If you prefer not to follow this conventions, you must run that command with the 
+If you prefer not follow this conventions, you must run that command with the
 **--no-strict** option, then you must change the BundlesAutoloader instantiation 
 in your **AppKernel** file as follows:
 
@@ -78,23 +66,23 @@ in your **AppKernel** file as follows:
         $bootstrapper = new \RedKiteLabs\BootstrapBundle\Core\Autoloader\BundlesAutoloader(__DIR__, $this->getEnvironment(), $bundles, null, array([path 1], [path 2]));
     }
 
-replacing the **[path n]** entries with the paths of your App-Blocks. 
+replacing the **[path n]** entries with the paths of your blocks.
 
-Let's suppose you want to add a new App-Block under the **src/Acme/Blocks/MyAwesomeBlockBundle** 
+Let's suppose you want to add a new block under the **src/Acme/Blocks/MyAwesomeBlockBundle**
 folder of your application. The path to pass to the **BundlesAutoloader** is the following:
 
 .. code-block:: php
     
     __DIR__ . '/../src/Acme/Blocks'
 
-App-Block generation
-~~~~~~~~~~~~~~~~~~~~
+Block generation
+~~~~~~~~~~~~~~~~
 
 Let's see the bundle generation in detail.
 
 .. code-block:: text
 
-    Welcome to the Symfony2 bundle generator
+    Welcome to the RedKite CMS block bundle generator
     [...]
 
     Bundle namespace:
@@ -103,17 +91,13 @@ Enter the bundle name, as follows:
 
 .. code-block:: text
 
-    Bundle namespace: RedKiteCms/Block/BootstrapButtonTutorialBlockBundle
+    Bundle namespace: RedKiteCms/Block/TutorialLinkBlock
 
-The proposed bundle name **must be changed** to BootstrapButtonTutorialBlockBundle 
-otherwise you might have troubles:
+The proposed name is fine:
 
 .. code-block:: text
 
-    Bundle name [RedKiteBlockBootstrapButtonTutorialBlockBundle]: BootstrapButtonTutorialBlockBundle
-
-    The bundle can be generated anywhere. The suggested default directory uses
-    the standard conventions.
+    Bundle name [RedKiteCmsBlockTutorialLinkBundle]:
 
 The standard directory is fine:
 
@@ -141,478 +125,417 @@ contextual menu used to add a block to page:
     Please enter the description that identifies your App-Block content.
     The value you enter will be displayed in the adding menu.
 
-    App-Block description: Button Tutorial
+    Block description: Tutorial link
 
-Then you are asked for the App-Block group. App-Blocks that belongs the same group
+Then you are asked for the Block group. Blocks that belongs the same group
 are kept together in the block adding menu.
 
 .. code-block:: text
 
     Please enter the group name to keep together the App-Blocks that belongs that group.
 
-    App-Block group: bootstrap,Twitter Bootstrap
-    
-Don't forget to let the command updates the AppKernel for you to enable the bundle.
+    App-Block group: tutorial,Tutorial
 
-.. note::
-
-    This command does not manipulates the site's routes.
-
-Well done! Your very first App-Bundle has been created! The App-Block just created is
-already usable.
-
-Don't forget to clear your cache for the **rkcms environment** to have the App-Block working:
-
+Well done! Your very first block bundle has been created! The Block just created can be immediately
+used but you must clear the cache first for the **rkcms environment**:
 
 .. code-block:: text
 
     php app/rkconsole ca:c --env=rkcms
 
 
+How is structured a Block
+-------------------------
+A Block is defined by a flat php object which exposes the properties needed to manage the content
+we want to display on the page.
 
-The basis of BlockManager object
-----------------------------------
+The first step to create this object, is to try to describe the content looking for one or more properties 
+required to build that content on the page. In our specific case, we can say that a link can be defined by 
+two properties: 
 
-RedKite CMS requires you to implement a new class derived from the **BlockManager**
-object. This object manages a simple html content, but to define a Twitter Bootstrap button,
-we must define several parameters to manage the aspect of this block:
+	- An href property which will handle the page where the link will navigate when it is clicked.
+	- A value property which will handle the displayed value on the page.
 
-    - The displayed text
-    - The type (primary, info, success ...)
-    - The size
-    - If it spans the parent's full width
-    - If it is disabled
-    
-The best way to manage a content like this, is to define it in a json format. RedKite 
-CMS provides the  **BlockManagerJsonBlock** class that inherits from **BlockManager**
-object, which has been designed to manage this kind of contents. 
-
-In addiction there is another derived class, the **BlockManagerJsonBlockContainer**
-class which derives from the **BlockManagerJsonBlock** which requires as first argument
-the Symfony2 container: this is the object we will use for this block.
-
-This class can be placed everywhere into the bundle's folder, but it is a best practice 
-to add it inside the **[Bundle]/Core/Block** folder.
-
-The command just run had already added this class for you, as follows:
+Our block has just been defined so we can write the flat php class that describes it:
 
 .. code-block:: php
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/BlockManagerBootstrapButtonTutorialBlock.php
-    namespace RedKiteCms\BootstrapButtonTutorialBlockBundle\Core\Block;
+    // src/RedKiteCms/Block/TutorialLinkBundle/Core/Block/TutorialLinkBlock.php
+	namespace RedKiteCms\Block\TutorialLinkBundle\Core\Block;
 
-    use RedKite\RedKiteCmsBundle\Core\Content\Block\JsonBlock\BlockManagerJsonBlockContainer;
+	use JMS\Serializer\Annotation\Type;
+	use RedKiteLabs\RedKiteCms\RedKiteCmsBundle\Core\Content\Block\BaseBlock;
 
-    /**
-    * Description of BootstrapButtonTutorialBlockBundle
-    */
-    class BootstrapButtonTutorialBlockBundle extends BlockManagerJsonBlockContainer
-    {
-        public function getDefaultValue()
-        {
-            $value = 
-                '
-                    {
-                        "0" : {
-                            "block_text": "Default value"
-                        }
-                    }
-                ';
+	class TutorialLinkBlock extends BaseBlock
+	{
+		/**
+		 * @Type("string")
+		 */
+		protected $type = "TutorialLink";
+		/**
+		 * @Type("string")
+		 */
+		protected $href = "#";
+		/**
+		 * @Type("string")
+		 */
+		protected $value = "This is a link";
 
-            return array('Content' => $value);
-        }
+		public function setHref($v)
+		{
+			$this->href = $v;
+		}
 
-        protected function renderHtml()
-        {
-            // Examined later
-        }
+		public function getHref()
+		{
+			return $this->href;
+		}
 
-        public function editorParameters()
-        {
-            // Examined later
-        }
-    }
+		public function setValue($v)
+		{
+			$this->value = $v;
+		}
 
-This new object simply extends the **BlockManagerJsonBlockContainer** base class and
-implements the **getDefaultValue** method required by the parent object.
+		public function getValue()
+		{
+			return $this->value;
+		}
+	}
 
-This method defines the default value displayed on the web page when a new content is 
-added and must return an array.
-   
-How to tell RedKiteCMS to manage the Bundle
-----------------------------------------------
+A block object must always inherit from the abstract **RedKiteLabs\RedKiteCms\RedKiteCmsBundle\Core\Content\Block\BaseBlock**
+class, which defines some base properties every block will have.
 
-An App-Block Bundle is declared as services in the **Dependency Injector Container**.
+This class requires to define the type property, which handles the type of block
+you are building, in our example the block will handle a **TutorialLink** object.
+	
+Our object defines the **href** and **value** properties, which are the two specific properties
+we found to describe a link. They are declared as **protected** properties and declares the default value
+used when the object is instantiated. We also defined the getters and setters to handle them from the outside.
 
-The command has added a configuration file named **app_block.xml** under the **Resources/config**
-folder of your bundle with the following code:
+As last you should have noticed that all the properties have defined their type as a 
+**Serializer's annotation**, this because this object is serialized and de-serialized by 
+the **JMSSerializerBundle** to be saved into the database.
+
+The block generator has created the **TutorialLinkBlock.php** file: just open it an replace the contents
+with the above code.
+
+
+The BlockManager object
+~~~~~~~~~~~~~~~~~~~~~~~
+Now that our block class is ready, we must define the **BlockManager** object which will handle the block
+class just create:
+
+.. code-block:: php
+
+    // src/RedKiteCms/Block/TutorialLinkBundle/Core/Block/BlockManagerTutorialLink.php
+	namespace RedKiteCms\Block\TutorialLinkBundle\Core\Block;
+
+	use RedKiteLabs\RedKiteCms\RedKiteCmsBundle\Core\Content\Block\BlockManager;
+
+	class BlockManagerTutorialLink extends BlockManager
+	{
+
+		/**
+		 * Defines the block's default value
+		 *
+		 * @return array
+		 */
+		public function getBlockClass()
+		{
+			return 'RedKiteCms\Block\TutorialLinkBundle\Core\Block\TutorialLinkBlock';
+		}
+	}
+	
+Our BlockManager must inherit from the **RedKiteLabs\RedKiteCms\RedKiteCmsBundle\Core\Content\Block\BlockManager**
+object, an abstract object that implements the **RedKiteLabs\RedKiteCms\RedKiteCmsBundle\Core\Content\ContentManagerInterface**
+and the **RedKiteLabs\RedKiteCms\RedKiteCmsBundle\Core\Content\Block\BlockManagerInterface** which define the methods
+to manage a block.
+
+This class requires you to implement the **getBlockClass** method which must return the block's class namespace handled
+by the block manager itself.
+
+The block generator has created the **BlockManagerTutorialLink.php** file which is already fine for our block.
+The generator added some extra commented code to highlight some useful methods you could need when you develop
+your block: you should take some time to give them a look.
+
+
+Add the BlockManager to the DIC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The **BlockManagerTutorialLink** just created must be added to the Symfony2 Dependency Injector Container and it
+must be tagged as **red_kite_cms.blocks_factory.block**. In detail it must be added to the **app_block.xml**
+configuration file, which handles the RedKite CMS services for a block bundle.
+
+The block generator added the following code to the **app_block.xml** configuration file for you:
 
 .. code-block:: xml
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
-    <parameters>
-        <parameter key="bootstrap_button_tutorial_block.block.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Block\BlockManagerBootstrapButtonTutorialBlock</parameter>
+	<!-- src/RedKiteCms/Block/TutorialLinkBundle/Resources/config/app_block.xml -->
+	<parameters>
+        <parameter key="tutorial_link.block.class">RedKiteCms\Block\TutorialLinkBundle\Core\Block\BlockManagerTutorialLink</parameter>
     </parameters>
 
-    <services>        
-        <service id="bootstrap_button_tutorial_block.block" class="%bootstrap_button_tutorial_block.block.class%">
-            <tag name="red_kite_cms.blocks_factory.block" description="Button" type="BootstrapButtonBlock" group="bootstrap,Twitter Bootstrap" />
-            <argument type="service" id="service_container" />
+    <services>
+        <service id="tutorial_link.block" class="%tutorial_link.block.class%">
+            <argument type="service" id="serializer" />
+            <argument type="service" id="red_kite_cms.events_handler" />
+            <argument type="service" id="red_kite_cms.factory_repository" />
+            <argument type="service" id="red_kite_cms.block_factory" />
+            <tag name="red_kite_cms.blocks_factory.block" description="Tutorial link" type="TutorialLink" group="tutorial,Tutorial" />
         </service>
     </services>
+	
+A BlockManager object depends on several services passed as arguments as you can notice from the service declaration,
+but this is trivial. The most important part of this service is how it is tagged. Let's go deeper into the tag's properties.
 
-While the config file name is not mandatory, it is a best practice to use a separated
-configuration file for an App-Block than the default one, to define this service.
+The **name** property must always be **red_kite_cms.blocks_factory.block*+ to define a BlockManager object.
+The **type** property is the BlockManager type used by RedKite CMS to identify a block.
+The **description** property is how the block appears into the **adder menu**.
+The **group** property groups the blocks in the **adder menu** by the first argument and uses the second to title the group.
+	
 
-In this way the configuration used in production is decoupled than the one used by 
-RedKite CMS.
+The block and editor templates
+------------------------------
+Our block requires a twig template to define the html design of the content we want to create, and  
+it will require a template for the editor required to manage the block.
 
-The service
-~~~~~~~~~~~
 
-A new service named **bootstrap_button_tutorial_block.block** has been declared and adds the
-**BootstrapButtonTutorialBlockBundle** object to the **Dependency Injector Container**.
+The block template
+~~~~~~~~~~~~~~~~~~
+To properly render the block on the page we must add the following template:
 
-This service is processed by a **Compiler Pass** so it has been tagged as **red_kite_cms.blocks_factory.block**.
+.. code-block:: jinja
 
-The block's tag accepts several options:
+    {# src/RedKiteCms/Block/TutorialLinkBundle/Resources/views/Content/tutoriallink.html.twig #}
+	{% block body %}
+		<a href="{{ block.getHref }}" {% if block.getClass is defined %}class="{{ block.getClass }}"{% endif %} {{ renderEditor(block, forceEmptyEditor) }}>{{ block.getValue }}</a>
+	{% endblock %}
 
-1. **name**: identifies the block. Must always be **red_kite_cms.blocks_factory.block**
-2. **description**: the description that describes the block in the menu used to add a new block on the page
-3. **type**: the block's class type which **must be** the Bundle name without the Bundle suffix
-4. **group**: blocks that belong the same group are kept together and displayed one next the other in the menu used to add a new block on the page
+This template will always receive the **block** variable which handles the Block object derived from the **BaseBlock** class, 
+in our example the **TutorialLinkBlock**, so it is quite easy to render the get the object properties, accessing them by 
+their getters.
+
+At last, we must render the block's editor, simply calling the **renderEditor(block, forceEmptyEditor)**. This function
+requires a **BaseBlock** object as first argument and, as second argument, a boolean value which returns an empty editor 
+when it is true.
 
 .. note::
 
-    If you change your mind on description ad group names you chose when you run the
-    command, you could change theme here manually.
-        
-Customize the auto-generated BlockManagerBootstrapButtonTutorialBlock
------------------------------------------------------------------------
+	When you build your template you can add this function exactly as proposed here, because both arguments are passed to 
+	the template form the twig function responsible to render the block.
 
-Change the BlockManagerBootstrapButtonTutorialBlock class as follows:
+The block generator has already generated that file, so open it and replace the generated code with the one above.
 
-.. code-block:: php
-
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/BlockManagerBootstrapButtonTutorialBlock.php
-    use RedKite\RedKiteCmsBundle\Core\Content\Block\JsonBlock\BlockManagerJsonBlockContainer;
-
-    class BlockManagerBootstrapButtonTutorialBlock extends BlockManagerJsonBlockContainer
-    {
-        public function getDefaultValue()
-        {
-            $value = 
-                '
-                    {
-                        "0" : {
-                            "button_text": "Button 1",
-                            "button_type": "",
-                            "button_attribute": "",
-                            "button_tutorial_block": "",
-                            "button_enabled": ""
-                        }
-                    }
-                ';
-            
-            return array('Content' => $value);
-        }
-    }
-    
-.. note::
-    
-    The **BlockManagerJson** object by default manages a list of items. This bundle
-	manages only one item, so we could avoid to define the item 0, but the json is 
-	written to respect consistency.
-
-Render the block's content
---------------------------
-
-**BlockManager** object provides the **getHtml** method to return the html rendered
-from the block's content. 
-
-By default this method renders the **RedKiteCmsBundle:Block:base_block.html.twig** view:
-
-.. code-block:: jinja
-
-    // RedKiteLabs/RedKiteCmsBundle/Resources/views/Block/base_block.html.twig
-    {{ block is defined ? block.getContent|raw : "" }}
-    
-This simple view renders the text saved into the block's content field or returns a blank
-string when any block is given.
-
-It's quite easy to understand that this view is not so useful to render our json block,
-so we need to extend the **getHtml method** to render another view, but this method is 
-declared as **final**, so it is not overridable. 
-
-Luckyily it calls the **renderHtml** protected method, which is the one that must be 
-extended to render a different view than the default one. 
-
-This method has already been added by the command that generates the App-Block:
-
-.. code-block:: php
-
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/BlockManagerBootstrapButtonTutorialBlock.php
-    protected function renderHtml()
-    {
-        $items = $this->decodeJsonContent($this->alBlock->getContent());
-
-        return array('RenderView' => array(
-            'view' => 'BootstrapButtonTutorialBlockBundle:Content:bootstrapbuttontutorialblock.html.twig',
-            'options' => array('item' => $items[0]),
-        ));
-    }
-    
-This method overrides the default **renderHtml** method. Content is decoded and the
-item is passed to the **BootstrapButtonTutorialBlockBundle:Content:bootstrapbuttontutorialblock.html.twig** view.
-
-Let's give a small customization. Replace the view as follows:
-
-.. code-block:: php
-
-    return array('RenderView' => array(
-        'view' => 'BootstrapButtonTutorialBlockBundle:Button:button.html.twig',
-        'options' => array('data' => $items[0]),
-    ));
-
-then rename the **views/Content** folder as **views/Button** and the template file name 
-from **bootstrapbuttontutorialblock.html.twig** to **button.html.twig**.
-    
-The button template
-~~~~~~~~~~~~~~~~~~~
-
-The **button.html.twig** template contains the following code:
-
-.. code-block:: jinja
-
-    {% extends 'RedKiteCmsBundle:Block:Editor/_editor.html.twig' %}
-
-    {% block body %}
-
-    {# Customize this code to render your content #}
-    <div {{ editor|raw }}>{{ item.block_text }}</div>
-    
-    {% endblock %}
-
-change it as follows
-
-.. code-block:: jinja
-
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/button.html.twig
-
-    {% extends 'RedKiteCmsBundle:Block:Editor/_editor.html.twig' %}
-    
-    {% block body %}
-    
-    {% set button_type = (data.button_type is defined and data.button_type) ? " " ~ data.button_type : "" %}
-    {% set button_attribute = (data.button_type is defined and data.button_type) ? " " ~ data.button_attribute : "" %}
-    {% set button_text = (data.button_text is defined and data.button_text) ? " " ~ data.button_text : "Click me" %}
-    {% set button_tutorial_block = (data.button_tutorial_block is defined and data.button_tutorial_block) ? " " ~ data.button_tutorial_block : "" %}
-    {% set button_enabled = (data.button_enabled is defined and data.button_enabled) ? " " ~ data.button_enabled : "" %}
-
-    {# Customize this code to render your content #}
-    <button class="btn{{ button_type }}{{ button_attribute }}{{ button_tutorial_block }}{{ button_enabled }}">{{ button_text }}</button>
-    
-    {% endblock %}
-    
-The button template is quite simple: we check if all the expected parameters are defined, then 
-those parameters are passed to button tag.
-
-The editor
-----------
-
-The block's editor is usually rendered into a Twitter Bootstrap popover.
-
-This component bundled with Twitter Bootstrap defines the html text into the **data-content** 
-RDF annotation and, while this parameter is settable by javascript, RedKite CMS uses 
-the classical approach: this means that the editor is directly bundled with the content 
-into that RDF annotation.
-
-You might have noticed that the **button.html.twig** template already extends the 
-**{% extends 'RedKiteCmsBundle:Block:Editor/_editor.html.twig' %}** where are defined the attribute used
-by RedKite CMS to render the block, which is assigned to **editor** variable in the
-parent template. 
-
-To have the editor injected into the button tag, you must add the **{{ editor|raw }}**
-instruction into the html tag which will be handled by the CMS, in our case the button tag.
-
-Change the code has follows
-
-.. code-block:: jinja
-
-	// src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/views/Button/button.html.twig
-    <button class="btn{{ button_type }}{{ button_attribute }}{{ button_tutorial_block }}{{ button_enabled }}" {{ editor|raw }}>{{ button_text }}</button>
-
-The instruction just added, simple adds the **data-editor="true"** attribute to the html
-tag which is replaced with the editor data, when the page is rendered
 
 The editor template
-~~~~~~~~~~~~~~~~~~~
+-------------------
+The TutorialLinkBlock will require an editor, so we must define the template that renders it. The editor will expose
+two inputbox which will handle the TutorialLinkBlock's href and value properties and it will be displayed into a 
+Bootstrap pop-over.
 
-The interface that manages the button attributes is designed implementing a Symfony2 
-form.
 
-The commands generator already added an editor for you, the **bootstrapbuttontutorialblock.html.twig**
-template under the **views/Editor** folder.
+The form
+~~~~~~~~
+To handle the block properties we will use a Symfony2 form, which is defined as follows:
 
-As we did for the button content, let's renaming it as **button_editor.html.twig**. The
-template contains the following code:
+.. code-block:: php
+
+    // src/RedKiteCms/Block/TutorialLinkBundle/Core/Form/TutorialLinkType.php
+	namespace RedKiteCms\Block\TutorialLinkBundle\Core\Form;
+
+	use RedKiteLabs\RedKiteCms\RedKiteCmsBaseBlocksBundle\Core\Form\Base\BaseType;
+	use Symfony\Component\Form\FormBuilderInterface;
+
+	class TutorialLinkType extends BaseType
+	{
+		public function buildForm(FormBuilderInterface $builder, array $options)
+		{
+			$builder->add('href');
+			$builder->add('value');
+			$this->addClassAttribute($builder);
+
+			parent::buildForm($builder, $options);
+		}
+	}
+	
+The form class inherits from the **RedKiteLabs\RedKiteCms\RedKiteCmsBaseBlocksBundle\Core\Form\Base\BaseType**
+which handles the block common properties to handle.
+
+Here we have defined the **href** and **value** fields as two inputbox to handle the TutorialLinkBlock's properties. 
+In addition we have added an extra inputbox to handle the linkclass, by calling the **addClassAttribute** method.
+
+The block generator has already generated that file, so open it and replace the generated code with the one above.
+
+
+The editor
+~~~~~~~~~~
+Our editor will be simply defined as follows:
 
 .. code-block:: jinja
 
-    {% include "RedKiteCmsBundle:Block:Editor/_editor_form.html.twig" %}
-    
-The template includes the **RedKiteCmsBundle:Block:Editor/_editor_form.html.twig** a template
-delegated to render a generic form and a button to save the changes when a user clicks on it.
+    {# src/RedKiteCms/Block/TutorialLinkBundle/Resources/views/Editor/tutoriallink.html.twig #}
+	{{ include("RedKiteCmsBundle:Block:Editor/_editor_form.html.twig") }}
+	
+so the template that renders an editor, provided by RedKite CMS, will be rendered.
 
-.. note::
+The block generator has already generated that file.
 
-    RedKite CMS automatically attaches an handler to **.al_editor_save** element, 
-    to save contents. In the next chapter you will learn how to override this method.
 
-The editor form
-~~~~~~~~~~~~~~~
+The block and editor templates configuration
+--------------------------------------------
+The block template, the editor and the form must be declared as parameters in the block's **config_rkcms.yml** file, as follows:
 
-The commands generator already added a base form, the **BootstrapButtonTutorialBlockType.php** 
-class inside the **Core/Form** folder. So let's renaming it as **ButtonType.php**.
+.. code-block:: text
 
-This form contains the following code:
+    # src/RedKiteCms/Block/TutorialLinkBundle/Resources/config/config_rkcms.yml
+    red_kite_cms_block_tutorial_link:
+      tutoriallink:
+        block_template: 'RedKiteCmsBlockTutorialLinkBundle:Content:tutorial_link.html.twig'
+        editor_template: 'RedKiteCmsBlockTutorialLinkBundle:Editor:tutorial_link.html.twig'
+        editor_handler: 'RedKiteCms\Block\TutorialLinkBundle\Core\Form\TutorialLinkType'
+	
+In detail, the block configuration must be declared for the bundle extension alias, **red_kite_cms_block_tutorial_link** in
+our example.
 
-.. code-block:: php
+Under that configuration parameter you must list the blocks which must be declared as the block type in lowercase, **tutoriallink**
+in our example.
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Form/ButtonType.php
-    namespace RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form;
+Each block can handle the following parameters:
 
-    use RedKite\RedKiteCmsBundle\Core\Form\JsonBlock\JsonBlockType;
-    use Symfony\Component\Form\FormBuilderInterface;
+	- block_template (Mandatory) 	
+	- editor_template
+	- editor_handler
 
-    class BootstrapButtonTutorialBlockType extends JsonBlockType
-    {
-        public function buildForm(FormBuilderInterface $builder, array $options)
-        {
-            parent::buildForm($builder, $options);
+The **block_template** is the only mandatory parameter and defines the template which will render the content
+block on the page.
 
-            // Add here your fields
-            $builder->add('block_text');
-        }
-    }
-    
-we must rename the class to **ButtonType** and add the fields required to manage the
-button's attributes. Change the class as follows:
+The **editor_template** defines the template which will render the block's editor.
 
-.. code-block:: php
+The **editor_handler** defines an handler for the editor. This is usually a Symfony2 form.
 
-    class ButtonType extends JsonBlockType
-    {
-        public function buildForm(FormBuilderInterface $builder, array $options)
-        {
-            // Add here your fields
-            $builder->add('button_text');
-            $builder->add('button_type', 'choice', array('choices' => array('' => 'base', 'btn-primary' => 'primary', 'btn-info' => 'info', 'btn-success' => 'success', 'btn-warning' => 'warning', 'btn-danger' => 'danger', 'btn-inverse' => 'inverse')));
-            $builder->add('button_attribute', 'choice', array('choices' => array("" => "normal", "btn-mini" => "mini", "btn-small" => "small", "btn-large" => "large")));
-            $builder->add('button_tutorial_block', 'choice', array('choices' => array("" => "normal", "btn-block" => "block")));
-            $builder->add('button_enabled', 'choice', array('choices' => array("" => "enabled", "disabled" => "disabled")));
+The block generator has already generated that file.
 
-            parent::buildForm($builder, $options);
-        }
-    }
-    
-This form inherits from the **JsonBlockType** one, which defines the form's name that
-retrieves the values from the ajax transaction used to save the form values.
 
-While it is not mandatory, this form is added to **DIC**, so the commands generator 
-has defined it in the **app_block.xml** file as follows:
+Add the block configuration to the container
+--------------------------------------------
+The configuration just created must be added to the Symfony2 container, adding it to the Bundle's **Configuration** and
+**DependencyInjection** classes.
 
-.. code-block:: xml
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Resources/config/app_block.xml
-    <parameters>
-        [...]
+The configuration file
+~~~~~~~~~~~~~~~~~~~~~~
 
-        <parameter key="bootstrap_button_tutorial_block.form.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form\BootstrapButtonTutorialBlockType</parameter>
-    </parameters>
-
-    <services>       
-        [...]
-
-        <service id="bootstrap_button_tutorial_block.form" class="%bootstrap_button_tutorial_block.form.class%">
-        </service>
-    </services>
-    
-You must change the form's class definition as follows:
-
-.. code-block:: xml
-    
-    <parameter key="bootstrap_button_tutorial_block.form.class">RedKiteCms\Block\BootstrapButtonTutorialBlockBundle\Core\Form\ButtonType</parameter>
-    
-Render the editor
-~~~~~~~~~~~~~~~~~
-To render the editor we must pass this form to the editor itself. This task is achieved
-by the **editorParameters** method which has been added to BlockManagerBootstrapButtonTutorialBlock
-by the generator command.
-
-This method is used to define the parameters which are passed to the editor and overrides 
-the method defined in the **BlockManager** object, which returns an empty array by default:
+The **Configuration** class will be defined as follows:
 
 .. code-block:: php
 
-    public function editorParameters()
-    {
-        $items = $this->decodeJsonContent($this->alBlock->getContent());
-        $item = $items[0];
+    // src/RedKiteCms/Block/TutorialLinkBundle/DependencyInjection/Configuration.php
+	namespace RedKiteCms\Block\TutorialLinkBundle\DependencyInjection;
 
-        $formClass = $this->container->get('bootstrapbuttontutorialblock.form');
-        $form = $this->container->get('form.factory')->create($formClass, $item);
+	use RedKiteLabs\RedKiteCms\RedKiteCmsBundle\DependencyInjection\BaseBlockConfiguration;
+	use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
+	use Symfony\Component\Config\Definition\Builder\TreeBuilder;
+	use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-        return array(
-            "template" => 'BootstrapButtonTutorialBlockBundle:Editor:bootstrapbuttontutorialblock.html.twig',
-            "title" => "My awesome App-Block",
-            "form" => $form->createView(),
-        );
-    }
+	class Configuration extends BaseBlockConfiguration
+	{
+		/**
+		 * {@inheritdoc}
+		 */
+		public function getConfigTreeBuilder()
+		{
+			$treeBuilder = new TreeBuilder();
+            $rootNode = $treeBuilder->root('red_kite_cms_block_tutorial_link');
 
-We need to adjust it a little to reflect the changes we made:
+            // Here you should define the parameters that are allowed to
+            // configure your bundle. See the documentation linked above for
+            // more information on that topic.
+            $rootNode
+                ->addDefaultsIfNotSet()
+            ;
 
+            $this->addBlockDefinition($rootNode, 'tutoriallink');
+
+            return $treeBuilder;
+		}
+	}
+	
+This class will extend the **RedKiteLabs\RedKiteCms\RedKiteCmsBundle\DependencyInjection\BaseBlockConfiguration**
+instead of the usual Symfony2 Configuration class.
+
+This object defines the **addBlockDefinition** method which requires the **rootNode** as first argument and the block's
+type in lowercase as second argument, as defined in the **src/RedKiteCms/Block/TutorialLinkBundle/Resources/config/config_rkcms.yml**:
+
+.. code-block:: php
+	
+	public function getConfigTreeBuilder()
+	{
+		[...]
+
+		$this->addBlockDefinition($rootNode, 'tutoriallink');
+
+		return $treeBuilder;
+	}
+
+The block generator has already generated that file.
+
+
+The extension file
+~~~~~~~~~~~~~~~~~~
+
+The **RedKiteCmsBlockTutorialLinkExtension** class will be defined as follows:
 
 .. code-block:: php
 
-    // src/RedKiteCms/Block/BootstrapButtonTutorialBlockBundle/Core/Block/BlockManagerBootstrapButtonTutorialBlock.php
-    public function editorParameters()
-    {
-        $items = $this->decodeJsonContent($this->alBlock->getContent());
-        $item = $items[0];
-        
-        $formClass = $this->container->get('bootstrap_button_tutorial_block.form');
-        $buttonForm = $this->container->get('form.factory')->create($formClass, $item);
-        
-        return array(
-            "template" => "BootstrapButtonTutorialBlockBundle:Editor:button_editor.html.twig",
-            "title" => "Button editor",
-            "form" => $buttonForm->createView(),
-        );
-    }
-    
-This function generates the form and then returns an array which contains the template
-to render, the title displayed on the popover and the form.
+    // src/RedKiteCms/Block/TutorialLinkBundle/DependencyInjection/RedKiteCmsBlockTutorialLinkExtension.php
+	namespace RedKiteCms\Block\TutorialLinkBundle\DependencyInjection;
 
-.. note::
+	use RedKiteLabs\RedKiteCms\RedKiteCmsBundle\DependencyInjection\BaseBlockExtension;
+	use Symfony\Component\DependencyInjection\ContainerBuilder;
+	use Symfony\Component\Config\FileLocator;
+	use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+	use Symfony\Component\DependencyInjection\Loader;
 
-    This block will render a Twitter Bootstrap 2.x button. The real button will implement
-    two form classes, one as this one and another dedicated to handle Twitter Bootstrap 3.x
-    parameters.
+	class RedKiteCmsBlockTutorialLinkExtension extends BaseBlockExtension
+	{
+		/**
+		 * {@inheritdoc}
+		 */
+		public function load(array $configs, ContainerBuilder $container)
+		{
+			$loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+			$loader->load('services.xml');
 
-Use your App-Block
-------------------
+			$configuration = new Configuration();
+			$config = $this->processConfiguration($configuration, $configs);
 
-To use your new App-Block, enter inside RedKite CMS backend and just add it to your 
-website from the adder blocks menu.
-    
+			$this->setBlockParameters($container, $config, 'tutoriallink');
+		}
+
+		public function getAlias()
+		{
+			return 'red_kite_cms_block_tutorial_link';
+		}
+	}
+
+As we saw for the **Configuration** object this one will not inherit from the standard **Symfony2 Extension**
+but from the **BaseBlockExtension** class, which defines the **setBlockParameters** which requires the **ContainerBuilder**
+object as first argument, the processed **TreeBuilder** object as second argument and the block's type in lowercase as third
+argument, as defined in the **src/RedKiteCms/Block/TutorialLinkBundle/Resources/config/config_rkcms.yml**.
+
+The block generator has already generated that file.
+
+
+Celebrate
+---------
+Your new block is now ready and it can be used with RedKite CMS.
+
+
 Conclusion
 ----------
-
-After reading this chapter you should be able to create a new App-Block using the built-in 
+After reading this chapter you should be able to create a new block using the built-in 
 command, create a new object to manage the content rendered on the page, create a service 
-that handles that object, manage a json content instead of an html content, create a 
-template to display the content and create an editor to manage the content.
+that handles that object, create a template to display the content on the web page and create
+an editor to manage the content.
 
 
 .. class:: fork-and-edit
